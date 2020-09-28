@@ -91,6 +91,9 @@ nmap <leader>gs :G<cr>
 " au filetype go inoremap <buffer> . .<C-x><C-o>
 let g:SuperTabCrMapping = 1
 
+" IndentLine settings
+let g:indentLine_setConceal = 0
+
 " Clear search highlights
 nmap <silent> <leader>/ :nohlsearch<CR>
 
