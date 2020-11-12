@@ -154,13 +154,12 @@ alias f='nnn'
 alias k='kubectl'
 alias kk='k9s'
 alias watch='watch --color'
-alias tmux='TERM=xterm-256color tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 # https://docs.gitlab.com/ee/development/documentation/#local-linting
 alias valee="vale --glob='*.{md}' doc"
 alias markdownlintt="markdownlint -c .markdownlint.json 'doc/**/*.md'"
 alias tf='terraform'
 alias stopPG='sudo -u postgres pg_ctl -D /Library/PostgreSQL/11/data stop'
-alias startPG='/usr/local/opt/postgresql@11/bin/pg_ctl -D /Users/mitchellnielsen/development/gitlab-development-kit/postgresql/data -l logfile start'
+alias startPG='/usr/local/opt/postgresql@11/bin/pg_ctl -D /Users/mitchellnielsen/code/gitlab-development-kit/postgresql/data -l logfile start'
 alias cat='bat'
 alias rg="rg --hidden --glob '!.git'"
 alias randompw='openssl rand -base64 18'
