@@ -108,7 +108,7 @@ function decode {
 function port { lsof -i :$1 }
 
 # Take notes
-function note { nvim ~/notes.md }
+function note { nvim ~/Google\ Drive/notes.md }
 
 # SSH to gcloud instance
 function gssh {
