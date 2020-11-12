@@ -112,8 +112,21 @@ function note { nvim ~/Google\ Drive/notes.md }
 
 # SSH to gcloud instance
 function gssh {
-  # gcloud beta compute ssh --zone "us-east1-b" "$1" --project "cloud-native-182609"
-  gcloud beta compute ssh --zone "us-east1-b" "$1" --project "orchestrator-286716"
+  gcloud beta compute ssh --zone "us-east1-b" --project "cloud-native-182609" "$1"
+}
+
+# Test Omnibus changes
+# Dockerfile in ~/code/gitlab-org/omnibus-local-image
+function testOmnibus {
+  docker run -it --name=omnibus-local -p 80:80 \
+    -v $(PWD)/files/gitlab-ctl-commands:/opt/gitlab/embedded/service/omnibus-ctl \
+    -v $(PWD)/files/gitlab-ctl-commands-ee:/opt/gitlab/embedded/service/omnibus-ctl-ee \
+    omnibus:local
+}
+
+function stopOmnibus {
+  docker stop omnibus-local
+  docker rm omnibus-local
 }
 
 # Aliases
