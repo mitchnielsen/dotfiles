@@ -33,7 +33,6 @@ Plug 'junegunn/fzf.vim' "Fuzzy finder vim plugin
 Plug 'wakatime/vim-wakatime' " Send data to Wakatime
 Plug 'ervandew/supertab' " Tab for autocomplete
 Plug 'tpope/vim-unimpaired' " Simple mappings
-Plug 'tpope/vim-sleuth' " Automatic tab settings
 Plug 'preservim/nerdcommenter' " Commenting made easier
 
 " Themes
@@ -184,11 +183,11 @@ let g:go_highlight_types = 1
 let g:go_highlight_extra_types = 1
 
 "" Backup spacing settings replaced by tpope/vim-sleuth
-" set shiftwidth=2
-" set tabstop=2
-" set expandtab
-" set softtabstop=2
-" set smartindent
-" set autoindent
-" autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-" autocmd FileType make setlocal noexpandtab
+set shiftwidth=2
+set tabstop=2
+set expandtab
+set softtabstop=2
+set smartindent
+set autoindent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType make setlocal noexpandtab
