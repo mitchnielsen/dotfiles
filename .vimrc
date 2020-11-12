@@ -153,6 +153,7 @@ set rtp+=/usr/local/bin/fzf
 nmap <Leader>f :Files<CR>
 
 " FZF
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let g:fzf_action = {
   \ 'ctrl-v': 'vsplit',
   \ 'ctrl-c': 'split',
