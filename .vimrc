@@ -104,6 +104,11 @@ set background=dark
 colorscheme nord " one, happy_hacking
 let g:lightline = {'colorscheme': 'nord'}
 
+" Match background
+hi Normal ctermbg=NONE guibg=NONE
+hi clear SignColumn
+hi NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+
 " quick-scope settings
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
