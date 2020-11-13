@@ -1,0 +1,186 @@
+live_config_reload: true
+
+env:
+  TERM: xterm-256color
+
+# https://github.com/alacritty/alacritty/wiki/Color-schemes
+schemes:
+  afterglow:
+    # Default colors
+    &afterglow
+    primary:
+      background: '#2c2c2c'
+      foreground: '#d6d6d6'
+
+      dim_foreground: '#dbdbdb'
+      bright_foreground: '#d9d9d9'
+      dim_background: '#202020' # not sure
+      bright_background: '#3a3a3a' # not sure
+
+    # Cursor colors
+    cursor:
+      text: '#2c2c2c'
+      cursor: '#d9d9d9'
+
+    # Normal colors
+    normal:
+      black: '#1c1c1c'
+      red: '#bc5653'
+      green: '#909d63'
+      yellow: '#ebc17a'
+      blue: '#7eaac7'
+      magenta: '#aa6292'
+      cyan: '#86d3ce'
+      white: '#cacaca'
+
+    # Bright colors
+    bright:
+      black: '#636363'
+      red: '#bc5653'
+      green: '#909d63'
+      yellow: '#ebc17a'
+      blue: '#7eaac7'
+      magenta: '#aa6292'
+      cyan: '#86d3ce'
+      white: '#f7f7f7'
+
+    # Dim colors
+    dim:
+      black: '#232323'
+      red: '#74423f'
+      green: '#5e6547'
+      yellow: '#8b7653'
+      blue: '#556b79'
+      magenta: '#6e4962'
+      cyan: '#5c8482'
+      white: '#828282'
+
+  onedark:
+    &onedark
+    primary: # dark
+      background: '#282c34'
+      foreground: '#abb2bf'
+    normal:
+      # note: use '#131613' for the `black` color if you'd like to see
+      # black text on the background.
+      black: '#282c34'
+      red: '#e06c75'
+      green: '#98c379'
+      yellow: '#d19a66'
+      blue: '#61afef'
+      magenta: '#c678dd'
+      cyan: '#56b6c2'
+      white: '#abb2bf'
+    bright:
+      black: '#5c6370'
+      red: '#e06c75'
+      green: '#98c379'
+      yellow: '#d19a66'
+      blue: '#61afef'
+      magenta: '#c678dd'
+      cyan: '#56b6c2'
+      white: '#ffffff'
+
+  ayumirage:
+    &ayumirage
+    colors:
+      # Default colors
+      primary:
+        background: '#202734'
+        foreground: '#CBCCC6'
+
+      # Normal colors
+      normal:
+        black: '#191E2A'
+        red: '#FF3333'
+        green: '#BAE67E'
+        yellow: '#FFA759'
+        blue: '#73D0FF'
+        magenta: '#FFD580'
+        cyan: '#95E6CB'
+        white: '#C7C7C7'
+
+      # Bright colors
+      bright:
+        black: '#686868'
+        red: '#F27983'
+        green: '#A6CC70'
+        yellow: '#FFCC66'
+        blue: '#5CCFE6'
+        magenta: '#FFEE99'
+        cyan: '#95E6CB'
+        white: '#FFFFFF'
+
+colors:
+  # Default colors
+  primary:
+    background: '#2E3440'
+    foreground: '#D8DEE9'
+
+  # Normal colors
+  normal:
+    black: '#3B4252'
+    red: '#BF616A'
+    green: '#A3BE8C'
+    yellow: '#EBCB8B'
+    blue: '#81A1C1'
+    magenta: '#B48EAD'
+    cyan: '#88C0D0'
+    white: '#E5E9F0'
+
+  # Bright colors
+  bright:
+    black: '#4C566A'
+    red: '#BF616A'
+    green: '#A3BE8C'
+    yellow: '#EBCB8B'
+    blue: '#81A1C1'
+    magenta: '#B48EAD'
+    cyan: '#8FBCBB'
+    white: '#ECEFF4'
+
+font:
+  normal:
+    family: "Hack Nerd Font"
+  bold:
+    family: "Hack Nerd Font"
+    style: Bold
+
+  size: 15
+
+  # Thin stroke font rendering (macOS only)
+  # Thin strokes are suitable for retina displays, but for non-retina screens
+  # it is recommended to set `use_thin_strokes` to `false`.
+  use_thin_strokes: true
+
+window:
+  dimensions:
+    columns: 0
+    lines: 0
+  dynamic_padding: true
+  padding:
+    x: 10
+    y: 10
+  decorations: none
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+draw_bold_text_with_bright_colors: true
+
+background_opacity: 1.0
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+mouse:
+  launcher:
+    program: open
+    modifiers: none
+
+#shell:
+#  program: /bin/bash
+#  args:
+#    - --login
