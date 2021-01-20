@@ -5,59 +5,8 @@ env:
 
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
 schemes:
-  afterglow:
-    # Default colors
-    &afterglow
+  onedark: &onedark
     primary:
-      background: '#2c2c2c'
-      foreground: '#d6d6d6'
-
-      dim_foreground: '#dbdbdb'
-      bright_foreground: '#d9d9d9'
-      dim_background: '#202020' # not sure
-      bright_background: '#3a3a3a' # not sure
-
-    # Cursor colors
-    cursor:
-      text: '#2c2c2c'
-      cursor: '#d9d9d9'
-
-    # Normal colors
-    normal:
-      black: '#1c1c1c'
-      red: '#bc5653'
-      green: '#909d63'
-      yellow: '#ebc17a'
-      blue: '#7eaac7'
-      magenta: '#aa6292'
-      cyan: '#86d3ce'
-      white: '#cacaca'
-
-    # Bright colors
-    bright:
-      black: '#636363'
-      red: '#bc5653'
-      green: '#909d63'
-      yellow: '#ebc17a'
-      blue: '#7eaac7'
-      magenta: '#aa6292'
-      cyan: '#86d3ce'
-      white: '#f7f7f7'
-
-    # Dim colors
-    dim:
-      black: '#232323'
-      red: '#74423f'
-      green: '#5e6547'
-      yellow: '#8b7653'
-      blue: '#556b79'
-      magenta: '#6e4962'
-      cyan: '#5c8482'
-      white: '#828282'
-
-  onedark:
-    &onedark
-    primary: # dark
       background: '#282c34'
       foreground: '#abb2bf'
     normal:
@@ -81,63 +30,67 @@ schemes:
       cyan: '#56b6c2'
       white: '#ffffff'
 
-  ayumirage:
-    &ayumirage
-    colors:
-      # Default colors
-      primary:
-        background: '#202734'
-        foreground: '#CBCCC6'
+  ayumirage: &ayumirage
+    primary:
+      background: '#202734'
+      foreground: '#CBCCC6'
+    normal:
+      black: '#191E2A'
+      red: '#FF3333'
+      green: '#BAE67E'
+      yellow: '#FFA759'
+      blue: '#73D0FF'
+      magenta: '#FFD580'
+      cyan: '#95E6CB'
+      white: '#C7C7C7'
+    bright:
+      black: '#686868'
+      red: '#F27983'
+      green: '#A6CC70'
+      yellow: '#FFCC66'
+      blue: '#5CCFE6'
+      magenta: '#FFEE99'
+      cyan: '#95E6CB'
+      white: '#FFFFFF'
 
-      # Normal colors
-      normal:
-        black: '#191E2A'
-        red: '#FF3333'
-        green: '#BAE67E'
-        yellow: '#FFA759'
-        blue: '#73D0FF'
-        magenta: '#FFD580'
-        cyan: '#95E6CB'
-        white: '#C7C7C7'
+  nord: &nord
+    primary:
+      background: '#2E3440'
+      foreground: '#D8DEE9'
+    normal:
+      black: '#3B4252'
+      red: '#BF616A'
+      green: '#A3BE8C'
+      yellow: '#EBCB8B'
+      blue: '#81A1C1'
+      magenta: '#B48EAD'
+      cyan: '#88C0D0'
+      white: '#E5E9F0'
+    bright:
+      black: '#4C566A'
+      red: '#BF616A'
+      green: '#A3BE8C'
+      yellow: '#EBCB8B'
+      blue: '#81A1C1'
+      magenta: '#B48EAD'
+      cyan: '#8FBCBB'
+      white: '#ECEFF4'
 
-      # Bright colors
-      bright:
-        black: '#686868'
-        red: '#F27983'
-        green: '#A6CC70'
-        yellow: '#FFCC66'
-        blue: '#5CCFE6'
-        magenta: '#FFEE99'
-        cyan: '#95E6CB'
-        white: '#FFFFFF'
+  happy_hacking: &happy_hacking
+    primary:
+      background: '#202020'
+      foreground: '#F3F2CC'
+    normal:
+      black: '#202020'
+      red: '#F05E48'
+      green: '#8daf67'
+      yellow: '#FAD566'
+      blue: '#81A2C7'
+      magenta: '#B48EAD'
+      cyan: '#8FBCBB'
+      white: '#F3F2CC'
 
-colors:
-  # Default colors
-  primary:
-    background: '#2E3440'
-    foreground: '#D8DEE9'
-
-  # Normal colors
-  normal:
-    black: '#3B4252'
-    red: '#BF616A'
-    green: '#A3BE8C'
-    yellow: '#EBCB8B'
-    blue: '#81A1C1'
-    magenta: '#B48EAD'
-    cyan: '#88C0D0'
-    white: '#E5E9F0'
-
-  # Bright colors
-  bright:
-    black: '#4C566A'
-    red: '#BF616A'
-    green: '#A3BE8C'
-    yellow: '#EBCB8B'
-    blue: '#81A1C1'
-    magenta: '#B48EAD'
-    cyan: '#8FBCBB'
-    white: '#ECEFF4'
+colors: *nord
 
 font:
   normal:
@@ -159,8 +112,8 @@ window:
     lines: 0
   dynamic_padding: true
   padding:
-    x: 10
-    y: 10
+    x: 5
+    y: 5
   decorations: none
 
 scrolling:
@@ -179,6 +132,8 @@ mouse:
   launcher:
     program: open
     modifiers: none
+  url:
+    modifiers: Command
 
 #shell:
 #  program: /bin/bash
