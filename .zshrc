@@ -74,10 +74,16 @@ set histignorespace # ignore command in history if it starts with space
 unsetopt share_history # don't share history between sessions
 setopt HIST_IGNORE_ALL_DUPS
 
+# Function to list Helm release Ci info
+function helm-ls-ci { helm ls | awk '/^gke-/{print $1}'| xargs -I'{}' sh -c "helm get values {} | yq r - .ci" }
+
+# Function to get CI pipeline URL and copy it to clipboard
+function helm-ci-url { helm get values $1 | yq r - ci.pipeline.url | pbcopy }
+
 # Function to work quickly with Tmux sessions
 function tm {
   if [ -z "$1" ]; then
-    session_name=$(basename `pwd`)
+    session_name=$(tmux ls -F "#{session_name}" | fzf)
   else
     session_name=$1
   fi
