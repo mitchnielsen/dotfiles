@@ -37,12 +37,14 @@ export ZSH_THEME=""
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
-source $(brew --prefix asdf)/asdf.sh
 source ~/.fzf.zsh
-source /usr/local/opt/bash-completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Stern
 source <(stern --completion=zsh)
+
+# kubectl
+source <(kubectl completion zsh)
 
 # Gcloud
 source "$HOME/google-cloud-sdk/path.zsh.inc"
