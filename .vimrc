@@ -35,9 +35,9 @@ Plug 'tpope/vim-unimpaired' " Simple mappings
 Plug 'preservim/nerdcommenter' " Commenting made easier
 
 " Themes
-Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
-" Plug 'rakr/vim-one'
+" Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
 " Plug 'git@gitlab.com:yorickpeterse/happy_hacking.vim.git'
 
 call plug#end()
@@ -106,13 +106,14 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " Colors
 syntax enable
 set background=dark
-colorscheme nord " one, happy_hacking
-let g:lightline = {'colorscheme': 'nord'}
+colorscheme one " one, happy_hacking, nord, flattened_light/dark, solarized8
+let g:lightline = {'colorscheme': 'one'}
 
 " Match background
 hi Normal ctermbg=NONE guibg=NONE
-hi clear SignColumn
 hi NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+hi clear SignColumn
+hi clear LineNR
 
 " quick-scope settings
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
