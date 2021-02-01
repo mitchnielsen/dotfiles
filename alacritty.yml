@@ -90,7 +90,7 @@ schemes:
       cyan: '#8FBCBB'
       white: '#F3F2CC'
 
-colors: *nord
+colors: *onedark
 
 font:
   normal:
