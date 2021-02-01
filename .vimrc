@@ -11,8 +11,7 @@ call plug#begin('~/.vim/bundle')
 " Language support
 Plug 'sheerun/vim-polyglot' " syntax highlighting for many languages
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'dense-analysis/ale'
 
 " Git integration
 Plug 'tpope/vim-fugitive' " Git integration
@@ -91,6 +90,12 @@ nmap <leader>gs :G<cr>
 " Golang - show omnicomplete on '.'
 " au filetype go inoremap <buffer> . .<C-x><C-o>
 let g:SuperTabCrMapping = 1
+
+" ALE settings
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_completion_enabled = 1
 
 " IndentLine settings
 let g:indentLine_setConceal = 0
