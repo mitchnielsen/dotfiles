@@ -4,6 +4,7 @@ export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
 export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig:$PKG_CONFIG_PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export FZF_BASE=$(which fzf)
@@ -13,25 +14,29 @@ export NNN_USE_EDITOR=1
 export NNN_TRASH=1
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""' # include hidden files
 export XDG_CONFIG_HOME="$HOME/.config"
-export DISABLE_AUTO_UPDATE="true" # manually update zsh
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
+export BAT_THEME="Nord"
 
+# ZSH sourcing and initialization
 plugins=(
   fzf
   history-substring-search
   vi-mode
-  zsh-autosuggestions
 )
 
-# ZSH sourcing and initialization
-source $ZSH/oh-my-zsh.sh
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH_CUSTOM/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Pure prompt
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit;
+else
+  compinit -C;
+fi
+
 autoload -U promptinit; promptinit
 export ZSH_THEME=""
 zstyle :prompt:pure:git:stash show yes
@@ -50,31 +55,12 @@ source <(kubectl completion zsh)
 source "$HOME/google-cloud-sdk/path.zsh.inc"
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
-# autoload -Uz compinit
-# if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-#   compinit;
-# else
-#   compinit -C;
-# fi
-
 # zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-### Fix slowness of pastes with zsh-syntax-highlighting.zsh
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
-
-pastefinish() { zle -N self-insert $OLD_SELF_INSERT }
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
-### Fix slowness of pastes
-
 set histignorespace # ignore command in history if it starts with space
 unsetopt share_history # don't share history between sessions
-setopt HIST_IGNORE_ALL_DUPS
 
 # Function to list Helm release Ci info
 function helm-ls-ci { helm ls | awk '/^gke-/{print $1}'| xargs -I'{}' sh -c "helm get values {} | yq r - .ci" }
