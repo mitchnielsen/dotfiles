@@ -9,7 +9,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Language support
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot' " syntax highlighting for many languages
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
