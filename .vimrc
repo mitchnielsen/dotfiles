@@ -34,12 +34,12 @@ Plug 'wakatime/vim-wakatime' " Send data to Wakatime
 Plug 'ervandew/supertab' " Tab for autocomplete
 Plug 'tpope/vim-unimpaired' " Simple mappings
 Plug 'preservim/nerdcommenter' " Commenting made easier
+Plug 'Shougo/echodoc.vim' " show function signatures
+Plug 'voldikss/vim-floaterm' " floating terminal
 
 " Themes
 Plug 'itchyny/lightline.vim'
-" Plug 'arcticicestudio/nord-vim'
-Plug 'rakr/vim-one'
-" Plug 'git@gitlab.com:yorickpeterse/happy_hacking.vim.git'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -47,9 +47,12 @@ call plug#end()
 let mapleader = " "
 
 " Settings
+set relativenumber
 set noshowmode " for lightline to hide repetitive mode
 set t_Co=256
-set termguicolors " so background matches color scheme
+if has('termguicolors')
+  set termguicolors " so background matches color scheme
+endif
 set encoding=UTF-8
 set fileformat=unix
 set autoread " reload files changed outside of vim
@@ -86,7 +89,11 @@ nnoremap j gj
 nnoremap k gk
 
 " Fugitive mappings
-nmap <leader>gs :G<cr>
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>gps :Git push<cr>
+nmap <leader>gpl :Git pull<cr>
+nmap <leader>gplm :Git pull origin master<cr>
 
 " Golang - show omnicomplete on '.'
 " au filetype go inoremap <buffer> . .<C-x><C-o>
@@ -107,8 +114,8 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " Colors
 syntax enable
 set background=dark
-colorscheme one " one, happy_hacking, nord, flattened_light/dark, solarized8
-let g:lightline = {'colorscheme': 'one'}
+colorscheme gruvbox
+let g:lightline = {'colorscheme': 'gruvbox'}
 
 " Match background
 hi Normal ctermbg=NONE guibg=NONE
