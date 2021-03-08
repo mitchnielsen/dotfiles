@@ -99,12 +99,6 @@ nmap <leader>gplm :Git pull origin master<cr>
 " au filetype go inoremap <buffer> . .<C-x><C-o>
 let g:SuperTabCrMapping = 1
 
-" ALE settings
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_completion_enabled = 1
-
 " IndentLine settings
 let g:indentLine_setConceal = 0
 
@@ -201,7 +195,7 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_extra_types = 1
 
-"" Backup spacing settings replaced by tpope/vim-sleuth
+" Spacing settings
 set shiftwidth=2
 set tabstop=2
 set expandtab
@@ -228,8 +222,8 @@ lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
 autocmd BufEnter * lua require'completion'.on_attach()
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent>gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
 
 " Floaterm
 let g:floaterm_autoclose = 1
