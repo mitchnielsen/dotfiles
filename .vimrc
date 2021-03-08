@@ -9,9 +9,10 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Language support
+Plug 'neovim/nvim-lspconfig' " LSP support on nvim nightly
+Plug 'nvim-lua/completion-nvim' " Completion to go with LSP
 Plug 'sheerun/vim-polyglot' " syntax highlighting for many languages
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-Plug 'dense-analysis/ale'
 
 " Git integration
 Plug 'tpope/vim-fugitive' " Git integration
@@ -202,3 +203,27 @@ set smartindent
 set autoindent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType make setlocal noexpandtab
+
+" echodoc
+let g:echodoc#type = "echo"
+set cmdheight=2
+let g:echodoc_enable_at_startup = 1
+
+" Completion
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_trigger_on_delete = 1
+
+" LSP
+" lua require'lspconfig'.gopls.setup{}
+lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
+ " Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+nnoremap <silent>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent>gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+
+" Floaterm
+let g:floaterm_autoclose = 1
+nmap <Leader>t :FloatermToggle<CR>
