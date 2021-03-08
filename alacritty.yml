@@ -144,9 +144,10 @@ colors: *gruvbox_material_hard_dark
 
 font:
   normal:
-    family: "Hack Nerd Font"
+    family: "RobotoMono Nerd Font"
+    style: Regular
   bold:
-    family: "Hack Nerd Font"
+    family: "RobotoMono Nerd Font"
     style: Bold
 
   size: 15
