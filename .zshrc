@@ -159,3 +159,5 @@ alias cat='bat'
 alias rg="rg --hidden --glob '!.git'"
 alias randompw='openssl rand -base64 18'
 alias tks='tmux kill-session -t'
+alias ht='helm template test . -f test.values.yaml --set certmanager-issuer.email=no@no.com | less'
+alias hk='helm upgrade --install --set certmanager-issuer.email=no@no.com gitlab . -n default -f test.values.yaml -f examples/kind/values-base.yaml -f examples/kind/values-ssl.yaml --set global.hosts.domain=$(ipconfig getifaddr en0).nip.io'
