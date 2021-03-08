@@ -23,12 +23,13 @@ export BAT_THEME="Nord"
 # ZSH sourcing and initialization
 plugins=(
   fzf
-  history-substring-search
   vi-mode
 )
 
+source $ZSH/oh-my-zsh.sh
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
@@ -56,8 +57,8 @@ source "$HOME/google-cloud-sdk/path.zsh.inc"
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
 # zsh-history-substring-search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey -e
+bindkey \^u backward-kill-line
 
 set histignorespace # ignore command in history if it starts with space
 unsetopt share_history # don't share history between sessions
