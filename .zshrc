@@ -18,7 +18,7 @@ export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-export BAT_THEME="Nord"
+export BAT_THEME="gruvbox"
 
 # ZSH sourcing and initialization
 plugins=(
