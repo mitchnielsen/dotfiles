@@ -6,6 +6,35 @@ env:
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
 schemes:
 
+  # https://github.com/alacritty/alacritty/issues/1323
+  one_dark: &one_dark
+    # Default colors
+    primary:
+      background: '0x282c34'
+      foreground: '0xabb2bf'
+
+    # Normal colors
+    normal:
+      black:   '0x131613'
+      red:     '0xe06c75'
+      green:   '0x98c379'
+      yellow:  '0xd19a66'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0xabb2bf'
+
+    # Bright colors
+    bright:
+      black:   '0x5c6370'
+      red:     '0xe06c75'
+      green:   '0x98c379'
+      yellow:  '0xd19a66'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0xffffff'
+
   # https://gist.github.com/sainnhe/ad5cbc4f05c4ced83f80e54d9a75d22f
   gruvbox_material_hard_dark: &gruvbox_material_hard_dark
     primary:
@@ -140,7 +169,7 @@ schemes:
       cyan:    '0x4c7a5d'
       white:   '0xe6d5ae'
 
-colors: *gruvbox_material_hard_dark
+colors: *one_dark
 
 font:
   normal:
