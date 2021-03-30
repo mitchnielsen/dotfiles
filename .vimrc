@@ -112,10 +112,12 @@ colorscheme one
 let g:lightline = {'colorscheme': 'one'}
 
 " Match background
-hi Normal ctermbg=NONE guibg=NONE
-hi NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
-hi clear SignColumn
-hi clear LineNR
+" (https://gist.github.com/fuadnafiz98/d91e468c9bc4689868eb0984a29fef66)
+highlight Normal     ctermbg=NONE guibg=NONE
+highlight LineNr     ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
+let &fcs='eob: ' " hide EndOfBuffer '~'
+hi Search cterm=NONE ctermfg=grey ctermbg=blue
 
 " quick-scope settings
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
