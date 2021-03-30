@@ -96,9 +96,6 @@ function decode {
 # Check running ports
 function port { lsof -i :$1 }
 
-# Take notes
-function note { nvim ~/notes.md }
-
 # SSH to gcloud instance
 function gssh {
   gcloud beta compute ssh --zone "us-east1-b" --project "cloud-native-182609" "$1"
