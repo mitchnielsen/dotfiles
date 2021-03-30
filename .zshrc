@@ -46,12 +46,6 @@ prompt pure
 source ~/.fzf.zsh
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-# Stern
-source <(stern --completion=zsh)
-
-# kubectl
-source <(kubectl completion zsh)
-
 # Gcloud
 source "$HOME/google-cloud-sdk/path.zsh.inc"
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
