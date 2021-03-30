@@ -97,7 +97,6 @@ nmap <leader>gpl :Git pull<cr>
 nmap <leader>gplm :Git pull origin master<cr>
 
 " Golang - show omnicomplete on '.'
-" au filetype go inoremap <buffer> . .<C-x><C-o>
 let g:SuperTabCrMapping = 1
 
 " IndentLine settings
