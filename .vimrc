@@ -223,10 +223,11 @@ let g:completion_trigger_on_delete = 1
 lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
  " Use completion-nvim in every buffer
 autocmd BufEnter * lua require'completion'.on_attach()
-nnoremap <silent>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent>gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent>gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent>gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent>gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent>gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent>K  <cmd>lua vim.lsp.buf.hover()<CR>
 
 " Floaterm
 let g:floaterm_autoclose = 1
