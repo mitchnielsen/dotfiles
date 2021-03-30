@@ -39,7 +39,7 @@ Plug 'voldikss/vim-floaterm' " floating terminal
 
 " Themes
 Plug 'itchyny/lightline.vim'
-Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 
 call plug#end()
 
@@ -108,8 +108,8 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " Colors
 syntax enable
 set background=dark
-colorscheme gruvbox
-let g:lightline = {'colorscheme': 'gruvbox'}
+colorscheme one
+let g:lightline = {'colorscheme': 'one'}
 
 " Match background
 hi Normal ctermbg=NONE guibg=NONE
