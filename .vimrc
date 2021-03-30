@@ -47,6 +47,7 @@ call plug#end()
 let mapleader = " "
 
 " Settings
+set number
 set relativenumber
 set noshowmode " for lightline to hide repetitive mode
 set t_Co=256
@@ -56,7 +57,6 @@ endif
 set encoding=UTF-8
 set fileformat=unix
 set autoread " reload files changed outside of vim
-set number
 set ruler
 set laststatus=2
 set nopaste
@@ -80,6 +80,7 @@ set splitbelow
 set splitright
 set nocompatible
 set diffopt=vertical
+set cursorline
 
 " Quick close
 nnoremap <leader><leader> :x<cr>
