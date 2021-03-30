@@ -134,8 +134,8 @@ autocmd InsertEnter,InsertLeave * set cul!
 autocmd FileType ruby map <leader>r :w<CR>:exec '!ruby' shellescape(@%, 1)<CR>
 autocmd FileType python map <leader>r :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType go map <leader>r :w<CR>:exec '!go run' shellescape(@%, 1)<CR>
-autocmd FileType go map <leader>b :w<CR>:exec '!go build' shellescape(@%, 1)<CR>
 autocmd FileType go map <leader>t :w<CR>:exec '!go test'<CR>
+autocmd FileType sh map <leader>r :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 let g:go_fmt_autosave = 1 " Run gofmt on save
 let g:go_fmt_command = "goimports" " Command to run when saving
 let g:go_auto_type_info = 1 " Automatically get signature/type info for object under cursor
@@ -166,6 +166,7 @@ nmap<Tab> :tabnext<cr>
 " Fuzzy finder
 set rtp+=/usr/local/bin/fzf
 nmap <Leader>f :Files<CR>
+nmap <Leader>b :Buf<CR>
 
 " FZF
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
@@ -229,4 +230,4 @@ nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
 
 " Floaterm
 let g:floaterm_autoclose = 1
-nmap <Leader>t :FloatermToggle<CR>
+nmap <Leader>c :FloatermToggle<CR>
