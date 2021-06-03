@@ -91,6 +91,8 @@ nnoremap k gk
 
 " Fugitive mappings
 nmap <leader>gs :Gstatus<cr>
+nmap <leader>gbl :Gblame<cr>
+nmap <leader>gbr :Gbrowse<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gps :Git push<cr>
 nmap <leader>gpl :Git pull<cr>
