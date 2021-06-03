@@ -141,6 +141,7 @@ autocmd BufNewFile,BufRead *.rb set ft=ruby
 autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
 autocmd BufNewFile,BufRead *.j2 set syntax=jinja
 autocmd InsertEnter,InsertLeave * set cul!
+autocmd Filetype python,go setl omnifunc=v:lua.vim.lsp.omnifunc
 
 " Leader shortcuts for building, running, testing, etc.
 autocmd FileType ruby map <leader>r :w<CR>:exec '!ruby' shellescape(@%, 1)<CR>
@@ -222,15 +223,26 @@ set cmdheight=2
 let g:echodoc_enable_at_startup = 1
 
 " Completion
+set omnifunc=v:lua.vim.lsp.omnifunc
 set completeopt=menuone,noinsert,noselect
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_enable_auto_popup = 1
 let g:completion_trigger_on_delete = 1
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_auto_change_source = 1
+let g:completion_enable_auto_hover = 1
+"let g:completion_chain_complete_list = [{'complete_items': ['omni']}]
+"let g:completion_chain_complete_list = [
+    "\{'mode': 'lsp'},
+"\]
+" Auto suggestions on '.'
+" au filetype go inoremap <buffer> . .<C-x><C-o>
+imap <tab><tab> <c-x><c-o>
 
 " LSP
-" lua require'lspconfig'.gopls.setup{}
-lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
- " Use completion-nvim in every buffer
 autocmd BufEnter * lua require'completion'.on_attach()
+lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.solargraph.setup{on_attach=require'completion'.on_attach}
+" Bindings
 nnoremap <silent>gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent>gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent>gr <cmd>lua vim.lsp.buf.references()<CR>
