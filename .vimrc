@@ -249,5 +249,9 @@ nnoremap <silent>gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent>gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent>K  <cmd>lua vim.lsp.buf.hover()<CR>
 
+" Help vim differentiate <C-i> from <Tab> so jump lists work
+let &t_TI = "\<Esc>[>4;2m"
+let &t_TE = "\<Esc>[>4;m"
+
 " Searching
 nnoremap <leader>rg :Rg <C-r><C-w><CR>
