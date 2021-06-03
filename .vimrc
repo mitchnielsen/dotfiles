@@ -22,7 +22,6 @@ Plug 'airblade/vim-gitgutter'
 " Conveniences
 Plug 'machakann/vim-highlightedyank' " Highlight yanked line
 Plug 'unblevable/quick-scope' " Quick jump in line
-Plug 'psliwka/vim-smoothie' " smooth scrolling
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine' " Show indentation markers
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " Tree view
@@ -31,15 +30,16 @@ Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' } " Icons for NerdTree
 Plug 'junegunn/fzf' " Fuzzy finder binary
 Plug 'junegunn/fzf.vim' "Fuzzy finder vim plugin
 Plug 'wakatime/vim-wakatime' " Send data to Wakatime
-Plug 'ervandew/supertab' " Tab for autocomplete
 Plug 'tpope/vim-unimpaired' " Simple mappings
 Plug 'preservim/nerdcommenter' " Commenting made easier
 Plug 'Shougo/echodoc.vim' " show function signatures
-Plug 'voldikss/vim-floaterm' " floating terminal
+Plug 'takac/vim-commandcaps' " takes care of caps typos
+Plug 'ChartaDev/charta.vim' " learn new codebases and share explanations
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Themes
 Plug 'itchyny/lightline.vim'
-Plug 'rakr/vim-one'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -96,9 +96,6 @@ nmap <leader>gps :Git push<cr>
 nmap <leader>gpl :Git pull<cr>
 nmap <leader>gplm :Git pull origin master<cr>
 
-" Golang - show omnicomplete on '.'
-let g:SuperTabCrMapping = 1
-
 " IndentLine settings
 let g:indentLine_setConceal = 0
 
@@ -127,7 +124,6 @@ filetype plugin indent on
 autocmd BufNewFile,BufRead *.rb set ft=ruby
 autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
 autocmd BufNewFile,BufRead *.j2 set syntax=jinja
-autocmd FileType vim let b:vcm_tab_complete = 'vim'
 autocmd InsertEnter,InsertLeave * set cul!
 
 " Leader shortcuts for building, running, testing, etc.
@@ -158,10 +154,6 @@ let g:NERDTreeDirArrowCollapsible = "\u00a0" " Disable arrow icons at the left s
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
 let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 nmap <leader>nt :NERDTree<cr>
-
-" Switching tabs
-nmap <S-Tab> :tabprev<cr>
-nmap<Tab> :tabnext<cr>
 
 " Fuzzy finder
 set rtp+=/usr/local/bin/fzf
@@ -229,6 +221,5 @@ nnoremap <silent>gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent>gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent>K  <cmd>lua vim.lsp.buf.hover()<CR>
 
-" Floaterm
-let g:floaterm_autoclose = 1
-nmap <Leader>c :FloatermToggle<CR>
+" Searching
+nnoremap <leader>rg :Rg <C-r><C-w><CR>
