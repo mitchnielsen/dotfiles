@@ -228,6 +228,7 @@ let g:echodoc_enable_at_startup = 1
 " Completion
 set omnifunc=v:lua.vim.lsp.omnifunc
 set completeopt=menuone,noinsert,noselect
+set shortmess+=c " Avoid showing message extra message when using completion
 let g:completion_enable_auto_popup = 1
 let g:completion_trigger_on_delete = 1
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
