@@ -91,6 +91,26 @@ nnoremap <leader><leader> :x<cr>
 nnoremap j gj
 nnoremap k gk
 
+" Yank to end
+nnoremap Y y$
+
+" Keep things centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Better break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+" Better text movement
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+
 " Fugitive mappings
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gbl :Gblame<cr>
