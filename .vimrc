@@ -217,11 +217,6 @@ set autoindent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType make setlocal noexpandtab
 
-" echodoc
-let g:echodoc#type = "echo"
-set cmdheight=2
-let g:echodoc_enable_at_startup = 1
-
 " Completion
 set omnifunc=v:lua.vim.lsp.omnifunc
 set completeopt=menuone,noinsert,noselect
