@@ -118,9 +118,6 @@ nmap <leader>gps :Git push<cr>
 nmap <leader>gpl :Git pull<cr>
 nmap <leader>gplm :Git pull origin master<cr>
 
-" Clear search highlights
-nmap <silent> <leader>/ :nohlsearch<CR>
-
 " Colors
 syntax enable
 set background=dark
