@@ -23,7 +23,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'machakann/vim-highlightedyank' " Highlight yanked line
 Plug 'unblevable/quick-scope' " Quick jump in line
 Plug 'editorconfig/editorconfig-vim'
-Plug 'Yggdroot/indentLine' " Show indentation markers
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " Tree view
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " Git in tree view
 Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' } " Icons for NerdTree
@@ -32,7 +31,6 @@ Plug 'junegunn/fzf.vim' "Fuzzy finder vim plugin
 Plug 'wakatime/vim-wakatime' " Send data to Wakatime
 Plug 'tpope/vim-unimpaired' " Simple mappings
 Plug 'preservim/nerdcommenter' " Commenting made easier
-Plug 'Shougo/echodoc.vim' " show function signatures
 Plug 'takac/vim-commandcaps' " takes care of caps typos
 Plug 'ChartaDev/charta.vim' " learn new codebases and share explanations
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -119,9 +117,6 @@ nmap <leader>gd :Gdiff<cr>
 nmap <leader>gps :Git push<cr>
 nmap <leader>gpl :Git pull<cr>
 nmap <leader>gplm :Git pull origin master<cr>
-
-" IndentLine settings
-let g:indentLine_setConceal = 0
 
 " Clear search highlights
 nmap <silent> <leader>/ :nohlsearch<CR>
