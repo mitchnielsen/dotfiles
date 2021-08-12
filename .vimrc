@@ -36,6 +36,8 @@ Plug 'Shougo/echodoc.vim' " show function signatures
 Plug 'takac/vim-commandcaps' " takes care of caps typos
 Plug 'ChartaDev/charta.vim' " learn new codebases and share explanations
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'phaazon/hop.nvim'
 
 " Themes
 Plug 'itchyny/lightline.vim'
@@ -193,20 +195,6 @@ let g:terraform_align=1
 let g:terraform_fold_sections=0
 let g:terraform_fmt_on_save=0
 
-" Syntax highlighting
-let g:go_highlight_structs = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_extra_types = 1
-
 " Spacing settings
 set shiftwidth=2
 set tabstop=2
@@ -255,3 +243,16 @@ let &t_TE = "\<Esc>[>4;m"
 
 " Searching
 nnoremap <leader>rg :Rg <C-r><C-w><CR>
+
+" Treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+ ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,
+  },
+}
+EOF
+
+" phaazon/hop.nvim
+nmap <Leader>/ :HopWord<CR>
