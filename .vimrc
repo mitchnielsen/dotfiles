@@ -39,7 +39,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 " Themes
 Plug 'itchyny/lightline.vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -107,9 +107,9 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " Colors
 syntax enable
 set background=dark
-colorscheme nord
+colorscheme gruvbox
 let g:lightline = {
-  \ 'colorscheme': 'nord',
+  \ 'colorscheme': 'gruvbox',
   \ 'component_function': {
   \   'filename': 'LightlineFilename',
   \ },
