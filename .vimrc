@@ -39,7 +39,8 @@ Plug 'phaazon/hop.nvim'
 
 " Themes
 Plug 'itchyny/lightline.vim'
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 
 call plug#end()
 
@@ -120,10 +121,10 @@ nmap <leader>gplm :Git pull origin master<cr>
 
 " Colors
 syntax enable
-set background=dark
-colorscheme gruvbox
+set background=light
+colorscheme one
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'one',
   \ 'component_function': {
   \   'filename': 'LightlineFilename',
   \ },
