@@ -4,7 +4,6 @@ autocmd BufNewFile,BufRead *.rb set ft=ruby
 autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
 autocmd BufNewFile,BufRead *.j2 set syntax=jinja
 autocmd InsertEnter,InsertLeave * set cul!
-autocmd Filetype python,go setl omnifunc=v:lua.vim.lsp.omnifunc
 
 " Building, running, testing, etc.
 autocmd FileType ruby map <leader>r :w<CR>:exec '!ruby' shellescape(@%, 1)<CR>
