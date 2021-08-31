@@ -38,19 +38,6 @@ vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>
 " Wrap selection with {}
 vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
 
-" These are all terminal shorthands
-" I've made them to recognize common typos
-cnoreabbrev wq w<bar>bd
-cnoreabbrev Wq w<bar>bd
-cnoreabbrev WQ w<bar>bd
-cnoreabbrev wqa1 wqa!
-cnoreabbrev qa1 qa!
-cnoreabbrev Qa qa
-cnoreabbrev Wqa wqa
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev B buffer
-
 " Change buffer sizes 
 "
 " Make uffer narrower
