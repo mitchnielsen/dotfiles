@@ -14,14 +14,6 @@ vnoremap <silent><leader>x "*x
 nnoremap <silent><leader>p "*p
 " Paste from the system clipboard(in visual mode)
 nnoremap <silent><leader>p "*p
-" Select everything
-nnoremap <silent><leader>a ggVG
-" Delete a buffer
-nnoremap <silent><leader>bd :bd<CR>
-" Escape in terminal mode takes you to normal mode
-tnoremap <silent><leader><Esc> <C-\><C-n>
-" Create a new blank buffer
-nnoremap <leader>gg :enew<CR>
 " Toggle search highlight
 nnoremap <silent> <C-C> :if (&hlsearch == 1) \| set nohlsearch \| else \| set hlsearch \| endif<cr>
 " Do not make Q go to ex-mode
@@ -37,60 +29,6 @@ vnoremap <leader>( <esc>`>a)<esc>`<i(<esc>
 vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>
 " Wrap selection with {}
 vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
-
-" Change buffer sizes 
-"
-" Make uffer narrower
-nnoremap <silent> <C-H> :vertical resize -4<CR>
-" Make buffer wider
-nnoremap <silent> <C-L> :vertical resize +4><CR>
-" Make buffer shorter
-nnoremap <silent> <C-J> :resize -4<CR>
-" Make buffer longer
-nnoremap <silent> <C-K> :resize +4<CR>
-
-"Similar mappings for terminal mode{{{
-tnoremap <silent> <C-H> :vertical resize -4<CR>
-tnoremap <silent> <C-L> :vertical resize +4><CR>
-tnoremap <silent> <C-J> :resize -4<CR>
-tnoremap <silent> <C-K> :resize +4<CR>
-
-" Create/Toggle a terminal to the bottom
-nnoremap <silent><leader>` :call ChooseTerm("term-slider", 1)<CR>
-" Create/Toggle a terminal in a buffer 
-nnoremap <silent><leader><CR> :call ChooseTerm("term-pane", 0)<CR>
-
-" Terminal Toggle
-function! ChooseTerm(termname, slider)
-    let pane = bufwinnr(a:termname)
-    let buf = bufexists(a:termname)
-    if pane > 0
-        " pane is visible
-        if a:slider > 0
-            :exe pane . "wincmd c"
-        else
-            :exe "e #" 
-        endif
-    elseif buf > 0
-        " buffer is not in pane
-        if a:slider
-            :exe "botright split"
-        endif
-        :exe "buffer " . a:termname
-    else
-        " buffer is not loaded, create
-        if a:slider
-            :exe "botright split"
-        endif
-        :terminal
-        :exe "f " a:termname
-    endif
-endfunction
-
-" Open floating terminal
-nnoremap <leader>to :lua require('lspsaga.floaterm').open_float_terminal()<CR>
-" Close floating terminal
-nnoremap <leader>tc :lua require('lspsaga.floaterm').close_float_terminal()<CR>
 
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
