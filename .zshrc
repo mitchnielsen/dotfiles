@@ -47,6 +47,8 @@ prompt pure
 source ~/.fzf.zsh
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
+source /usr/local/opt/asdf/libexec/asdf.sh
+
 # Gcloud
 source "$HOME/google-cloud-sdk/path.zsh.inc"
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
