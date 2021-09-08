@@ -1,5 +1,5 @@
 -- autocomplete configuration
-require("plugins.compe-config")
+require("plugins.compe")
 -- Langauge server configuration
 require("lsp-config")
 -- general configurations
