@@ -5,7 +5,7 @@ require("lsp-config")
 -- general configurations
 require("options")
 -- Git changes(showing in line number) configuration
-require("plugins.gitsigns-config")
+require("plugins.gitsigns")
 -- extra plugins(with shorter configs)
 require("plugins.misc")
 -- source our mappings last(may change)
