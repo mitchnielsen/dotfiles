@@ -1,3 +1,5 @@
+require("globals")
+
 -- autocomplete configuration
 require("plugins.compe")
 -- Langauge server configuration
