@@ -14,17 +14,16 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: admin
-  currentCluster: ocp-ci-4623
+  currentContext: gitlab-operator-ci
+  currentCluster: gitlab-operator
   clusters:
-    ocp-ci-4623:
+    gitlab-operator:
       namespace:
-        active: nb43ac4a5
+        active: default
         favorites:
-        - n54437622
         - default
       view:
-        active: ns
+        active: validatingwebhookconfiguration
       featureGates:
         nodeShell: false
       shellPod:
