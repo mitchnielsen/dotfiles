@@ -44,7 +44,6 @@ export ZSH_THEME=""
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
-source ~/.fzf.zsh
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 source /usr/local/opt/asdf/libexec/asdf.sh
