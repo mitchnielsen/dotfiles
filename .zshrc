@@ -53,6 +53,8 @@ source /usr/local/opt/asdf/libexec/asdf.sh
 source "$HOME/google-cloud-sdk/path.zsh.inc"
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
+eval "$(direnv hook zsh)"
+
 # zsh-history-substring-search
 bindkey -e
 bindkey \^u backward-kill-line
