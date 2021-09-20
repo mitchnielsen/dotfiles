@@ -48,7 +48,7 @@ prompt pure
 
 source /usr/local/opt/asdf/libexec/asdf.sh
 
-# Gcloud
+# Gcloud (https://cloud.google.com/sdk/docs/install)
 source "$HOME/google-cloud-sdk/path.zsh.inc"
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
