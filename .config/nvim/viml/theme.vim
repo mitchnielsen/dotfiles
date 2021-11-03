@@ -2,9 +2,9 @@
 set termguicolors
 syntax enable
 set background=dark
-colorscheme gruvbox
+colorscheme one
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'onedarkhc',
   \ 'component_function': {
   \   'filename': 'LightlineFilename',
   \ },

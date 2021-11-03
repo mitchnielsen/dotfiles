@@ -14,6 +14,7 @@ require("packer").startup(function(use)
   use("itchyny/lightline.vim")
   use("rakr/vim-one")
   use("morhetz/gruvbox")
+  use("pacokwon/onedarkhc.vim")
 
   -- Helpers
   use("junegunn/fzf")
