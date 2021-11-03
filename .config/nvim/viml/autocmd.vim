@@ -2,6 +2,7 @@
 filetype plugin indent on
 autocmd BufNewFile,BufRead *.rb set ft=ruby
 autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
+autocmd BufNewFile,BufRead *.tpl set syntax=go
 autocmd BufNewFile,BufRead *.j2 set syntax=jinja
 autocmd InsertEnter,InsertLeave * set cul!
 
