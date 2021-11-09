@@ -312,10 +312,3 @@ mouse:
   launcher:
     program: open
     modifiers: none
-  url:
-    modifiers: Command
-
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
