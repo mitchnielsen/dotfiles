@@ -4,7 +4,7 @@ syntax enable
 set background=dark
 colorscheme one
 let g:lightline = {
-  \ 'colorscheme': 'onedarkhc',
+  \ 'colorscheme': 'one',
   \ 'component_function': {
   \   'filename': 'LightlineFilename',
   \ },
