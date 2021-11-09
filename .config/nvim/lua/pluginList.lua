@@ -23,12 +23,10 @@ require("packer").startup(function(use)
   use("tpope/vim-fugitive") -- Git integration
   use("shumphrey/fugitive-gitlab.vim")
   use("machakann/vim-highlightedyank") -- Highlight yanked line
-  use("unblevable/quick-scope") -- Quick jump in line
   use("editorconfig/editorconfig-vim")
   use("scrooloose/nerdtree")
   use("Xuyuanp/nerdtree-git-plugin")
   use("ryanoasis/vim-devicons")
-  use("wakatime/vim-wakatime") -- Send data to Wakatime
   use("tpope/vim-unimpaired") --Simple mappings
   use("takac/vim-commandcaps") -- takes care of caps typos
   use("ChartaDev/charta.vim") -- learn new codebases and share explanations
