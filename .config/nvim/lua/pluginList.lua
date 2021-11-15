@@ -31,7 +31,6 @@ require("packer").startup(function(use)
   use("takac/vim-commandcaps") -- takes care of caps typos
   use("ChartaDev/charta.vim") -- learn new codebases and share explanations
   use("iamcco/markdown-preview.nvim")
-  use("phaazon/hop.nvim")
   use("simrat39/symbols-outline.nvim")
   use("tpope/vim-commentary")
   use("jiangmiao/auto-pairs")

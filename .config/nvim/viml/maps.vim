@@ -124,9 +124,6 @@ nmap <leader>gd :Gdiff<cr>
 nmap <leader>gps :Git push<cr>
 nmap <leader>gpl :Git pull<cr>
 
-" phaazon/hop.nvim
-nmap <Leader>/ :HopWord<CR>
-
 " NERDTree
 nmap <leader>nt :NERDTree<cr>
 
