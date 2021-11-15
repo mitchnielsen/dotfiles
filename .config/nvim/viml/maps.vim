@@ -117,13 +117,12 @@ nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
 
 " Fugitive mappings
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gbl :Gblame<cr>
+nmap <leader>gs :Git<cr>
+nmap <leader>gbl :Git blame<cr>
 nmap <leader>gbr :Gbrowse<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gps :Git push<cr>
 nmap <leader>gpl :Git pull<cr>
-nmap <leader>gplm :Git pull origin master<cr>
 
 " phaazon/hop.nvim
 nmap <Leader>/ :HopWord<CR>
