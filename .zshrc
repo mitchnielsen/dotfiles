@@ -55,7 +55,7 @@ source "$HOME/google-cloud-sdk/completion.zsh.inc"
 eval "$(direnv hook zsh)"
 
 # zsh-history-substring-search
-bindkey -e
+bindkey -v
 bindkey \^u backward-kill-line
 
 set histignorespace # ignore command in history if it starts with space
