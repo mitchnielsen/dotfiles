@@ -43,6 +43,7 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.hlsearch = true
 opt.incsearch = true
+opt.inccommand = "nosplit" -- see subsitutions in realtime
 opt.wildmenu = true -- Autocomplete filenames
 opt.wildignore = "*.o,*.hi,*.pyc"
 opt.updatetime = 100 -- Git gutter
