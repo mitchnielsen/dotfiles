@@ -3,21 +3,6 @@ set termguicolors
 syntax enable
 set background=dark
 colorscheme one
-let g:lightline = {
-  \ 'colorscheme': 'one',
-  \ 'component_function': {
-  \   'filename': 'LightlineFilename',
-  \ },
-  \ }
-
-function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
-endfunction
 
 " Match background
 " (https://gist.github.com/fuadnafiz98/d91e468c9bc4689868eb0984a29fef66)

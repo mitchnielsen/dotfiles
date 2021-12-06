@@ -11,7 +11,7 @@ require("packer").startup(function(use)
   use({ "creativenull/diagnosticls-nvim", opt = true })
 
   -- Theme
-  use("itchyny/lightline.vim")
+  use("nvim-lualine/lualine.nvim")
   use("rakr/vim-one")
   use("morhetz/gruvbox")
   use("pacokwon/onedarkhc.vim")
