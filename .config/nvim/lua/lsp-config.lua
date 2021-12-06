@@ -3,18 +3,8 @@ local vim = vim
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require("lspinstall").setup() -- important
-require("lsp_signature").setup()
-
-local servers = require("lspinstall").installed_servers()
-for _, server in pairs(servers) do
-  if vim.g.lsp_config[server] then
-    require("lspconfig")[server].setup(vim.g.lsp_config[server])
-    else
-    require("lspconfig")[server].setup({})
-  end
-  require("lsp_signature").on_attach()
-end
+require'lspconfig'.gopls.setup{}
+require("lsp_signature").setup({ hint_enable = false })
 
 vim.fn.sign_define(
   "LspDiagnosticsSignError",

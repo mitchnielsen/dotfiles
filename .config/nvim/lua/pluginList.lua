@@ -3,7 +3,6 @@ require("packer").startup(function(use)
 
   -- LSP
   use("glepnir/lspsaga.nvim")
-  use("kabouzeid/nvim-lspinstall")
   use("nvim-treesitter/nvim-treesitter")
   use("hrsh7th/nvim-compe")
   use("neovim/nvim-lspconfig")
