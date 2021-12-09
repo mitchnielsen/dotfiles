@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nvim +"lua require'pluginList'; require'packer'.sync()"

@@ -2,10 +2,6 @@
 stow .
 printf "\nSuccessfully stowed dotfiles.\n"
 
-printf "\nTo install brew dependencies, run:\n  brew install -f ~/.config/brew/Brewfile"
-printf "\nTo update the list of brew dependencies, run:\n  brew bundle dump --force -f ~/.config/brew/Brewfile"
-printf "\nTo update neovim plugins, run:\n  nvim +\"lua require'pluginList'; require'packer'.sync()\""
-
 ## Set up homebrew
 command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
