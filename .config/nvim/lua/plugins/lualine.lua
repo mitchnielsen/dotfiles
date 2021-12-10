@@ -7,7 +7,8 @@ require('lualine').setup({
     component_separators = { left = '|', right = '|' },
   },
   sections = {
-    lualine_x = {'filetype'},
+    lualine_a = {'branch'},
+    lualine_b = {'diagnostics', sources = {'nvim_diagnostic'}},
     lualine_c = {
       {
         'filename',
