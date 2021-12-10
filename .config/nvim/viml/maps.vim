@@ -125,6 +125,7 @@ nmap <leader>gps :Git push<cr>
 nmap <leader>gpl :Git pull<cr>
 
 " NERDTree
-nmap <leader>nt :NERDTree<cr>
+nnoremap <expr> <leader>n g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>'
+nmap <leader>N :NERDTreeFind<CR>
 
 command LoadPacker lua require 'pluginList'
