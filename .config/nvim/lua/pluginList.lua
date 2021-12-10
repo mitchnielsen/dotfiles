@@ -81,7 +81,6 @@ require("packer").startup(function(use)
   use("iamcco/markdown-preview.nvim")
   use("simrat39/symbols-outline.nvim")
   use("tpope/vim-commentary")
-  use("jiangmiao/auto-pairs")
   use({ "folke/lua-dev.nvim", opt = true })
   use({
     "folke/trouble.nvim",
