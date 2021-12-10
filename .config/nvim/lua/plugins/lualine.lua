@@ -16,6 +16,7 @@ require('lualine').setup({
         path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
         shorting_target = 40, -- shorten path to leave space in window
       }
-    }
+    },
+    lualine_x = {'filetype'}
   }
 })
