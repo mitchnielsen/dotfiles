@@ -8,7 +8,7 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = {'branch'},
-    lualine_b = {'diagnostics', sources = {'nvim_diagnostic'}},
+    lualine_b = {{'diagnostics', sources = {'nvim_diagnostic'}}},
     lualine_c = {
       {
         'filename',
