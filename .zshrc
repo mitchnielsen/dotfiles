@@ -151,7 +151,7 @@ alias tf='terraform'
 alias stopPG='sudo -u postgres pg_ctl -D /Library/PostgreSQL/11/data stop'
 alias startPG='/usr/local/opt/postgresql@11/bin/pg_ctl -D /Users/mitchellnielsen/code/gitlab-development-kit/postgresql/data -l logfile start'
 alias cat='bat'
-alias rg="rg --hidden --glob '!.git'"
+alias rg="rg --hidden --glob '!.git/*'"
 alias randompw='openssl rand -base64 18'
 alias tks='tmux kill-session -t'
 alias ht='helm template test . -f build/test.values.yaml --set certmanager-issuer.email=no@no.com | less'
