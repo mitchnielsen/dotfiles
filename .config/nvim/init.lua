@@ -12,6 +12,8 @@ require("plugins.gitsigns")
 require("plugins.misc")
 -- lualine
 require("plugins.lualine")
+-- lualine
+require("plugins.context")
 -- source our mappings last(may change)
 vim.cmd("source ~/.config/nvim/viml/maps.vim")
 -- auto-commands
