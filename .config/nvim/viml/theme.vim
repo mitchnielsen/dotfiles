@@ -1,8 +1,7 @@
 " Colors
-set termguicolors
 syntax enable
-set background=dark
-colorscheme one
+set background=light
+colorscheme gruvbox
 
 " Match background
 " (https://gist.github.com/fuadnafiz98/d91e468c9bc4689868eb0984a29fef66)

@@ -19,7 +19,7 @@ export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-export BAT_THEME="OneHalfDark"
+export BAT_THEME="gruvbox-light" # bat --list-themes
 export PURE_PROMPT_SYMBOL="$"
 
 # ZSH sourcing and initialization
