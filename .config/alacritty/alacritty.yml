@@ -268,7 +268,7 @@ schemes:
       cyan:    '#427b58'
       white:   '#3c3836'
 
-colors: *gruvbox_material_soft_light
+colors: *gruvbox_material_soft_dark
 
 font:
   normal:

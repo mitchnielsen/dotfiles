@@ -3,7 +3,7 @@ vim.o.termguicolors = true
 
 require('lualine').setup({
   options = {
-    theme = 'gruvbox_light', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
+    theme = 'gruvbox_dark', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
     component_separators = { left = '|', right = '|' },
   },
   sections = {
