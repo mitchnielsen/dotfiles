@@ -60,9 +60,7 @@ require("packer").startup(function(use)
 
   -- Theme
   use("nvim-lualine/lualine.nvim")
-  use("rakr/vim-one")
   use("morhetz/gruvbox")
-  use("pacokwon/onedarkhc.vim")
 
   -- Helpers
   use("junegunn/fzf")
