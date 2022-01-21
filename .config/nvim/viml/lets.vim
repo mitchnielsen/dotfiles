@@ -19,13 +19,6 @@ let g:NERDTreeDirArrowCollapsible = "\u00a0" " Disable arrow icons at the left s
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
 let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 
-" FZF
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-let g:fzf_action = {
-  \ 'ctrl-v': 'vsplit',
-  \ 'ctrl-c': 'split',
-  \ 'ctrl-t': 'tabedit' }
-
 " Terraform settings
 let g:terraform_align=1
 let g:terraform_fold_sections=0

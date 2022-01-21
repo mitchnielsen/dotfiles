@@ -63,8 +63,10 @@ require("packer").startup(function(use)
   use("morhetz/gruvbox")
 
   -- Helpers
-  use("junegunn/fzf")
-  use("junegunn/fzf.vim")
+  use { 'ibhagwan/fzf-lua',
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  }
+  use("vim-test/vim-test")
   use("fatih/vim-go")
   use("tpope/vim-fugitive") -- Git integration
   use("shumphrey/fugitive-gitlab.vim")

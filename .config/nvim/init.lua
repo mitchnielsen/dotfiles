@@ -14,6 +14,8 @@ require("plugins.misc")
 require("plugins.lualine")
 -- lualine
 require("plugins.context")
+-- fzf
+require("plugins.fzf")
 -- source our mappings last(may change)
 vim.cmd("source ~/.config/nvim/viml/maps.vim")
 -- auto-commands

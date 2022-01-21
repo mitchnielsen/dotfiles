@@ -85,9 +85,9 @@ nnoremap <silent><leader>so :SymbolsOutline<CR>
 nnoremap <silent><leader>bb :Gitsigns toggle_current_line_blame<CR>
 
 " Searching
-nnoremap <leader>rg :Rg <C-r><C-w><CR>
-nmap <Leader>f :Files<CR>
-nmap <Leader>b :Buf<CR>
+nnoremap <leader>rg :FzfLua live_grep_native<CR>
+nmap <Leader>f :FzfLua files<CR>
+nmap <Leader>b :FzfLua buffers<CR>
 
 " Quick close
 nnoremap <leader><leader> :x<cr>
