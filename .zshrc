@@ -122,6 +122,7 @@ function stopOmnibus {
 
 # Aliases
 alias t='tree -C -a -I .git'
+alias docker='nerdctl --address /var/run/docker/containerd/containerd.sock'
 alias d='docker'
 alias dr='docker run --rm -it'
 alias de='docker exec -it'
