@@ -1,3 +1,5 @@
+-- Inspiration taken from https://github.com/0xsamrath/kyoto.nvim
+
 require("globals")
 
 -- autocomplete configuration
