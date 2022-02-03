@@ -272,10 +272,10 @@ colors: *one_dark
 
 font:
   normal:
-    family: "RobotoMono Nerd Font"
+    family: "SFMono Nerd Font"
     style: Regular
   bold:
-    family: "RobotoMono Nerd Font"
+    family: "SFMono Nerd Font"
     style: Bold
 
   size: 15
