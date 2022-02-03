@@ -1,7 +1,7 @@
 " Colors
 syntax enable
 set background=dark
-colorscheme gruvbox
+colorscheme onedark
 
 " Match background
 " (https://gist.github.com/fuadnafiz98/d91e468c9bc4689868eb0984a29fef66)

@@ -61,6 +61,7 @@ require("packer").startup(function(use)
   -- Theme
   use("nvim-lualine/lualine.nvim")
   use("morhetz/gruvbox")
+  use("joshdick/onedark.vim")
 
   -- Helpers
   use { 'ibhagwan/fzf-lua',
