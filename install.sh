@@ -14,6 +14,11 @@ command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.github
 [[ -d "~/.zsh/zsh-autosuggestions" ]]          || git clone https://github.com/zsh-users/zsh-autosuggestions.git          ~/.zsh/zsh-autosuggestions/
 [[ -d "~/.zsh/zsh-history-substring-search" ]] || git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search/
 
+# Set up espanso
+set -x
+rm "$HOME/Library/Preferences/espanso/default.yml"
+ln -s "$HOME/dotfiles/.config/espanso/default.yml" "$HOME/Library/Preferences/espanso/default.yml"
+
 # Set up lazygit
 mkdir -p "$HOME/Library/Application\\ Support/jesseduffield/lazygit"
 rm "$HOME/Library/Application\ Support/jesseduffield/lazygit/config.yml"

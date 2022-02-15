@@ -1,0 +1,42 @@
+# espanso configuration file
+
+# This is the default configuration file, change it as you like it
+# You can refer to the official documentation:
+# https://espanso.org/docs/
+
+# Matches are the substitution rules, when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  - trigger: "datee"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y/%m/%d"
+
+  - trigger: "readyy"
+    replace: |
+      /draft
+      /label ~"workflow::ready for review"
+
+  - trigger: "labell"
+    replace: /label ~"group::distribution" ~"section::enablement" ~"devops::enablement"
+
+  - trigger: "revieww"
+    replace: |
+      /label ~"workflow::in review"
+      /assign_reviewer me
+
+  - trigger: "approvee"
+    replace: |
+      /approve
+      /assign_reviewer $|$
+
+  - trigger: "detailss"
+    replace: |
+      <details>
+      <summary>$|$</summary>
+
+
+      </details>
