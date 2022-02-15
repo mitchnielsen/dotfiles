@@ -74,6 +74,9 @@ nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_ne
 " Jump to the previous diagnostic suggestion
 nnoremap <silent> [e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
 
+" Show full error
+nnoremap <silent>ge <cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>
+
 " Jump to definition
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.definition()<CR>
 
