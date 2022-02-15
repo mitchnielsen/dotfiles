@@ -46,7 +46,7 @@ require'fzf-lua'.setup {
     bat = {
       cmd             = "bat",
       args            = "--style=numbers,changes --color always",
-      theme           = 'Gruvbox-dark', -- bat preview theme (bat --list-themes)
+      theme           = 'OneHalfDark', -- bat preview theme (bat --list-themes)
     },
   },
   -- provider setup
