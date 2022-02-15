@@ -71,6 +71,7 @@ require("packer").startup(function(use)
   use("fatih/vim-go")
   use("tpope/vim-fugitive") -- Git integration
   use("shumphrey/fugitive-gitlab.vim")
+  use("kdheepak/lazygit.nvim")
   use("machakann/vim-highlightedyank") -- Highlight yanked line
   use("editorconfig/editorconfig-vim")
   use("scrooloose/nerdtree")
