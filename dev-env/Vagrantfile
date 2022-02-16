@@ -1,0 +1,27 @@
+# vim: set ft=ruby:
+
+Vagrant.configure("2") do |config|
+  # Host OS
+  config.vm.box = "ubuntu/focal64"
+  config.vbguest.installer_options = { allow_kernel_upgrade: true }
+  config.vm.hostname = "devenv"
+  config.vm.define "devenv"
+  config.vm.provider "virtualbox" do |vb|
+    vb.cpus = 4
+    vb.memory = "16384"
+  end
+
+  # Networking
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+  # Plugins
+  config.vagrant.plugins = ['vagrant-vbguest']
+
+  # Configuration
+  config.vm.provision :shell, :path => "./bootstrap.sh"
+  config.vm.provision "file", source: "~/.gitconfig", destination: "~/.gitconfig"
+  config.vm.provision "docker"
+
+  # Files
+  config.vm.synced_folder "/Users/mnielsen/code", "/home/vagrant/code"
+end

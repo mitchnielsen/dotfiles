@@ -16,9 +16,7 @@ export NNN_TRASH=1
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --follow --glob "!.git/*"'
 export XDG_CONFIG_HOME="$HOME/.config"
 export GOPATH=$HOME/go
-export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
 export BAT_THEME="gruvbox-dark" # bat --list-themes
 export PURE_PROMPT_SYMBOL="$"
 
@@ -40,6 +38,7 @@ else
   compinit -C;
 fi
 
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 export ZSH_THEME=""
 zstyle :prompt:pure:git:stash show yes
@@ -47,11 +46,16 @@ prompt pure
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-source /usr/local/opt/asdf/libexec/asdf.sh
+[[ -r "/usr/local/opt/asdf/libexec/asdf.sh" ]] && source /usr/local/opt/asdf/libexec/asdf.sh
+[[ -r "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
+
+[[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
 
 # Gcloud (https://cloud.google.com/sdk/docs/install)
-source "$HOME/google-cloud-sdk/path.zsh.inc"
-source "$HOME/google-cloud-sdk/completion.zsh.inc"
+if [[ -d "$HOME/google-cloud-sdk" ]]; then
+  source "$HOME/google-cloud-sdk/path.zsh.inc"
+  source "$HOME/google-cloud-sdk/completion.zsh.inc"
+fi
 
 eval "$(direnv hook zsh)"
 

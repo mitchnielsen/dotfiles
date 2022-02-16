@@ -2,24 +2,15 @@
 stow .
 printf "\nSuccessfully stowed dotfiles.\n"
 
-## Set up homebrew
-command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# If on MacOS
+espanso_config="$HOME/Library/Preferences/espanso"
+lazygit_config="$HOME/Library/Application\\ Support/jesseduffield/lazygit"
+if [ "$(uname -p)" == 'i386' ]; then
+  command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-## Set up TMUX's TPM
-[[ -d "~/.tmux/plugins/tpm" ]] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  mkdir -p "${lazygit_config}" && rm "${lazygit_config}/config.yml"
+  ln -s "$HOME/dotfiles/.config/lazygit/default.yml" "${lazygit_config}/config.yml"
 
-## Setup oh-my-zsh
-[[ -d "~/.oh-my-zsh" ]] || sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-[[ -d "~/.zsh/zsh-syntax-highlighting" ]]      || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git      ~/.zsh/zsh-syntax-highlighting/
-[[ -d "~/.zsh/zsh-autosuggestions" ]]          || git clone https://github.com/zsh-users/zsh-autosuggestions.git          ~/.zsh/zsh-autosuggestions/
-[[ -d "~/.zsh/zsh-history-substring-search" ]] || git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search/
-
-# Set up espanso
-set -x
-rm "$HOME/Library/Preferences/espanso/default.yml"
-ln -s "$HOME/dotfiles/.config/espanso/default.yml" "$HOME/Library/Preferences/espanso/default.yml"
-
-# Set up lazygit
-mkdir -p "$HOME/Library/Application\\ Support/jesseduffield/lazygit"
-rm "$HOME/Library/Application\ Support/jesseduffield/lazygit/config.yml"
-ln -s "$HOME/dotfiles/.config/lazygit/default.yml" "$HOME/Library/Application\ Support/jesseduffield/lazygit/config.yml"
+  mkdir -p "${espanso_config}" && rm "${espanso_config}/config.yml"
+  ln -s "$HOME/dotfiles/.config/espanso/default.yml" "${espanso_config}/config.yml"
+fi
