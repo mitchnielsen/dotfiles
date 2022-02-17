@@ -1,3 +1,4 @@
 .config/nvim/plugin/packer_compiled.lua
 .config/k9s/config.yml
+.config/lazygit/state.yml
 .vagrant
