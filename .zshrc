@@ -31,13 +31,6 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-autoload -Uz compinit
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-  compinit;
-else
-  compinit -C;
-fi
-
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 export ZSH_THEME=""
@@ -58,6 +51,13 @@ if [[ -d "$HOME/google-cloud-sdk" ]]; then
 fi
 
 eval "$(direnv hook zsh)"
+
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit;
+else
+  compinit -C;
+fi
 
 # zsh-history-substring-search
 bindkey -v
