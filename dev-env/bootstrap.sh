@@ -19,6 +19,10 @@ if [ ! -d "~/.zsh/pure" ]; then git clone https://github.com/sindresorhus/pure.g
 ## TMUX's TPM
 if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
 
+# Tmux's config (https://github.com/tmux/tmux/issues/142)
+rm ~/.tmux.conf
+ln -s ~/dotfiles/.config/tmux/.tmux.conf ~/.tmux.conf
+
 # dotfiles
 (rm ~/.zshrc && cd ~/dotfiles && stow .)
 
