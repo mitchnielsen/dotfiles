@@ -1,0 +1,6 @@
+# python 3.10.2
+# gcloud 373.0.0
+helm 3.8.0
+kubectl 1.23.3
+k9s 0.25.18
+golang 1.16.14

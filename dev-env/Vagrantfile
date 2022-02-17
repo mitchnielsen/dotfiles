@@ -17,11 +17,13 @@ Vagrant.configure('2') do |config|
   # Plugins
   config.vagrant.plugins = ['vagrant-vbguest']
 
-  # Configuration
-  config.vm.provision :shell, :path => './bootstrap.sh'
-  config.vm.provision 'file', source: '~/.gitconfig', destination: '~/.gitconfig'
-  config.vm.provision 'docker'
-
   # Files
   config.vm.synced_folder '/Users/mnielsen/code', '/home/vagrant/code'
+  config.vm.synced_folder '/Users/mnielsen/dotfiles', '/home/vagrant/dotfiles'
+
+  # Configuration
+  config.vm.provision 'shell', name: 'bootstrap_root', path: './bootstrap_root.sh', privileged: true
+  config.vm.provision 'shell', name: 'bootstrap', path: './bootstrap.sh', privileged: false
+  config.vm.provision 'file', source: '~/.gitconfig', destination: '/home/vagrant/.gitconfig'
+  config.vm.provision 'docker'
 end

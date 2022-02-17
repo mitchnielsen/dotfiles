@@ -1,59 +1,27 @@
 #!/usr/bin/env bash
-user_home=/home/vagrant
-
-# Packages
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo add-apt-repository ppa:lazygit-team/release
-apt-get update
-apt-get install -y \
-  curl \
-  git \
-  xdg-utils \
-  cmake \
-  tmux \
-  neovim \
-  zsh \
-  nodejs \
-  npm \
-  stow \
-  direnv \
-  neovim \
-  lazygit
 
 # FZF
-[ -d "${user_home}/.fzf" ] || (git clone --depth 1 https://github.com/junegunn/fzf.git "${user_home}/.fzf" && "${user_home}/.fzf/install")
-
-# Golang
-if ! command -v /usr/local/go/bin/go version &> /dev/null
-then
-  pushd /tmp
-  go_version=1.17.7
-  filename="go${go_version}.linux-amd64.tar.gz"
-  wget "https://go.dev/dl/${filename}"
-  rm -rf /usr/local/go && tar -C /usr/local -xzf "${filename}"
-  /usr/local/go/bin/go version
-  popd
-fi
+if [ ! -d '~/.fzf' ]; then (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install); fi
 
 # asdf
-[[ -d "${user_home}/.asdf" ]] || git clone https://github.com/asdf-vm/asdf.git "${user_home}/.asdf" --branch v0.9.0
+if [ ! -d '~/.asdf' ]; then git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0; fi
+(cd ~/dotfiles && cut -d' ' -f1 .tool-versions | grep -v '^#' | xargs -i ~/.asdf/bin/asdf plugin add {} || true && ~/.asdf/bin/asdf install && ~/.asdf/bin/asdf reshim)
 
 # oh-my-zsh
-[ -d "${user_home}/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-[ -d "${user_home}/.zsh/zsh-syntax-highlighting" ]      || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git      "${user_home}/.zsh/zsh-syntax-highlighting/"
-[ -d "${user_home}/.zsh/zsh-autosuggestions" ]          || git clone https://github.com/zsh-users/zsh-autosuggestions.git          "${user_home}/.zsh/zsh-autosuggestions/"
-[ -d "${user_home}/.zsh/zsh-history-substring-search" ] || git clone https://github.com/zsh-users/zsh-history-substring-search.git "${user_home}/.zsh/zsh-history-substring-search/"
+if [ ! -d "~/.oh-my-zsh" ]; then sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; fi
+if [ ! -d "~/.zsh/zsh-syntax-highlighting" ]; then git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting/; fi
+if [ ! -d "~/.zsh/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions/; fi
+if [ ! -d "~/.zsh/zsh-history-substring-search" ]; then git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search/; fi
+
+# pure prompt
+if [ ! -d "~/.zsh/pure" ]; then git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"; fi
 
 ## TMUX's TPM
-[ -d "${user_home}/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm "${user_home}/.tmux/plugins/tpm"
+if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
 
-# # Gcloud
-# if ! command -v "${user_home}/google-cloud-sdk" &> /dev/null
-# then
-#   pushd /tmp
-#   curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-373.0.0-linux-x86_64.tar.gz
-#   tar -xf google-cloud-sdk-373.0.0-linux-x86.tar.gz
-#   ./google-cloud-sdk/install.sh --quiet --command-completion=true --usage-reporting=false
-#   ./google-cloud-sdk/bin/gcloud init --no-browser
-#   popd
-# fi
+# dotfiles
+(rm ~/.zshrc && cd ~/dotfiles && stow .)
+
+# neovim
+nvim --headless +"lua require'pluginList'; require'packer'.sync()" +15sleep +qa
+PATH=$PATH:/home/vagrant/.asdf/shims nvim --headless +GoInstallBinaries +qa

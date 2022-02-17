@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Packages
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo add-apt-repository ppa:lazygit-team/release
+apt-get update
+apt-get install -y \
+  cmake \
+  curl \
+  direnv \
+  git \
+  lazygit \
+  neovim \
+  neovim \
+  nodejs \
+  npm \
+  ripgrep \
+  stow \
+  tmux \
+  xdg-utils \
+  zsh
+
+# Change default shell
+chsh --shell /bin/zsh vagrant
