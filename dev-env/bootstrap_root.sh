@@ -11,7 +11,6 @@ apt-get install -y \
   git \
   lazygit \
   neovim \
-  neovim \
   nodejs \
   npm \
   ripgrep \
