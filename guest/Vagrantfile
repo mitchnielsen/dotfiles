@@ -20,6 +20,9 @@ Vagrant.configure('2') do |config|
   # Files
   config.vm.synced_folder '/Users/mnielsen/code', '/home/vagrant/code'
   config.vm.synced_folder '/Users/mnielsen/dotfiles', '/home/vagrant/dotfiles'
+  config.vm.synced_folder '/Users/mnielsen/.kube', '/home/vagrant/.kube'
+  config.vm.synced_folder '/Users/mnielsen/.aws', '/home/vagrant/.aws'
+  config.vm.synced_folder '/Users/mnielsen/google-cloud-sdk', '/home/vagrant/google-cloud-sdk'
 
   # Configuration
   config.vm.provision 'shell', name: 'bootstrap_root', path: './scripts/bootstrap_root.sh', privileged: true

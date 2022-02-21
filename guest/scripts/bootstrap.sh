@@ -13,6 +13,7 @@ function asdf-install () {
   asdf global $1 $2
 }
 
+asdf-install awscli latest
 asdf-install bat latest
 asdf-install cfssl latest
 asdf-install direnv latest

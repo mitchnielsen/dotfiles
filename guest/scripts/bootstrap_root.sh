@@ -16,6 +16,7 @@ apt-get install -y \
   ripgrep \
   stow \
   tmux \
+  unzip \
   xdg-utils \
   zlib1g-dev \
   zsh
