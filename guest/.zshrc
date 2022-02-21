@@ -1,18 +1,11 @@
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$HOME/bin"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
 export PATH="$HOME/.vimpkg/bin:$PATH"
-export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
-export PATH="/usr/local/opt/node@12/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig:$PKG_CONFIG_PATH"
 export ZSH="$HOME/.oh-my-zsh"
-export FZF_BASE=$(which fzf)
 export KEYTIMEOUT=1 # Disable lag when using vi-mode
 export EDITOR=$(which nvim)
-export NNN_USE_EDITOR=1
-export NNN_TRASH=1
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --follow --glob "!.git/*"'
 export XDG_CONFIG_HOME="$HOME/.config"
 export GOPATH=$HOME/go
@@ -37,11 +30,7 @@ export ZSH_THEME=""
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
-[[ -r "/usr/local/opt/asdf/libexec/asdf.sh" ]] && source /usr/local/opt/asdf/libexec/asdf.sh
 [[ -r "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
-
 [[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
 
 # Gcloud (https://cloud.google.com/sdk/docs/install)
@@ -140,27 +129,15 @@ alias gitRefreshTags="git remote update origin --prune"
 alias gitFilesChanged='git diff --name-only $(git merge-base origin/master HEAD)'
 alias gwa='git worktree add'
 alias gwp='git worktree prune'
-alias dcu='docker-compose up'
-alias dcd='docker-compose down'
-alias h='cd ~ && clear'
-alias c='clear'
 alias v='nvim'
-alias f='nnn'
 alias k='kubectl'
-alias kk='k9s'
-alias watch='watch --color'
 # https://docs.gitlab.com/ee/development/documentation/#local-linting
 alias valee="vale --glob='*.{md}' doc"
 alias markdownlintt="markdownlint -c .markdownlint.json 'doc/**/*.md'"
-alias tf='terraform'
-alias stopPG='sudo -u postgres pg_ctl -D /Library/PostgreSQL/11/data stop'
-alias startPG='/usr/local/opt/postgresql@11/bin/pg_ctl -D /Users/mitchellnielsen/code/gitlab-development-kit/postgresql/data -l logfile start'
 alias cat='bat'
 alias rg="rg --hidden --glob '!.git/*'"
 alias randompw='openssl rand -base64 18'
-alias tks='tmux kill-session -t'
 alias ht='helm template test . -f build/test.values.yaml --set certmanager-issuer.email=no@no.com | less'
 alias htd='helm template test . -f build/test.values.yaml --set certmanager-issuer.email=no@no.com --debug | less'
-alias hk='helm upgrade --install --set certmanager-issuer.email=no@no.com gitlab . -n default -f examples/kind/values-base.yaml -f examples/kind/values-ssl.yaml -f build/test.values.yaml --set global.hosts.domain=$(ipconfig getifaddr en0).nip.io'
+alias hk='helm upgrade --install --set certmanager-issuer.email=no@no.com gitlab . -n default -f examples/kind/values-base.yaml -f examples/kind/values-ssl.yaml -f build/test.values.yaml --set global.hosts.domain=$(hostname -i).nip.io'
 alias cdd='cd $(rg --hidden --files --null ~/code/gitlab-org | xargs -0 dirname | sort -u | fzf)'
-alias note='cd /Users/mitchellnielsen/Library/Mobile\ Documents/com~apple~CloudDocs/GitLab && nvim $(date +"%Y-%m-%d-%k:%M".md)'
