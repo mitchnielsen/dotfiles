@@ -1,4 +1,4 @@
-all: bootstrap-host bootstrap-guest
+all: bootstrap-host bootstrap-guest login-guest
 
 bootstrap-host:
 	(cd host && ./scripts/bootstrap.sh)
