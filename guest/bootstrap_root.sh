@@ -17,6 +17,7 @@ apt-get install -y \
   stow \
   tmux \
   xdg-utils \
+  zlib1g-dev \
   zsh
 
 # Change default shell
