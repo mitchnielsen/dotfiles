@@ -141,3 +141,5 @@ alias ht='helm template test . -f build/test.values.yaml --set certmanager-issue
 alias htd='helm template test . -f build/test.values.yaml --set certmanager-issuer.email=no@no.com --debug | less'
 alias hk='helm upgrade --install --set certmanager-issuer.email=no@no.com gitlab . -n default -f examples/kind/values-base.yaml -f examples/kind/values-ssl.yaml -f build/test.values.yaml --set global.hosts.domain=$(hostname -i).nip.io'
 alias cdd='cd $(rg --hidden --files --null ~/code/gitlab-org | xargs -0 dirname | sort -u | fzf)'
+alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator'
+alias cdc='cd ~/code/gitlab-org/charts/gitlab'
