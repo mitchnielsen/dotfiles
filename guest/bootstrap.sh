@@ -51,7 +51,8 @@ if [ ! -d "~/.zsh/pure" ]; then git clone https://github.com/sindresorhus/pure.g
 if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
 
 # Tmux's config (https://github.com/tmux/tmux/issues/142)
-[ -f ~/.tmux.conf ] && (rm ~/.tmux.conf && ln -s ~/dotfiles/guest/.config/tmux/.tmux.conf ~/.tmux.conf)
+[ -f ~/.tmux.conf ] && rm ~/.tmux.conf
+ln -s ~/dotfiles/guest/.config/tmux/.tmux.conf ~/.tmux.conf
 
 # dotfiles
 mkdir -p "$HOME/.config"
