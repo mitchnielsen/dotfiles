@@ -1,4 +1,5 @@
 guest/.config/nvim/plugin/packer_compiled.lua
 guest/.config/k9s/config.yml
 guest/.config/lazygit/state.yml
+host/.config/brew/Brewfile.lock.json
 .vagrant
