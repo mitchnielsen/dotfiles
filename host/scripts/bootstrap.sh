@@ -8,3 +8,6 @@ command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.github
 
 # Install packages
 brew bundle install --file=.config/brew/Brewfile
+
+# Set up vagrant
+vagrant plugin install vagrant-vbguest
