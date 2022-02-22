@@ -22,6 +22,7 @@ asdf-install helm '3.8.0'
 asdf-install cfssl latest
 asdf-install direnv latest
 asdf-install dive latest
+asdf-install fx latest
 asdf-install helm '3.8.0'
 asdf-install jq latest
 asdf-install kubectl '1.23.3'
