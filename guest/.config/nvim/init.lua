@@ -11,8 +11,8 @@ require("lsp-config")
 require("options")
 -- Git changes(showing in line number) configuration
 require("plugins.gitsigns")
--- extra plugins(with shorter configs)
-require("plugins.misc")
+-- trouble
+require("plugins.trouble")
 -- lualine
 require("plugins.lualine")
 -- lualine
