@@ -135,7 +135,6 @@ alias k='kubectl'
 alias valee="vale --glob='*.{md}' doc"
 alias markdownlintt="markdownlint -c .markdownlint.json 'doc/**/*.md'"
 alias cat='bat'
-alias rg="rg --hidden --glob '!.git/*'"
 alias randompw='openssl rand -base64 18'
 alias ht='helm template test . -f build/test.values.yaml --set certmanager-issuer.email=no@no.com | less'
 alias htd='helm template test . -f build/test.values.yaml --set certmanager-issuer.email=no@no.com --debug | less'
