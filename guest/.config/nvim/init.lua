@@ -4,6 +4,7 @@ require("globals")
 
 -- autocomplete configuration
 require("plugins.compe")
+require("plugins.treesitter")
 -- Langauge server configuration
 require("lsp-config")
 -- general configurations
