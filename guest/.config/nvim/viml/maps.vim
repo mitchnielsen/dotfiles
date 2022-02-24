@@ -76,10 +76,6 @@ nmap <Leader>b :FzfLua buffers<CR>
 " Quick close
 nnoremap <leader><leader> :x<cr>
 
-" More natural line jumps on wrapped lines
-nnoremap j gj
-nnoremap k gk
-
 " Yank to end
 nnoremap Y y$
 
