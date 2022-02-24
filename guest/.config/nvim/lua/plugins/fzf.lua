@@ -56,7 +56,7 @@ require'fzf-lua'.setup {
     git_icons         = true,           -- show git icons?
     file_icons        = true,           -- show file icons?
     color_icons       = true,           -- colorize file|git icons
-    rg_opts           = "--color=always --files --hidden --follow -g '!.git' --smart-case --line-number --column",
+    rg_opts           = '--color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number',
     actions = {
       -- set bind to 'false' to disable an action
       -- default action opens a single selection
@@ -82,7 +82,7 @@ require'fzf-lua'.setup {
     -- otherwise auto-detect prioritizes `rg` over `grep`
     -- default options are controlled by 'rg|grep_opts'
     -- cmd            = "rg --vimgrep",
-    rg_opts           = "--column --line-number --no-heading --color=always --smart-case --max-columns=512",
+    rg_opts           = '--color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number',
     grep_opts         = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp",
     -- 'live_grep_glob' options:
     glob_flag         = "--iglob",  -- for case sensitive globs use '--glob'

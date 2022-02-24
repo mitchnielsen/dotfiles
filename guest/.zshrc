@@ -6,7 +6,7 @@ export PATH="/usr/local/sbin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export KEYTIMEOUT=1 # Disable lag when using vi-mode
 export EDITOR=$(which nvim)
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number'
 export XDG_CONFIG_HOME="$HOME/.config"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
