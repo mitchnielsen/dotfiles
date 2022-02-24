@@ -82,7 +82,7 @@ require'fzf-lua'.setup {
     -- otherwise auto-detect prioritizes `rg` over `grep`
     -- default options are controlled by 'rg|grep_opts'
     -- cmd            = "rg --vimgrep",
-    rg_opts           = '--color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number',
+    rg_opts           = '--color=always --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number',
     grep_opts         = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp",
     -- 'live_grep_glob' options:
     glob_flag         = "--iglob",  -- for case sensitive globs use '--glob'
