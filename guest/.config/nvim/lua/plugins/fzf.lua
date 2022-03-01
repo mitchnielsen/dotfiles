@@ -68,7 +68,6 @@ require'fzf-lua'.setup {
       ["ctrl-c"]      = actions.file_split,
       ["ctrl-v"]      = actions.file_vsplit,
       ["ctrl-t"]      = actions.file_tabedit,
-      ["alt-q"]       = actions.file_sel_to_qf,
     }
   },
   grep = {
@@ -98,7 +97,6 @@ require'fzf-lua'.setup {
       ["ctrl-c"]      = actions.file_split,
       ["ctrl-v"]      = actions.file_vsplit,
       ["ctrl-t"]      = actions.file_tabedit,
-      ["alt-q"]       = actions.file_sel_to_qf,
     }
   },
 }
