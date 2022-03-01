@@ -24,7 +24,6 @@ opt.autoindent = true
 opt.number = true
 opt.relativenumber = true
 opt.showmode = false
--- opt.termguicolors = true
 opt.encoding = "UTF-8"
 opt.fileformat = "unix"
 opt.autoread = true -- reload files changed outside of vim

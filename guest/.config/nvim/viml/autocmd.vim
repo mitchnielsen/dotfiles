@@ -1,9 +1,7 @@
 " Filetype autocommands
 filetype plugin indent on
-autocmd BufNewFile,BufRead *.rb set ft=ruby
 autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
 autocmd BufNewFile,BufRead *.tpl set syntax=go
-autocmd BufNewFile,BufRead *.j2 set syntax=jinja
 autocmd InsertEnter,InsertLeave * set cul!
 
 " Building, running, testing, etc.
@@ -19,16 +17,4 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Spacing
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType make setlocal noexpandtab
-
-" augroup MyColorsAugroupColorschemeCleanup
-"   autocmd!
-"   autocmd ColorScheme,Syntax,FileType * highlight Normal ctermbg=NONE guibg=NONE gui=NONE
-" augroup END
-
-" Tweak the :Rg command
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --hidden --glob "!.git/*" --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)

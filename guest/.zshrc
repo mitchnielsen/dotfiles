@@ -1,15 +1,11 @@
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
-export PATH="$HOME/.vimpkg/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export ZSH="$HOME/.oh-my-zsh"
 export KEYTIMEOUT=1 # Disable lag when using vi-mode
 export EDITOR=$(which nvim)
 export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number'
 export XDG_CONFIG_HOME="$HOME/.config"
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 export BAT_THEME="gruvbox-dark" # bat --list-themes
 export PURE_PROMPT_SYMBOL="$"
 
@@ -48,10 +44,6 @@ else
   compinit -C;
 fi
 
-# zsh-history-substring-search
-bindkey -v
-bindkey \^u backward-kill-line
-
 set histignorespace # ignore command in history if it starts with space
 unsetopt share_history # don't share history between sessions
 
@@ -76,28 +68,11 @@ function tm {
   tmux attach -t "${session_name}"
 }
 
-# Function to delete feature branch and update trunk
-function gitDone {
-  git checkout master
-  FEATURE_BRANCH=$(git rev-parse --abbrev-ref @{-1})
-  echo "Feature branch was ${FEATURE_BRANCH//heads\/}, deleting and pulling master..."
-  git branch -D ${FEATURE_BRANCH//heads\/}
-  git pull origin master
-}
-
 # Function to decode base64-encoded values
-function decode {
-  result=$(echo ${1} | base64 -D -)
-  printf '\nResult is: %s\nResult copied to clipboard.\n' ${result}
-}
+function decode { echo ${1} | base64 --decode - }
 
 # Check running ports
 function port { lsof -i :$1 }
-
-# SSH to gcloud instance
-function gssh {
-  gcloud beta compute ssh --zone "us-east1-b" --project "cloud-native-182609" "$1"
-}
 
 # Test Omnibus changes
 # Dockerfile in ~/code/gitlab-org/omnibus-local-image
@@ -125,8 +100,6 @@ alias gd='git diff'
 alias gl='git log --all --graph --decorate --oneline --simplify-by-decoration'
 alias gpom='git pull origin master'
 alias gpof='git push origin $(git rev-parse --abbrev-ref HEAD)'
-alias gitRefreshTags="git remote update origin --prune"
-alias gitFilesChanged='git diff --name-only $(git merge-base origin/master HEAD)'
 alias gwa='git worktree add'
 alias gwp='git worktree prune'
 alias v='nvim'
