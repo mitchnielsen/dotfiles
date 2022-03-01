@@ -86,6 +86,19 @@ require'fzf-lua'.setup {
     grep_opts         = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp",
     -- 'live_grep_glob' options:
     glob_flag         = "--iglob",  -- for case sensitive globs use '--glob'
-    glob_separator    = "%s%-%-"    -- query separator pattern (lua): ' --'
+    glob_separator    = "%s%-%-",    -- query separator pattern (lua): ' --'
+    actions = {
+      -- set bind to 'false' to disable an action
+      -- default action opens a single selection
+      -- or sends multiple selection to quickfix
+      -- replace the default action with the below
+      -- to open all files whether single or multiple
+      -- ["default"]     = actions.file_edit,
+      ["default"]     = actions.file_edit_or_qf,
+      ["ctrl-c"]      = actions.file_split,
+      ["ctrl-v"]      = actions.file_vsplit,
+      ["ctrl-t"]      = actions.file_tabedit,
+      ["alt-q"]       = actions.file_sel_to_qf,
+    }
   },
 }
