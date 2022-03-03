@@ -67,3 +67,6 @@ ln -s "$HOME/dotfiles/guest/.zshrc" "$HOME/.zshrc"
 nvim --headless +"lua require'pluginList'; require'packer'.sync()" +15sleep +qa
 mkdir -p "$HOME/go"
 GOPATH="$HOME/go" nvim --headless +GoInstallBinaries +qa
+
+# solargraph for NVIM LSP
+gem install solargraph
