@@ -66,6 +66,10 @@ nnoremap <silent> gD <cmd>lua vim.lsp.buf.definition()<CR>
 " Show full error
 nnoremap <silent>ge <cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>
 
+" Jump between errors
+nnoremap <silent>]e <cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap <silent>[e <cmd>lua vim.diagnostic.goto_prev()<CR>
+
 " Toggle error menu
 nnoremap <silent><leader>h :TroubleToggle<CR>
 
