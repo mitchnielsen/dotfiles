@@ -15,6 +15,7 @@ apt-get install -y \
   npm \
   ripgrep \
   stow \
+  tree \
   tmux \
   unzip \
   xdg-utils \
