@@ -2,10 +2,12 @@
 inoremap <silent><C-a> <C-o>0
 " Go to the ending of the line in insert mode
 inoremap <silent><C-b> <C-o>$
-" Paste from the system clipboard(in normal mode)
-nnoremap <silent><leader>y "*y
-" Paste from the system clipboard(in visual mode)
-vnoremap <silent><leader>y "*y
+" Yank from the system clipboard(in normal mode)
+" nnoremap <silent><leader>y "*y
+nnoremap <silent><leader>y :OSCYank<CR>
+" Yank from the system clipboard(in visual mode)
+" vnoremap <silent><leader>y "*y
+vnoremap <silent><leader>y :OSCYank<CR>
 " Cut from the system clipboard(in normal mode)
 nnoremap <silent><leader>x "*x
 " Cut from the system clipboard(in visual mode)
@@ -14,6 +16,10 @@ vnoremap <silent><leader>x "*x
 nnoremap <silent><leader>p "*p
 " Paste from the system clipboard(in visual mode)
 nnoremap <silent><leader>p "*p
+
+" " Yank to system clipboard
+" nmap <leader>o <Plug>OSCYank
+
 " Toggle search highlight
 nnoremap <silent> <C-C> :if (&hlsearch == 1) \| set nohlsearch \| else \| set hlsearch \| endif<cr>
 " Do not make Q go to ex-mode

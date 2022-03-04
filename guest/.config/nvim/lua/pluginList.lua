@@ -95,4 +95,5 @@ require("packer").startup(function(use)
     },
   })
   use("romgrk/nvim-treesitter-context")
+  use('ojroques/vim-oscyank') -- ability to yank to clipboard in VM
 end)
