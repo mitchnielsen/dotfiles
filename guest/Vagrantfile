@@ -23,6 +23,7 @@ Vagrant.configure('2') do |config|
   config.vm.synced_folder '/Users/mnielsen/.kube', '/home/vagrant/.kube'
   config.vm.synced_folder '/Users/mnielsen/.aws', '/home/vagrant/.aws'
   config.vm.synced_folder '/Users/mnielsen/google-cloud-sdk', '/home/vagrant/google-cloud-sdk'
+  config.vm.synced_folder '/Users/mnielsen/Library/Mobile Documents/com~apple~CloudDocs', '/home/vagrant/notes'
 
   # Configuration
   config.vm.provision 'shell', name: 'bootstrap_root', path: './scripts/bootstrap_root.sh', privileged: true
