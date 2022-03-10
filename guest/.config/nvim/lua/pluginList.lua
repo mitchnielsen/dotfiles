@@ -10,37 +10,27 @@ require("packer").startup(function(use)
   -- LSP
   use("glepnir/lspsaga.nvim")
   use("nvim-treesitter/nvim-treesitter")
+  use("romgrk/nvim-treesitter-context")
   use("p00f/nvim-ts-rainbow")
   use("hrsh7th/nvim-compe")
   use("neovim/nvim-lspconfig")
   use("ray-x/lsp_signature.nvim")
-  use({ "creativenull/diagnosticls-nvim", opt = true })
   use("jose-elias-alvarez/null-ls.nvim")
+  use("simrat39/symbols-outline.nvim")
+  use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", })
 
   -- Theme
   use("navarasu/onedark.nvim")
   use("nvim-lualine/lualine.nvim")
 
-  -- Helpers
+  -- Editor helpers
   use { "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } }
-  use("vim-test/vim-test")
-  use("fatih/vim-go")
-  use("tpope/vim-fugitive") -- Git integration
-  use("shumphrey/fugitive-gitlab.vim")
-  use("kdheepak/lazygit.nvim")
-  use("machakann/vim-highlightedyank") -- Highlight yanked line
   use("editorconfig/editorconfig-vim")
-  use("scrooloose/nerdtree")
-  use("Xuyuanp/nerdtree-git-plugin")
-  use("ryanoasis/vim-devicons")
+  use("iamcco/markdown-preview.nvim")
+  use("machakann/vim-highlightedyank") -- Highlight yanked line
+  use("tpope/vim-commentary")
   use("tpope/vim-unimpaired") --Simple mappings
   use("takac/vim-commandcaps") -- takes care of caps typos
-  use("ChartaDev/charta.vim") -- learn new codebases and share explanations
-  use("iamcco/markdown-preview.nvim")
-  use("simrat39/symbols-outline.nvim")
-  use("tpope/vim-commentary")
-  use({ "folke/lua-dev.nvim", opt = true })
-  use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", })
   use({
     "kyazdani42/nvim-tree.lua",
     requires = "kyazdani42/nvim-web-devicons",
@@ -49,8 +39,18 @@ require("packer").startup(function(use)
     end,
   })
 
+  -- git helpers
+  use("kdheepak/lazygit.nvim")
+  use("tpope/vim-fugitive") -- Git integration
+  use("shumphrey/fugitive-gitlab.vim")
   use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim", }, })
-  use("romgrk/nvim-treesitter-context")
+
+  -- go helpers
+  use("fatih/vim-go")
+  use("vim-test/vim-test")
+
+  -- Other helpers
+  use("ChartaDev/charta.vim") -- learn new codebases and share explanations
   use("ojroques/vim-oscyank") -- ability to yank to clipboard in VM
   use("nathom/filetype.nvim") -- speed up load time
 end)
