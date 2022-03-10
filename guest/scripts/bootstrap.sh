@@ -23,9 +23,13 @@ asdf-install cfssl latest
 asdf-install direnv latest
 asdf-install dive latest
 asdf-install fx latest
+asdf-install git latest
 asdf-install helm '3.8.0'
 asdf-install jq latest
 asdf-install kubectl '1.23.3'
+asdf-install lazygit latest
+asdf-install neovim latest
+asdf-install nodejs latest
 asdf-install oc latest
 asdf-install k9s '0.25.18'
 asdf-install kind '0.11.1'
@@ -35,6 +39,7 @@ asdf-install golang '1.16.14'
 asdf-install dive '0.10.0'
 asdf-install helm '3.8.0'
 asdf-install dyff '1.4.5'
+asdf-insatll ripgrep latest
 asdf-install ruby '2.7.5'
 asdf-install stern latest
 asdf-install yq latest
