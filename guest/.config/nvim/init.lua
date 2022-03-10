@@ -9,6 +9,7 @@ require("plugins.context")
 require("plugins.fzf")
 require("plugins.gitsigns")
 require("plugins.lualine")
+require("plugins.null-ls")
 require("plugins.treesitter")
 require("plugins.trouble")
 

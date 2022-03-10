@@ -57,6 +57,7 @@ require("packer").startup(function(use)
   use("neovim/nvim-lspconfig")
   use("ray-x/lsp_signature.nvim")
   use({ "creativenull/diagnosticls-nvim", opt = true })
+  use('jose-elias-alvarez/null-ls.nvim')
 
   -- Theme
   use("nvim-lualine/lualine.nvim")
