@@ -11,6 +11,7 @@ require("plugins.fzf")
 require("plugins.gitsigns")
 require("plugins.lualine")
 require("plugins.null-ls")
+require("plugins.nvim-tree")
 require("plugins.treesitter")
 require("plugins.trouble")
 

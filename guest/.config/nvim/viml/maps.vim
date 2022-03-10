@@ -117,8 +117,7 @@ nmap <leader>gpl :Git pull<cr>
 " Lazygit mappings
 nnoremap <silent> <leader>gg :LazyGit<CR>
 
-" NERDTree
-nnoremap <expr> <leader>n g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>'
-nmap <leader>N :NERDTreeFind<CR>
+" Nvim-Tree
+nnoremap <leader>n :NvimTreeFindFileToggle<CR>
 
 command LoadPacker lua require 'pluginList'

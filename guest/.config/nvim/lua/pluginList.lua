@@ -41,6 +41,14 @@ require("packer").startup(function(use)
   use("tpope/vim-commentary")
   use({ "folke/lua-dev.nvim", opt = true })
   use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", })
+  use({
+    "kyazdani42/nvim-tree.lua",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("nvim-tree").setup({})
+    end,
+  })
+
   use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim", }, })
   use("romgrk/nvim-treesitter-context")
   use("ojroques/vim-oscyank") -- ability to yank to clipboard in VM
