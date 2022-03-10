@@ -11,3 +11,5 @@ g.lsp_config = {
     },
   },
 }
+
+g.mapleader = " "

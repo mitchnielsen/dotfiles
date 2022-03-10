@@ -1,9 +1,5 @@
 local vim = vim
-local g = vim.g
 local opt = vim.opt
-
--- Leader
-g.mapleader = " "
 
 -- Decorations
 opt.signcolumn = "yes"
