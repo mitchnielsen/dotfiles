@@ -3,6 +3,7 @@
 require("globals")
 require("options")
 require("lsp-config")
+require("pluginList")
 
 require("plugins.compe")
 require("plugins.context")
