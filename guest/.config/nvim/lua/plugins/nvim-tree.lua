@@ -3,7 +3,7 @@ require'nvim-tree'.setup {
     dotfiles = true,
   },
   view = {
-    preserve_window_proportions = false,
+    preserve_window_proportions = true,
     mappings = {
       list = {
         { key = "s", action = "vsplit" },
