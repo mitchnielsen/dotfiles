@@ -60,13 +60,11 @@ require("packer").startup(function(use)
   use("jose-elias-alvarez/null-ls.nvim")
 
   -- Theme
-  use("nvim-lualine/lualine.nvim")
   use("navarasu/onedark.nvim")
+  use("nvim-lualine/lualine.nvim")
 
   -- Helpers
-  use { "ibhagwan/fzf-lua",
-    requires = { "kyazdani42/nvim-web-devicons" }
-  }
+  use { "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } }
   use("vim-test/vim-test")
   use("fatih/vim-go")
   use("tpope/vim-fugitive") -- Git integration
@@ -84,16 +82,8 @@ require("packer").startup(function(use)
   use("simrat39/symbols-outline.nvim")
   use("tpope/vim-commentary")
   use({ "folke/lua-dev.nvim", opt = true })
-  use({
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-  })
-  use({
-    "lewis6991/gitsigns.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
-  })
+  use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", })
+  use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim", }, })
   use("romgrk/nvim-treesitter-context")
   use("ojroques/vim-oscyank") -- ability to yank to clipboard in VM
   use("nathom/filetype.nvim") -- speed up load time
