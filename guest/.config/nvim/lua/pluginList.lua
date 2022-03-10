@@ -57,15 +57,15 @@ require("packer").startup(function(use)
   use("neovim/nvim-lspconfig")
   use("ray-x/lsp_signature.nvim")
   use({ "creativenull/diagnosticls-nvim", opt = true })
-  use('jose-elias-alvarez/null-ls.nvim')
+  use("jose-elias-alvarez/null-ls.nvim")
 
   -- Theme
   use("nvim-lualine/lualine.nvim")
-  use('navarasu/onedark.nvim')
+  use("navarasu/onedark.nvim")
 
   -- Helpers
-  use { 'ibhagwan/fzf-lua',
-    requires = { 'kyazdani42/nvim-web-devicons' }
+  use { "ibhagwan/fzf-lua",
+    requires = { "kyazdani42/nvim-web-devicons" }
   }
   use("vim-test/vim-test")
   use("fatih/vim-go")
@@ -95,6 +95,6 @@ require("packer").startup(function(use)
     },
   })
   use("romgrk/nvim-treesitter-context")
-  use('ojroques/vim-oscyank') -- ability to yank to clipboard in VM
-  use('nathom/filetype.nvim') -- speed up load time
+  use("ojroques/vim-oscyank") -- ability to yank to clipboard in VM
+  use("nathom/filetype.nvim") -- speed up load time
 end)
