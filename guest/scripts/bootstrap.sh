@@ -26,6 +26,7 @@ asdf-install fx latest
 asdf-install helm '3.8.0'
 asdf-install jq latest
 asdf-install kubectl '1.23.3'
+asdf-install oc latest
 asdf-install k9s '0.25.18'
 asdf-install kind '0.11.1'
 asdf-install kubectx '0.9.4'
