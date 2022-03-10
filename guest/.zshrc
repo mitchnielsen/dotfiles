@@ -126,6 +126,7 @@ alias gwr='git worktree remove'
 alias gwp='git worktree prune'
 alias v='nvim'
 alias k='kubectl'
+alias kk='k9s --crumbsless --headless --logoless'
 # https://docs.gitlab.com/ee/development/documentation/#local-linting
 alias valee="vale --glob='*.{md}' doc"
 alias markdownlintt="markdownlint -c .markdownlint.json 'doc/**/*.md'"
