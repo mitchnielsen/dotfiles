@@ -3,7 +3,7 @@ vim.o.termguicolors = true
 
 require('lualine').setup({
   options = {
-    theme = 'onedark', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
+    theme = 'auto', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
     component_separators = { left = '|', right = '|' },
   },
   sections = {
