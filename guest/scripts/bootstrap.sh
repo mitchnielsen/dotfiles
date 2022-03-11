@@ -29,7 +29,6 @@ asdf-install jq latest
 asdf-install kubectl '1.23.3'
 asdf-install lazygit latest
 asdf-install neovim latest
-asdf-install nodejs latest
 asdf-install oc latest
 asdf-install k9s '0.25.18'
 asdf-install kind '0.11.1'
@@ -41,6 +40,7 @@ asdf-install helm '3.8.0'
 asdf-install dyff '1.4.5'
 asdf-insatll ripgrep latest
 asdf-install ruby '2.7.5'
+asdf-install starship latest
 asdf-install stern latest
 asdf-install yq latest
 
@@ -52,9 +52,6 @@ if [ ! -d "~/.zsh/zsh-syntax-highlighting" ]; then git clone https://github.com/
 if [ ! -d "~/.zsh/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions/; fi
 if [ ! -d "~/.zsh/zsh-history-substring-search" ]; then git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search/; fi
 if [ ! -d "~/.zsh/you-should-use" ]; then git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ~/.zsh/you-should-use; fi
-
-# pure prompt
-if [ ! -d "~/.zsh/pure" ]; then git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"; fi
 
 ## TMUX's TPM
 if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi

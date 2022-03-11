@@ -7,7 +7,7 @@ export EDITOR=$(which nvim)
 export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number'
 export XDG_CONFIG_HOME="$HOME/.config"
 export BAT_THEME="OneHalfDark" # bat --list-themes
-export PURE_PROMPT_SYMBOL="$"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # ZSH sourcing and initialization
 plugins=(
@@ -20,12 +20,6 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.zsh/you-should-use/you-should-use.plugin.zsh
-
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-export ZSH_THEME=""
-zstyle :prompt:pure:git:stash show yes
-prompt pure
 
 [[ -r "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
 [[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
@@ -139,3 +133,6 @@ alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirnam
 alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator'
 alias cdc='cd ~/code/gitlab-org/charts/gitlab'
 alias note='(cd ~/notes && nvim GitLab/Dashboard.md)'
+
+# Starship
+eval "$(starship init zsh)"
