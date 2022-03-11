@@ -1,7 +1,3 @@
-[character]
-success_symbol = '[\$](bold green)'
-error_symbol = '[\$](bold red)'
-
 [package]
 disabled = true
 
@@ -26,12 +22,30 @@ disabled = true
 [vagrant]
 disabled = true
 
+# -----
+# https://starship.rs/presets/pure-preset.html
+# -----
+[character]
+success_symbol = '[\$](white)'
+error_symbol = '[\$](red)'
+
 [directory]
 truncation_length = 8
 truncate_to_repo = false
+style = "blue"
 
 [git_status]
 ahead = "⇡${count}"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
 style = "bold cyan"
+stashed = "≡"
+
+[git_branch]
+symbol = " "
+format = "on [$symbol$branch]($style) "
+style = "cyan"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
