@@ -20,14 +20,6 @@ Vagrant.configure('2') do |config|
   # Plugins
   config.vagrant.plugins = ['vagrant-vbguest']
 
-  # Files
-  config.vm.synced_folder '/Users/mnielsen/code', '/home/vagrant/code'
-  config.vm.synced_folder '/Users/mnielsen/dotfiles', '/home/vagrant/dotfiles'
-  config.vm.synced_folder '/Users/mnielsen/.kube', '/home/vagrant/.kube'
-  config.vm.synced_folder '/Users/mnielsen/.aws', '/home/vagrant/.aws'
-  config.vm.synced_folder '/Users/mnielsen/google-cloud-sdk', '/home/vagrant/google-cloud-sdk'
-  config.vm.synced_folder '/Users/mnielsen/Library/Mobile Documents/com~apple~CloudDocs', '/home/vagrant/notes'
-
   # Configuration
   config.vm.provision 'shell', name: 'bootstrap_root', path: './scripts/bootstrap_root.sh', privileged: true
   config.vm.provision 'shell', name: 'bootstrap', path: './scripts/bootstrap.sh', privileged: false
@@ -37,4 +29,12 @@ Vagrant.configure('2') do |config|
   config.vm.provision 'file', source: '~/.ssh/id_rsa.pub', destination: '~/.ssh/id_rsa.host.pub'
   config.vm.provision 'file', source: '~/.ssh/known_hosts', destination: '~/.ssh/known_hosts.host'
   config.vm.provision 'docker'
+
+  # Synced folders
+  config.vm.synced_folder '/Users/mnielsen/code', '/home/vagrant/code'
+  config.vm.synced_folder '/Users/mnielsen/dotfiles', '/home/vagrant/dotfiles'
+  config.vm.synced_folder '/Users/mnielsen/.kube', '/home/vagrant/.kube'
+  config.vm.synced_folder '/Users/mnielsen/.aws', '/home/vagrant/.aws'
+  config.vm.synced_folder '/Users/mnielsen/google-cloud-sdk', '/home/vagrant/google-cloud-sdk'
+  config.vm.synced_folder '/Users/mnielsen/Library/Mobile Documents/com~apple~CloudDocs', '/home/vagrant/notes'
 end
