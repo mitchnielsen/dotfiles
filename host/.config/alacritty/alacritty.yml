@@ -290,8 +290,8 @@ window:
   dynamic_padding: true
   padding:
     x: 5
-    y: 5
-  #decorations: none
+    y: 23
+  decorations: transparent
 
 scrolling:
   history: 10000
