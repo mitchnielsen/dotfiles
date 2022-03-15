@@ -38,7 +38,7 @@ asdf-install golang '1.16.14'
 asdf-install dive '0.10.0'
 asdf-install helm '3.8.0'
 asdf-install dyff '1.4.5'
-asdf-insatll ripgrep latest
+asdf-install ripgrep latest
 asdf-install ruby '2.7.5'
 asdf-install starship latest
 asdf-install stern latest
