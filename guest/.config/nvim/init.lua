@@ -5,6 +5,7 @@ require("options")
 require("lsp-config")
 require("pluginList")
 
+require("plugins.nightfox")
 require("plugins.compe")
 require("plugins.context")
 require("plugins.fzf")
