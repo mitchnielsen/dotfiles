@@ -25,7 +25,7 @@ nnoremap <silent> <C-C> :if (&hlsearch == 1) \| set nohlsearch \| else \| set hl
 " Do not make Q go to ex-mode
 nnoremap Q <Nop>
 
-" Wrap selection with '' 
+" Wrap selection with ''
 vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
 " Wrap selection with ""
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
