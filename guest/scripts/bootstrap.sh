@@ -40,11 +40,18 @@ asdf-install helm '3.8.0'
 asdf-install dyff '1.4.5'
 asdf-install ripgrep latest
 asdf-install ruby '2.7.5'
-asdf-install starship latest
+# asdf-install starship latest
 asdf-install stern latest
 asdf-install yq latest
 
 asdf reshim
+
+# Install starship, package not yet available on Debian
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=946187
+wget -P /tmp https://starship.sh/install.sh
+chmod +x /tmp/install.sh
+/tmp/install.sh --yes
+rm /tmp/install.sh
 
 # oh-my-zsh
 if [ ! -d "~/.oh-my-zsh" ]; then sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; fi
