@@ -87,6 +87,26 @@ function stopOmnibus {
   docker rm omnibus-local
 }
 
+# Adds a git worktree using the project and branch name
+function gwa() {
+  local branch_name="${1}"
+  local location="../${branch_name}"
+
+  local args=""
+  if [ $(git branch --all | grep "remotes/origin/${branch_name}" | wc -l) -eq 0 ]; then
+    args="-b"
+  fi
+
+  git worktree add ${location} ${args} ${branch_name}
+  cd "${location}"
+}
+
+function gwr() {
+  local branch_name=$(basename "${PWD}")
+  cd ../master
+  git worktree remove "${branch_name}"
+}
+
 # https://docs.gitlab.com/ee/user/project/push_options.html
 function gpsc() {
   local remote=origin
@@ -117,10 +137,8 @@ alias gds='git diff --staged'
 alias gl='git log --all --graph --decorate --oneline --simplify-by-decoration'
 alias gpl='git pull origin $(git_current_branch)'
 alias gplm='git pull origin master'
-alias gf='git fetch origin "*:*"'
+alias gf='git fetch --all'
 alias gps='git push origin $(git_current_branch)'
-alias gwa='git worktree add'
-alias gwr='git worktree remove'
 alias gwp='git worktree prune'
 alias v='nvim'
 alias k='kubectl'
