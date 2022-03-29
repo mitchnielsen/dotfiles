@@ -15,7 +15,7 @@ apt-get install -y \
   libncurses5-dev \
   libreadline6-dev \
   libssl-dev \
-  libyaml-dev
+  libyaml-dev \
   stow \
   tmux \
   tree \
