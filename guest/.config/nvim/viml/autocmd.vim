@@ -2,7 +2,6 @@
 filetype plugin indent on
 autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
 autocmd BufNewFile,BufRead *.tpl set syntax=go
-autocmd InsertEnter,InsertLeave * set cul!
 
 " Building, running, testing, etc.
 autocmd FileType ruby map <leader>r :w<CR>:exec '!ruby' shellescape(@%, 1)<CR>

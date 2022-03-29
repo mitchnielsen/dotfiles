@@ -46,7 +46,7 @@ opt.splitbelow = true
 opt.splitright = true
 opt.compatible = false
 opt.diffopt = "vertical"
-opt.cursorline = true
+opt.cursorline = false
 
 local disabled_built_ins = {
   "gzip",
