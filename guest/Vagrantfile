@@ -2,7 +2,7 @@
 
 Vagrant.configure('2') do |config|
   # Host OS
-  config.vm.box = 'ubuntu/focal64'
+  config.vm.box = 'debian/bullseye64'
   config.vbguest.installer_options = { allow_kernel_upgrade: true }
   config.vm.hostname = 'devenv'
   config.vm.define 'devenv'
