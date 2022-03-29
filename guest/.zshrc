@@ -30,7 +30,11 @@ if [[ -d "$HOME/google-cloud-sdk" ]]; then
   source "$HOME/google-cloud-sdk/completion.zsh.inc"
 fi
 
+# Hook direnv into your shell.
 eval "$(direnv hook zsh)"
+
+# A shortcut for asdf managed direnv.
+direnv() { asdf exec direnv "$@"; }
 
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
