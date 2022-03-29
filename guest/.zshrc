@@ -155,6 +155,7 @@ alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirnam
 alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator'
 alias cdc='cd ~/code/gitlab-org/charts/gitlab'
 alias note='(cd ~/notes && nvim GitLab/Dashboard.md)'
+alias xclip='osc52'
 
 # Starship
 eval "$(starship init zsh)"
