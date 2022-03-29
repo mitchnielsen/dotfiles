@@ -2,9 +2,13 @@
 
 Forever-changing dotfiles for tools I use.
 
+The environment is run from a virtual machine in [Vagrant](https://vagrantup.com):
+
+[![Screenshot](img/screenshot.png "Screenshot of dev environment")](https://gitlab.com/mitchenielsen/dotfiles/-/raw/main/img/screenshot.png)
+
 ## Installation
 
-The environment is run from a virtual machine in [Vagrant](https://vagrantup.com):
+Run the following commands to set up the development environment:
 
 ```shell
 git clone git@gitlab.com:mitchenielsen/dotfiles.git ~/dotfiles
