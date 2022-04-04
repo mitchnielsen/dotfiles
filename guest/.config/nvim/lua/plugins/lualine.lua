@@ -5,7 +5,7 @@ require('lualine').setup({
   options = {
     theme = 'auto', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
     component_separators = { left = '|', right = '|' },
-    globalstatus = true,
+    -- globalstatus = true,
   },
   sections = {
     lualine_a = {'branch'},
