@@ -15,6 +15,10 @@ plugins=(
   vi-mode
 )
 
+# Jump forward/backward by one word
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
