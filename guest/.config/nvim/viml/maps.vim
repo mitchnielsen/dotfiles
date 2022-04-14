@@ -67,7 +67,7 @@ nnoremap <silent><leader>h :TroubleToggle<CR>
 nnoremap <silent><leader>so :SymbolsOutline<CR>
 
 " Searching
-nnoremap <leader>rg :FzfLua live_grep_native<CR>
+nnoremap <leader>rg :FzfLua live_grep_glob<CR>
 nnoremap <leader>rG :FzfLua live_grep_resume<CR>
 nnoremap <leader>rw :FzfLua grep_cword<CR>
 nmap <Leader>f :FzfLua files<CR>
