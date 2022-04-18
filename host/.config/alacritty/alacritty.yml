@@ -4,303 +4,35 @@ env:
   TERM: xterm-256color
 
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
-schemes:
-
-  # Nightfox Alacritty Colors
-  # Style: nordfox
-  # Upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nordfox/nightfox_alacritty.yml
-  nordfox: &nordfox
-    # Default colors
-    primary:
-      background: '0x2e3440'
-      foreground: '0xcdcecf'
-    # Normal colors
-    normal:
-      black:   '0x3b4252'
-      red:     '0xbf616a'
-      green:   '0xa3be8c'
-      yellow:  '0xebcb8b'
-      blue:    '0x81a1c1'
-      magenta: '0xb48ead'
-      cyan:    '0x88c0d0'
-      white:   '0xe5e9f0'
-    # Bright colors
-    bright:
-      black:   '0x465780'
-      red:     '0xd06f79'
-      green:   '0xb1d196'
-      yellow:  '0xf0d399'
-      blue:    '0x8cafd2'
-      magenta: '0xc895bf'
-      cyan:    '0x93ccdc'
-      white:   '0xe7ecf4'
-    indexed_colors:
-      - { index: 16, color: '0xc9826b' }
-      - { index: 17, color: '0xbf88bc' }
-
-  nord: &nord
-    primary:
-      background: '#2e3440'
-      foreground: '#d8dee9'
-      dim_foreground: '#a5abb6'
-    cursor:
-      text: '#2e3440'
-      cursor: '#d8dee9'
-    vi_mode_cursor:
-      text: '#2e3440'
-      cursor: '#d8dee9'
-    selection:
-      text: CellForeground
-      background: '#4c566a'
-    search:
-      matches:
-        foreground: CellBackground
-        background: '#88c0d0'
-      bar:
-        background: '#434c5e'
-        foreground: '#d8dee9'
-    normal:
-      black: '#3b4252'
-      red: '#bf616a'
-      green: '#a3be8c'
-      yellow: '#ebcb8b'
-      blue: '#81a1c1'
-      magenta: '#b48ead'
-      cyan: '#88c0d0'
-      white: '#e5e9f0'
-    bright:
-      black: '#4c566a'
-      red: '#bf616a'
-      green: '#a3be8c'
-      yellow: '#ebcb8b'
-      blue: '#81a1c1'
-      magenta: '#b48ead'
-      cyan: '#8fbcbb'
-      white: '#eceff4'
-    dim:
-      black: '#373e4d'
-      red: '#94545d'
-      green: '#809575'
-      yellow: '#b29e75'
-      blue: '#68809a'
-      magenta: '#8c738c'
-      cyan: '#6d96a5'
-      white: '#aeb3bb'
-
-  # https://github.com/alacritty/alacritty/issues/1323
-  one_dark: &one_dark
-    # Default colors
-    primary:
-      background: '0x242b38'
-      foreground: '0xabb2bf'
-
-    # Normal colors
-    normal:
-      black:   '0x131613'
-      red:     '0xe06c75'
-      green:   '0x98c379'
-      yellow:  '0xd19a66'
-      blue:    '0x61afef'
-      magenta: '0xc678dd'
-      cyan:    '0x56b6c2'
-      white:   '0xabb2bf'
-
-    # Bright colors
-    bright:
-      black:   '0x5c6370'
-      red:     '0xe06c75'
-      green:   '0x98c379'
-      yellow:  '0xd19a66'
-      blue:    '0x61afef'
-      magenta: '0xc678dd'
-      cyan:    '0x56b6c2'
-      white:   '0xffffff'
-
-  one_light: &one_light
-    primary:
-      background: '#fafafa'
-      foreground: '#383a42'
-    cursor:
-      text:       CellBackground
-      cursor:     '#526eff' # syntax-cursor-color
-    selection:
-      text:       CellForeground
-      background: '#e5e5e6' # syntax-selection-color
-    normal:
-      black:      '#696c77' # mono-2
-      red:        '#e45649' # red 1
-      green:      '#50a14f'
-      yellow:     '#c18401' # orange 2
-      blue:       '#4078f2'
-      magenta:    '#a626a4'
-      cyan:       '#0184bc'
-      white:      '#a0a1a7' # mono-3
-
-  # https://gist.github.com/sainnhe/ad5cbc4f05c4ced83f80e54d9a75d22f
-  gruvbox_material_hard_dark: &gruvbox_material_hard_dark
-    primary:
-      background: '0x1d2021'
-      foreground: '0xd4be98'
-    normal:
-      black:   '0x32302f'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-    bright:
-      black:   '0x32302f'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-  gruvbox_material_medium_dark: &gruvbox_material_medium_dark
-    primary:
-      background: '0x282828'
-      foreground: '0xd4be98'
-    normal:
-      black:   '0x3c3836'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-    bright:
-      black:   '0x3c3836'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-  gruvbox_material_soft_dark: &gruvbox_material_soft_dark
-    primary:
-      background: '0x32302f'
-      foreground: '0xd4be98'
-    normal:
-      black:   '0x45403d'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-    bright:
-      black:   '0x45403d'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-  gruvbox_material_hard_light: &gruvbox_material_hard_light
-    primary:
-      background: '0xf9f5d7'
-      foreground: '0x654735'
-    normal:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xf2e5bc'
-    bright:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xf2e5bc'
-  gruvbox_material_medium_light: &gruvbox_material_medium_light
-    primary:
-      background: '0xfbf1c7'
-      foreground: '0x654735'
-    normal:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xeee0b7'
-    bright:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xeee0b7'
-  gruvbox_material_soft_light: &gruvbox_material_soft_light
-    primary:
-      background: '0xf2e5bc'
-      foreground: '0x654735'
-    normal:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xe6d5ae'
-    bright:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xe6d5ae'
-
-  gruvbox_light_new: &gruvbox_light_new
-    # Default colors
-    primary:
-      # hard contrast: background = '#f9f5d7'
-      background: '#fbf1c7'
-      # soft contrast: background = '#f2e5bc'
-      foreground: '#3c3836'
-
-    # Normal colors
-    normal:
-      black:   '#fbf1c7'
-      red:     '#cc241d'
-      green:   '#98971a'
-      yellow:  '#d79921'
-      blue:    '#458588'
-      magenta: '#b16286'
-      cyan:    '#689d6a'
-      white:   '#7c6f64'
-
-    # Bright colors
-    bright:
-      black:   '#928374'
-      red:     '#9d0006'
-      green:   '#79740e'
-      yellow:  '#b57614'
-      blue:    '#076678'
-      magenta: '#8f3f71'
-      cyan:    '#427b58'
-      white:   '#3c3836'
-
-colors: *nordfox
+# https://github.com/edeneast/nightfox.nvim/raw/main/extra/nordfox/nightfox_alacritty.yml
+colors:
+  # Default colors
+  primary:
+    background: '0x2e3440'
+    foreground: '0xcdcecf'
+  # Normal colors
+  normal:
+    black:   '0x3b4252'
+    red:     '0xbf616a'
+    green:   '0xa3be8c'
+    yellow:  '0xebcb8b'
+    blue:    '0x81a1c1'
+    magenta: '0xb48ead'
+    cyan:    '0x88c0d0'
+    white:   '0xe5e9f0'
+  # Bright colors
+  bright:
+    black:   '0x465780'
+    red:     '0xd06f79'
+    green:   '0xb1d196'
+    yellow:  '0xf0d399'
+    blue:    '0x8cafd2'
+    magenta: '0xc895bf'
+    cyan:    '0x93ccdc'
+    white:   '0xe7ecf4'
+  indexed_colors:
+    - { index: 16, color: '0xc9826b' }
+    - { index: 17, color: '0xbf88bc' }
 
 font:
   normal:
