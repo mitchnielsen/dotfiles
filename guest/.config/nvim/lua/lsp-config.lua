@@ -1,11 +1,16 @@
 local vim = vim
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-require'lspconfig'.gopls.setup{capabitlities = capabilities}
-require'lspconfig'.solargraph.setup{capabilities = capabilities}
 require("lsp_signature").setup({ hint_enable = false })
+
+local servers = { 'gopls', 'solargraph' }
+for _, lsp in ipairs(servers) do
+  require("lspconfig")[lsp].setup {
+    capabilities = capabilities,
+  }
+end
 
 vim.fn.sign_define(
   "LspDiagnosticsSignError",
