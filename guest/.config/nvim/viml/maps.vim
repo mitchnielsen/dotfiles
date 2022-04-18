@@ -17,9 +17,6 @@ nnoremap <silent><leader>p "*p
 " Paste from the system clipboard(in visual mode)
 nnoremap <silent><leader>p "*p
 
-" " Yank to system clipboard
-" nmap <leader>o <Plug>OSCYank
-
 " Toggle search highlight
 nnoremap <silent> <C-C> :if (&hlsearch == 1) \| set nohlsearch \| else \| set hlsearch \| endif<cr>
 " Do not make Q go to ex-mode
@@ -51,7 +48,7 @@ nnoremap <silent>gr <cmd>lua vim.lsp.buf.references()<CR>
 " Implementation
 nnoremap <silent>gi <cmd>lua vim.lsp.buf.implementation()<CR>
 " definition
-nnoremap <silent> gD <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent>gD <cmd>lua vim.lsp.buf.definition()<CR>
 
 " Show full error
 nnoremap <silent>ge <cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>
@@ -109,5 +106,3 @@ nnoremap <silent> <leader>gg :LazyGit<CR>
 
 " Nvim-Tree
 nnoremap <leader>n :NvimTreeFindFileToggle<CR>
-
-command LoadPacker lua require 'pluginList'
