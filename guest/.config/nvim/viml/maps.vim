@@ -96,7 +96,7 @@ nnoremap <leader>k :m .-2<CR>==
 " Fugitive mappings
 nmap <leader>gs :Git<cr>
 nmap <leader>gbl :Git blame<cr>
-nmap <leader>gbr :Gbrowse<cr>
+nmap <leader>gbr :GBrowse<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gps :Git push<cr>
 nmap <leader>gpl :Git pull<cr>
