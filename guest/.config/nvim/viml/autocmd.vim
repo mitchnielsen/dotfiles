@@ -1,6 +1,7 @@
 " Filetype autocommands
 filetype plugin indent on
 autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
+autocmd BufNewFile,BufRead Dangerfile set syntax=ruby
 autocmd BufNewFile,BufRead *.tpl set syntax=yaml
 autocmd BufNewFile,BufRead *.yaml set syntax=yaml
 autocmd BufNewFile,BufRead *.yml set syntax=yaml
