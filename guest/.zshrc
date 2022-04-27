@@ -158,7 +158,7 @@ alias hk='helm upgrade --install --set certmanager-issuer.email=no@no.com gitlab
 alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirname | sort -u | fzf)'
 alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator'
 alias cdc='cd ~/code/gitlab-org/charts/gitlab'
-alias note='(cd ~/notes && nvim GitLab/Dashboard.md)'
+alias note='(cd ~/notes/Documents/GitLab && nvim Dashboard.md)'
 alias xclip='osc52'
 
 # Cursor settings
