@@ -16,6 +16,7 @@ apt-get install -y \
   libreadline6-dev \
   libssl-dev \
   libyaml-dev \
+  skopeo \
   stow \
   tmux \
   tree \
