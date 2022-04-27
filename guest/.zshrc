@@ -1,23 +1,48 @@
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# ===================
+# Environment variables
+# ===================
+
+# Shell and editor
+export ZSH="$HOME/.oh-my-zsh"
+export EDITOR=$(which nvim)
+
+# Golang
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export ZSH="$HOME/.oh-my-zsh"
-export KEYTIMEOUT=1 # Disable lag when using vi-mode
-export EDITOR=$(which nvim)
+
+# Utilities
 export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number'
 export XDG_CONFIG_HOME="$HOME/.config"
 export BAT_THEME="Nord" # bat --list-themes
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
-# ZSH sourcing and initialization
+# ===================
+# ZSH plugins
+# ===================
+
 plugins=(
   fzf
   vi-mode
 )
 
-# Jump forward/backward by one word
+# ===================
+# Settings
+# ===================
+
+set histignorespace # ignore command in history if it starts with space
+unsetopt share_history # don't share history between sessions
+
+# ===================
+# Bindings
+# ===================
+
+# Jump forward/backward by one word using ALT + L/R
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+
+# ===================
+# Sources
+# ===================
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -37,9 +62,6 @@ fi
 # Hook direnv into your shell.
 eval "$(direnv hook zsh)"
 
-# A shortcut for asdf managed direnv.
-direnv() { asdf exec direnv "$@"; }
-
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
   compinit;
@@ -47,8 +69,12 @@ else
   compinit -C;
 fi
 
-set histignorespace # ignore command in history if it starts with space
-unsetopt share_history # don't share history between sessions
+# ===================
+# Functions
+# ===================
+
+# A shortcut for asdf managed direnv.
+direnv() { asdf exec direnv "$@"; }
 
 # Function to list Helm release Ci info
 function helm-ls-ci { helm ls | awk '/^gke-/{print $1}'| xargs -I'{}' sh -c "helm get values {} | yq r - .ci" }
@@ -128,7 +154,10 @@ function gpsc() {
   fi
 }
 
+# ===================
 # Aliases
+# ===================
+
 alias t='tree -C -a -I .git'
 alias d='docker'
 alias dr='docker run --rm -it'
@@ -161,11 +190,13 @@ alias cdc='cd ~/code/gitlab-org/charts/gitlab'
 alias note='(cd ~/notes/Documents/GitLab && nvim Dashboard.md)'
 alias xclip='osc52'
 
+# ===================
 # Cursor settings
 # Change cursor with support for inside/outside tmux
+# ===================
 
 bindkey -v
-export KEYTIMEOUT=1
+export KEYTIMEOUT=1 # Disable lag when using vi-mode
 
 function _set_cursor() {
   if [[ $TMUX = '' ]]; then
@@ -188,9 +219,11 @@ function zle-keymap-select {
 
 zle -N zle-keymap-select
 # ensure beam cursor when starting new terminal
-precmd_functions+=(_set_beam_cursor) #
+precmd_functions+=(_set_beam_cursor)
 # ensure insert mode and beam cursor when exiting vim
 zle-line-init() { zle -K viins; _set_beam_cursor }
 
-# Starship
+# ===================
+# Starship prompt
+# ===================
 eval "$(starship init zsh)"
