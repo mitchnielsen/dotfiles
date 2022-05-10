@@ -48,7 +48,7 @@ font:
   use_thin_strokes: true
 
 window:
-  decorations: none
+  # decorations: none
   opacity: 1.0
   dynamic_padding: true
   padding:
