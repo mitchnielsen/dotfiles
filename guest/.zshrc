@@ -128,6 +128,7 @@ function gwa() {
 
   local args=""
   if [ $(git branch --all | grep "remotes/origin/${branch_name}" | wc -l) -eq 0 ]; then
+    echo 'Branch does not exist on remote. Checking out a new branch...'
     args="-b"
   fi
 
