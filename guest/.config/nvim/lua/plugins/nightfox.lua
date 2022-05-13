@@ -6,6 +6,10 @@ require('nightfox').setup({
       comments = "italic",
       types = "italic",
     },
+    inverse = {
+      visual = true,
+      search = true,
+    },
   }
 })
 
