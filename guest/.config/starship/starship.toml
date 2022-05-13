@@ -1,5 +1,5 @@
 format = """
-$directory$git_branch$git_status$git_state$kubernetes
+$directory$git_branch$git_status$git_state$kubernetes$cmd_duration
 $character
 """
 
@@ -57,4 +57,4 @@ format = '\([$state($progress_current/$progress_total)]($style)\)'
 
 [kubernetes]
 disabled = false
-format = 'in [☸ $context:$namespace](green)'
+format = 'in [☸ $context:$namespace](green) '
