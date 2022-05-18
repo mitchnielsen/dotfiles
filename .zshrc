@@ -16,6 +16,7 @@ export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden -
 export XDG_CONFIG_HOME="$HOME/.config"
 export BAT_THEME="Nord" # bat --list-themes
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # ===================
 # ZSH plugins
@@ -192,8 +193,7 @@ alias hk='helm upgrade --install --set certmanager-issuer.email=no@no.com gitlab
 alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirname | sort -u | fzf)'
 alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator'
 alias cdc='cd ~/code/gitlab-org/charts/gitlab'
-alias note='(cd ~/notes/Documents/GitLab && nvim Dashboard.md)'
-alias xclip='osc52'
+alias note='(cd /Users/mnielsen/Library/Mobile Documents/com~apple~CloudDocs && nvim Dashboard.md)'
 
 # ===================
 # Cursor settings
