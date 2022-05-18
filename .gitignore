@@ -1,6 +1,6 @@
-guest/.config/nvim/plugin/packer_compiled.lua
-guest/.config/k9s/config.yml
-guest/.config/lazygit/state.yml
-host/.config/brew/Brewfile.lock.json
+.config/nvim/plugin/packer_compiled.lua
+.config/k9s/config.yml
+.config/lazygit/state.yml
+.config/brew/Brewfile.lock.json
 .vagrant
-host/.config/karabiner/automatic_backups
+.config/karabiner/automatic_backups
