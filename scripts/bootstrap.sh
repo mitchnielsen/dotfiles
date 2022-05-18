@@ -29,11 +29,8 @@ asdf-install awscli latest
 asdf-install bat latest
 asdf-install cfssl latest
 asdf-install direnv latest
-asdf-install direnv latest
 asdf-install dive latest
 asdf-install dyff '1.4.5'
-asdf-install fx latest
-asdf-install git latest
 asdf-install golang '1.16.14'
 asdf-install helm '3.8.0'
 asdf-install jq latest
@@ -52,13 +49,6 @@ asdf-install stern latest
 asdf-install yq latest
 
 asdf reshim
-
-# oh-my-zsh
-if [ ! -d "~/.oh-my-zsh" ]; then sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; fi
-if [ ! -d "~/.zsh/zsh-syntax-highlighting" ]; then git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting/; fi
-if [ ! -d "~/.zsh/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions/; fi
-if [ ! -d "~/.zsh/zsh-history-substring-search" ]; then git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search/; fi
-if [ ! -d "~/.zsh/you-should-use" ]; then git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ~/.zsh/you-should-use; fi
 
 ## TMUX's TPM
 if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
@@ -80,3 +70,10 @@ GOPATH="$HOME/go" nvim --headless +GoInstallBinaries +qa
 
 # solargraph for NVIM LSP
 gem install solargraph
+
+# oh-my-zsh
+if [ ! -d "~/.zsh/zsh-syntax-highlighting" ]; then git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting/; fi
+if [ ! -d "~/.zsh/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions/; fi
+if [ ! -d "~/.zsh/zsh-history-substring-search" ]; then git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search/; fi
+if [ ! -d "~/.zsh/you-should-use" ]; then git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ~/.zsh/you-should-use; fi
+if [ ! -d "~/.oh-my-zsh" ]; then sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; fi
