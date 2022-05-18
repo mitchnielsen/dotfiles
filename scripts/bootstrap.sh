@@ -72,13 +72,13 @@ if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugin
 
 # Tmux's config (https://github.com/tmux/tmux/issues/142)
 [ -f ~/.tmux.conf ] && rm ~/.tmux.conf
-ln -s ~/dotfiles/guest/.config/tmux/.tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/.config/tmux/.tmux.conf ~/.tmux.conf
 
 # dotfiles
 mkdir -p "$HOME/.config"
-(cd "$HOME/dotfiles/guest" && stow -v --target="$HOME/.config" .config)
+(cd "$HOME/dotfiles" && stow -v --target="$HOME/.config" .config)
 rm "$HOME/.zshrc" || true
-ln -s "$HOME/dotfiles/guest/.zshrc" "$HOME/.zshrc"
+ln -s "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
 
 # neovim
 nvim --headless +"lua require'pluginList'; require'packer'.sync()" +15sleep +qa
