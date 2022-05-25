@@ -30,9 +30,14 @@ unsetopt share_history # don't share history between sessions
 
 # vi mode
 bindkey -v
+
 # Jump forward/backward by one word using ALT + L/R
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+
+# Use emacs-like shortcuts with vi-mode
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
 
 # ===================
 # Sources
