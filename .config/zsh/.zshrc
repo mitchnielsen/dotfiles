@@ -15,15 +15,6 @@ export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden -
 export XDG_CONFIG_HOME="$HOME/.config"
 export BAT_THEME="Nord" # bat --list-themes
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-
-# ===================
-# ZSH plugins
-# ===================
-
-plugins=(
-  fzf
-  vi-mode
-)
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # ===================
@@ -37,6 +28,8 @@ unsetopt share_history # don't share history between sessions
 # Bindings
 # ===================
 
+# vi mode
+bindkey -v
 # Jump forward/backward by one word using ALT + L/R
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
