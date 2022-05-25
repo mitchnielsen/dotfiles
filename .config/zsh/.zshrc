@@ -139,23 +139,6 @@ function gwr() {
   git worktree remove "${branch_name}"
 }
 
-# https://docs.gitlab.com/ee/user/project/push_options.html
-function gpsc() {
-  local remote=origin
-
-  if git remote get-url $remote | grep gitlab.com >/dev/null; then
-    git push --set-upstream $remote "$(git_current_branch)" \
-      -o merge_request.create \
-      -o "merge_request.target=master" \
-      -o "merge_request.assign=mnielsen" \
-      -o "merge_request.label=group::distribution" \
-      -o "merge_request.label=section::enablement" \
-      -o "merge_request.label=devops::enablement"
-  else
-    git push --set-upstream $remote "$(git_current_branch)"
-  fi
-}
-
 # ===================
 # Aliases
 # ===================
