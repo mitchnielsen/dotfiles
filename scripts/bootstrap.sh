@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Symlink dotfiles
+if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$HOME/.zprofile"; fi
 stow .config --target="$HOME/.config"
 
 # Install homebrew if needed
