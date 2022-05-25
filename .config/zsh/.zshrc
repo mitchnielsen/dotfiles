@@ -135,7 +135,7 @@ function gwa() {
 
 function gwr() {
   local branch_name=$(basename "${PWD}")
-  cd ../master
+  cd ../master || cd ../main
   git worktree remove "${branch_name}"
 }
 
