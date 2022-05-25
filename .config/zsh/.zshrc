@@ -15,7 +15,6 @@ export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden -
 export XDG_CONFIG_HOME="$HOME/.config"
 export BAT_THEME="Nord" # bat --list-themes
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # ===================
 # ZSH plugins
@@ -25,6 +24,7 @@ plugins=(
   fzf
   vi-mode
 )
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # ===================
 # Settings
