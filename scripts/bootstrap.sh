@@ -71,9 +71,8 @@ GOPATH="$HOME/go" nvim --headless +GoInstallBinaries +qa
 # solargraph for NVIM LSP
 gem install solargraph
 
-# oh-my-zsh
+# ZSH helpers
 if [ ! -d "~/.zsh/zsh-syntax-highlighting" ]; then git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting/; fi
 if [ ! -d "~/.zsh/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions/; fi
 if [ ! -d "~/.zsh/zsh-history-substring-search" ]; then git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search/; fi
 if [ ! -d "~/.zsh/you-should-use" ]; then git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ~/.zsh/you-should-use; fi
-if [ ! -d "~/.oh-my-zsh" ]; then sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; fi

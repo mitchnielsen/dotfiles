@@ -3,7 +3,6 @@
 # ===================
 
 # Shell and editor
-export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=$(which nvim)
 export KEYTIMEOUT=1 # Disable lag when using vi-mode
 
@@ -46,13 +45,12 @@ bindkey "^[[1;3D" backward-word
 # Sources
 # ===================
 
-source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.zsh/you-should-use/you-should-use.plugin.zsh
 
-[[ -r "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
+[[ -f "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
 [[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
 
 # Gcloud (https://cloud.google.com/sdk/docs/install)
