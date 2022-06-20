@@ -21,7 +21,7 @@ require("packer").startup(function(use)
   use("ray-x/lsp_signature.nvim")
   use("jose-elias-alvarez/null-ls.nvim")
   use("simrat39/symbols-outline.nvim")
-  use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", })
+  use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
   -- Theme
   use({
@@ -31,27 +31,21 @@ require("packer").startup(function(use)
   use("nvim-lualine/lualine.nvim")
 
   -- Editor helpers
-  use { "ibhagwan/fzf-lua", requires = { "kyazdani42/nvim-web-devicons" } }
+  use { "ibhagwan/fzf-lua", requires = "kyazdani42/nvim-web-devicons" }
   use("editorconfig/editorconfig-vim")
   use("iamcco/markdown-preview.nvim")
   use("machakann/vim-highlightedyank") -- Highlight yanked line
   use("tpope/vim-commentary")
   use("tpope/vim-unimpaired") --Simple mappings
   use("takac/vim-commandcaps") -- takes care of caps typos
-  use({
-    "kyazdani42/nvim-tree.lua",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("nvim-tree").setup({})
-    end,
-  })
+  use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
   use("lukas-reineke/indent-blankline.nvim")
 
   -- git helpers
   use("kdheepak/lazygit.nvim")
   use("tpope/vim-fugitive") -- Git integration
   use("shumphrey/fugitive-gitlab.vim")
-  use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim", }, })
+  use({ "lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim"  })
 
   -- go helpers
   use("fatih/vim-go")
