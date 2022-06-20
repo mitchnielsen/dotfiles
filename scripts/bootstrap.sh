@@ -33,6 +33,7 @@ asdf-install direnv latest
 asdf-install dive latest
 asdf-install dyff '1.4.5'
 asdf-install golang '1.16.14'
+asdf-install golangci-lint latest
 asdf-install helm '3.8.0'
 asdf-install jq latest
 asdf-install k9s '0.25.18'
