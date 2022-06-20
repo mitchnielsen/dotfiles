@@ -42,7 +42,7 @@ asdf-install kubectl '1.23.3'
 asdf-install kubectx '0.9.4'
 asdf-install kustomize '4.5.2'
 asdf-install lazygit latest
-asdf-install neovim latest
+asdf-install neovim nightly
 asdf-install oc latest
 asdf-install ripgrep latest
 asdf-install ruby '2.7.5'

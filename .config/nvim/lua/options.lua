@@ -3,7 +3,7 @@ local opt = vim.opt
 
 -- Decorations
 opt.signcolumn = "yes"
-opt.cmdheight = 1
+opt.cmdheight = 0
 opt.timeoutlen = 400
 opt.pumheight = 20
 opt.foldmethod = "manual"
@@ -24,7 +24,7 @@ opt.encoding = "UTF-8"
 opt.fileformat = "unix"
 opt.autoread = true -- reload files changed outside of vim
 opt.ruler = true
-opt.laststatus = 2
+opt.laststatus = 3
 opt.paste = false
 opt.errorbells = false
 opt.mouse = "a"
