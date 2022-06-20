@@ -6,6 +6,9 @@
 export EDITOR=$(which nvim)
 export KEYTIMEOUT=1 # Disable lag when using vi-mode
 
+# Custom scripts
+export PATH=$PATH:$HOME/bin
+
 # Golang
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin

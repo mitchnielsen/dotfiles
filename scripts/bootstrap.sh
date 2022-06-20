@@ -65,6 +65,10 @@ mkdir -p "$HOME/.config"
 rm "$HOME/.zshrc" || true
 ln -s "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
 
+# binaries
+mkdir -p "$HOME/bin"
+(cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
+
 # neovim
 nvim --headless +"lua require'pluginList'; require'packer'.sync()" +15sleep +qa
 mkdir -p "$HOME/go"
