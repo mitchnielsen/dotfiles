@@ -48,6 +48,7 @@ asdf-install ripgrep latest
 asdf-install ruby '2.7.5'
 asdf-install starship latest
 asdf-install stern latest
+asdf-install task latest
 asdf-install yq latest
 
 asdf reshim
