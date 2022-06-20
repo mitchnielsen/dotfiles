@@ -42,6 +42,7 @@ require("packer").startup(function(use)
       require("nvim-tree").setup({})
     end,
   })
+  use("lukas-reineke/indent-blankline.nvim")
 
   -- git helpers
   use("kdheepak/lazygit.nvim")
