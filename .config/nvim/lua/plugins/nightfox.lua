@@ -1,16 +1,8 @@
-require('nightfox').setup({
-  options = {
-    transparent = true,    -- Disable setting background
-    dim_inactive = false,   -- Non focused panes set to alternative background
-    styles = {
-      comments = "italic",
-      types = "italic",
-    },
-    inverse = {
-      visual = true,
-      search = true,
-    },
-  }
+local catppuccin = require("catppuccin")
+
+catppuccin.setup({
+  transparent_background = true,
 })
 
-vim.cmd("colorscheme nordfox")
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+vim.cmd[[colorscheme catppuccin]]
