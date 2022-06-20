@@ -17,10 +17,5 @@ require'treesitter-context'.setup{
             -- 'switch',
             -- 'case',
         },
-        -- Example for a specific filetype.
-        -- If a pattern is missing, *open a PR* so everyone can benefit.
-        --   rust = {
-        --       'impl_item',
-        --   },
     },
 }
