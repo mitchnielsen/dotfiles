@@ -40,6 +40,7 @@ require("packer").startup(function(use)
   use("takac/vim-commandcaps") -- takes care of caps typos
   use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
   use("lukas-reineke/indent-blankline.nvim")
+  use("tiagovla/scope.nvim")
 
   -- git helpers
   use("kdheepak/lazygit.nvim")
