@@ -101,7 +101,7 @@ font:
 window:
   startup_mode: Maximized
   decorations: buttonless
-  opacity: 0.95
+  opacity: 1.00
   dynamic_padding: true
   padding:
     x: 5
