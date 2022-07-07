@@ -21,7 +21,7 @@ matches:
       /label ~"workflow::ready for review"
 
   - trigger: "labell"
-    replace: /label ~"group::distribution" ~"section::enablement" ~"devops::enablement"
+    replace: /label ~"group::distribution" ~"section::enablement" ~"devops::systems"
 
   - trigger: "revieww"
     replace: |
