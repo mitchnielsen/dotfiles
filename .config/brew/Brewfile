@@ -38,6 +38,7 @@ cask "google-chrome"
 cask "karabiner-elements"
 cask "meetingbar"
 cask "notunes"
+cask "orion"
 cask "raycast"
 # cask "shottr" # replaced with CleanShotX
 cask "vagrant"
