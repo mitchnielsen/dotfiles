@@ -24,10 +24,7 @@ require("packer").startup(function(use)
   use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
   -- Theme
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin"
-  })
+  use("ellisonleao/gruvbox.nvim")
   use("nvim-lualine/lualine.nvim")
 
   -- Editor helpers

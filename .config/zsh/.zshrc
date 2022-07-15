@@ -16,7 +16,7 @@ export PATH=$PATH:$GOPATH/bin
 # Utilities
 export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number'
 export XDG_CONFIG_HOME="$HOME/.config"
-export BAT_THEME="Nord" # bat --list-themes
+export BAT_THEME="gruvbox-dark" # bat --list-themes
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
