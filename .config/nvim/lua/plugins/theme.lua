@@ -1,23 +1,18 @@
-local catppuccin = require("catppuccin")
+vim.o.background = "dark" -- or "light" for light mode
 
-catppuccin.setup({
-  compile = {
-    enabled = true,
-    path = vim.fn.stdpath "cache" .. "/catppuccin",
-  },
-  transparent_background = true,
-  integrations = {
-    indent_blankline = {
-      enabled = true,
-      colored_indent_levels = true,
-    },
-    nvimtree = {
-      enabled = true,
-      show_root = true,
-      transparent_panel = true,
-    },
-  },
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  overrides = {},
 })
 
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-vim.cmd[[colorscheme catppuccin]]
+vim.cmd("colorscheme gruvbox")
