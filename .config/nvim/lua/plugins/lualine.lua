@@ -5,7 +5,8 @@ require('lualine').setup({
     section_separators = '',
     -- globalstatus = true,
   },
-  sections = {
+  sections = {},
+  tabline = {
     lualine_a = {
       {
         'buffers',
@@ -19,18 +20,12 @@ require('lualine').setup({
         },
       },
     },
-    lualine_b = {
-      {
-        'filename',
-        file_status = true, -- display file status (readonly, modified)
-        path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
-        shorting_target = 40 -- shorten path to leave space in window
-      }
-    },
-    lualine_c = {'progress', 'location'},
+    lualine_b = {},
+    lualine_c = {},
 
     lualine_x = {{'diagnostics', sources = {'nvim_diagnostic'}}},
-    lualine_y = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'filetype'},
+    lualine_y = {'progress', 'location'},
     lualine_z = {'branch'}
   }
 })
