@@ -40,3 +40,23 @@ matches:
 
 
       </details>
+
+  - trigger: "manifestt"
+    replace: |
+      apiVersion: apps.gitlab.com/v1beta1
+      kind: GitLab
+      metadata:
+        name: gitlab
+      spec:
+        chart:
+          version: "$|$"
+        values:
+          global:
+            hosts:
+              domain: mnielsen.k8s-ft.win
+              externalIP: 35.227.120.173
+          certmanager-issuer:
+            email: mnielsen@gitlab.com
+
+  - trigger: ":tu"
+    replace: 👍
