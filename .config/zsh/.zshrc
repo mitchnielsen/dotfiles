@@ -61,10 +61,12 @@ if [[ -d "$HOME/google-cloud-sdk" ]]; then
 fi
 
 # Hook direnv into your shell.
-eval "$(direnv hook zsh)"
+# Slow
+# eval "$(direnv hook zsh)"
 
 # kubectl completion
-source <(kubectl completion zsh)
+# Slow
+# source <(kubectl completion zsh)
 
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
