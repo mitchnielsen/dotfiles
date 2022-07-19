@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Save image as a tarball
+docker save $1 > $1.tar
+
+# Use dive to inspect the tarball
+dive docker-archive://$1.tar
