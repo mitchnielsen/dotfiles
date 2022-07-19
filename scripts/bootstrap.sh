@@ -82,3 +82,13 @@ if [ ! -d "~/.zsh/zsh-syntax-highlighting" ]; then git clone https://github.com/
 if [ ! -d "~/.zsh/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions/; fi
 if [ ! -d "~/.zsh/zsh-history-substring-search" ]; then git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search/; fi
 if [ ! -d "~/.zsh/you-should-use" ]; then git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ~/.zsh/you-should-use; fi
+
+# MacOS settings
+# Change screenshot type to jpg for smaller filesize
+defaults write com.apple.screencapture type jpg
+# Show hidden app icons as transparent in the dock
+defaults write com.apple.Dock showhidden -bool TRUE
+# Faster Dock animation
+defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -int 0
+# Save settings
+killall Dock
