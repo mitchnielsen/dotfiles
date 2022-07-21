@@ -83,14 +83,13 @@ colors:
 
 font:
   normal:
-    family: "JetBrainsMono Nerd Font"
-    # family: "SFMono Nerd Font"
+    family: "SFMono Nerd Font"
     style: Regular
   bold:
-    family: "JetBrainsMono Nerd Font"
+    family: "SFMono Nerd Font"
     style: Bold
   italic:
-    family: "JetBrainsMono Nerd Font"
+    family: "SFMono Nerd Font"
     style: Italic
   size: 15
   # Thin stroke font rendering (macOS only)
