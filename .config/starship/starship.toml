@@ -37,7 +37,7 @@ error_symbol = '[\$](red)'
 [directory]
 truncation_length = 8
 truncate_to_repo = false
-style = "blue"
+style = "yellow"
 
 [git_status]
 ahead = "⇡${count}"
@@ -57,4 +57,4 @@ format = '\([$state($progress_current/$progress_total)]($style)\)'
 
 [kubernetes]
 disabled = false
-format = 'in [☸ $context:$namespace](green) '
+format = 'in [☸ $context:$namespace](blue) '
