@@ -20,11 +20,10 @@ require('lualine').setup({
         },
       },
     },
-    lualine_b = {},
+    lualine_b = {{'diagnostics', sources = {'nvim_diagnostic'}}},
     lualine_c = {},
 
-    lualine_x = {{'diagnostics', sources = {'nvim_diagnostic'}}},
-    lualine_y = {'filetype'},
+    lualine_x = {},
     lualine_y = {'progress', 'location'},
     lualine_z = {'branch'}
   }
