@@ -182,7 +182,7 @@ alias hk='helm upgrade --install --set certmanager-issuer.email=no@no.com gitlab
 alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirname | sort -u | fzf)'
 alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator'
 alias cdc='cd ~/code/gitlab-org/charts/gitlab'
-alias note='(cd /Users/mnielsen/Library/Mobile Documents/com~apple~CloudDocs && nvim Dashboard.md)'
+alias note='(cd /Users/mnielsen/obsidian/GitLab && nvim Dashboard.md)'
 
 # ===================
 # Cursor settings
