@@ -49,7 +49,6 @@ bindkey '^E' end-of-line
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.zsh/you-should-use/you-should-use.plugin.zsh
 
 [[ -f "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
 [[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
