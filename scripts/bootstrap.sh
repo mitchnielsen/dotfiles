@@ -94,3 +94,15 @@ defaults write com.apple.Dock showhidden -bool TRUE
 defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -int 0
 # Save settings
 killall Dock
+
+# git settings
+git config --global user.name "Mitchell Nielsen"
+git config --global user.email "mnielsen@gitlab.com"
+git config --global pull.rebase false # don't automatically rebase on `git pull`
+git config --global fetch.prune true # delete branches that no longer exist upstream (merged)
+git config --global rebase.autosquash true # automatically squash fixup/squash commits
+git config --global alias.co checkout
+git config --global alias.cm 'commit --verbose'
+git config --global alias.st status
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
