@@ -41,7 +41,7 @@ mkdir certs
 cd certs
 
 # Setup environment
-export NAMESPACE=${NAMESPACE:-default}
+export NAMESPACE=${NAMESPACE:-gitlab}
 export RELEASE=${RELEASE:-gitlab}
 export CREATE=${CREATE:-no}
 
