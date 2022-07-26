@@ -31,15 +31,6 @@
 #     secretName: gitlab-internal-tls
 #     caSecretName: default/gitlab-internal-tls-ca
 
-if [ -d "./certs/" ]; then
-  echo './certs directory already exists'
-  exit 0
-fi
-
-# Make and change into a working directory
-mkdir certs
-cd certs
-
 # Setup environment
 export NAMESPACE=${NAMESPACE:-gitlab}
 export RELEASE=${RELEASE:-gitlab}
@@ -48,23 +39,35 @@ export CREATE=${CREATE:-no}
 ## fail, from here on out, if variable is unset
 set -u
 
-# Export known expected patterns for SAN
-export CERT_SANS="*.${NAMESPACE}.svc,${RELEASE}-metrics.${NAMESPACE}.svc,*.${RELEASE}-gitaly.${NAMESPACE}.svc"
+function generate() {
+  # Make and change into a working directory
+  mkdir certs
+  cd certs
 
-# Generate default CA config
-cfssl print-defaults config > ca-config.json
+  # Export known expected patterns for SAN
+  export CERT_SANS="*.${NAMESPACE}.svc,${RELEASE}-metrics.${NAMESPACE}.svc,*.${RELEASE}-gitaly.${NAMESPACE}.svc"
 
-# Generate a CA
-echo '{"CN":"'${RELEASE}.${NAMESPACE}.internal.ca'","key":{"algo":"ecdsa","size":256}}' | \
-  cfssl gencert -initca - | \
-  cfssljson -bare ca -
+  # Generate default CA config
+  cfssl print-defaults config > ca-config.json
 
-# Generate certificate
-echo '{"CN":"'${RELEASE}.${NAMESPACE}.internal'","key":{"algo":"ecdsa","size":256}}' | \
-  cfssl gencert -config=ca-config.json -ca=ca.pem -ca-key=ca-key.pem -profile www -hostname="${CERT_SANS}" - |\
-  cfssljson -bare ${RELEASE}-services
+  # Generate a CA
+  echo '{"CN":"'${RELEASE}.${NAMESPACE}.internal.ca'","key":{"algo":"ecdsa","size":256}}' | \
+    cfssl gencert -initca - | \
+    cfssljson -bare ca -
 
-echo "generated in ./certs/"
+  # Generate certificate
+  echo '{"CN":"'${RELEASE}.${NAMESPACE}.internal'","key":{"algo":"ecdsa","size":256}}' | \
+    cfssl gencert -config=ca-config.json -ca=ca.pem -ca-key=ca-key.pem -profile www -hostname="${CERT_SANS}" - |\
+    cfssljson -bare ${RELEASE}-services
+
+  echo "generated in ./certs/"
+}
+
+if [ -d "./certs/" ]; then
+  echo './certs directory already exists'
+else
+  generate
+fi
 
 # Load certificates into K8s
 if [ "${CREATE}" = "yes" ]; then
