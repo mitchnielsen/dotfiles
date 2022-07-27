@@ -54,6 +54,5 @@ require("packer").startup(function(use)
 
   -- Other helpers
   use("ChartaDev/charta.vim") -- learn new codebases and share explanations
-  use("ojroques/vim-oscyank") -- ability to yank to clipboard in VM
   use("nathom/filetype.nvim") -- speed up load time
 end)

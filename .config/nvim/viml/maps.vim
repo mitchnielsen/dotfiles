@@ -3,11 +3,9 @@ inoremap <silent><C-a> <C-o>0
 " Go to the ending of the line in insert mode
 inoremap <silent><C-b> <C-o>$
 " Yank from the system clipboard(in normal mode)
-" nnoremap <silent><leader>y "*y
-nnoremap <silent><leader>y :OSCYank<CR>
+nnoremap <silent><leader>y "*y
 " Yank from the system clipboard(in visual mode)
-" vnoremap <silent><leader>y "*y
-vnoremap <silent><leader>y :OSCYank<CR>
+vnoremap <silent><leader>y "*y
 " Cut from the system clipboard(in normal mode)
 nnoremap <silent><leader>x "*x
 " Cut from the system clipboard(in visual mode)
