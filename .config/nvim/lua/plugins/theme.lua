@@ -1,6 +1,10 @@
 local catppuccin = require("catppuccin")
 
 catppuccin.setup({
+  compile = {
+    enabled = true,
+    path = vim.fn.stdpath "cache" .. "/catppuccin",
+  },
   transparent_background = true,
 })
 
