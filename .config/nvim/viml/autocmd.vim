@@ -6,6 +6,9 @@ autocmd BufNewFile,BufRead *.tpl set syntax=yaml
 autocmd BufNewFile,BufRead *.yaml set syntax=yaml
 autocmd BufNewFile,BufRead *.yml set syntax=yaml
 
+" Set spelling and textwidth for git commits
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
 " Building, running, testing, etc.
 autocmd FileType ruby map <leader>r :w<CR>:exec '!ruby' shellescape(@%, 1)<CR>
 autocmd FileType python map <leader>r :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
