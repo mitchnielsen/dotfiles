@@ -57,6 +57,3 @@ matches:
               externalIP: 35.227.120.173
           certmanager-issuer:
             email: mnielsen@gitlab.com
-
-  - trigger: ":tu"
-    replace: 👍
