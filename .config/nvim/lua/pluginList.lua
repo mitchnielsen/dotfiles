@@ -22,10 +22,7 @@ require("packer").startup(function(use)
   use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
   -- Theme
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin"
-  })
+  use({ "catppuccin/nvim", as = "catppuccin" })
   use("nvim-lualine/lualine.nvim")
 
   -- Editor helpers
@@ -44,7 +41,7 @@ require("packer").startup(function(use)
   use("kdheepak/lazygit.nvim")
   use("tpope/vim-fugitive") -- Git integration
   use("shumphrey/fugitive-gitlab.vim")
-  use({ "lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim"  })
+  use({ "lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim" })
 
   -- go helpers
   use("fatih/vim-go")
