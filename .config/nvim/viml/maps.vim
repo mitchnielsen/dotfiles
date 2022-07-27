@@ -34,12 +34,6 @@ vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" Lspsaga
-" Show hovering documentation
-nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-" Rename symbols
-nnoremap <silent>gR <cmd>lua require('lspsaga.rename').rename()<CR>
-
 " LSP
 " References
 nnoremap <silent>gr <cmd>lua vim.lsp.buf.references()<CR>
@@ -47,6 +41,10 @@ nnoremap <silent>gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent>gi <cmd>lua vim.lsp.buf.implementation()<CR>
 " definition
 nnoremap <silent>gD <cmd>lua vim.lsp.buf.definition()<CR>
+" Show hovering documentation
+nnoremap <silent>K <cmd>lua vim.lsp.buf.hover()<CR>
+" Rename symbols
+nnoremap <silent>gR <cmd>lua vim.lsp.buf.rename()<CR>
 
 " Show full error
 nnoremap <silent>ge <cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>

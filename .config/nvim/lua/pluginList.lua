@@ -8,7 +8,6 @@ require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- LSP
-  use("glepnir/lspsaga.nvim")
   use("nvim-treesitter/nvim-treesitter")
   use("nvim-treesitter/nvim-treesitter-context")
   use("p00f/nvim-ts-rainbow")
