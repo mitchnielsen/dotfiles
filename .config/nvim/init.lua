@@ -5,6 +5,7 @@ require("options")
 require("lsp-config")
 require("pluginList")
 
+require("plugins.go")
 require("plugins.theme")
 require("plugins.nvim-cmp")
 require("plugins.context")

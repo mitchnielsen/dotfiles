@@ -43,6 +43,6 @@ require("packer").startup(function(use)
   use({ "lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim" })
 
   -- go helpers
-  use("fatih/vim-go")
+  use("ray-x/go.nvim")
   use("vim-test/vim-test")
 end)
