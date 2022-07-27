@@ -22,7 +22,7 @@ require('lualine').setup({
       },
     },
     lualine_b = {{'diagnostics', sources = {'nvim_diagnostic'}}},
-    lualine_c = {},
+    lualine_c = {'diff'},
 
     lualine_x = {},
     lualine_y = {'progress', 'location'},
