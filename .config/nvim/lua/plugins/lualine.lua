@@ -6,6 +6,7 @@ require('lualine').setup({
     globalstatus = true,
   },
   sections = {},
+  inactive_sections = {},
   tabline = {
     lualine_a = {
       {
