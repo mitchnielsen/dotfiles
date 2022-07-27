@@ -28,7 +28,6 @@ require("packer").startup(function(use)
   -- Editor helpers
   use { "ibhagwan/fzf-lua", requires = "kyazdani42/nvim-web-devicons" }
   use("editorconfig/editorconfig-vim")
-  use("iamcco/markdown-preview.nvim")
   use("machakann/vim-highlightedyank") -- Highlight yanked line
   use("tpope/vim-commentary")
   use("tpope/vim-unimpaired") --Simple mappings
@@ -46,8 +45,4 @@ require("packer").startup(function(use)
   -- go helpers
   use("fatih/vim-go")
   use("vim-test/vim-test")
-
-  -- Other helpers
-  use("ChartaDev/charta.vim") -- learn new codebases and share explanations
-  use("nathom/filetype.nvim") -- speed up load time
 end)
