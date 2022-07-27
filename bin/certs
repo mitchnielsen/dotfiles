@@ -1,78 +1,66 @@
 #!/bin/bash
-
 # Source: https://gitlab.com/gitlab-org/charts/gitlab/-/issues/3387#note_1029971225
-# Shell script using `cfssl` and `kubectl` to generate CA and certificate for internal TLS. This certificate can be used for:
-# -   NGINX => services
-# -   pods <=> services (webservice, registry, gitaly, ...)
-# -   prometheus => metrics (has `RELEASE-metrics.NAMESPACE.svc`)
-# Example values file:
-#
-# global:
-#   certificates:
-#     customCAs:
-#       - secret: gitlab-internal-tls-ca
-#   # Pending https://gitlab.com/gitlab-org/charts/gitlab/-/merge_requests/2673
-#   ## tell Registry API URL mechanisms to use https
-#   hosts:
-#     registry:
-#       protocol: https
-# gitlab:
-#   webservice:
-#     workhorse:
-#       tls:
-#         enabled: true
-#         secretName: gitlab-internal-tls # type: kubernetes.io/tls
-#         caSecretName: default/gitlab-internal-tls-ca
-# # Pending https://gitlab.com/gitlab-org/charts/gitlab/-/merge_requests/2673
-# registry:
-#   ## configure TLS
-#   tls:
-#     enabled: true
-#     secretName: gitlab-internal-tls
-#     caSecretName: default/gitlab-internal-tls-ca
+
+set -eu
 
 # Setup environment
 export NAMESPACE=${NAMESPACE:-gitlab}
 export RELEASE=${RELEASE:-gitlab}
 export CREATE=${CREATE:-no}
+export CERT_SANS=${CERT_SANS:-"*.${NAMESPACE}.svc,${RELEASE}-metrics.${NAMESPACE}.svc,*.${RELEASE}-gitaly.${NAMESPACE}.svc"}
+export CN=${CN:-"${RELEASE}.${NAMESPACE}.internal"}
 
-## fail, from here on out, if variable is unset
-set -u
+# Setup working directory
+mkdir -p certs
+cd certs
 
-function generate() {
-  # Make and change into a working directory
-  mkdir certs
-  cd certs
+# Generate default CA config
+cfssl print-defaults config > ca-config.json
 
-  # Export known expected patterns for SAN
-  export CERT_SANS="*.${NAMESPACE}.svc,${RELEASE}-metrics.${NAMESPACE}.svc,*.${RELEASE}-gitaly.${NAMESPACE}.svc"
+# Generate a CA
+echo '{"CN":"'${CN}.ca'","key":{"algo":"ecdsa","size":256}}' | \
+  cfssl gencert -initca - | \
+  cfssljson -bare ca -
 
-  # Generate default CA config
-  cfssl print-defaults config > ca-config.json
+# Generate certificate
+echo '{"CN":"'${CN}'","key":{"algo":"ecdsa","size":256}}' | \
+  cfssl gencert -config=ca-config.json -ca=ca.pem -ca-key=ca-key.pem -profile www -hostname="${CERT_SANS}" - |\
+  cfssljson -bare ${RELEASE}-services
 
-  # Generate a CA
-  echo '{"CN":"'${RELEASE}.${NAMESPACE}.internal.ca'","key":{"algo":"ecdsa","size":256}}' | \
-    cfssl gencert -initca - | \
-    cfssljson -bare ca -
-
-  # Generate certificate
-  echo '{"CN":"'${RELEASE}.${NAMESPACE}.internal'","key":{"algo":"ecdsa","size":256}}' | \
-    cfssl gencert -config=ca-config.json -ca=ca.pem -ca-key=ca-key.pem -profile www -hostname="${CERT_SANS}" - |\
-    cfssljson -bare ${RELEASE}-services
-
-  echo "generated in ./certs/"
-}
-
-if [ -d "./certs/" ]; then
-  echo './certs directory already exists'
-else
-  generate
-fi
+echo "generated in ./certs/"
 
 # Load certificates into K8s
 if [ "${CREATE}" = "yes" ]; then
-  kubectl -n ${NAMESPACE} create secret tls ${RELEASE}-internal-tls --cert=${RELEASE}-services.pem --key=${RELEASE}-services-key.pem
-  kubectl -n ${NAMESPACE} create secret generic ${RELEASE}-internal-tls-ca --from-file=ca.crt=ca.pem
+  kubectl -n ${NAMESPACE} create secret tls ${RELEASE}-tls --cert=${RELEASE}-services.pem --key=${RELEASE}-services-key.pem
+
+  # As a Secret
+  kubectl -n ${NAMESPACE} create secret generic ${RELEASE}-tls-ca --from-file=ca.crt=ca.pem
+
+  # Or, as a ConfigMap
+  kubectl -n ${NAMESPACE} create configmap ${RELEASE}-tls-ca --from-file=ca.pem
 else
   echo 'skipping Secret creation, set CREATE=yes to enable'
 fi
+
+# Generate example values file
+cat <<EOF > custom-certs.yaml
+global:
+  certificates:
+    customCAs:
+      - secret: gitlab-tls-ca
+  hosts:
+    registry:
+      protocol: https
+gitlab:
+  webservice:
+    workhorse:
+      tls:
+        enabled: true
+        secretName: gitlab-tls # type: kubernetes.io/tls
+        caSecretName: default/gitlab-tls-ca
+registry:
+  tls:
+    enabled: true
+    secretName: gitlab-tls
+    caSecretName: default/gitlab-tls-ca
+EOF
