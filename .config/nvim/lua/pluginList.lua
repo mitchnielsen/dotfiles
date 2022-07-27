@@ -19,7 +19,6 @@ require("packer").startup(function(use)
   use("hrsh7th/vim-vsnip")
   use("ray-x/lsp_signature.nvim")
   use("jose-elias-alvarez/null-ls.nvim")
-  use("simrat39/symbols-outline.nvim")
   use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
   -- Theme

@@ -56,9 +56,6 @@ nnoremap <silent>[e <cmd>lua vim.diagnostic.goto_prev()<CR>
 " Toggle error menu
 nnoremap <silent><leader>h :TroubleToggle<CR>
 
-" Show symbols outline
-nnoremap <silent><leader>so :SymbolsOutline<CR>
-
 " Searching
 nnoremap <leader>rg :FzfLua live_grep_glob<CR>
 nnoremap <leader>rG :FzfLua live_grep_resume<CR>
