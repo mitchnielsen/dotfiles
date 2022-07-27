@@ -3,7 +3,7 @@ require('lualine').setup({
     theme = 'auto', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
     component_separators = '',
     section_separators = '',
-    -- globalstatus = true,
+    globalstatus = true,
   },
   sections = {},
   tabline = {
