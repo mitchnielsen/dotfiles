@@ -40,7 +40,7 @@ nnoremap <silent>gr <cmd>lua vim.lsp.buf.references()<CR>
 " Implementation
 nnoremap <silent>gi <cmd>lua vim.lsp.buf.implementation()<CR>
 " definition
-nnoremap <silent>gD <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent>gd <cmd>lua vim.lsp.buf.definition()<CR>
 " Show hovering documentation
 nnoremap <silent>K <cmd>lua vim.lsp.buf.hover()<CR>
 " Rename symbols
