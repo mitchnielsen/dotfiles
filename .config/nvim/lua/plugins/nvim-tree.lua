@@ -1,4 +1,5 @@
 require'nvim-tree'.setup {
+  ignore_buffer_on_setup = true,
   filters = {
     dotfiles = false,
   },
