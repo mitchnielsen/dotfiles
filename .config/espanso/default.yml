@@ -4,6 +4,9 @@
 # You can refer to the official documentation:
 # https://espanso.org/docs/
 
+# Helps avoid conflicts with VIA keymaps
+toggle_key: RIGHT_CTRL
+
 # Matches are the substitution rules, when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
