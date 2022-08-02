@@ -38,6 +38,9 @@ bindkey -v
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
+# Delete backward by one word or letter using ALT + BCKSP
+bindkey '^[^?' backward-kill-word
+
 # Use emacs-like shortcuts with vi-mode
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
