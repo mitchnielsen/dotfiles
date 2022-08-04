@@ -5,91 +5,105 @@ Simple bookmarks page to be used as a new tab page in the browser.
 Easier than exporting and importing bookmarks each time I switch :)
 -->
 
-<title>Bookmarks</title>
 <html>
+  <title>Bookmarks</title>
+
+  <style>
+    body {
+      color: white;
+      background-color: #202020;
+      text-align: center;
+    }
+
+    a:link, a:visited {
+      color: white;
+      display: inline-block;
+    }
+
+    a:hover, a:active {
+      background-color: gray;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .column {
+      flex: 50%;
+    }
+    
+  </style>
+
   <body>
+    <div class="row">
 
-    <!-- More frequent -->
-    <div style="float: left; padding-left: 100px;">
+      <!-- More frequent -->
+      <div class="column">
 
-      <h2>Action items</h2>
-      <ul>
-        <li><a href="https://gitlab.com/dashboard/issues?scope=all&state=opened&assignee_username=mnielsen&label_name[]=Deliverable">My deliverables</a></li>
-        <li><a href="https://gitlab.com/dashboard/merge_requests?scope=all&state=opened&assignee_username=mnielsen&draft=yes">My draft merge requests</a></li>
-        <li><a href="https://gitlab.com/dashboard/merge_requests?state=opened&reviewer_username=mnielsen&ampnot%5Bapproved_by_usernames%5D%5B%5D=mnielsen">My reviews</a></li>
-      </ul>
+        <h2>Action items</h2>
+        <a href="https://gitlab.com/dashboard/issues?scope=all&state=opened&assignee_username=mnielsen&label_name[]=Deliverable">My deliverables</a><br>
+        <a href="https://gitlab.com/dashboard/merge_requests?scope=all&state=opened&assignee_username=mnielsen&draft=yes">My draft merge requests</a><br>
+        <a href="https://gitlab.com/dashboard/merge_requests?state=opened&reviewer_username=mnielsen&ampnot%5Bapproved_by_usernames%5D%5B%5D=mnielsen">My reviews</a>
 
-      <h2>Boards</h2>
-      <ul>
-        <li><a href="https://gitlab-org.gitlab.io/distribution/monitoring/mrs/">Available reviews</a></li>
-        <li><a href="https://gitlab.com/groups/gitlab-org/-/boards/2415614?label_name%5B%5D=Deliverable&label_name%5B%5D=group::distribution&assignee_id=None&milestone_title=15.3">Deliverables board</a></li>
-        <li><a href="https://gitlab.com/groups/gitlab-org/-/issues?sort=created_date&state=opened&label_name[]=group::distribution&label_name[]=maintainer-discussion">Maintainer discussion board</a></li>
-        <li><a href="https://gitlab.com/groups/gitlab-org/-/boards/4076077?label_name%5B%5D=pipeline%20failure">Pipeline failures</a></li>
-      </ul>
+        <h2>Boards</h2>
+        <a href="https://gitlab-org.gitlab.io/distribution/monitoring/mrs/">Available reviews</a><br>
+        <a href="https://gitlab.com/groups/gitlab-org/-/boards/2415614?label_name%5B%5D=Deliverable&label_name%5B%5D=group::distribution&assignee_id=None&milestone_title=15.3">Deliverables board</a><br>
+        <a href="https://gitlab.com/groups/gitlab-org/-/issues?sort=created_date&state=opened&label_name[]=group::distribution&label_name[]=maintainer-discussion">Maintainer discussion board</a><br>
+        <a href="https://gitlab.com/groups/gitlab-org/-/boards/4076077?label_name%5B%5D=pipeline%20failure">Pipeline failures</a>
 
-      <h2>Projects</h2>
-      <ul>
-        <li><a href="https://gitlab.com/gitlab-org/charts/gitlab">GitLab Charts</a></li>
-        <li><a href="https://gitlab.com/gitlab-org/cloud-native/gitlab-operator">GitLab Operator</a></li>
-        <li><a href="https://gitlab.com/gitlab-org/build/CNG">CNG</a></li>
-      </ul>
+        <h2>Projects</h2>
+        <a href="https://gitlab.com/gitlab-org/charts/gitlab">GitLab Charts</a><br>
+        <a href="https://gitlab.com/gitlab-org/cloud-native/gitlab-operator">GitLab Operator</a><br>
+        <a href="https://gitlab.com/gitlab-org/build/CNG">CNG</a>
 
-      <h2>Google Docs</h2>
-      <ul>
-        <li><a href="https://docs.google.com/document/d/1WFm4OzE5vh73qylWSSMjaptVSDiYICRs9ukHDWtRjtE/edit">Distribution weekly</a>
-        <li><a href="https://docs.google.com/document/d/132dFEMxWeZ21FnOnMb-UcJ7ZrorF_e-SM2iS05W8BtI/edit">Distribution Maintainers Call</a>
-        <li><a href="https://docs.google.com/document/d/1KeGxTPkccDeJdBFvtPB1fzhvjXc7FmckvzCqfrYcLHM/edit">Distribution Demo Notes</a>
-        <li><a href="https://docs.google.com/document/d/1P1fC18IWv_fNuMhC0sHHVAkiL9Eg5MlW_pybBlUr2c8/edit">DJ 1:1</a>
-        <li><a href="https://docs.google.com/document/d/127w9TmlTdtzaJ7kMtF1zOqcmfP84Gv9EeKa6fQPiF-s/edit">Jason 1:1</a>
-      </ul>
+        <h2>Google Docs</h2>
+        <a href="https://docs.google.com/document/d/1WFm4OzE5vh73qylWSSMjaptVSDiYICRs9ukHDWtRjtE/edit">Distribution weekly</a><br>
+        <a href="https://docs.google.com/document/d/132dFEMxWeZ21FnOnMb-UcJ7ZrorF_e-SM2iS05W8BtI/edit">Distribution Maintainers Call</a><br>
+        <a href="https://docs.google.com/document/d/1KeGxTPkccDeJdBFvtPB1fzhvjXc7FmckvzCqfrYcLHM/edit">Distribution Demo Notes</a><br>
+        <a href="https://docs.google.com/document/d/1P1fC18IWv_fNuMhC0sHHVAkiL9Eg5MlW_pybBlUr2c8/edit">DJ 1:1</a><br>
+        <a href="https://docs.google.com/document/d/127w9TmlTdtzaJ7kMtF1zOqcmfP84Gv9EeKa6fQPiF-s/edit">Jason 1:1</a>
 
-      <h2>Helpful</h2>
-      <ul>
-        <li><a href="https://gitlab-org.gitlab.io/gitlab-roulette">Workload review dashboard</a></li>
-        <li><a href="https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/#start">GitLab upgrade path calculator</a></li>
-        <li><a href="https://endoflife.date/kubernetes">Kubernetes end of life dates</a>
-      </ul>
+        <h2>Helpful</h2>
+        <a href="https://gitlab-org.gitlab.io/gitlab-roulette">Workload review dashboard</a><br>
+        <a href="https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/#start">GitLab upgrade path calculator</a><br>
+        <a href="https://endoflife.date/kubernetes">Kubernetes end of life dates</a>
 
-    </div>
+      </div>
 
-    <!-- Less frequent -->
-    <div style="float: right; padding-right: 100px;">
+      <!-- Less frequent -->
+      <div class="column">
 
-      <h2>GitLab</h2>
-      <ul>
-        <li><a href="https://leipert-projects.gitlab.io/better-team-page/statistics/">better-team-page</a>
-        <li><a href="https://docs.gitlab.com/ee/development/documentation/styleguide.html#note">Documentation Style Guide</a>
-        <li><a href="https://gitlab.greenhouse.io/dashboard">Greenhouse</a>
-        <li><a href="https://my.cigna.com/web/secure/consumer/home">Cigna</a>
-        <li><a href="https://gitlab.edcast.com/log_in?auto_sso=true">GitLab Learn</a>
-        <li><a href="https://app.periscopedata.com/app/gitlab/428908/New-GitLab-Installs-by-Installation-Type">Installation type chart</a>
-        <li><a href="https://about.gitlab.com/handbook/engineering/development/enablement/distribution/">Distribution Build/Deploy</a>
-      </ul>
+        <h2>GitLab</h2>
+        <a href="https://leipert-projects.gitlab.io/better-team-page/statistics/">better-team-page</a>
+        <a href="https://docs.gitlab.com/ee/development/documentation/styleguide.html#note">Documentation Style Guide</a><br>
+        <a href="https://gitlab.greenhouse.io/dashboard">Greenhouse</a><br>
+        <a href="https://my.cigna.com/web/secure/consumer/home">Cigna</a><br>
+        <a href="https://gitlab.edcast.com/log_in?auto_sso=true">GitLab Learn</a><br>
+        <a href="https://app.periscopedata.com/app/gitlab/428908/New-GitLab-Installs-by-Installation-Type">Installation type chart</a><br>
+        <a href="https://about.gitlab.com/handbook/engineering/development/enablement/distribution/">Distribution Build/Deploy</a>
 
-      <h2>Cloud</h2>
-      <ul>
-        <li><a href="https://console.cloud.google.com/getting-started?pli=1">GCP</a>
-        <li><a href="https://console.cloud.google.com/getting-started?project=mnielsen-2e27a441">GCP - mnielsen sandbox</a>
-        <li><a href="https://console.cloud.google.com/getting-started?project=cloud-native-182609">GCP - Cloud Native</a>
-        <li><a href="https://gitlabsandbox.cloud/cloud">Cloud Sandbox</a>
-        <li><a href="https://us-east-1.signin.aws.amazon.com/">AWS</a>
-      </ul>
+        <h2>Cloud</h2>
+        <a href="https://console.cloud.google.com/getting-started?pli=1">GCP</a><br>
+        <a href="https://console.cloud.google.com/getting-started?project=mnielsen-2e27a441">GCP - mnielsen sandbox</a><br>
+        <a href="https://console.cloud.google.com/getting-started?project=cloud-native-182609">GCP - Cloud Native</a><br>
+        <a href="https://gitlabsandbox.cloud/cloud">Cloud Sandbox</a><br>
+        <a href="https://us-east-1.signin.aws.amazon.com/">AWS</a>
 
-      <h2>Reference</h2>
-      <ul>
-        <li><a href="https://app.periscopedata.com/app/gitlab/428908/GitLab-Downloads-by-Installation-Type">GitLab Downloads by Installation Type</a>
-        <li><a href="https://app.periscopedata.com/app/gitlab/576886/New-Enablement-Section-Overview-Dashboard">Enablement Dashboard</a>
-        <li><a href="https://gitlab.com/gitlab-org/release/docs/-/blob/master/general/security/developer.md">Security Release Documentation</a>
-        <li><a href="https://about.gitlab.com/handbook/developer-onboarding/#working-on-gitlab-ee">GitLab licenses</a>
-        <li><a href="https://about.gitlab.com/handbook/engineering/career-development/matrix/engineering/development/">Development Department Career Framework</a>
-        <li><a href="https://www.linkedin.com/learning/me?accountId=2255073&u=2255073&success=true&authUUID=F6%2FWR9DaTG21sGsm5lsksQ%3D%3D">LinkedIn Learning</a>
-      </ul>
+        <h2>Reference</h2>
+        <a href="https://app.periscopedata.com/app/gitlab/428908/GitLab-Downloads-by-Installation-Type">GitLab Downloads by Installation Type</a><br>
+        <a href="https://app.periscopedata.com/app/gitlab/576886/New-Enablement-Section-Overview-Dashboard">Enablement Dashboard</a><br>
+        <a href="https://gitlab.com/gitlab-org/release/docs/-/blob/master/general/security/developer.md">Security Release Documentation</a><br>
+        <a href="https://about.gitlab.com/handbook/developer-onboarding/#working-on-gitlab-ee">GitLab licenses</a><br>
+        <a href="https://about.gitlab.com/handbook/engineering/career-development/matrix/engineering/development/">Development Department Career Framework</a><br>
+        <a href="https://www.linkedin.com/learning/me?accountId=2255073&u=2255073&success=true&authUUID=F6%2FWR9DaTG21sGsm5lsksQ%3D%3D">LinkedIn Learning</a>
 
-      <h2>Golang</h2>
-      <ul>
-        <li><a href="https://quii.gitbook.io/learn-go-with-tests/">Learn Go with tests</a>
-        <li><a href="https://github.com/golang/go/wiki/CodeReviewComments#receiver-type">Code Review Comments</a>
-      </ul>
+        <h2>Golang</h2>
+        <a href="https://quii.gitbook.io/learn-go-with-tests/">Learn Go with tests</a><br>
+        <a href="https://github.com/golang/go/wiki/CodeReviewComments#receiver-type">Code Review Comments</a>
+
+      </div>
 
     </div>
   </body>
