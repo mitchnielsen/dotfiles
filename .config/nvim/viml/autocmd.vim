@@ -16,10 +16,5 @@ autocmd FileType go map <leader>r :w<CR>:exec '!go run' shellescape(@%, 1)<CR>
 autocmd FileType go map <leader>t :w<CR>:exec '!go test'<CR>
 autocmd FileType sh map <leader>r :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 
-" Highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red ctermfg=white guibg=red
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-
 " Spacing
 autocmd FileType make setlocal noexpandtab
