@@ -55,10 +55,10 @@ matches:
       spec:
         chart:
           version: "$|$"
-        values:
-          global:
-            hosts:
-              domain: mnielsen.k8s-ft.win
-              externalIP: 35.227.120.173
-          certmanager-issuer:
-            email: mnielsen@gitlab.com
+          values:
+            global:
+              hosts:
+                domain: gke.mnielsen-sandbox.com
+                externalIP: 34.123.173.205
+            certmanager-issuer:
+              email: mnielsen@gitlab.com
