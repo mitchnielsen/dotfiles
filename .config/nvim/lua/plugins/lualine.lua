@@ -1,6 +1,6 @@
 require('lualine').setup({
   options = {
-    theme = 'auto', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
+    theme = 'base16', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
     component_separators = '',
     section_separators = '',
     globalstatus = true,

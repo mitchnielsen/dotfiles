@@ -1,6 +1,5 @@
 " Colors
 syntax enable
-set background=dark
 
 " https://github.com/alacritty/alacritty/issues/109#issuecomment-440353106
 " https://jdhao.github.io/2018/10/19/tmux_nvim_true_color/

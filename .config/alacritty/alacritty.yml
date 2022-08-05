@@ -4,30 +4,39 @@ env:
   TERM: xterm-256color
 
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
+# Colors (Base16 Default Dark)
 colors:
+  # Default colors
   primary:
-    background: '0x282828'
-    foreground: '0xdfbf8e'
+    background: '#000000' # pure black, was '#181818'
+    foreground: '#d8d8d8'
 
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '#d8d8d8'
+    cursor: '#d8d8d8'
+
+  # Normal colors
   normal:
-    black:   '0x665c54'
-    red:     '0xea6962'
-    green:   '0xa9b665'
-    yellow:  '0xe78a4e'
-    blue:    '0x7daea3'
-    magenta: '0xd3869b'
-    cyan:    '0x89b482'
-    white:   '0xdfbf8e'
+    black:   '#181818'
+    red:     '#ab4642'
+    green:   '#a1b56c'
+    yellow:  '#f7ca88'
+    blue:    '#7cafc2'
+    magenta: '#ba8baf'
+    cyan:    '#86c1b9'
+    white:   '#d8d8d8'
 
+  # Bright colors
   bright:
-    black:   '0x928374'
-    red:     '0xea6962'
-    green:   '0xa9b665'
-    yellow:  '0xe3a84e'
-    blue:    '0x7daea3'
-    magenta: '0xd3869b'
-    cyan:    '0x89b482'
-    white:   '0xdfbf8e'
+    black:   '#585858'
+    red:     '#ab4642'
+    green:   '#a1b56c'
+    yellow:  '#f7ca88'
+    blue:    '#7cafc2'
+    magenta: '#ba8baf'
+    cyan:    '#86c1b9'
+    white:   '#f8f8f8'
 
 font:
   normal:

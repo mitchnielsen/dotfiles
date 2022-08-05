@@ -22,8 +22,8 @@ require("packer").startup(function(use)
   use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
   -- Theme
-  use("ellisonleao/gruvbox.nvim")
   use("nvim-lualine/lualine.nvim")
+  use("RRethy/nvim-base16")
 
   -- Editor helpers
   use { "ibhagwan/fzf-lua", requires = "kyazdani42/nvim-web-devicons" }
