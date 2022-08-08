@@ -24,6 +24,7 @@ require("packer").startup(function(use)
   -- Theme
   use("nvim-lualine/lualine.nvim")
   use("RRethy/nvim-base16")
+  use("norcalli/nvim-colorizer.lua")
 
   -- Editor helpers
   use { "ibhagwan/fzf-lua", requires = "kyazdani42/nvim-web-devicons" }
