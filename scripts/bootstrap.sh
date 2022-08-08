@@ -28,7 +28,6 @@ function asdf-install () {
 }
 
 asdf-install awscli latest
-asdf-install bat latest
 asdf-install cfssl latest
 asdf-install direnv latest
 asdf-install dive latest
