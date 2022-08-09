@@ -43,4 +43,7 @@ require("packer").startup(function(use)
   -- go helpers
   use("ray-x/go.nvim")
   use("vim-test/vim-test")
+
+  -- tmux helpers
+  use("preservim/vimux")
 end)
