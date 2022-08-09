@@ -60,12 +60,16 @@ nnoremap <silent><leader>h :TroubleToggle<CR>
 nnoremap <Leader>tf :TestFile<CR>
 nnoremap <Leader>ts :TestSuite<CR>
 nnoremap <Leader>vi :VimuxInspectRunner<CR>
+
 " Searching
 nnoremap <leader>rg :FzfLua live_grep_glob<CR>
 nnoremap <leader>rG :FzfLua live_grep_resume<CR>
 nnoremap <leader>rw :FzfLua grep_cword<CR>
 nmap <Leader>f :FzfLua files<CR>
 nmap <Leader>b :FzfLua buffers<CR>
+
+" Replacing
+nnoremap <leader>sr :%s/<C-R><C-W>//g<Left><Left>
 
 " Quick close
 nnoremap <leader><leader> :x<cr>
