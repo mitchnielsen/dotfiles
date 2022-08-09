@@ -17,7 +17,6 @@ require("plugins.nvim-tree")
 require("plugins.scope")
 require("plugins.treesitter")
 require("plugins.trouble")
-require("plugins.indent-blankline")
 
 vim.cmd("source ~/.config/nvim/viml/autocmd.vim")
 vim.cmd("source ~/.config/nvim/viml/lets.vim")
