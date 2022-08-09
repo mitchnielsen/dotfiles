@@ -17,6 +17,7 @@ brew "git-delta"
 brew "htop"
 brew "kubernetes-cli"
 brew "neofetch"
+brew "neovim", args: ["HEAD"]
 brew "python@3.9"
 brew "reattach-to-user-namespace"
 brew "skopeo"
