@@ -1,0 +1,4 @@
+# op://vault-name/item-name/[section-name/]field-name
+
+AWS_ACCESS_KEY_ID=op://Private/AWS/aws_access_key_id
+AWS_SECRET_ACCESS_KEY=op://Private/AWS/aws_secret_access_key

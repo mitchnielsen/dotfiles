@@ -187,6 +187,8 @@ alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator'
 alias cdc='cd ~/code/gitlab-org/charts/gitlab'
 alias note='(cd /Users/mnielsen/obsidian/GitLab && nvim Dashboard.md)'
 
+alias aws="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-env -- aws"
+
 # ===================
 # Cursor settings
 # ===================
