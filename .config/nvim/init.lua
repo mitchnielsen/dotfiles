@@ -1,6 +1,7 @@
 -- Inspiration taken from https://github.com/0xsamrath/kyoto.nvim
 
 require("globals")
+require("autocmd")
 require("maps")
 require("options")
 require("lsp-config")
