@@ -6,6 +6,9 @@
 export EDITOR=$(which nvim)
 export KEYTIMEOUT=1 # Disable lag when using vi-mode
 
+# Homebrew binaries
+export PATH=$PATH:/opt/homebrew/bin
+
 # Custom scripts
 export PATH=$PATH:$HOME/bin
 
