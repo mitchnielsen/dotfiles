@@ -23,6 +23,12 @@ export BAT_THEME="base16" # bat --list-themes
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
+# Kubernetes
+# Disable default connection to cluster
+# - reconnect with `kon`
+# - disconnect with `koff`
+unset KUBECONFIG
+
 # ===================
 # Settings
 # ===================
@@ -176,6 +182,8 @@ alias gps='git push origin $(git branch --show-current)'
 alias gwp='git worktree prune'
 alias v='nvim'
 alias k='kubectl'
+alias kon='export KUBECONFIG=$HOME/.kube/config; kubectx'
+alias koff='unset KUBECONFIG; kubectx --unset'
 alias kk='k9s --crumbsless --headless --logoless'
 # https://docs.gitlab.com/ee/development/documentation/#local-linting
 alias vale-docker='dr -v $PWD:/test -w /test registry.gitlab.com/gitlab-org/gitlab-docs/lint-markdown:alpine-3.15-vale-2.15.5-markdownlint-0.31.1 vale --minAlertLevel error doc'
