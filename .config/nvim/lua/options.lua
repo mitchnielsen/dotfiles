@@ -7,6 +7,9 @@ opt.cmdheight = 0
 opt.timeoutlen = 400
 opt.pumheight = 20
 opt.foldmethod = "manual"
+opt.fillchars:append { eob = " " } -- hide EndOfBuffer
+vim.cmd([[highlight ExtraWhitespace ctermbg=red guibg=red]])
+vim.cmd([[match ExtraWhitespace /\s\+$/]])
 
 -- Spacing
 opt.shiftwidth = 2
@@ -16,6 +19,7 @@ opt.softtabstop = 2
 opt.smartindent = true
 
 -- Editing
+opt.termguicolors = true
 opt.number = true
 opt.relativenumber = true
 opt.showmode = false
@@ -37,6 +41,7 @@ opt.splitbelow = true
 opt.splitright = true
 opt.diffopt = "vertical"
 opt.cursorline = true
+opt.conceallevel = 2
 
 local disabled_built_ins = {
   "gzip",

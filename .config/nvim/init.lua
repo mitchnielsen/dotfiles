@@ -22,4 +22,3 @@ require("plugins.treesitter")
 require("plugins.trouble")
 
 vim.cmd("source ~/.config/nvim/viml/autocmd.vim")
-vim.cmd("source ~/.config/nvim/viml/theme.vim")
