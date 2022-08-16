@@ -20,5 +20,3 @@ require("plugins.nvim-tree")
 require("plugins.scope")
 require("plugins.treesitter")
 require("plugins.trouble")
-
-vim.cmd("source ~/.config/nvim/viml/autocmd.vim")
