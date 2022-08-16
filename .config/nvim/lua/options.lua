@@ -14,37 +14,27 @@ opt.tabstop = 2
 opt.expandtab = true
 opt.softtabstop = 2
 opt.smartindent = true
-opt.autoindent = true
 
 -- Editing
 opt.number = true
 opt.relativenumber = true
 opt.showmode = false
-opt.encoding = "UTF-8"
 opt.fileformat = "unix"
-opt.autoread = true -- reload files changed outside of vim
-opt.ruler = true
 opt.laststatus = 0
 opt.paste = false
 opt.errorbells = false
 opt.mouse = "a"
-opt.hidden = true
 opt.swapfile = false
-opt.backspace = "indent,eol,start"
 opt.scrolloff = 5
-opt.showcmd = true
 opt.showmatch = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.hlsearch = true
-opt.incsearch = true
 opt.inccommand = "nosplit" -- see subsitutions in realtime
 opt.wildmenu = true -- Autocomplete filenames
 opt.wildignore = "*.o,*.hi,*.pyc"
 opt.updatetime = 100 -- update interval for gitsigns
 opt.splitbelow = true
 opt.splitright = true
-opt.compatible = false
 opt.diffopt = "vertical"
 opt.cursorline = true
 
