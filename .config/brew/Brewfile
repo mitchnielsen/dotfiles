@@ -19,6 +19,7 @@ brew "git"
 brew "git-delta"
 brew "htop"
 brew "kubernetes-cli"
+brew "lua-language-server"
 brew "neofetch"
 brew "neovim", args: ["HEAD"]
 brew "python@3.9"
