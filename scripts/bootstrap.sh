@@ -77,11 +77,6 @@ GOPATH="$HOME/go" nvim --headless +GoInstallBinaries +qa
 # solargraph for NVIM LSP
 gem install solargraph
 
-# ZSH helpers
-if [ ! -d "~/.zsh/zsh-syntax-highlighting" ]; then git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting/; fi
-if [ ! -d "~/.zsh/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions/; fi
-if [ ! -d "~/.zsh/zsh-history-substring-search" ]; then git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search/; fi
-
 # MacOS settings
 # Change screenshot type to jpg for smaller filesize
 defaults write com.apple.screencapture type jpg

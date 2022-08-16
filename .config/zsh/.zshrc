@@ -58,10 +58,6 @@ bindkey '^E' end-of-line
 # Sources
 # ===================
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-
 [[ -f "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
 [[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
 
@@ -215,3 +211,10 @@ precmd_functions+=(_fix_cursor)
 # Starship prompt
 # ===================
 eval "$(starship init zsh)"
+
+# ZSH helpers
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
