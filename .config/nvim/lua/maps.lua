@@ -26,6 +26,9 @@ map_key('n', '<leader>gd', ':Gdiff<cr>')
 map_key('n', '<leader>gps', ':Git push<cr>')
 map_key('n', '<leader>gpl', ':Git pull<cr>')
 
+-- vim-markdown
+map_key('n', '<leader>md', ':Toch<cr>')
+
 -- Go to the beginning of the line in insert mode
 map_key('i', '<C-a>', '<C-o>0')
 -- Go to the ending of the line in insert mode

@@ -34,6 +34,7 @@ require("packer").startup(function(use)
   use("takac/vim-commandcaps") -- takes care of caps typos
   use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
   use("tiagovla/scope.nvim")
+  use("preservim/vim-markdown")
 
   -- git helpers
   use("tpope/vim-fugitive") -- Git integration
