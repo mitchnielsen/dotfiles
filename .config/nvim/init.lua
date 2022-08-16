@@ -2,6 +2,7 @@
 
 require("globals")
 require("autocmd")
+require("lets")
 require("maps")
 require("options")
 require("lsp-config")
@@ -21,5 +22,4 @@ require("plugins.treesitter")
 require("plugins.trouble")
 
 vim.cmd("source ~/.config/nvim/viml/autocmd.vim")
-vim.cmd("source ~/.config/nvim/viml/lets.vim")
 vim.cmd("source ~/.config/nvim/viml/theme.vim")
