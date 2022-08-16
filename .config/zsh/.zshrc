@@ -20,7 +20,6 @@ export PATH=$PATH:$GOPATH/bin
 export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number'
 export XDG_CONFIG_HOME="$HOME/.config"
 export BAT_THEME="base16" # bat --list-themes
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Kubernetes
@@ -207,10 +206,23 @@ alias eksctl="op --account gitlab.1password.com run --env-file=$HOME/.config/op/
 _fix_cursor() { echo -ne '\e[5 q' }
 precmd_functions+=(_fix_cursor)
 
-# ===================
-# Starship prompt
-# ===================
-eval "$(starship init zsh)"
+function git_prompt() {
+  BRANCH=$(git branch --show-current 2> /dev/null)
+
+  if [ ! -z $BRANCH ]; then
+    echo -n "%F{magenta}$BRANCH"
+
+    if [ ! -z "$(git status --short)" ]; then
+      echo " %F{yellow}✗"
+    fi
+  fi
+}
+
+STATUS="%(?.%F{green}$.%F{red}%?)%f"
+DIR="%~"
+PS1="
+%F{blue}${DIR} $(git_prompt)
+${STATUS} %F{reset}"
 
 # ZSH helpers
 bindkey '^[[A' history-substring-search-up
