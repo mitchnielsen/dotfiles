@@ -5,7 +5,7 @@ if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$
 
 # Install homebrew if needed
 command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-grep homebrew /Users/mnielsen/.zprofile || echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/mnielsen/.zprofile
+grep homebrew "$HOME/.zprofile" || echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install packages
