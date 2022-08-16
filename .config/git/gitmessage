@@ -1,0 +1,15 @@
+
+
+# https://docs.gitlab.com/ee/development/changelog.html
+# Each list item, or entry, in our CHANGELOG.md file is generated from the subject line of a Git commit. Commits are included when they contain the Changelog Git trailer. When generating the changelog, author and merge request details are added automatically.
+#
+# The Changelog trailer accepts the following values:
+#
+# added: New feature
+# fixed: Bug fix
+# changed: Feature change
+# deprecated: New deprecation
+# removed: Feature removal
+# security: Security fix
+# performance: Performance improvement
+# other: Other
