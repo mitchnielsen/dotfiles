@@ -19,6 +19,7 @@ require("packer").startup(function(use)
   use("hrsh7th/vim-vsnip")
   use("ray-x/lsp_signature.nvim")
   use("jose-elias-alvarez/null-ls.nvim")
+  use("nvim-lua/lsp-status.nvim")
   use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
   -- Theme

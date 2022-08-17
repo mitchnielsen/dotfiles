@@ -24,7 +24,11 @@ require('lualine').setup({
     lualine_b = {{'diagnostics', sources = {'nvim_diagnostic'}}},
     lualine_c = {'diff'},
 
-    lualine_x = {},
+    lualine_x = {
+      function()
+        return require("lsp-status").status()
+      end,
+    },
     lualine_y = {'progress', 'location'},
     lualine_z = {'branch'}
   }
