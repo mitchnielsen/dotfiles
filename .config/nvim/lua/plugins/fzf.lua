@@ -1,9 +1,15 @@
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup {
   winopts = {
-    fullscreen       = true,           -- start fullscreen?
+    fullscreen       = false,           -- start fullscreen?
+    -- split            = "belowright new",
+    height           = 0.90,            -- window height
+    width            = 0.90,            -- window width
+    row              = 0.35,            -- window row position (0=top, 1=bottom)
+    col              = 0.50,            -- window col position (0=left, 1=right)
   preview = {
       wrap           = 'wrap',          -- wrap|nowrap
+      layout         = 'vertical',
       winopts = {                       -- builtin previewer window options
         number            = true,
         relativenumber    = false,
