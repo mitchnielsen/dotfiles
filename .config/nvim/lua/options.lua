@@ -1,49 +1,56 @@
-local vim = vim
-local opt = vim.opt
+local options = {
+  -- Decorations
+  signcolumn = "yes",
+  cmdheight = 0,
+  timeoutlen = 400,
+  pumheight = 20,
+  foldmethod = "manual",
+  list = true,
+  listchars = { tab = '▸ ', trail = '·'},
 
--- Decorations
-opt.signcolumn = "yes"
-opt.cmdheight = 0
-opt.timeoutlen = 400
-opt.pumheight = 20
-opt.foldmethod = "manual"
-opt.list = true
-opt.listchars = { tab = '▸ ', trail = '·'}
-opt.fillchars:append { eob = " " } -- hide EndOfBuffer
+  -- Spacing,
+  shiftwidth = 2,
+  tabstop = 2,
+  expandtab = true,
+  softtabstop = 2,
+  smartindent = true,
+
+  -- Editing,
+  termguicolors = true,
+  number = true,
+  relativenumber = true,
+  showmode = false,
+  fileformat = "unix",
+  laststatus = 0,
+  paste = false,
+  errorbells = false,
+  mouse = "a",
+  swapfile = false,
+  scrolloff = 5,
+  showmatch = true,
+  ignorecase = true,
+  smartcase = true,
+  inccommand = "nosplit", -- see subsitutions in realtime
+  wildmenu = true, -- Autocomplete filenames,
+  wildignore = "*.o,*.hi,*.pyc",
+  updatetime = 100, -- update interval for gitsigns
+  splitbelow = true,
+  splitright = true,
+  diffopt = "vertical",
+  cursorline = true,
+  conceallevel = 2,
+}
+
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
+
+-- Hide EndOfBuffer
+vim.opt.fillchars:append { eob = " " }
+
+-- Highlight trailing whitespace in red
 vim.cmd([[highlight ExtraWhitespace ctermbg=red guibg=red]])
 vim.cmd([[match ExtraWhitespace /\s\+$/]])
-
--- Spacing
-opt.shiftwidth = 2
-opt.tabstop = 2
-opt.expandtab = true
-opt.softtabstop = 2
-opt.smartindent = true
-
--- Editing
-opt.termguicolors = true
-opt.number = true
-opt.relativenumber = true
-opt.showmode = false
-opt.fileformat = "unix"
-opt.laststatus = 0
-opt.paste = false
-opt.errorbells = false
-opt.mouse = "a"
-opt.swapfile = false
-opt.scrolloff = 5
-opt.showmatch = true
-opt.ignorecase = true
-opt.smartcase = true
-opt.inccommand = "nosplit" -- see subsitutions in realtime
-opt.wildmenu = true -- Autocomplete filenames
-opt.wildignore = "*.o,*.hi,*.pyc"
-opt.updatetime = 100 -- update interval for gitsigns
-opt.splitbelow = true
-opt.splitright = true
-opt.diffopt = "vertical"
-opt.cursorline = true
-opt.conceallevel = 2
 
 local disabled_built_ins = {
   "gzip",
