@@ -13,6 +13,15 @@ autocmd("BufEnter", {
   command = "set fo-=c fo-=r fo-=o",
 })
 
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  pattern = "*",
+  group = vim.api.nvim_create_augroup("Highlight", { clear = true }),
+})
+
 -- Filetype-based mappings
 vim.cmd("autocmd Filetype gitcommit setlocal spell textwidth=72")
 vim.cmd("autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile")

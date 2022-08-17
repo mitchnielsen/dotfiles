@@ -28,7 +28,6 @@ require("packer").startup(function(use)
 
   -- Editor helpers
   use { "ibhagwan/fzf-lua", requires = "kyazdani42/nvim-web-devicons" }
-  use("machakann/vim-highlightedyank") -- Highlight yanked line
   use("tpope/vim-commentary")
   use("tpope/vim-unimpaired") --Simple mappings
   use("takac/vim-commandcaps") -- takes care of caps typos
