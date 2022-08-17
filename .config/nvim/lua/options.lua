@@ -7,6 +7,8 @@ opt.cmdheight = 0
 opt.timeoutlen = 400
 opt.pumheight = 20
 opt.foldmethod = "manual"
+opt.list = true
+opt.listchars = { tab = '▸ ', trail = '·'}
 opt.fillchars:append { eob = " " } -- hide EndOfBuffer
 vim.cmd([[highlight ExtraWhitespace ctermbg=red guibg=red]])
 vim.cmd([[match ExtraWhitespace /\s\+$/]])
