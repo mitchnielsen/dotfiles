@@ -5,11 +5,11 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 require("lsp_signature").setup({ hint_enable = false })
 
-local servers = { 'gopls', 'solargraph' }
 local lsp_status = require('lsp-status')
 lsp_status.register_progress()
 capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
+local servers = { 'gopls', 'solargraph' }
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {
     capabilities = capabilities,
