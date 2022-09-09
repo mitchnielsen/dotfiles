@@ -38,7 +38,7 @@ local options = {
   splitright = true,
   diffopt = "vertical",
   cursorline = true,
-  conceallevel = 2,
+  conceallevel = 0,
 }
 
 for k, v in pairs(options) do
