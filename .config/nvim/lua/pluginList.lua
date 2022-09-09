@@ -24,7 +24,7 @@ require("packer").startup(function(use)
 
   -- Theme
   use("nvim-lualine/lualine.nvim")
-  use("RRethy/nvim-base16")
+  use("navarasu/onedark.nvim")
   use("norcalli/nvim-colorizer.lua")
 
   -- Editor helpers
