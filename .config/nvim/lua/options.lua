@@ -5,7 +5,7 @@ local options = {
   timeoutlen = 400,
   pumheight = 20,
   foldmethod = "manual",
-  list = true,
+  list = false,
   listchars = { tab = '▸ ', trail = '·'},
 
   -- Spacing,
