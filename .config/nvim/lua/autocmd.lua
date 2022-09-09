@@ -1,5 +1,6 @@
 -- https://neovim.io/doc/user/autocmd.html
 
+-- https://github.com/ibhagwan/fzf-lua/pull/505/files
 vim.api.nvim_create_autocmd("VimResized", {
   pattern = '*',
   command = 'tabdo wincmd = | lua require("fzf-lua").redraw()'
@@ -23,16 +24,23 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Filetype-based mappings
-vim.cmd("autocmd Filetype gitcommit setlocal spell textwidth=72")
-vim.cmd("autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile")
-vim.cmd("autocmd BufNewFile,BufRead Dangerfile set syntax=ruby")
-vim.cmd("autocmd BufNewFile,BufRead *.tpl set syntax=yaml")
-vim.cmd("autocmd BufNewFile,BufRead *.yaml set syntax=yaml")
-vim.cmd("autocmd BufNewFile,BufRead *.yml set syntax=yaml")
+
+autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.tpl", "*.yaml", "*.yml" },
+  command = "set ft=yaml",
+  group = vim.api.nvim_create_augroup("YAML", { clear = true }),
+})
+
+autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.dockerfile", "Dockerfile.*" },
+  command = "set ft=dockerfile",
+  group = vim.api.nvim_create_augroup("Dockerfile", { clear = true }),
+})
 
 autocmd("FileType", {
-  pattern = "Makefile.*",
-  command = vim.cmd("setlocal noexpandtab")
+  pattern = { "*.txt", "*.md", "gitcommit", "gitrebase" },
+  command = "setlocal spell textwidth=72",
+  group = vim.api.nvim_create_augroup("Spell", { clear = true }),
 })
 
 autocmd("FileType", {
