@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Save image as a tarball
 docker save $1 > $1.tar
 
