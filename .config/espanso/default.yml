@@ -62,3 +62,6 @@ matches:
                 externalIP: 34.123.173.205
             certmanager-issuer:
               email: mnielsen@gitlab.com
+
+  - trigger: ",ubi"
+    replace: registry.access.redhat.com/ubi8/ubi
