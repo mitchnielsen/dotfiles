@@ -50,7 +50,7 @@ autocmd("FileType", {
 
 autocmd("FileType", {
   pattern = "*.go",
-  command = vim.cmd("autocmd FileType sh map <leader>r :w<CR>:exec '!/bin/bashh' shellescape(@%, 1)<CR>"),
+  command = vim.cmd("autocmd FileType sh map <leader>r :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>"),
 })
 
 autocmd("FileType", {
