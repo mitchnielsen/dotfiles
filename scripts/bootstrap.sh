@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# TODO: add this
+# git clone https://github.com/aabouzaid/kubech ~/.kubech
+
 # Symlink dotfiles
 if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$HOME/.zprofile"; fi
 
@@ -35,14 +38,12 @@ asdf-install golang '1.16.14'
 asdf-install golangci-lint latest
 asdf-install helm '3.8.0'
 asdf-install jq latest
-asdf-install k9s '0.25.18'
 asdf-install kind '0.11.1'
 asdf-install kubectl '1.23.3'
 asdf-install kubectx '0.9.4'
 asdf-install kustomize '4.5.2'
 asdf-install lazygit latest
 asdf-install oc latest
-asdf-install ripgrep latest
 asdf-install ruby '2.7.5'
 asdf-install stern latest
 asdf-install task latest
@@ -68,7 +69,7 @@ mkdir -p "$HOME/bin"
 (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 
 # neovim
-nvim --headless +"lua require'pluginList'; require'packer'.sync()" +15sleep +qa
+nvim --headless +PackerSync
 mkdir -p "$HOME/go"
 GOPATH="$HOME/go" nvim --headless +GoInstallBinaries +qa
 
@@ -82,6 +83,8 @@ defaults write com.apple.screencapture type jpg
 defaults write com.apple.Dock showhidden -bool TRUE
 # Faster Dock animation
 defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -int 0
+# Use thin strokes (https://github.com/alacritty/alacritty/releases/tag/v0.11.0)
+defaults write -g AppleFontSmoothing -int 0
 # Save settings
 killall Dock
 
