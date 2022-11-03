@@ -1,10 +1,5 @@
 local g = vim.g
 
--- ray-x/go.nvim settings
-g.go_fmt_autosave = 1 -- Run gofmt on save
-g.go_fmt_command = "goimports" -- Command to run when saving
-g.go_auto_type_info = 1 -- Automatically get signature/type info for object under cursor
-
 -- Testing with vim-test
 g['test#strategy'] = 'vimux'
 
