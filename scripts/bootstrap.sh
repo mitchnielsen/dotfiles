@@ -99,4 +99,15 @@ git config --global alias.cm 'commit --verbose'
 git config --global alias.st status
 git config --global alias.unstage 'reset HEAD --'
 git config --global alias.last 'log -1 HEAD'
+git config --global alias.db "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
+git config --global alias.d diff
+git config --global alias.ds 'diff --staged'
+git config --global alias.dm '!git diff $(git merge-base HEAD $(git db))'
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.l 'log --all --graph --decorate --oneline --simplify-by-decoration'
+git config --global alias.pl '!git pull origin $(git branch --show-current)'
+git config --global alias.plm '!git fetch origin && git pull origin $(git db)'
+git config --global alias.ps '!git push origin $(git branch --show-current)'
+
 git config --global commit.template ~/.config/git/gitmessage
