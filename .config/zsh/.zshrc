@@ -200,10 +200,10 @@ function git_prompt() {
   BRANCH=$(git branch --show-current 2> /dev/null)
 
   if [ ! -z $BRANCH ]; then
-    echo -n "%F{magenta}$BRANCH"
+    echo -n "%F{magenta}[branch: $BRANCH]"
 
     if [ ! -z "$(git status --short)" ]; then
-      echo " %F{yellow}✗"
+      echo " %F{yellow}[✗]"
     fi
   fi
 }
@@ -211,8 +211,9 @@ function git_prompt() {
 STATUS="%(?.%F{green}$.%F{red}%?)%f"
 DIR="%~"
 PS1="
-%F{blue}${DIR} $(git_prompt)
+%F{blue}${DIR} \$(git_prompt)
 ${STATUS} %F{reset}"
+setopt promptsubst
 
 # ZSH helpers
 bindkey '^[[A' history-substring-search-up
