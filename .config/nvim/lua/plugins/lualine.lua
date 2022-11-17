@@ -29,7 +29,7 @@ require('lualine').setup({
         return require("lsp-status").status()
       end,
     },
-    lualine_y = {'progress', 'location'},
+    lualine_y = {'searchcount', 'progress', 'location'},
     lualine_z = {'branch'}
   }
 })
