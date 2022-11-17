@@ -1,7 +1,7 @@
 require('lualine').setup({
   options = {
-    theme = 'auto', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
-    component_separators = '',
+    theme = 'nord', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
+    component_separators = '-',
     section_separators = '',
     globalstatus = true,
   },
@@ -17,7 +17,7 @@ require('lualine').setup({
         mode = 2,
         buffers_color = {
           active = 'lualine_a_normal',
-          inactive = 'lualine_a_inactive',
+          inactive = 'gray',
         },
       },
     },
