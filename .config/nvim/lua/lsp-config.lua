@@ -9,7 +9,8 @@ local lsp_status = require('lsp-status')
 lsp_status.register_progress()
 capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
-local servers = { 'gopls', 'solargraph' }
+-- For TSServer: `npm i -g typescript typescript-language-server`
+local servers = { 'gopls', 'solargraph', 'tsserver' }
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {
     capabilities = capabilities,
