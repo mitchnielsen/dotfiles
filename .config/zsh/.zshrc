@@ -167,6 +167,10 @@ function koff() {
   source "$HOME/.config/zsh/.zshrc"
 }
 
+function digg() {
+  dig $1 +nocmd +multiline +noall +answer
+}
+
 # ===================
 # Aliases
 # ===================
