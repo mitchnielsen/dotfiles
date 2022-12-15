@@ -20,25 +20,28 @@ matches:
         params:
           format: "%Y/%m/%d"
 
-  - trigger: "readyy"
+  - trigger: ;labelui
+    replace: /label ~"pipeline failure::under investigation"
+
+  - trigger: ";ready"
     replace: |
       /draft
       /label ~"workflow::ready for review"
 
-  - trigger: "labell"
+  - trigger: ";labels"
     replace: /label ~"group::distribution" ~"section::enablement" ~"devops::systems"
 
-  - trigger: "revieww"
+  - trigger: ";review"
     replace: |
       /label ~"workflow::in review"
       /assign_reviewer me
 
-  - trigger: "approvee"
+  - trigger: ";approve"
     replace: |
       /approve
       /assign_reviewer $|$
 
-  - trigger: "detailss"
+  - trigger: ";detail"
     replace: |
       <details>
       <summary>$|$</summary>
@@ -46,7 +49,7 @@ matches:
 
       </details>
 
-  - trigger: "manifestt"
+  - trigger: ";manifest"
     replace: |
       apiVersion: apps.gitlab.com/v1beta1
       kind: GitLab
@@ -63,5 +66,5 @@ matches:
             certmanager-issuer:
               email: mnielsen@gitlab.com
 
-  - trigger: ",ubi"
+  - trigger: ";ubi"
     replace: registry.access.redhat.com/ubi8/ubi
