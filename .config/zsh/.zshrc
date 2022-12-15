@@ -76,6 +76,9 @@ fi
 # Slow
 # source <(kubectl completion zsh)
 
+# Switch kubernetes contexts
+source ~/.kubech/kubech
+
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
   compinit;
@@ -152,6 +155,18 @@ function gwr() {
   git worktree remove "${branch_name}"
 }
 
+function kon() {
+  CLUSTER=$(yq '.contexts[].name' ~/.kube/config | fzf)
+  kubechc "${CLUSTER}"
+  export PS1="
+[cluster: %F{green}${CLUSTER}]$PS1"
+}
+
+function koff() {
+  kubechu
+  source "$HOME/.config/zsh/.zshrc"
+}
+
 # ===================
 # Aliases
 # ===================
@@ -167,8 +182,6 @@ alias kubernetes-start='docker-start --kubernetes --profile k8s'
 alias g='git'
 alias v='nvim'
 alias k='kubectl'
-alias kon='export KUBECONFIG=$HOME/.kube/config; kubectx'
-alias koff='unset KUBECONFIG; kubectx --unset'
 alias kk='k9s --crumbsless --headless --logoless'
 # https://docs.gitlab.com/ee/development/documentation/#local-linting
 alias vale-docker='dr -v $PWD:/test -w /test registry.gitlab.com/gitlab-org/gitlab-docs/lint-markdown:alpine-3.15-vale-2.15.5-markdownlint-0.31.1 vale --minAlertLevel error doc'
