@@ -196,14 +196,17 @@ alias ht='helm template test . -f build/test.values.yaml --set certmanager-issue
 alias htd='ht --debug'
 alias hk='helm upgrade --install --set certmanager-issuer.email=no@no.com gitlab . -n default -f examples/kind/values-base.yaml -f examples/kind/values-ssl.yaml -f build/test.values.yaml --set global.hosts.domain=$(ipconfig getifaddr en0).nip.io'
 alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirname | sort -u | fzf)'
-alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator'
-alias cdc='cd ~/code/gitlab-org/charts/gitlab'
-alias note='(cd /Users/mnielsen/obsidian/GitLab && nvim Dashboard.md)'
+alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator/master'
+alias cdc='cd ~/code/gitlab-org/charts/gitlab/master'
+alias cdcng='cd ~/code/gitlab-org/build/cng/master'
+alias note='(cd /Users/mnielsen/Dropbox/GitLab/Notes && nvim)'
 
 # format is op://vault-name/item-name/[section-name/]field-name
-alias aws="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-env -- aws"
-alias eksctl="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-env -- eksctl"
+alias aws="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-sandbox-env -- aws"
+alias eksctl="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-sandbox-env -- eksctl"
 alias glab="op --account gitlab.1password.com run --env-file=$HOME/.config/op/gitlab-pat -- glab"
+
+alias gcp-devbox='gcloud compute ssh --zone "us-east1-b" "devbox"  --project "mnielsen-2e27a441"'
 
 # ===================
 # Cursor settings
