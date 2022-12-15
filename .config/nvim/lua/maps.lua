@@ -3,12 +3,6 @@ local function map_key(mode, lhs, rhs)
   vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
 end
 
--- Window jumping
--- map_key('n', 'wh', '<C-w>h')
--- map_key('n', 'wj', '<C-w>j')
--- map_key('n', 'wk', '<C-w>k')
--- map_key('n', 'wl', '<C-w>l')
-
 -- Jump to previous buffer
 map_key('n', 'H', '<C-^>')
 
