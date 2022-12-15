@@ -56,13 +56,16 @@ bindkey '^E' end-of-line
 # Sources
 # ===================
 
-[[ -f "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
-[[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
+[ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Gcloud (https://cloud.google.com/sdk/docs/install)
-if [[ -d "$HOME/google-cloud-sdk" ]]; then
-  source "$HOME/google-cloud-sdk/path.zsh.inc"
-  source "$HOME/google-cloud-sdk/completion.zsh.inc"
+if [ -d ~/google-cloud-sdk ]; then
+  source ~/google-cloud-sdk/path.zsh.inc
+  source ~/google-cloud-sdk/completion.zsh.inc
+  # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+  # gcloud components install gke-gcloud-auth-plugin
+  export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 fi
 
 # Hook direnv into your shell.
