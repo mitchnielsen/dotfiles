@@ -6,9 +6,6 @@
 export EDITOR=$(which nvim)
 export KEYTIMEOUT=1 # Disable lag when using vi-mode
 
-# Homebrew binaries
-export PATH=$PATH:/opt/homebrew/bin
-
 # Custom scripts
 export PATH=$PATH:$HOME/bin
 
@@ -20,7 +17,9 @@ export PATH=$PATH:$GOPATH/bin
 export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number'
 export XDG_CONFIG_HOME="$HOME/.config"
 export BAT_THEME="Nord" # bat --list-themes
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 
 # Kubernetes
 # Disable default connection to cluster
