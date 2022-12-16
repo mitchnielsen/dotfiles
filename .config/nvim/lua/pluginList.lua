@@ -35,6 +35,11 @@ require("packer").startup(function(use)
   use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
   use("tiagovla/scope.nvim")
   use("preservim/vim-markdown")
+  use('stevearc/dressing.nvim') -- improve vim.ui interfaces
+  use {
+    "iamcco/markdown-preview.nvim", -- markdown preview plugin for (neo)vim
+    run = function() vim.fn["mkdp#util#install"]() end, -- install without yarn or npm
+  }
 
   -- git helpers
   use("tpope/vim-fugitive") -- Git integration
