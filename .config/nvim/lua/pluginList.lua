@@ -1,7 +1,12 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e222a" })
+  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+
+  -- install plugins + compile their configs
+  vim.cmd "packadd packer.nvim"
+  vim.cmd "PackerSync"
 end
 
 require("packer").startup(function(use)
