@@ -42,11 +42,9 @@ asdf-install kind '0.11.1'
 asdf-install kubectl '1.23.3'
 asdf-install kubectx '0.9.4'
 asdf-install kustomize '4.5.2'
-asdf-install lazygit latest
 asdf-install oc latest
 asdf-install ruby '2.7.5'
 asdf-install stern latest
-asdf-install task latest
 asdf-install yq latest
 
 asdf reshim
