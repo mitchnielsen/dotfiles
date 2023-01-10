@@ -40,11 +40,6 @@ map_key('n', '<leader>p', '"*p')
 -- Paste from the system clipboard(in visual mode)
 map_key('n', '<leader>p', '"*p')
 
--- Toggle search highlight
--- map_key('n', '<silent><C-C>', ':if (&hlsearch == 1) \| set nohlsearch \| else \| set hlsearch \| endif<cr>')
--- Do not make Q go to ex-mode
-map_key('n', 'Q', '<Nop>')
-
 -- Wrap selection with ''
 map_key('v', '<leader>', "<esc>`>a'<esc>`<i'<esc>')")
 -- Wrap selection with ""

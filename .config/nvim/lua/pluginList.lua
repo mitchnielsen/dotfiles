@@ -41,6 +41,7 @@ require("packer").startup(function(use)
   use("tiagovla/scope.nvim")
   use("preservim/vim-markdown")
   use('stevearc/dressing.nvim') -- improve vim.ui interfaces
+  use('asiryk/auto-hlsearch.nvim') -- remove search highlight when cursor moves
   use {
     "iamcco/markdown-preview.nvim", -- markdown preview plugin for (neo)vim
     run = function() vim.fn["mkdp#util#install"]() end, -- install without yarn or npm

@@ -8,6 +8,7 @@ require("options")
 require("lsp-config")
 require("pluginList")
 
+require("plugins.auto-hlsearch")
 require("plugins.go")
 require("plugins.theme")
 require("plugins.nvim-cmp")
