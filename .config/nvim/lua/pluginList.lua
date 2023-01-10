@@ -15,7 +15,7 @@ require("packer").startup(function(use)
   -- LSP
   use("nvim-treesitter/nvim-treesitter")
   use("nvim-treesitter/nvim-treesitter-context")
-  use("p00f/nvim-ts-rainbow")
+  use("mrjones2014/nvim-ts-rainbow")
   use("neovim/nvim-lspconfig")
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-nvim-lsp")
