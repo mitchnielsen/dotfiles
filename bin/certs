@@ -57,10 +57,10 @@ gitlab:
       tls:
         enabled: true
         secretName: gitlab-tls # type: kubernetes.io/tls
-        caSecretName: default/gitlab-tls-ca
+        caSecretName: ${NAMESPACE}/gitlab-tls-ca
 registry:
   tls:
     enabled: true
     secretName: gitlab-tls
-    caSecretName: default/gitlab-tls-ca
+    caSecretName: ${NAMESPACE}/gitlab-tls-ca
 EOF
