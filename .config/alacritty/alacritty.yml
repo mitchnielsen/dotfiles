@@ -73,6 +73,7 @@ key_bindings:
   # Select a new tmux session for the attached client interactively
   - { key: S, mods: Command|Shift, chars: "\x02\x73" }
   # Select window 1-9
+  - { key: Key0, mods: Command, chars: "\x02\x30" }
   - { key: Key1, mods: Command, chars: "\x02\x31" }
   - { key: Key2, mods: Command, chars: "\x02\x32" }
   - { key: Key3, mods: Command, chars: "\x02\x33" }
