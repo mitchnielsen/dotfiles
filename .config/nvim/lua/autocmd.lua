@@ -25,15 +25,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Filetype-based mappings
 
-autocmd({ "BufNewFile", "BufRead" }, {
+autocmd({ "BufNewFile", "BufEnter" }, {
   pattern = { "*.tpl", "*.yaml", "*.yml" },
-  command = "set ft=yaml",
+  command = "set syntax=yaml",
   group = vim.api.nvim_create_augroup("YAML", { clear = true }),
 })
 
-autocmd({ "BufNewFile", "BufRead" }, {
+autocmd({ "BufNewFile", "BufEnter" }, {
   pattern = { "*.dockerfile", "Dockerfile.*" },
-  command = "set ft=dockerfile",
+  command = "set syntax=dockerfile",
   group = vim.api.nvim_create_augroup("Dockerfile", { clear = true }),
 })
 
