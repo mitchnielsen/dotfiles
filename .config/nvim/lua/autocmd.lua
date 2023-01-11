@@ -1,12 +1,12 @@
 -- https://neovim.io/doc/user/autocmd.html
 
+local autocmd = vim.api.nvim_create_autocmd
+
 -- https://github.com/ibhagwan/fzf-lua/pull/505/files
-vim.api.nvim_create_autocmd("VimResized", {
+autocmd("VimResized", {
   pattern = '*',
   command = 'tabdo wincmd = | lua require("fzf-lua").redraw()'
 })
-
-local autocmd = vim.api.nvim_create_autocmd
 
 -- Don't auto-comment new lines
 autocmd("BufEnter", {
