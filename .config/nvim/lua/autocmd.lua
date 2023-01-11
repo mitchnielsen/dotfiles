@@ -1,6 +1,7 @@
 -- https://neovim.io/doc/user/autocmd.html
 
 local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
 -- https://github.com/ibhagwan/fzf-lua/pull/505/files
 autocmd("VimResized", {
@@ -20,7 +21,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
   pattern = "*",
-  group = vim.api.nvim_create_augroup("Highlight", { clear = true }),
+  group = augroup("Highlight", { clear = true }),
 })
 
 -- Filetype-based mappings
@@ -28,19 +29,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 autocmd({ "BufNewFile", "BufEnter" }, {
   pattern = { "*.tpl", "*.yaml", "*.yml" },
   command = "set syntax=yaml",
-  group = vim.api.nvim_create_augroup("YAML", { clear = true }),
+  group = augroup("YAML", { clear = true }),
 })
 
 autocmd({ "BufNewFile", "BufEnter" }, {
   pattern = { "*.dockerfile", "Dockerfile.*" },
   command = "set syntax=dockerfile",
-  group = vim.api.nvim_create_augroup("Dockerfile", { clear = true }),
+  group = augroup("Dockerfile", { clear = true }),
 })
 
 autocmd("FileType", {
   pattern = { "*.txt", "*.md", "gitcommit", "gitrebase" },
   command = "setlocal spell textwidth=72",
-  group = vim.api.nvim_create_augroup("Spell", { clear = true }),
+  group = augroup("Spell", { clear = true }),
 })
 
 autocmd("FileType", {
