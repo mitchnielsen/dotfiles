@@ -4,14 +4,12 @@ return {
   keys = {
     { '<leader>h', '<cmd>TroubleToggle<CR>', desc = 'toggle' },
   },
-  config = function()
-    require("trouble").setup{
-      action_keys = {
-        open_split = { "<c-c>" },
-        open_vsplit = { "<c-v>" },
-      },
-      auto_preview = false,
-      auto_close = true,
-    }
-  end
+  opts = {
+    action_keys = {
+      open_split = { "<c-c>" },
+      open_vsplit = { "<c-v>" },
+    },
+    auto_preview = false,
+    auto_close = true,
+  }
 }

@@ -1,8 +1,5 @@
 return {
   {
-    -- Theme
-    'norcalli/nvim-colorizer.lua',
-
     -- Editor helpers
     'tpope/vim-commentary',
     'tpope/vim-unimpaired', --Simple mappings
