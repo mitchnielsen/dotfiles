@@ -1,0 +1,6 @@
+#!/bin/bash
+
+branch_name=$(git branch --show-current 2> /dev/null)
+state=$(glab mr view | grep '^state:')
+
+echo "state is ${state}"
