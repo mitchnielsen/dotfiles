@@ -8,6 +8,7 @@ return {
   ft = {
     "go",
     "ruby",
+    "lua",
   },
   keys = {
     {"gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "references"},
@@ -18,6 +19,18 @@ return {
   },
   config = function()
     local vim = vim
+
+    vim.g.lsp_config = {
+      lua = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
+      },
+    }
     
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
