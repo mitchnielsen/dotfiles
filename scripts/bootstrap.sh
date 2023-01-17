@@ -67,7 +67,6 @@ mkdir -p "$HOME/bin"
 (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 
 # neovim
-nvim --headless +PackerSync
 mkdir -p "$HOME/go"
 GOPATH="$HOME/go" nvim --headless +GoInstallBinaries +qa
 

@@ -1,108 +1,122 @@
-local actions = require "fzf-lua.actions"
-require'fzf-lua'.setup {
-  winopts = {
-    fullscreen       = false,           -- start fullscreen?
-    -- split            = "belowright new",
-    height           = 0.90,            -- window height
-    width            = 0.90,            -- window width
-    row              = 0.35,            -- window row position (0=top, 1=bottom)
-    col              = 0.50,            -- window col position (0=left, 1=right)
-  preview = {
-      wrap           = 'wrap',          -- wrap|nowrap
-      layout         = 'vertical',
-      winopts = {                       -- builtin previewer window options
-        number            = true,
-        relativenumber    = false,
-        cursorline        = true,
-        cursorlineopt     = 'both',
-        cursorcolumn      = false,
-        signcolumn        = 'no',
-        list              = false,
-        foldenable        = false,
-        foldmethod        = 'manual',
+return {
+  "ibhagwan/fzf-lua",
+  dependencies = "kyazdani42/nvim-web-devicons",
+  cmd = "FzfLua",
+  keys = {
+    { "<leader>rg", "<cmd>FzfLua live_grep_glob<CR>", desc = "grep" },
+    { "<leader>f", "<cmd>FzfLua files<CR>", desc = "files" },
+    { "<leader>rG", "<cmd>FzfLua live_grep_resume<CR>", desc = "grep resume" },
+    { "<leader>rw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
+    { "<leader>b", "<cmd>FzfLua buffers<CR>", desc = "grep buffers" },
+  },
+  setup = function ()
+    local actions = require "fzf-lua.actions"
+    require'fzf-lua'.setup {
+      winopts = {
+        fullscreen       = false,           -- start fullscreen?
+        -- split            = "belowright new",
+        height           = 0.90,            -- window height
+        width            = 0.90,            -- window width
+        row              = 0.35,            -- window row position (0=top, 1=bottom)
+        col              = 0.50,            -- window col position (0=left, 1=right)
+        preview = {
+          wrap           = 'wrap',          -- wrap|nowrap
+          layout         = 'vertical',
+          winopts = {                       -- builtin previewer window options
+          number            = true,
+          relativenumber    = false,
+          cursorline        = true,
+          cursorlineopt     = 'both',
+          cursorcolumn      = false,
+          signcolumn        = 'no',
+          list              = false,
+          foldenable        = false,
+          foldmethod        = 'manual',
+        },
       },
     },
-  },
-  keymap = {
-    -- These override the default tables completely
-    -- no need to set to `false` to disable a bind
-    -- delete or modify is sufficient
-    fzf = {
-      -- fzf '--bind=' options
-      ["ctrl-z"]      = "abort",
-      ["ctrl-d"]      = "half-page-down",
-      ["ctrl-u"]      = "half-page-up",
-      ["ctrl-a"]      = "beginning-of-line",
-      ["ctrl-e"]      = "end-of-line",
-      ["alt-a"]       = "toggle-all",
+    keymap = {
+      -- These override the default tables completely
+      -- no need to set to `false` to disable a bind
+      -- delete or modify is sufficient
+      fzf = {
+        -- fzf '--bind=' options
+        ["ctrl-z"]      = "abort",
+        ["ctrl-d"]      = "half-page-down",
+        ["ctrl-u"]      = "half-page-up",
+        ["ctrl-a"]      = "beginning-of-line",
+        ["ctrl-e"]      = "end-of-line",
+        ["alt-a"]       = "toggle-all",
+      },
     },
-  },
-  fzf_opts = {
-    -- options are sent as `<left>=<right>`
-    -- set to `false` to remove a flag
-    -- set to '' for a non-value flag
-    -- for raw args use `fzf_args` instead
-    ['--ansi']        = '',
-    ['--prompt']      = '> ',
-    ['--info']        = 'inline',
-    ['--height']      = '100%',
-    ['--layout']      = 'reverse',
-  },
-  previewers = {
-    bat = {
-      cmd             = "bat",
-      args            = "--style=numbers,changes --color always",
-      theme           = 'OneHalfDark', -- bat preview theme (bat --list-themes)
+    fzf_opts = {
+      -- options are sent as `<left>=<right>`
+      -- set to `false` to remove a flag
+      -- set to '' for a non-value flag
+      -- for raw args use `fzf_args` instead
+      ['--ansi']        = '',
+      ['--prompt']      = '> ',
+      ['--info']        = 'inline',
+      ['--height']      = '100%',
+      ['--layout']      = 'reverse',
     },
-  },
-  -- provider setup
-  files = {
-    prompt            = 'Files❯ ',
-    multiprocess      = true,           -- run command in a separate process
-    git_icons         = true,           -- show git icons?
-    file_icons        = true,           -- show file icons?
-    color_icons       = true,           -- colorize file|git icons
-    rg_opts           = '--color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number',
-    actions = {
-      -- set bind to 'false' to disable an action
-      -- default action opens a single selection
-      -- or sends multiple selection to quickfix
-      -- replace the default action with the below
-      -- to open all files whether single or multiple
-      -- ["default"]     = actions.file_edit,
-      ["default"]     = actions.file_edit_or_qf,
-      ["ctrl-c"]      = actions.file_split,
-      ["ctrl-v"]      = actions.file_vsplit,
-      ["ctrl-t"]      = actions.file_tabedit,
-    }
-  },
-  grep = {
-    prompt            = 'Rg❯ ',
-    input_prompt      = 'Grep For❯ ',
-    multiprocess      = true,           -- run command in a separate process
-    git_icons         = true,           -- show git icons?
-    file_icons        = true,           -- show file icons?
-    color_icons       = true,           -- colorize file|git icons
-    -- executed command priority is 'cmd' (if exists)
-    -- otherwise auto-detect prioritizes `rg` over `grep`
-    -- default options are controlled by 'rg|grep_opts'
-    -- cmd            = "rg --vimgrep",
-    rg_opts           = '--color=always --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number',
-    grep_opts         = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp",
-    -- 'live_grep_glob' options:
-    glob_flag         = "--iglob",  -- for case sensitive globs use '--glob'
-    glob_separator    = "%s%-%-",    -- query separator pattern (lua): ' --'
-    actions = {
-      -- set bind to 'false' to disable an action
-      -- default action opens a single selection
-      -- or sends multiple selection to quickfix
-      -- replace the default action with the below
-      -- to open all files whether single or multiple
-      -- ["default"]     = actions.file_edit,
-      ["default"]     = actions.file_edit_or_qf,
-      ["ctrl-c"]      = actions.file_split,
-      ["ctrl-v"]      = actions.file_vsplit,
-      ["ctrl-t"]      = actions.file_tabedit,
-    }
-  },
+    previewers = {
+      bat = {
+        cmd             = "bat",
+        args            = "--style=numbers,changes --color always",
+        theme           = 'OneHalfDark', -- bat preview theme (bat --list-themes)
+      },
+    },
+    -- provider setup
+    files = {
+      prompt            = 'Files❯ ',
+      multiprocess      = true,           -- run command in a separate process
+      git_icons         = true,           -- show git icons?
+      file_icons        = true,           -- show file icons?
+      color_icons       = true,           -- colorize file|git icons
+      rg_opts           = '--color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number',
+      actions = {
+        -- set bind to 'false' to disable an action
+        -- default action opens a single selection
+        -- or sends multiple selection to quickfix
+        -- replace the default action with the below
+        -- to open all files whether single or multiple
+        -- ["default"]     = actions.file_edit,
+        ["default"]     = actions.file_edit_or_qf,
+        ["ctrl-c"]      = actions.file_split,
+        ["ctrl-v"]      = actions.file_vsplit,
+        ["ctrl-t"]      = actions.file_tabedit,
+      }
+    },
+    grep = {
+      prompt            = 'Rg❯ ',
+      input_prompt      = 'Grep For❯ ',
+      multiprocess      = true,           -- run command in a separate process
+      git_icons         = true,           -- show git icons?
+      file_icons        = true,           -- show file icons?
+      color_icons       = true,           -- colorize file|git icons
+      -- executed command priority is 'cmd' (if exists)
+      -- otherwise auto-detect prioritizes `rg` over `grep`
+      -- default options are controlled by 'rg|grep_opts'
+      -- cmd            = "rg --vimgrep",
+      rg_opts           = '--color=always --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number',
+      grep_opts         = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp",
+      -- 'live_grep_glob' options:
+      glob_flag         = "--iglob",  -- for case sensitive globs use '--glob'
+      glob_separator    = "%s%-%-",    -- query separator pattern (lua): ' --'
+      actions = {
+        -- set bind to 'false' to disable an action
+        -- default action opens a single selection
+        -- or sends multiple selection to quickfix
+        -- replace the default action with the below
+        -- to open all files whether single or multiple
+        -- ["default"]     = actions.file_edit,
+        ["default"]     = actions.file_edit_or_qf,
+        ["ctrl-c"]      = actions.file_split,
+        ["ctrl-v"]      = actions.file_vsplit,
+        ["ctrl-t"]      = actions.file_tabedit,
+      }
+    },
+  }
+end
 }

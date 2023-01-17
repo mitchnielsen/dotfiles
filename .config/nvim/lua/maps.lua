@@ -6,23 +6,6 @@ end
 -- Jump to previous buffer
 map_key('n', 'H', '<C-^>')
 
--- NVIM-tree
-map_key('n', '<leader>n', ':NvimTreeFindFileToggle<CR>')
-
--- LazyGit
-map_key('n', '<leader>gg', ':LazyGit<CR>')
-
--- Fugitive
-map_key('n', '<leader>gs', ':Git<cr>')
-map_key('n', '<leader>gbl', ':Git blame<cr>')
-map_key('n', '<leader>gbr', ':GBrowse<cr>')
-map_key('n', '<leader>gd', ':Gdiff<cr>')
-map_key('n', '<leader>gps', ':Git push<cr>')
-map_key('n', '<leader>gpl', ':Git pull<cr>')
-
--- vim-markdown
-map_key('n', '<leader>md', ':Toch<cr>')
-
 -- Go to the beginning of the line in insert mode
 map_key('i', '<C-a>', '<C-o>0')
 -- Go to the ending of the line in insert mode
@@ -55,39 +38,12 @@ map_key('v', '<leader>{', '<esc>`>a}<esc>`<i{<esc>')
 map_key('i', '<expr><TAB>', 'pumvisible() ? "\\<C-n>" : "\\<TAB>"')
 map_key('i', '<expr><S-TAB>', 'pumvisible() ? "\\<C-p>" : "\\<C-h>"')
 
--- LSP
--- References
-map_key('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
--- Implementation
-map_key('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
--- definition
-map_key('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
--- Show hovering documentation
-map_key('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
--- Rename symbols
-map_key('n', 'gR', '<cmd>lua vim.lsp.buf.rename()<CR>')
-
 -- Show full error
 map_key('n', 'ge', '<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>')
 
 -- Jump between errors
 map_key('n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 map_key('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-
--- Toggle error menu
-map_key('n', '<leader>h', ':TroubleToggle<CR>')
-
--- Testing
-map_key('n', '<Leader>tf', ':TestFile<CR>')
-map_key('n', '<Leader>ts', ':TestSuite<CR>')
-map_key('n', '<Leader>vi', ':VimuxInspectRunner<CR>')
-
--- Searching
-map_key('n', '<leader>rg', ':FzfLua live_grep_glob<CR>')
-map_key('n', '<leader>rG', ':FzfLua live_grep_resume<CR>')
-map_key('n', '<leader>rw', ':FzfLua grep_cword<CR>')
-map_key('n', '<Leader>f', ':FzfLua files<CR>')
-map_key('n', '<Leader>b', ':FzfLua buffers<CR>')
 
 -- Replacing
 map_key('n', '<leader>sr', ':%s/<C-R><C-W>//g<Left><Left>')

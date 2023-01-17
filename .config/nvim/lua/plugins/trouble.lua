@@ -1,8 +1,17 @@
-require("trouble").setup{
-  action_keys = {
-    open_split = { "<c-c>" },
-    open_vsplit = { "<c-v>" },
+return {
+  "folke/trouble.nvim",
+  dependencies = "kyazdani42/nvim-web-devicons",
+  keys = {
+    { '<leader>h', '<cmd>TroubleToggle<CR>', desc = 'toggle' },
   },
-  auto_preview = false,
-  auto_close = true,
+  config = function()
+    require("trouble").setup{
+      action_keys = {
+        open_split = { "<c-c>" },
+        open_vsplit = { "<c-v>" },
+      },
+      auto_preview = false,
+      auto_close = true,
+    }
+  end
 }

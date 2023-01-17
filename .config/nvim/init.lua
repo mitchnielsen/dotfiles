@@ -1,23 +1,19 @@
--- Inspiration taken from https://github.com/0xsamrath/kyoto.nvim
-
 require("globals")
 require("autocmd")
-require("lets")
 require("maps")
 require("options")
-require("lsp-config")
-require("pluginList")
 
-require("plugins.auto-hlsearch")
-require("plugins.go")
-require("plugins.theme")
-require("plugins.nvim-cmp")
-require("plugins.context")
-require("plugins.fzf")
-require("plugins.gitsigns")
-require("plugins.lualine")
-require("plugins.null-ls")
-require("plugins.nvim-tree")
-require("plugins.scope")
-require("plugins.treesitter")
-require("plugins.trouble")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require('lazy').setup('plugins')
