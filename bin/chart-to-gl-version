@@ -1,0 +1,7 @@
+#!/bin/bash
+
+chart_version="${1}"
+
+helm repo update > /dev/null 2>&1
+
+helm search repo gitlab/gitlab -l | grep "${chart_version}" | awk '{print $3}'
