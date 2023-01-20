@@ -3,6 +3,7 @@ return {
   dependencies = {
     'shumphrey/fugitive-gitlab.vim',
   },
+  lazy = false,
   keys = {
     {'<leader>gs', ':Git<cr>'},
     {'<leader>gbl', ':Git blame<cr>'},

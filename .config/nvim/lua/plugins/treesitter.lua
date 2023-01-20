@@ -1,5 +1,6 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  lazy = false,
   opts = {
    ensure_installed = { "bash", "dockerfile", "go", "graphql", "json", "lua", "make", "ruby", "yaml" },
     highlight = {
