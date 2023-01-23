@@ -14,9 +14,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Install packages
 brew bundle install --file=.config/brew/Brewfile
 
-# Set up vagrant
-vagrant plugin install vagrant-vbguest
-
 # FZF
 if [ ! -d '~/.fzf' ]; then (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install); fi
 
