@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -euo pipefail
+
+project=${PROJECT:-"mnielsen-2e27a441"}
+zone=${ZONE:-"us-east1-b"}
+instance=${INSTANCE:-"devbox"}
+
+flags="--zone=${zone} --project=${project}"
+
+function ssh() {
+  gcloud compute ssh $instance $flags
+}
+
+function start() {
+  gcloud compute instances start $instance $flags
+}
+
+function stop() {
+  gcloud compute instances stop $instance $flags
+}
+
+TARGET=${@:-ssh}
+
+for target in ${TARGET}; do
+  ${target}
+done

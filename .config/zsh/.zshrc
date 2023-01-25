@@ -206,8 +206,6 @@ alias aws-sandbox="op --account gitlab.1password.com run --env-file=$HOME/.confi
 alias eksctl-sandbox="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-sandbox-env -- eksctl"
 alias glab="op --account gitlab.1password.com run --env-file=$HOME/.config/op/gitlab-pat -- glab"
 
-alias gcp-devbox='gcloud compute ssh --zone "us-east1-b" "devbox"  --project "mnielsen-2e27a441"'
-
 # ===================
 # Cursor settings
 # ===================
