@@ -171,6 +171,10 @@ function digg() {
   dig $1 +nocmd +multiline +noall +answer
 }
 
+function image-size() {
+  skopeo inspect docker://$1 | jq '[.LayersData[].Size] | add'
+}
+
 # ===================
 # Aliases
 # ===================
