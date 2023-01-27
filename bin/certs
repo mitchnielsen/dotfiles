@@ -64,3 +64,18 @@ registry:
     secretName: gitlab-tls
     caSecretName: ${NAMESPACE}/gitlab-tls-ca
 EOF
+
+# Alternative from Robert Marshall:
+#
+# https://github.com/smallstep/cli/releases
+# ./step certificate create TLD gitlab.MY.TLD.crt gitlab.MY.TLD.key \
+#   -kty RSA -size 4096 \
+#   --profile self-signed --subtle \
+#   --san gitaly.gitlab.MY.TLD \
+#   --san redis01.gitlab.MY.TLD \
+#   --san redis02.gitlab.MY.TLD \
+#   --san redis03.gitlab.MY.TLD \
+#   --san postgres.gitlab.MY.TLD \
+#   --san gitlab.gitlab.MY.TLD \
+#   --san mattermost.gitlab.MY.TLD \
+#   --no-password --insecure
