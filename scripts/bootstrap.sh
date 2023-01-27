@@ -22,39 +22,7 @@ function symlink() {
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 }
 
-function asdf-install () {
-  asdf plugin add $1
-  asdf install $1 $2
-  asdf global $1 $2
-}
-
 function dependencies() {
-  # asdf
-  if [ ! -d '~/.asdf' ]; then git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0; fi
-  source "$HOME/.asdf/asdf.sh"
-
-  # asdf-managed
-  asdf-install awscli latest
-  asdf-install cfssl latest
-  asdf-install direnv latest
-  asdf-install dive latest
-  asdf-install golang '1.16.14'
-  asdf-install golangci-lint latest
-  asdf-install helm '3.8.0'
-  asdf-install jq latest
-  asdf-install kind '0.11.1'
-  asdf-install kubectl '1.23.3'
-  asdf-install kubectx '0.9.4'
-  asdf-install kustomize '4.5.2'
-  asdf-install oc latest
-  asdf-install ruby '2.7.5'
-  asdf-install stern latest
-  asdf-install yq latest
-  asdf reshim
-
-  ## TMUX's TPM
-  if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
-
   # Install homebrew if needed
   command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   grep homebrew "$HOME/.zprofile" || echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
@@ -62,6 +30,27 @@ function dependencies() {
 
   # Install packages
   brew bundle install --file=.config/brew/Brewfile
+
+  # rtx-managed packages
+  rtx install awscli
+  rtx install cfssl
+  rtx install direnv
+  rtx install dive
+  rtx install golang@1.16.14
+  rtx install golangci-lint
+  rtx install helm@3.8.0
+  rtx install jq
+  rtx install kind@0.11.1
+  rtx install kubectl@1.23.3
+  rtx install kubectx@0.9.4
+  rtx install kustomize@4.5.2
+  rtx install oc
+  rtx install ruby@2.7.5
+  rtx install stern
+  rtx install yq
+
+  ## TMUX's TPM
+  if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
 
   # FZF
   if [ ! -d '~/.fzf' ]; then (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install); fi

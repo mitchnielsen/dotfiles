@@ -56,7 +56,7 @@ bindkey '^E' end-of-line
 # Sources
 # ===================
 
-[ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
+eval "$(rtx activate -s zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Gcloud (https://cloud.google.com/sdk/docs/install)
