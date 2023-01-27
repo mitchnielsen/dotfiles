@@ -189,6 +189,7 @@ alias docker-stop='colima stop docker'
 alias kubernetes-start='docker-start --kubernetes --profile k8s'
 alias g='git'
 alias v='nvim'
+alias v-changed='nvim $(git dm --name-only)'
 alias k='kubectl'
 alias kk='k9s --crumbsless --headless --logoless'
 # https://docs.gitlab.com/ee/development/documentation/#local-linting
