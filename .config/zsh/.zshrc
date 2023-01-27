@@ -33,6 +33,7 @@ unset KUBECONFIG
 
 set histignorespace # ignore command in history if it starts with space
 unsetopt share_history # don't share history between sessions
+setopt completealiases # perform completions and then expand aliases
 
 # ===================
 # Bindings
