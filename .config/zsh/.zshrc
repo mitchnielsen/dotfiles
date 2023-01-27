@@ -213,14 +213,8 @@ alias eksctl-sandbox="op --account gitlab.1password.com run --env-file=$HOME/.co
 alias glab="op --account gitlab.1password.com run --env-file=$HOME/.config/op/gitlab-pat -- glab"
 
 # ===================
-# Cursor settings
+# Prompt settings
 # ===================
-
-# Change cursor with support for inside/outside tmux
-# https://unix.stackexchange.com/questions/433273/changing-cursor-style-based-on-mode-in-both-zsh-and-vim
-# https://superuser.com/questions/685005/tmux-in-zsh-with-vi-mode-toggle-cursor-shape-between-normal-and-insert-mode
-_fix_cursor() { echo -ne '\e[5 q' }
-precmd_functions+=(_fix_cursor)
 
 function git_prompt() {
   BRANCH=$(git branch --show-current 2> /dev/null)
