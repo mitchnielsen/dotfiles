@@ -205,7 +205,7 @@ alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirnam
 alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator/master'
 alias cdc='cd ~/code/gitlab-org/charts/gitlab/master'
 alias cdcng='cd ~/code/gitlab-org/build/cng/master'
-alias note='(cd /Users/mnielsen/Dropbox/GitLab/Notes && nvim)'
+alias note='(cd /Users/mnielsen/Dropbox/Career/GitLab/Notes && nvim)'
 
 # format is op://vault-name/item-name/[section-name/]field-name
 alias aws-sandbox="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-sandbox-env -- aws"
