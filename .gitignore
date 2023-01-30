@@ -1,4 +1,5 @@
 .config/nvim/.luarc.json
+.config/nvim/lazy-lock.json
 .config/k9s/config.yml
 .config/lazygit/state.yml
 .config/brew/Brewfile.lock.json
