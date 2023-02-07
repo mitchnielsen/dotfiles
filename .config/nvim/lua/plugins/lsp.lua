@@ -29,16 +29,16 @@ return {
         },
       },
     }
-    
+
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-    
+
     require("lsp_signature").setup({ hint_enable = false })
-    
+
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
     capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
-    
+
     -- For TSServer: `npm i -g typescript typescript-language-server`
     local servers = { 'gopls', 'solargraph', 'tsserver' }
     for _, lsp in ipairs(servers) do
@@ -47,7 +47,7 @@ return {
         on_attach = lsp_status.on_attach
       }
     end
-    
+
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
     require'lspconfig'.sumneko_lua.setup {
       settings = {
