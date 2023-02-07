@@ -1,8 +1,10 @@
-theme = "gruvbox"
+theme = "autumn"
 
 [editor]
 line-number = "relative"
 mouse = false
+bufferline = "always"
+cursorline = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -11,10 +13,25 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+git-ignore = false
 
 [editor.whitespace.render]
-space = "all"
 tab = "all"
+space = "none"
+newline = "none"
+
+[editor.whitespace.characters]
+tab = "→"
 
 [editor.lsp]
 display-messages = true
+
+[editor.statusline]
+left = ["spinner", "diagnostics", "workspace-diagnostics"]
+center = []
+right = ["position", "position-percentage"]
+
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
