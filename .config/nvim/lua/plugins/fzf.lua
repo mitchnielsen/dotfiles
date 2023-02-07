@@ -2,13 +2,13 @@ return {
   "ibhagwan/fzf-lua",
   dependencies = "kyazdani42/nvim-web-devicons",
   cmd = "FzfLua",
-  keys = {
-    { "<leader>rg", "<cmd>FzfLua live_grep_glob<CR>", desc = "grep" },
-    { "<leader>f", "<cmd>FzfLua files<CR>", desc = "files" },
-    { "<leader>rG", "<cmd>FzfLua live_grep_resume<CR>", desc = "grep resume" },
-    { "<leader>rw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
-    { "<leader>b", "<cmd>FzfLua buffers<CR>", desc = "grep buffers" },
-  },
+  -- keys = {
+  --   { "<leader>rg", "<cmd>FzfLua live_grep_glob<CR>", desc = "grep" },
+  --   { "<leader>f", "<cmd>FzfLua files<CR>", desc = "files" },
+  --   { "<leader>rG", "<cmd>FzfLua live_grep_resume<CR>", desc = "grep resume" },
+  --   { "<leader>rw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
+  --   { "<leader>b", "<cmd>FzfLua buffers<CR>", desc = "grep buffers" },
+  -- },
   setup = function ()
     local actions = require "fzf-lua.actions"
     require'fzf-lua'.setup {
