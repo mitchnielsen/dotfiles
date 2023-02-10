@@ -1,0 +1,26 @@
+#!/bin/bash
+
+releases=$(helm ls \
+  | tail -n +2 \
+  | sort \
+  | awk '{print $1 "\t\t\t" $4 "\t\t" $5}')
+
+release=$(printf "quit\n${releases}" \
+  | fzf --header='Active Helm releases' \
+  | awk '{print $1}')
+
+if [ "${release}" = "quit" ]; then
+  echo 'No release selected, exiting...'
+  exit 1
+fi
+
+url=$(helm get values "${release}" | yq .ci.pipeline.url)
+open "${url}"
+
+# Try to stop the releases using CI jobs.
+# If not possible, such as if the branch is no longer available,
+# select "yes" to delete the Helm release manually.
+delete=$(printf "no\nyes" | fzf --header="Delete release ${release}?")
+if [ "${delete}" = "yes" ]; then
+  helm delete "${release}"
+fi

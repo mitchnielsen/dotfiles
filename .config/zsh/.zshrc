@@ -97,9 +97,6 @@ direnv() { asdf exec direnv "$@"; }
 # Function to list Helm release Ci info
 function helm-ls-ci { helm ls | awk '/^gke-/{print $1}'| xargs -I'{}' sh -c "helm get values {} | yq r - .ci" }
 
-# Function to get CI pipeline URL and copy it to clipboard
-function helm-ci-url { helm get values $1 | yq ci.pipeline.url | pbcopy }
-
 # Function to work quickly with Tmux sessions
 function tm {
   if [ -z "$1" ]; then
