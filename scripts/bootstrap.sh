@@ -73,6 +73,10 @@ function macos_settings() {
   defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -int 0
   # Use thin strokes (https://github.com/alacritty/alacritty/releases/tag/v0.11.0)
   defaults write -g AppleFontSmoothing -int 0
+  # Adjust key repeat
+  defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+  defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+  defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
   # Save settings
   killall Dock
 }
