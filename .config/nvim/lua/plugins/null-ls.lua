@@ -11,6 +11,7 @@ return {
         null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.diagnostics.vale,
         null_ls.builtins.diagnostics.yamllint,
+        null_ls.builtins.diagnostics.rubocop,
         null_ls.builtins.code_actions.gitsigns,
       },
       defaults = {
