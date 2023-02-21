@@ -16,3 +16,4 @@ source = { git = "https://github.com/dannylongeuay/tree-sitter-go-template", rev
 [[language]]
 name = "go"
 file-types = ["go", "tpl"]
+indent = { tab-width = 2, unit = "  " }

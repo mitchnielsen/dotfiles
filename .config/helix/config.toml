@@ -24,7 +24,7 @@ space = "none"
 newline = "none"
 
 [editor.whitespace.characters]
-tab = "→"
+tab = " "
 
 [editor.lsp]
 display-messages = true
