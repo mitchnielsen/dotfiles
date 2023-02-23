@@ -1,7 +1,7 @@
 local options = {
   -- Decorations
   signcolumn = "yes",
-  cmdheight = 0,
+  cmdheight = 2,
   timeoutlen = 400,
   pumheight = 20,
   foldmethod = "manual",
