@@ -14,7 +14,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # Utilities
-export FZF_DEFAULT_COMMAND='rg --color=always --files --no-ignore-vcs --hidden --follow --glob "!.git/*" --smart-case --line-number'
+export FZF_DEFAULT_COMMAND='rg --color=always --no-ignore --hidden --glob "!.git/*" --smart-case --line-number'
 export XDG_CONFIG_HOME="$HOME/.config"
 export BAT_THEME="Nord" # bat --list-themes
 export PATH="/opt/homebrew/bin:$PATH"
@@ -203,6 +203,7 @@ alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator/master'
 alias cdc='cd ~/code/gitlab-org/charts/gitlab/master'
 alias cdcng='cd ~/code/gitlab-org/build/cng/master'
 alias note='(cd /Users/mnielsen/Library/Mobile\ Documents/com~apple~CloudDocs/Notes && nvim)'
+alias rg='rg --column --line-number --no-heading --smart-case --hidden --no-ignore --glob "!.git/*"'
 
 # format is op://vault-name/item-name/[section-name/]field-name
 alias aws-sandbox="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-sandbox-env -- aws"

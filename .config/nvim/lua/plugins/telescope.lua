@@ -25,6 +25,17 @@ return {
         additional_args = function()
           return {"--hidden", "--glob", "!**/.git/*"}
         end
+      pickers = {
+        find_files = {
+          theme = "ivy",
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        },
+        live_grep = {
+          theme = "ivy",
+          additional_args = function()
+            return {"--hidden", "--glob", "!**/.git/*"}
+          end
+        },
       },
     },
   }
