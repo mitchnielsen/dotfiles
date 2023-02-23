@@ -7,7 +7,6 @@ return {
   -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#opening-nvim-tree-at-neovim-startup
   lazy = false,
   opts = {
-    ignore_buffer_on_setup = true,
     filters = {
       dotfiles = false,
     },
