@@ -1,4 +1,4 @@
-theme = "autumn"
+theme = "nord"
 
 [keys.normal]
 esc = ["collapse_selection", "keep_primary_selection"]
