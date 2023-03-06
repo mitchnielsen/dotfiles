@@ -13,7 +13,9 @@ return {
   keys = {
     {"K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "hover"},
     {"gR", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "rename"},
-    -- Other definitions in telescope.lua
+    {"gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "references"},
+    {"gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "implementation"},
+    {"gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "definition"},
   },
   config = function()
     local vim = vim
