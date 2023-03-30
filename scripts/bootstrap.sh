@@ -101,7 +101,7 @@ setup_git() {
   git config --global alias.last 'log -1 HEAD'
   git config --global alias.l 'log --all --graph --decorate --oneline --simplify-by-decoration'
   git config --global alias.pl '!git pull origin $(git branch --show-current)'
-  git config --global alias.plm '!git fetch origin && git pull origin $(git db)'
+  git config --global alias.plm '!git pull origin $(git db)'
   git config --global alias.ps '!git push origin $(git branch --show-current)'
 
   git config --global commit.template ~/.config/git/gitmessage
