@@ -153,16 +153,17 @@ function gwr() {
   git worktree remove "${branch_name}"
 }
 
+function koff() {
+  kubechu
+  source "$HOME/.config/zsh/.zshrc"
+}
+
 function kon() {
+  koff
   CLUSTER=$(yq '.contexts[].name' ~/.kube/config | fzf)
   kubechc "${CLUSTER}"
   export PS1="
 [cluster: %F{green}${CLUSTER}]$PS1"
-}
-
-function koff() {
-  kubechu
-  source "$HOME/.config/zsh/.zshrc"
 }
 
 function digg() {
