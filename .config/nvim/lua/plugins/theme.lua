@@ -17,10 +17,10 @@ return {
         },
       },
     })
-    
+
     vim.o.background = "dark" -- light/dark
     vim.cmd("colorscheme nordfox")
-    
+
     require'colorizer'.setup() -- show colors over color codes
   end
 }
