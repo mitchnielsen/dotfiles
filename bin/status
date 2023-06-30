@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo '# System Status'
+echo '==============='
+
+function run {
+  printf "\n\n## $1\n\n"
+  $1
+}
+
+run 'orbctl list'
+run 'colima list'
+run 'docker ps'
