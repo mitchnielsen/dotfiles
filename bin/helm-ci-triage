@@ -16,11 +16,3 @@ fi
 
 url=$(helm get values "${release}" | yq .ci.pipeline.url)
 open "${url}"
-
-# Try to stop the releases using CI jobs.
-# If not possible, such as if the branch is no longer available,
-# select "yes" to delete the Helm release manually.
-delete=$(printf "no\nyes" | fzf --header="Delete release ${release}?")
-if [ "${delete}" = "yes" ]; then
-  helm delete "${release}"
-fi
