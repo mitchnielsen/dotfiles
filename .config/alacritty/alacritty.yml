@@ -91,7 +91,7 @@ key_bindings:
   # Split the current pane into two, left and right
   - { key: N, mods: Command|Shift, chars: "\x02\x25" }
   # Split the current pane into two, top and bottom.
-  - { key: N, mods: Command, chars: "\x02\x22" }
+  # - { key: N, mods: Command, chars: "\x02\x22" }
   # Detach the current tmux client
   - { key: Q, mods: Command, chars: "\x02\x64" }
   # Type <escape>:w<enter> to save neovim
