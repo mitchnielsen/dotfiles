@@ -174,6 +174,10 @@ function image-size() {
   skopeo inspect docker://$1 | jq '[.LayersData[].Size] | add'
 }
 
+function gcloud-inventory() {
+  gcloud asset search-all-resources --scope=projects/mnielsen-2e27a441 | grep assetType | sort | uniq -c | sort -nr
+}
+
 # ===================
 # Aliases
 # ===================
