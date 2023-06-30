@@ -42,19 +42,13 @@ return {
     capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
     -- For TSServer: `npm i -g typescript typescript-language-server`
-    local servers = { 'gopls', 'tsserver' }
+    local servers = { 'gopls', 'solargraph', 'tsserver', 'marksman' }
     for _, lsp in ipairs(servers) do
       require("lspconfig")[lsp].setup {
         capabilities = capabilities,
         on_attach = lsp_status.on_attach
       }
     end
-
-    -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/solargraph.lua
-    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#solargraph
-    require'lspconfig'.solargraph.setup {
-      cmd = { "bundle", "exec", "solargraph", "stdio" },
-    }
 
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
     require'lspconfig'.lua_ls.setup {
