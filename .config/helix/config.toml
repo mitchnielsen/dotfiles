@@ -28,6 +28,7 @@ tab = " "
 
 [editor.lsp]
 display-messages = true
+display-inlay-hints = true
 
 [editor.statusline]
 left = ["spinner", "diagnostics", "workspace-diagnostics"]
@@ -38,3 +39,6 @@ right = ["position", "position-percentage"]
 render = true
 character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
 skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
