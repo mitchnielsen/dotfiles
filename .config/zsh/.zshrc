@@ -211,9 +211,10 @@ alias note='(cd /Users/mnielsen/Library/Mobile\ Documents/com~apple~CloudDocs/No
 alias rg='rg --column --line-number --no-heading --smart-case --hidden --no-ignore --glob "!.git/*"'
 
 # format is op://vault-name/item-name/[section-name/]field-name
-alias aws-sandbox="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-sandbox-env -- aws"
-alias eksctl-sandbox="op --account gitlab.1password.com run --env-file=$HOME/.config/op/aws-sandbox-env -- eksctl"
-alias glab="op --account gitlab.1password.com run --env-file=$HOME/.config/op/gitlab-pat -- glab"
+alias op-gl='op --account gitlab.1password.com'
+alias aws-sandbox="op-gl run --env-file=$HOME/.config/op/aws-sandbox-env -- aws"
+alias eksctl-sandbox="op-gl run --env-file=$HOME/.config/op/aws-sandbox-env -- eksctl"
+alias glab="op-gl run --env-file=$HOME/.config/op/gitlab-pat -- glab"
 
 # ===================
 # Prompt settings
