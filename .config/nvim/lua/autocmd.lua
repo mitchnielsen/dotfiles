@@ -50,8 +50,15 @@ autocmd({ "BufNewFile", "BufEnter" }, {
 
 autocmd("FileType", {
   pattern = { "*.txt", "*.md", "gitcommit", "gitrebase" },
-  command = "setlocal spell textwidth=72",
+  command = "setlocal spell textwidth=72 comments=fb:>,fb:*,fb:+,fb:-",
   group = augroup("Spell", { clear = true }),
+})
+
+-- Use internal formatting for bindings like gq.
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    vim.bo[args.buf].formatexpr = nil
+  end,
 })
 
 autocmd("FileType", {
