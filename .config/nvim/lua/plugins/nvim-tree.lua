@@ -5,6 +5,9 @@ local function on_attach(bufnr)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
   vim.keymap.set('n', 'i', api.node.open.horizontal, opts('Open: Horizontal Split')) -- was '<C-x>'
   vim.keymap.set('n', 's', api.node.open.vertical, opts('Open: Vertical Split')) -- was '<C-v'
 end
@@ -17,6 +20,13 @@ return {
   },
   lazy = false,
   config = function ()
+    -- disable netrw at the very start of your init.lua
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
+    -- set termguicolors to enable highlight groups
+    vim.opt.termguicolors = true
+
     require('nvim-tree').setup {
       on_attach = on_attach,
       filters = {
