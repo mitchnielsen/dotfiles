@@ -6,6 +6,7 @@ k9s:
       columns:
         - NAME
         - READY
+        - RESTARTS
         - STATUS
-        - AGE
         - IP
+        - AGE
