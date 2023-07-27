@@ -41,6 +41,16 @@ matches:
 
       </details>
 
+  - trigger: ;tabs
+    replace: |
+      ::Tabs
+
+      :::TabTitle $|$
+
+      :::TabTitle
+
+      ::EndTabs
+
   - trigger: ;manifest
     replace: |
       apiVersion: apps.gitlab.com/v1beta1
