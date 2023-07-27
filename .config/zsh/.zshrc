@@ -207,7 +207,7 @@ alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirnam
 alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator/master'
 alias cdc='cd ~/code/gitlab-org/charts/gitlab/master'
 alias cdcng='cd ~/code/gitlab-org/build/cng/master'
-alias note='(cd /Users/mnielsen/Library/Mobile\ Documents/com~apple~CloudDocs/Notes && nvim dashboard.md)'
+alias note='(cd /Users/mnielsen/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian/Notes && nvim Home.md)'
 alias rg='rg --column --line-number --no-heading --smart-case --hidden --no-ignore --glob "!.git/*"'
 
 # format is op://vault-name/item-name/[section-name/]field-name
