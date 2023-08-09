@@ -159,11 +159,16 @@ function koff() {
 }
 
 function kon() {
-  koff
+  koff > /dev/null
+
   CLUSTER=$(yq '.contexts[].name' ~/.kube/config | fzf)
-  kubechc "${CLUSTER}"
+  kubechc "${CLUSTER}" > /dev/null
+
+  kubens
+  NAMESPACE=$(kubens --current)
+
   export PS1="
-[cluster: %F{green}${CLUSTER}]$PS1"
+[cluster: %F{green}${CLUSTER}:${NAMESPACE}]$PS1"
 }
 
 function digg() {
