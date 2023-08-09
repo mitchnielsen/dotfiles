@@ -1,5 +1,5 @@
 matches:
-  - trigger: datee
+  - trigger: ;date
     replace: "{{mydate}}"
     vars:
       - name: mydate
@@ -7,6 +7,14 @@ matches:
         params:
           format: "%Y/%m/%d"
 
+  - trigger: ;cng
+    replace: https://gitlab.com/gitlab-org/build/cng
+
+  - trigger: ;charts
+    replace: https://gitlab.com/gitlab-org/charts/gitlab
+
+  - trigger: ;operator
+    replace: https://gitlab.com/gitlab-org/cloud-native/gitlab-operator
 
   # https://gitlab.com/gitlab-org/distribution/team-tasks/-/blob/master/frequently-used-labels.md?ref_type=heads
 
