@@ -135,7 +135,8 @@ function stopOmnibus {
 # Adds a git worktree using the project and branch name
 function gwa() {
   local branch_name="${1}"
-  local location="../${branch_name}"
+  local branch_name_escaped="$(echo $branch_name | sed 's;\/;-;g')"
+  local location="../${branch_name_escaped}"
 
   local args=""
   if [ $(git branch --all | grep "remotes/origin/${branch_name}" | wc -l) -eq 0 ]; then
