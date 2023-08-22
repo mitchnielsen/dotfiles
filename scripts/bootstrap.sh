@@ -11,6 +11,9 @@ function symlink() {
   [ -f ~/.tmux.conf ] && rm ~/.tmux.conf
   ln -s ~/dotfiles/.config/tmux/.tmux.conf ~/.tmux.conf
 
+  # asdf's config
+  ln -s ~/dotfiles/.tool-versions ~/.tool-versions
+
   # dotfiles
   mkdir -p "$HOME/.config"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/.config" .config)
@@ -30,24 +33,6 @@ function dependencies() {
 
   # Install packages
   brew bundle install --file=.config/brew/Brewfile
-
-  # rtx-managed packages
-  rtx install awscli
-  rtx install cfssl
-  rtx install direnv
-  rtx install dive
-  rtx install golang@1.16.14
-  rtx install golangci-lint
-  rtx install helm@3.8.0
-  rtx install jq
-  rtx install kind@0.11.1
-  rtx install kubectl@1.23.3
-  rtx install kubectx@0.9.4
-  rtx install kustomize@4.5.2
-  rtx install oc
-  rtx install ruby@2.7.5
-  rtx install stern
-  rtx install yq
 
   ## TMUX's TPM
   if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi

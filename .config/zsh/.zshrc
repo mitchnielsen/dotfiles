@@ -11,6 +11,7 @@ export PATH=$PATH:$HOME/bin
 
 # Golang
 export GOPATH=$HOME/go
+unset GOROOT
 export PATH=$PATH:$GOPATH/bin
 
 # Utilities
@@ -57,7 +58,7 @@ bindkey '^E' end-of-line
 # Sources
 # ===================
 
-eval "$(rtx activate --quiet -s zsh)"
+source "$(brew --prefix asdf)/libexec/asdf.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Gcloud (https://cloud.google.com/sdk/docs/install)
@@ -93,6 +94,10 @@ fi
 
 # A shortcut for asdf managed direnv.
 direnv() { asdf exec direnv "$@"; }
+
+function asdf-add() {
+  cut -d' ' -f1 .tool-versions | xargs -i asdf plugin add {}
+}
 
 # Function to list Helm release Ci info
 function helm-ls-ci { helm ls | awk '/^gke-/{print $1}'| xargs -I'{}' sh -c "helm get values {} | yq r - .ci" }
