@@ -8,6 +8,6 @@ function run {
   $1
 }
 
-run 'orbctl list'
+run 'orbctl status'
 run 'colima list'
 run 'docker ps'
