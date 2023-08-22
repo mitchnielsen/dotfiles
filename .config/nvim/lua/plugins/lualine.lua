@@ -24,7 +24,7 @@ return {
         },
       },
       lualine_b = {{'diagnostics', sources = {'nvim_diagnostic'}}},
-      lualine_c = {'diff'},
+      lualine_c = {'diff', 'navic'},
 
       lualine_x = {
         function()
