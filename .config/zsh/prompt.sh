@@ -3,6 +3,10 @@
 setopt prompt_subst
 autoload -U colors && colors # Enable colors in prompt
 
+# Diasble icon bouncing
+# https://github.com/alacritty/alacritty/issues/2950#issuecomment-706610878
+printf "\e[?1042l"
+
 # Echoes information about Git repository status when inside a Git repository
 git_info() {
   # Exit if not inside a Git repository
