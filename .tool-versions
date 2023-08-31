@@ -2,3 +2,12 @@ golang system
 helm system
 jq system
 nodejs system
+kubectl system
+kubectx system
+yq system
+aws system
+awscli system
+stern system
+ruby system
+k9s system
+golangci-lint system
