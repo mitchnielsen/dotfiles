@@ -25,6 +25,7 @@ export BAT_THEME="catppuccin" # bat --list-themes
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # Kubernetes
 # Disable default connection to cluster
