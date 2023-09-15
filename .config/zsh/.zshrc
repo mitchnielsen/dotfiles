@@ -202,6 +202,7 @@ function ql() {
 # Aliases
 # ===================
 
+alias ll='ls -lahL'
 alias t='tree -C -a -I .git'
 alias d='docker'
 alias dr='docker run --platform=linux/amd64 --rm -it'
