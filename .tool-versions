@@ -11,3 +11,5 @@ stern system
 ruby system
 k9s system
 golangci-lint system
+vale system
+shellcheck system
