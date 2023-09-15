@@ -194,6 +194,10 @@ function gcloud-inventory() {
   gcloud asset search-all-resources --scope=projects/mnielsen-2e27a441 | grep assetType | sort | uniq -c | sort -nr
 }
 
+function ql() {
+  qlmanage -p "$@"
+}
+
 # ===================
 # Aliases
 # ===================
