@@ -1,4 +1,3 @@
 #!/bin/bash
 
-branch_name=$(git branch --show-current 2> /dev/null)
 glab mr view | grep '^state:' | awk '{print $2}'
