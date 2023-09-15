@@ -16,8 +16,12 @@ export PATH=$PATH:$GOPATH/bin
 
 # Utilities
 export FZF_DEFAULT_COMMAND='rg --color=always --no-ignore --hidden --glob "!.git/*" --smart-case --line-number'
+export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
+  --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+  --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
 export XDG_CONFIG_HOME="$HOME/.config"
-export BAT_THEME="Nord" # bat --list-themes
+export BAT_THEME="catppuccin" # bat --list-themes
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"

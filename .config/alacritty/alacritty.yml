@@ -3,38 +3,86 @@ live_config_reload: true
 env:
   TERM: xterm-256color
 
-# https://github.com/alacritty/alacritty/wiki/Color-schemes
-# Nightfox Alacritty Colors
-# Style: nordfox
-# Upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nordfox/nightfox_alacritty.yml
+# https://github.com/catppuccin/alacritty/blob/main/catppuccin-latte.yml
 colors:
   # Default colors
   primary:
-    background: '0x2e3440'
-    foreground: '0xcdcecf'
+    background: "#EFF1F5" # base
+    foreground: "#4C4F69" # text
+    # Bright and dim foreground colors
+    dim_foreground: "#4C4F69" # text
+    bright_foreground: "#4C4F69" # text
+
+  # Cursor colors
+  cursor:
+    text: "#EFF1F5" # base
+    cursor: "#DC8A78" # rosewater
+  vi_mode_cursor:
+    text: "#EFF1F5" # base
+    cursor: "#7287FD" # lavender
+
+  # Search colors
+  search:
+    matches:
+      foreground: "#EFF1F5" # base
+      background: "#6C6F85" # subtext0
+    focused_match:
+      foreground: "#EFF1F5" # base
+      background: "#40A02B" # green
+    footer_bar:
+      foreground: "#EFF1F5" # base
+      background: "#6C6F85" # subtext0
+
+  # Keyboard regex hints
+  hints:
+    start:
+      foreground: "#EFF1F5" # base
+      background: "#DF8E1D" # yellow
+    end:
+      foreground: "#EFF1F5" # base
+      background: "#6C6F85" # subtext0
+
+  # Selection colors
+  selection:
+    text: "#EFF1F5" # base
+    background: "#DC8A78" # rosewater
+
   # Normal colors
   normal:
-    black:   '0x3b4252'
-    red:     '0xbf616a'
-    green:   '0xa3be8c'
-    yellow:  '0xebcb8b'
-    blue:    '0x81a1c1'
-    magenta: '0xb48ead'
-    cyan:    '0x88c0d0'
-    white:   '0xe5e9f0'
+    black: "#5C5F77" # subtext1
+    red: "#D20F39" # red
+    green: "#40A02B" # green
+    yellow: "#DF8E1D" # yellow
+    blue: "#1E66F5" # blue
+    magenta: "#EA76CB" # pink
+    cyan: "#179299" # teal
+    white: "#ACB0BE" # surface2
+
   # Bright colors
   bright:
-    black:   '0x465780'
-    red:     '0xd06f79'
-    green:   '0xb1d196'
-    yellow:  '0xf0d399'
-    blue:    '0x8cafd2'
-    magenta: '0xc895bf'
-    cyan:    '0x93ccdc'
-    white:   '0xe7ecf4'
+    black: "#6C6F85" # subtext0
+    red: "#D20F39" # red
+    green: "#40A02B" # green
+    yellow: "#DF8E1D" # yellow
+    blue: "#1E66F5" # blue
+    magenta: "#EA76CB" # pink
+    cyan: "#179299" # teal
+    white: "#BCC0CC" # surface1
+
+  # Dim colors
+  dim:
+    black: "#5C5F77" # subtext1
+    red: "#D20F39" # red
+    green: "#40A02B" # green
+    yellow: "#DF8E1D" # yellow
+    blue: "#1E66F5" # blue
+    magenta: "#EA76CB" # pink
+    cyan: "#179299" # teal
+    white: "#ACB0BE" # surface2
+
   indexed_colors:
-    - { index: 16, color: '0xc9826b' }
-    - { index: 17, color: '0xbf88bc' }
+    - { index: 16, color: "#FE640B" }
+    - { index: 17, color: "#DC8A78" }
 
 # fc-list to list font names
 font:
