@@ -137,6 +137,11 @@ function stopOmnibus {
   docker rm omnibus-local
 }
 
+function dns-flush {
+  dscacheutil -flushcache
+  sudo killall -HUP mDNSResponder
+}
+
 # Adds a git worktree using the project and branch name
 function gwa() {
   local branch_name="${1}"
