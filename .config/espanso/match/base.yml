@@ -49,6 +49,7 @@ matches:
 
       </details>
 
+  # https://docs.gitlab.com/ee/development/documentation/styleguide/#tabs
   - trigger: ;tabs
     replace: |
       ::Tabs
