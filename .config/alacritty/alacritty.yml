@@ -36,6 +36,7 @@ colors:
     - { index: 16, color: '0xc9826b' }
     - { index: 17, color: '0xbf88bc' }
 
+# fc-list to list font names
 font:
   normal:
     family: "JetBrainsMono Nerd Font"
