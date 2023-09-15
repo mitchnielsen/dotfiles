@@ -12,6 +12,7 @@ function symlink() {
   ln -s ~/dotfiles/.config/tmux/.tmux.conf ~/.tmux.conf
 
   # asdf's config
+  [ -f ~/.tool-versions ] && rm ~/.tool-versions
   ln -s ~/dotfiles/.tool-versions ~/.tool-versions
 
   # dotfiles
