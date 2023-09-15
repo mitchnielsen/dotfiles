@@ -70,3 +70,7 @@ map_key('v', 'J', ':m >+1<CR>gv=gv')
 map_key('v', 'K', ':m <-2<CR>gv=gv')
 map_key('n', '<leader>j', ':m .+1<CR>==')
 map_key('n', '<leader>k', ':m .-2<CR>==')
+
+-- Lazy utils
+map_key('n', '<leader>lg', '<cmd>lua require("lazy.util").float_term("lazygit")<CR>')
+map_key('n', '<leader>t',  '<cmd>lua require("lazy.util").float_term()<CR>')
