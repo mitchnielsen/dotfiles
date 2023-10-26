@@ -262,25 +262,6 @@ alias glab="op-gl run --env-file=$HOME/.config/op/gitlab-pat -- glab"
 # Prompt settings
 # ===================
 
-function git_prompt() {
-  BRANCH=$(git branch --show-current 2> /dev/null)
-
-  if [ ! -z $BRANCH ]; then
-    echo -n "%F{magenta}[branch: $BRANCH]"
-
-    if [ ! -z "$(git status --short)" ]; then
-      echo " %F{yellow}[✗]"
-    fi
-  fi
-}
-
-STATUS="%(?.%F{green}$.%F{red}%?)%f"
-DIR="%~"
-PS1="
-%F{blue}${DIR} \$(git_prompt)
-${STATUS} %F{reset}"
-setopt promptsubst
-
 # ZSH helpers
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -288,5 +269,5 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Prompt
-source "${XDG_CONFIG_HOME}/zsh/prompt.sh"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+eval "$(starship init zsh)"
