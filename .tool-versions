@@ -13,3 +13,6 @@ k9s system
 golangci-lint system
 vale system
 shellcheck system
+task system
+kind system
+ginkgo system
