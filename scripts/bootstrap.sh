@@ -79,7 +79,8 @@ setup_git() {
   git config --global alias.st status
   git config --global alias.unstage 'reset HEAD --'
   git config --global alias.last 'log -1 HEAD'
-  git config --global alias.db "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
+  git config --global alias.default-branch "!git rev-parse --abbrev-ref origin/HEAD | cut -d '/' -f2"
+  git config --global alias.db default-branch
   git config --global alias.d diff
   git config --global alias.ds 'diff --staged'
   git config --global alias.dm '!git diff $(git merge-base HEAD $(git db))'
