@@ -174,20 +174,28 @@ function gwr() {
 
 function koff() {
   kubechu
-  source "$HOME/.config/zsh/.zshrc"
 }
 
 function kon() {
   koff > /dev/null
 
-  CLUSTER=$(yq '.contexts[].name' ~/.kube/config | fzf)
-  kubechc "${CLUSTER}" > /dev/null
+  kubechc $(yq '.contexts[].name' ~/.kube/config | fzf) > /dev/null
 
   kubens
   NAMESPACE=$(kubens --current)
+}
 
-  export PS1="
-[cluster: %F{green}${CLUSTER}:${NAMESPACE}]$PS1"
+function kdelete() {
+  contexts=$(kubectx | sort)
+  context=$(printf "${contexts}\nquit" \
+    | fzf --header='Select context to delete')
+
+  if [ "${context}" = "quit" ]; then
+    echo 'No context selected, exiting...'
+  fi
+
+  echo "deleting $context"
+  kubectx -d "${context}"
 }
 
 function digg() {
