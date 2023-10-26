@@ -203,7 +203,11 @@ function digg() {
 }
 
 function image-size() {
-  skopeo inspect docker://$1 | jq '[.LayersData[].Size] | add'
+  skopeo inspect \
+    --override-arch=amd64 \
+    --override-os=linux \
+    docker://$1 \
+    | jq '[.LayersData[].Size] | add'
 }
 
 function gcloud-inventory() {
