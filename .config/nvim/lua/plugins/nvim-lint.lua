@@ -2,7 +2,7 @@ return {
   'mfussenegger/nvim-lint',
   event = 'BufWritePost', -- was LspAttach
   config = function()
-    vim.diagnostic.config({virtual_text = true})
+    vim.diagnostic.config({virtual_text = false})
 
     local lint = require('lint')
 
