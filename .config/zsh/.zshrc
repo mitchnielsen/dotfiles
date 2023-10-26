@@ -27,6 +27,9 @@ export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
+# Docker
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
 # Kubernetes
 # Disable default connection to cluster
 # - reconnect with `kon`
