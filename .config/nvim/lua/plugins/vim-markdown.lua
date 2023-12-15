@@ -1,5 +1,6 @@
 return {
   'preservim/vim-markdown',
+  ft = 'markdown',
   config = function()
     local g = vim.g
 
