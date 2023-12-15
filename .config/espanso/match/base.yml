@@ -29,7 +29,7 @@ matches:
       /label ~"workflow::ready for review"
 
   - trigger: ;labels
-    replace: /label ~"group::distribution" ~"section::enablement" ~"devops::systems"
+    replace: /label ~"group::distribution" ~"section::core platform" ~"devops::systems"
 
   - trigger: ;review
     replace: |
