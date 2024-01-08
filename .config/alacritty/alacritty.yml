@@ -51,7 +51,7 @@ window:
   padding:
     x: 2
     y: 2
-  decorations: buttonless
+  # decorations: buttonless
 
 scrolling:
   history: 10000
