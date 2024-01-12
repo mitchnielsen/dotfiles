@@ -20,6 +20,10 @@ function stop() {
   gcloud compute instances stop $instance $flags
 }
 
+function scp() {
+  gcloud compute scp $1 $instance:/tmp $flags
+}
+
 TARGET=${@:-ssh}
 
 for target in ${TARGET}; do
