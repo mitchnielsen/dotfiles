@@ -9,6 +9,7 @@ return {
     "go",
     "ruby",
     "lua",
+    "yaml",
   },
   keys = {
     {"K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "hover"},
@@ -74,13 +75,21 @@ return {
       },
     }
 
+    require'lspconfig'.yamlls.setup {
+      settings = {
+        yaml = {
+          ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/.gitlab-ci.yml",
+        },
+      },
+    }
+
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics,
       {
         underline = true,
         virtual_text = false,
         signs = true,
-        update_in_insert = false,
+        update_in_insert = true,
       }
     )
   end,
