@@ -49,6 +49,10 @@ matches:
 
       </details>
 
+  - trigger: ;retry
+    replace: |
+      @gitlab-bot retry_job $|$
+
   # https://docs.gitlab.com/ee/development/documentation/styleguide/#tabs
   - trigger: ;tabs
     replace: |
