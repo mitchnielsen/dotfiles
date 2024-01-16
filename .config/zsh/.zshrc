@@ -22,6 +22,7 @@ export FZF_DEFAULT_OPTS=""
 #   --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
 #   --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
 export XDG_CONFIG_HOME="$HOME/.config"
+export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export BAT_THEME="Nord" # bat --list-themes
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
