@@ -20,9 +20,9 @@ config.keys = {
     key = 'k',
     mods = 'CMD',
     action = act.Multiple {
-      act.ClearScrollback 'ScrollbackAndViewport',
-      act.SendKey { key = 'L', mods = 'CTRL' },
-    },
+      act.SendString "clear",
+      act.SendKey { key = 'Enter' },
+    }
   },
   {
     key = ']',
