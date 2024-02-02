@@ -16,6 +16,9 @@ matches:
   - trigger: ;operator
     replace: https://gitlab.com/gitlab-org/cloud-native/gitlab-operator
 
+  - trigger: ;team-tasks
+    replace: https://gitlab.com/gitlab-org/distribution/team-tasks/-/issues
+
   # https://gitlab.com/gitlab-org/distribution/team-tasks/-/blob/master/frequently-used-labels.md?ref_type=heads
 
   - trigger: ;labelui
