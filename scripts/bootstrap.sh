@@ -16,7 +16,7 @@ function symlink() {
   ln -s ~/dotfiles/.tool-versions ~/.tool-versions
 
   # ssh
-  [ -f ~/.ssh/config ] && cp ~/.ssh/config ~/.ssh/config.bak.$(date)
+  [ -f ~/.ssh/config ] && mv ~/.ssh/config ~/.ssh/config.bak.$(date '+%Y-%m-%d-%H:%M:%S')
   ln -s ~/dotfiles/.ssh/config ~/.ssh/config
   chmod 644 ~/.ssh/config
 
