@@ -205,7 +205,8 @@ function image-size() {
     --override-arch=amd64 \
     --override-os=linux \
     docker://$1 \
-    | jq '[.LayersData[].Size] | add'
+    | jq '[.LayersData[].Size] | add' \
+    | numfmt --to=iec-i --suffix=B --format="%9.2f"
 }
 
 function gcloud-inventory() {
