@@ -32,6 +32,10 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
+# 1Password SSH keys
+# https://developer.1password.com/docs/ssh/get-started/
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
 # Kubernetes
 # Disable default connection to cluster
 # - reconnect with `kon`

@@ -15,6 +15,11 @@ function symlink() {
   [ -f ~/.tool-versions ] && rm ~/.tool-versions
   ln -s ~/dotfiles/.tool-versions ~/.tool-versions
 
+  # ssh
+  [ -f ~/.ssh/config ] && cp ~/.ssh/config ~/.ssh/config.bak.$(date)
+  ln -s ~/dotfiles/.ssh/config ~/.ssh/config
+  chmod 644 ~/.ssh/config
+
   # dotfiles
   mkdir -p "$HOME/.config"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/.config" .config)
