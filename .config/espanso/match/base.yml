@@ -67,6 +67,9 @@ matches:
 
       ::EndTabs
 
+  - trigger: ;afaik
+    replace: as far as I know
+
   - trigger: ;manifest
     replace: |
       apiVersion: apps.gitlab.com/v1beta1
