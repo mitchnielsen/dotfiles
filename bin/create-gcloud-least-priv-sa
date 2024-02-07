@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Creates a new Service Account in Google Cloud for use with GKE that minimizes privileges.
+# https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#gcloud
+
+set -xe
+
+SA_NAME=$1
+DISPLAY_NAME=$2
+PROJECT_ID=$3
+
+gcloud iam service-accounts create $SA_NAME \
+  --display-name="${DISPLAY_NAME}"
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member "serviceAccount:${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role roles/logging.logWriter
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member "serviceAccount:${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role roles/monitoring.metricWriter
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member "serviceAccount:${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role roles/monitoring.viewer
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member "serviceAccount:${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role roles/stackdriver.resourceMetadata.writer
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member "serviceAccount:${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role roles/autoscaling.metricsWriter
