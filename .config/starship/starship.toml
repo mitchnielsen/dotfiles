@@ -4,6 +4,7 @@ $character
 """
 
 [fill]
+disabled = true
 symbol = '-'
 style = 'gray'
 
