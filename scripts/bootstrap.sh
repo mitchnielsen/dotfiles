@@ -69,6 +69,8 @@ function macos_settings() {
   defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
   defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
   defaults write com.apple.dock no-bouncing -bool TRUE # disable app icon bouncing
+  # Show hidden files in Finder
+  defaults write com.apple.Finder AppleShowAllFiles true
   # Save settings
   killall Dock
 }
