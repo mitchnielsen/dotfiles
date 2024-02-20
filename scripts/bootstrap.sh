@@ -77,11 +77,19 @@ function macos_settings() {
 
 setup_git() {
   # git settings
+  # https://jvns.ca/blog/2024/02/16/popular-git-config-options/
   git config --global user.name "Mitchell Nielsen"
   git config --global user.email "mnielsen@gitlab.com"
   git config --global pull.rebase false # don't automatically rebase on `git pull`
   git config --global fetch.prune true # delete branches that no longer exist upstream (merged)
   git config --global rebase.autosquash true # automatically squash fixup/squash commits
+  git config --global push.autosetupremote true # automatically set up the remote origin when pushing
+  git config --global init.defaultBranch main # set the default project branch to 'main' instead of 'master'
+  git config --global commit.verbose true # show the entire diff in the commit window for context
+  git config --global interactive.diffFilter 'delta --color-only' # highlight syntax when running 'git add -p'
+  git config --global diff.colorMoved default # uses different colours to highlight lines in diffs that have been “moved”
+  git config --global diff.algorithm histogram # makes diffs easier to parse visually
+  git config --global merge.conflictStyle zdiff3 # more context in diffs
   git config --global alias.co checkout
   git config --global alias.cm 'commit --verbose'
   git config --global alias.st status
