@@ -68,13 +68,13 @@ source "$(brew --prefix asdf)/libexec/asdf.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Gcloud (https://cloud.google.com/sdk/docs/install)
-if [ -d ~/google-cloud-sdk ]; then
-  source ~/google-cloud-sdk/path.zsh.inc
-  source ~/google-cloud-sdk/completion.zsh.inc
-  # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
-  # gcloud components install gke-gcloud-auth-plugin
-  export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-fi
+# asdf where gcloud
+source "${HOME}/.asdf/installs/gcloud/465.0.0/completion.zsh.inc" # enable shell command completion for gcloud.
+source "${HOME}/.asdf/installs/gcloud/465.0.0/path.zsh.inc" # add the Google Cloud SDK command line tools to your $PATH.
+
+# https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+# gcloud components install gke-gcloud-auth-plugin
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # Hook direnv into your shell.
 # Slow
