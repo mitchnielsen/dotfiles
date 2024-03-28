@@ -1,6 +1,6 @@
 local options = {
   -- Decorations
-  signcolumn = "yes",
+  signcolumn = "auto:2", -- show up to 2 signs, like diff + lsp
   cmdheight = 2,
   timeoutlen = 400,
   pumheight = 20,
