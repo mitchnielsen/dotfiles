@@ -6,7 +6,6 @@ file-types = ["helm.yaml", "templates/*.yaml", { suffix = "templates/*.yaml" }, 
 roots = ["Chart.yaml"]
 comment-token = "#"
 indent = { tab-width = 2, unit = "  " }
-language-server = { command = "helm_ls", args = ["serve"] }
 grammar = "helm"
 
 [[grammar]]
