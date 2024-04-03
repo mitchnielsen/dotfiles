@@ -4,12 +4,15 @@ return {
     'mrjones2014/nvim-ts-rainbow',
     'ray-x/lsp_signature.nvim',
     'nvim-lua/lsp-status.nvim',
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim"
   },
   ft = {
     "go",
     "ruby",
     "lua",
     "yaml",
+    "python",
   },
   keys = {
     {"K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "hover"},
@@ -36,14 +39,25 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+    local servers = {
+      "pyright",
+      "gopls",
+      "solargraph",
+      "tsserver",
+      "marksman"
+    }
+
+    require('mason').setup()
+    require'mason-lspconfig'.setup {
+      ensure_installed = servers
+    }
+
     require("lsp_signature").setup({ hint_enable = false })
 
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
     capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
-    -- For TSServer: `npm i -g typescript typescript-language-server`
-    local servers = { 'gopls', 'solargraph', 'tsserver', 'marksman' }
     for _, lsp in ipairs(servers) do
       require("lspconfig")[lsp].setup {
         capabilities = capabilities,
