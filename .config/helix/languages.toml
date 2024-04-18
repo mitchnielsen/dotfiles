@@ -1,18 +1,4 @@
 [[language]]
-name = "helm"
-scope = "source.helm"
-injection-regex = "^helm$"
-file-types = ["helm.yaml", "templates/*.yaml", { suffix = "templates/*.yaml" }, { suffix = "helm.yaml" }]
-roots = ["Chart.yaml"]
-comment-token = "#"
-indent = { tab-width = 2, unit = "  " }
-grammar = "helm"
-
-[[grammar]]
-name = "helm"
-source = { git = "https://github.com/dannylongeuay/tree-sitter-go-template", rev = "395a33e08e69f4155156f0b90138a6c86764c979" }
-
-[[language]]
 name = "go"
 file-types = ["go", "tpl"]
 indent = { tab-width = 2, unit = "  " }
