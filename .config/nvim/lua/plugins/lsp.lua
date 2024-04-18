@@ -40,11 +40,11 @@ return {
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     local servers = {
-      "pyright",
-      "gopls",
-      "solargraph",
-      "tsserver",
-      "marksman"
+      "ruff_lsp",   -- Python
+      "gopls",      -- Golang
+      "solargraph", -- Ruby
+      "tsserver",   -- Typescript
+      "marksman",   -- Markdown
     }
 
     require('mason').setup()

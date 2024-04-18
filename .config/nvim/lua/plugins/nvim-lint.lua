@@ -13,7 +13,7 @@ return {
       markdown = {'markdownlint', 'vale'},
       ruby = {'rubocop'},
       json = {'jsonlint'},
-      python = {'pylint'},
+      python = {'ruff'},
     }
 
     lint.try_lint()
