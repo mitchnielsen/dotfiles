@@ -80,7 +80,6 @@ brew "ssh-audit"
 brew "starship"
 brew "stern"
 brew "stow"
-brew "tailscale", restart_service: true
 brew "telnet"
 brew "tig"
 brew "tmux"
