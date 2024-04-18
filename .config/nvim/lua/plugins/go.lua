@@ -1,5 +1,10 @@
 return {
   'ray-x/go.nvim',
   config = true,
-  ft = "go",
+  ft = {
+    "go",
+    "gomod",
+    "gowork",
+    "gotmpl",
+  }
 }
