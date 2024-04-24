@@ -24,6 +24,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
 
 # Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
