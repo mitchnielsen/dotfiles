@@ -15,7 +15,7 @@ unset GOROOT
 export PATH=$PATH:$GOPATH/bin
 
 # Utilities
-export FZF_DEFAULT_COMMAND='rg --color=always --no-ignore --hidden --glob "!.git/*" --smart-case --line-number'
+export FZF_DEFAULT_COMMAND="rg --color=always --no-ignore --hidden --glob '!.git/*' --smart-case --line-number"
 export FZF_DEFAULT_OPTS=""
 export XDG_CONFIG_HOME="$HOME/.config"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
