@@ -58,12 +58,33 @@ return {
     lsp_status.register_progress()
     capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
+    table.remove(servers, 1) -- going to manually configure gopls
+
     for _, lsp in ipairs(servers) do
       require("lspconfig")[lsp].setup {
         capabilities = capabilities,
         on_attach = lsp_status.on_attach
       }
     end
+
+    require("lspconfig").gopls.setup({
+      capabilities = capabilities,
+      on_attach = lsp_status.on_attach,
+      settings = {
+        gopls = {
+          -- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
+          ["ui.inlayhint.hints"] = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+          },
+        },
+      },
+    })
 
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
     require'lspconfig'.lua_ls.setup {
