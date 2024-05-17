@@ -106,9 +106,6 @@ function asdf-add() {
   cut -d' ' -f1 .tool-versions | xargs -i asdf plugin add {}
 }
 
-# Function to list Helm release Ci info
-function helm-ls-ci { helm ls | awk '/^gke-/{print $1}'| xargs -I'{}' sh -c "helm get values {} | yq r - .ci" }
-
 # Function to work quickly with Tmux sessions
 function tm {
   if [ -z "$1" ]; then
@@ -129,20 +126,6 @@ function decode { echo ${1} | base64 --decode - }
 
 # Check running ports
 function port { lsof -i :$1 }
-
-# Test Omnibus changes
-# Dockerfile in ~/code/gitlab-org/omnibus-local-image
-function testOmnibus {
-  docker run -it --name=omnibus-local -p 80:80 \
-    -v $(PWD)/files/gitlab-ctl-commands:/opt/gitlab/embedded/service/omnibus-ctl \
-    -v $(PWD)/files/gitlab-ctl-commands-ee:/opt/gitlab/embedded/service/omnibus-ctl-ee \
-    omnibus:local
-}
-
-function stopOmnibus {
-  docker stop omnibus-local
-  docker rm omnibus-local
-}
 
 function dns-flush {
   dscacheutil -flushcache
@@ -210,10 +193,6 @@ function image-size() {
     | numfmt --to=iec-i --suffix=B --format="%9.2f"
 }
 
-function gcloud-inventory() {
-  gcloud asset search-all-resources --scope=projects/mnielsen-2e27a441 | grep assetType | sort | uniq -c | sort -nr
-}
-
 function ql() {
   qlmanage -p "$@"
 }
@@ -237,26 +216,11 @@ alias v='nvim'
 alias v-changed='nvim $(git dm --name-only)'
 alias k='kubectl'
 alias kk='k9s --crumbsless --headless --logoless'
-# https://docs.gitlab.com/ee/development/documentation/#local-linting
-alias vale-docker='dr -v $PWD:/test -w /test registry.gitlab.com/gitlab-org/gitlab-docs/lint-markdown:alpine-3.15-vale-2.15.5-markdownlint-0.31.1 vale --minAlertLevel error doc'
-alias markdownlint-docker='dr -v $PWD:/test -w /test registry.gitlab.com/gitlab-org/gitlab-docs/lint-markdown:alpine-3.15-vale-2.15.5-markdownlint-0.31.1 markdownlint --config .markdownlint.yml "doc/**/*.md"'
 alias cat='bat'
 alias randompw='openssl rand -base64 18'
-alias ht='helm template test . -f build/test.values.yaml --set certmanager-issuer.email=no@no.com'
-alias htd='ht --debug'
-alias hk='helm upgrade --install --set certmanager-issuer.email=no@no.com gitlab . -n default -f examples/kind/values-base.yaml -f examples/kind/values-ssl.yaml -f build/test.values.yaml --set global.hosts.domain=$(ipconfig getifaddr en0).nip.io'
 alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirname | sort -u | fzf)'
-alias cdo='cd ~/code/gitlab-org/cloud-native/gitlab-operator/master'
-alias cdc='cd ~/code/gitlab-org/charts/gitlab/master'
-alias cdcng='cd ~/code/gitlab-org/build/cng/master'
 alias note='(cd /Users/mnielsen/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian/Notes && nvim .)'
 alias rg='rg --column --line-number --no-heading --smart-case --hidden --no-ignore --glob "!.git/*"'
-
-# format is op://vault-name/item-name/[section-name/]field-name
-alias op-gl='op --account gitlab.1password.com'
-alias aws-sandbox="op-gl run --env-file=$HOME/.config/op/aws-sandbox-env -- aws"
-alias eksctl-sandbox="op-gl run --env-file=$HOME/.config/op/aws-sandbox-env -- eksctl"
-alias glab="op-gl run --env-file=$HOME/.config/op/gitlab-pat -- glab"
 
 # ===================
 # Prompt settings

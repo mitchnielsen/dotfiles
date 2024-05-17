@@ -76,7 +76,7 @@ setup_git() {
   # git settings
   # https://jvns.ca/blog/2024/02/16/popular-git-config-options/
   git config --global user.name "Mitchell Nielsen"
-  git config --global user.email "mnielsen@gitlab.com"
+  git config --global user.email "inbox@mitchn.me"
   git config --global pull.rebase false # don't automatically rebase on `git pull`
   git config --global fetch.prune true # delete branches that no longer exist upstream (merged)
   git config --global rebase.autosquash true # automatically squash fixup/squash commits

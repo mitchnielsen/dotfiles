@@ -109,14 +109,6 @@ return {
       },
     }
 
-    require'lspconfig'.yamlls.setup {
-      settings = {
-        yaml = {
-          ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/.gitlab-ci.yml",
-        },
-      },
-    }
-
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics,
       {
