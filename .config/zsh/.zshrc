@@ -88,7 +88,7 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # Switch kubernetes contexts (https://github.com/DevOpsHiveHQ/kubech)
 source ~/.kubech/kubech
 
-autoload -Uz compinit
+autoload -U compinit && compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
   compinit;
 else
