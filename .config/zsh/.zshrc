@@ -28,6 +28,7 @@ export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
 
 # Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
+export DOCKER_HOST="unix:///$HOME/.colima/docker/docker.sock"
 
 # Kubernetes
 # Disable default connection to cluster
