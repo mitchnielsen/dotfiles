@@ -85,7 +85,7 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # Slow
 # source <(kubectl completion zsh)
 
-# Switch kubernetes contexts
+# Switch kubernetes contexts (https://github.com/DevOpsHiveHQ/kubech)
 source ~/.kubech/kubech
 
 autoload -Uz compinit
