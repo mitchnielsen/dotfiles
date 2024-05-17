@@ -70,9 +70,8 @@ source "$(brew --prefix asdf)/libexec/asdf.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Gcloud (https://cloud.google.com/sdk/docs/install)
-# asdf where gcloud
-source "${HOME}/.asdf/installs/gcloud/465.0.0/completion.zsh.inc" # enable shell command completion for gcloud.
-source "${HOME}/.asdf/installs/gcloud/465.0.0/path.zsh.inc" # add the Google Cloud SDK command line tools to your $PATH.
+source "${HOME}/google-cloud-sdk/path.zsh.inc"
+source "${HOME}/google-cloud-sdk/completion.zsh.inc"
 
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
 # gcloud components install gke-gcloud-auth-plugin
