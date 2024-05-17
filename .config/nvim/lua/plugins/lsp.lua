@@ -42,7 +42,6 @@ return {
     local servers = {
       "ruff_lsp",   -- Python
       "gopls",      -- Golang
-      "solargraph", -- Ruby
       "tsserver",   -- Typescript
       "marksman",   -- Markdown
     }

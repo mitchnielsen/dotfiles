@@ -49,9 +49,6 @@ function dependencies() {
   # neovim
   mkdir -p "$HOME/go"
   GOPATH="$HOME/go" nvim --headless +GoInstallBinaries +qa
-
-  # solargraph for NVIM LSP
-  gem install solargraph
 }
 
 
