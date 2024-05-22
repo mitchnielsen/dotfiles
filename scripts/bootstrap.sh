@@ -108,8 +108,8 @@ setup_git() {
 }
 
 function all() {
-  symlink
   dependencies
+  symlink
   macos_settings
   setup_git
 }
