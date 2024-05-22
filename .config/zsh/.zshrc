@@ -216,7 +216,7 @@ alias k='kubectl'
 alias kk='k9s --crumbsless --headless --logoless'
 alias cat='bat'
 alias randompw='openssl rand -base64 18'
-alias cdd='cd $(rg --hidden --files --null --maxdepth 4 ~/code | xargs -0 dirname | sort -u | fzf)'
+alias cdd='cd $(find ~/code -maxdepth 4 -type d | sort -u | fzf)'
 alias note='(cd /Users/mnielsen/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian/Notes && nvim .)'
 alias rg='rg --column --line-number --no-heading --smart-case --hidden --no-ignore --glob "!.git/*"'
 
