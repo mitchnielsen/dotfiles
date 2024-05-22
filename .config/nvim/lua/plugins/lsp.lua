@@ -4,8 +4,6 @@ return {
     'mrjones2014/nvim-ts-rainbow',
     'ray-x/lsp_signature.nvim',
     'nvim-lua/lsp-status.nvim',
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim"
   },
   ft = {
     "go",
@@ -39,25 +37,19 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-    local servers = {
-      "ruff_lsp",   -- Python
-      "gopls",      -- Golang
-      "tsserver",   -- Typescript
-      "marksman",   -- Markdown
-    }
-
-    require('mason').setup()
-    require'mason-lspconfig'.setup {
-      ensure_installed = servers
-    }
-
     require("lsp_signature").setup({ hint_enable = false })
 
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
     capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
-    table.remove(servers, 1) -- going to manually configure gopls
+    local servers = {
+      "ruff",       -- Python
+      "ruff_lsp",   -- Python
+      "pyright",    -- Python
+      "tsserver",   -- Typescript
+      "marksman",   -- Markdown
+    }
 
     for _, lsp in ipairs(servers) do
       require("lspconfig")[lsp].setup {

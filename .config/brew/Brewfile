@@ -65,6 +65,7 @@ brew "mosh", args: ["HEAD"]
 brew "neofetch"
 brew "neovim"
 brew "podman"
+brew "pyright"
 brew "python@3.9"
 brew "re2"
 brew "reattach-to-user-namespace"
