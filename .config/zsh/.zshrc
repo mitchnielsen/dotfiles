@@ -69,12 +69,10 @@ bindkey '^E' end-of-line
 source "$(brew --prefix asdf)/libexec/asdf.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Gcloud (https://cloud.google.com/sdk/docs/install)
-source "${HOME}/google-cloud-sdk/path.zsh.inc"
-source "${HOME}/google-cloud-sdk/completion.zsh.inc"
-
-# https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
-# gcloud components install gke-gcloud-auth-plugin
+# https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke:
+#   gcloud components install gke-gcloud-auth-plugin
+source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # Hook direnv into your shell.
