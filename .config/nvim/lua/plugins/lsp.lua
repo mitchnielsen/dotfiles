@@ -18,6 +18,7 @@ return {
     {"gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "references"},
     {"gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "implementation"},
     {"gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "definition"},
+    {"ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "code action"},
   },
   config = function()
     local vim = vim
