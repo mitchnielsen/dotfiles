@@ -2,7 +2,7 @@ return {
   'nvim-lualine/lualine.nvim',
   opts = {
     options = {
-      theme = 'carbonfox', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
+      theme = 'nordfox', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
       component_separators = '-',
       section_separators = '',
       globalstatus = true,
