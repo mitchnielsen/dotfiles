@@ -1,5 +1,5 @@
 format = """
-$directory$git_branch$git_status$git_state$kubernetes$cmd_duration$fill
+$directory$git_branch$git_status$git_state$python$kubernetes$cmd_duration$fill
 $character
 """
 
@@ -36,7 +36,11 @@ disabled = true
 disabled = true
 
 [python]
-disabled = true
+disabled = false
+python_binary = 'python3'
+pyenv_version_name = true
+symbol = ''
+format = '[(${version} )(\($virtualenv\) )]($style)'
 
 [nodejs]
 disabled = true
