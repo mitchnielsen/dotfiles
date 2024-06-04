@@ -1,0 +1,15 @@
+#!/bin/bash
+
+env=$1
+
+if [ -z $env ]; then
+  printf "error: must set env:\n  sql-connect {dev,stg,prd}\n"
+  exit 1
+fi
+
+printf "\nInstance: $env\nConnect: psql -h localhost -p 9470 -U mitchell@prefect.io orion\n\n"
+
+cloud-sql-proxy \
+    --auto-iam-authn \
+    --private-ip \
+    "prefect-$env-cloud2:us-east1:orion-$env?port=9470"
