@@ -61,6 +61,7 @@ brew "libpq"
 brew "lua-language-server"
 brew "markdownlint-cli"
 brew "marksman"
+brew "mise"
 brew "mosh", args: ["HEAD"]
 brew "neofetch"
 brew "neovim"
