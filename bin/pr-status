@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gh pr status --json state | jq -r '.currentBranch.state'
