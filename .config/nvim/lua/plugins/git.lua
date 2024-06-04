@@ -1,7 +1,8 @@
 return {
   'tpope/vim-fugitive', -- Git integration
   dependencies = {
-    'shumphrey/fugitive-gitlab.vim',
+    'tpope/vim-rhubarb', -- GitHub support
+    'shumphrey/fugitive-gitlab.vim', -- GitLab support
   },
   lazy = false,
   keys = {
