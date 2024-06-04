@@ -11,6 +11,7 @@ return {
     "lua",
     "yaml",
     "python",
+    "terraform",
   },
   keys = {
     {"K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "hover"},
@@ -38,6 +39,8 @@ return {
       "pyright",    -- Python
       "tsserver",   -- Typescript
       "marksman",   -- Markdown
+      "terraformls", -- Terraform
+      "tflint",     -- Terraform
     }
 
     for _, lsp in ipairs(servers) do

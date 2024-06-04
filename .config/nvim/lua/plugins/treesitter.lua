@@ -3,7 +3,7 @@ return {
   lazy = false,
   config = function()
     require("nvim-treesitter.configs").setup {
-      ensure_installed = { "bash", "dockerfile", "go", "graphql", "json", "lua", "make", "ruby", "yaml" },
+      ensure_installed = { "bash", "dockerfile", "go", "graphql", "json", "lua", "make", "ruby", "yaml", "hcl", "terraform" },
       highlight = {
         enable = true,
       },

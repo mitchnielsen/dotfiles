@@ -14,6 +14,7 @@ return {
       ruby = {'rubocop'},
       json = {'jsonlint'},
       python = {'ruff'},
+      terraform = {'tflint'},
     }
 
     lint.try_lint()

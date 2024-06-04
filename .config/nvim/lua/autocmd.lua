@@ -90,3 +90,10 @@ autocmd("FileType", {
   pattern = "*.go",
   command = vim.cmd("autocmd FileType go map <leader>t :w<CR>:exec '!go test'<CR>")
 })
+
+autocmd("BufWritePre", {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
