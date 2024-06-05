@@ -2,7 +2,7 @@ return {
   "folke/trouble.nvim",
   dependencies = "kyazdani42/nvim-web-devicons",
   keys = {
-    { '<leader>h', '<cmd>TroubleToggle<CR>', desc = 'toggle' },
+    { '<leader>h', '<cmd>Trouble diagnostics toggle<CR>', desc = 'toggle' },
   },
   opts = {
     action_keys = {
