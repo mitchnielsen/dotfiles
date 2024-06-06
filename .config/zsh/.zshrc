@@ -34,7 +34,7 @@ export DOCKER_HOST="unix:///$HOME/.colima/docker/docker.sock"
 # Disable default connection to cluster
 # - reconnect with `kon`
 # - disconnect with `koff`
-unset KUBECONFIG
+export KUBECONFIG="$HOME/.kube/config.dest.d/*:$HOME/.kube/config"
 
 # ===================
 # Settings
