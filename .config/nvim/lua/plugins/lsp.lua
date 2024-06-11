@@ -57,13 +57,13 @@ return {
         gopls = {
           -- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
           ["ui.inlayhint.hints"] = {
-            assignVariableTypes = true,
-            compositeLiteralFields = true,
-            compositeLiteralTypes = true,
-            constantValues = true,
+            assignVariableTypes = false,
+            compositeLiteralFields = false,
+            compositeLiteralTypes = false,
+            constantValues = false,
             functionTypeParameters = true,
             parameterNames = true,
-            rangeVariableTypes = true,
+            rangeVariableTypes = false,
           },
         },
       },
