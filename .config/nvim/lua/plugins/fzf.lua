@@ -8,7 +8,7 @@ return {
     { "<leader>f", "<cmd>FzfLua files<CR>", desc = "files" },
     { "<leader>rw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
     { "<leader>b", "<cmd>FzfLua buffers<CR>", desc = "grep buffers" },
-    { "<leader>st", "<cmd>FzfLua git_status<CR>", desc = "git stauts" },
+    { "<leader>st", "<cmd>FzfLua git_status<CR>", desc = "git status" },
   },
   config = function ()
     local actions = require "fzf-lua.actions"

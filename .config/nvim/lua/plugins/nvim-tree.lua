@@ -24,7 +24,7 @@ return {
     "b0o/nvim-tree-preview.lua",
   },
   keys = {
-    {"<leader>n", "<cmd>NvimTreeFindFileToggle<cr>", desc = "toggle"},
+    {"<leader>n", "<cmd>NvimTreeFindFileToggle<cr>", desc = "toggle file tree"},
   },
   lazy = false,
   config = function ()

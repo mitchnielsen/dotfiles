@@ -6,11 +6,11 @@ return {
   },
   lazy = false,
   keys = {
-    {'<leader>gs', ':Git<cr>'},
-    {'<leader>gbl', ':Git blame<cr>'},
-    {'<leader>gbr', ':GBrowse<cr>'},
-    {'<leader>gd', ':Gdiff<cr>'},
-    {'<leader>gps', ':Git push<cr>'},
-    {'<leader>gpl', ':Git pull<cr>'},
+    {'<leader>gs', ':Git<cr>', 'git'},
+    {'<leader>gbl', ':Git blame<cr>', 'git blame'},
+    {'<leader>gbr', ':GBrowse<cr>', 'git browse'},
+    {'<leader>gd', ':Gdiff<cr>', 'git diff'},
+    {'<leader>gps', ':Git push<cr>', 'git push'},
+    {'<leader>gpl', ':Git pull<cr>', 'git pull'},
   }
 }

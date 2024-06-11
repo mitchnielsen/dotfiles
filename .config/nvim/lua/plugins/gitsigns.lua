@@ -3,8 +3,8 @@ return {
   dependencies = "nvim-lua/plenary.nvim",
   lazy = false,
   keys = {
-    { "]h", "<cmd>Gitsigns next_hunk<CR>", desc = "next hunk" },
-    { "[h", "<cmd>Gitsigns prev_hunk<CR>", desc = "previous hunk" },
+    { "]h", "<cmd>Gitsigns next_hunk<CR>", desc = "next git hunk" },
+    { "[h", "<cmd>Gitsigns prev_hunk<CR>", desc = "previous git hunk" },
   },
   opts = {
     signs = {

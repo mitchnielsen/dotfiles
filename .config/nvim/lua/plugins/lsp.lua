@@ -14,12 +14,12 @@ return {
     "terraform",
   },
   keys = {
-    {"K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "hover"},
-    {"gR", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "rename"},
-    {"gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "references"},
-    {"gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "implementation"},
-    {"gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "definition"},
-    {"ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "code action"},
+    {"K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "lsp: hover"},
+    {"gR", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "lsp: rename"},
+    {"gr", "<cmd>FzfLua lsp_references<CR>", desc = "lsp: references"},
+    {"gi", "<cmd>FzfLua lsp_implementations<CR>", desc = "lsp: implementation"},
+    {"gd", "<cmd>FzfLua lsp_definitions<CR>", desc = "lsp: definition"},
+    {"ca", "<cmd>FzfLua lsp_code_actions<CR>", desc = "lsp: code action"},
   },
   config = function()
     local vim = vim
