@@ -97,3 +97,11 @@ autocmd("BufWritePre", {
     vim.lsp.buf.format()
   end,
 })
+
+-- Only show inlay hints in Normal mode
+autocmd({ "LspAttach", "InsertEnter", "InsertLeave" }, {
+  callback = function(args)
+    local enabled = args.event ~= "InsertEnter"
+    vim.lsp.inlay_hint.enable(enabled, { bufnr = args.buf })
+  end,
+})
