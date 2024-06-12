@@ -18,7 +18,7 @@ local options = {
   -- Editing,
   termguicolors = true,
   number = true,
-  relativenumber = true,
+  relativenumber = false,
   showmode = false,
   fileformat = "unix",
   laststatus = 0,
