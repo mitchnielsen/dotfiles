@@ -184,6 +184,22 @@ function kdelete() {
   kubectx -d "${context}"
 }
 
+function krename() {
+  contexts=$(kubectx | sort)
+  context=$(printf "${contexts}\nquit" \
+    | fzf --header='Select context to rename')
+
+  if [ "${context}" = "quit" ]; then
+    echo 'No context selected, exiting...'
+    return
+  fi
+
+  read new_name\?"New name for ${context}: "
+
+  echo "renaming $context"
+  kubectl config rename-context ${context} ${new_name}
+}
+
 function digg() {
   dig $1 +nocmd +multiline +noall +answer
 }
