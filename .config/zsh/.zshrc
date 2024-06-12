@@ -76,11 +76,11 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # Hook direnv into your shell.
 # Slow
-# eval "$(direnv hook zsh)"
+eval "$(direnv hook zsh)"
 
 # kubectl completion
 # Slow
-# source <(kubectl completion zsh)
+source <(kubectl completion zsh)
 
 # Switch kubernetes contexts (https://github.com/DevOpsHiveHQ/kubech)
 source ~/.kubech/kubech
