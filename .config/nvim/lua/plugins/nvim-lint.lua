@@ -1,8 +1,25 @@
 return {
   'mfussenegger/nvim-lint',
-  event = 'BufWritePost', -- was LspAttach
+  event = 'LspAttach',
   config = function()
-    vim.diagnostic.config({virtual_text = false})
+    vim.diagnostic.config({
+      focus = false,
+      virtual_text = false,
+      signs = true,
+      severity_sort = true,
+      float = {
+        header = 'Diagnostics',
+        source = true,
+        border = 'rounded',
+        format = function(diagnostic)
+          if diagnostic.user_data and diagnostic.user_data.code then
+            return string.format('%s %s', diagnostic.user_data.code, diagnostic.message)
+          else
+            return diagnostic.message
+          end
+        end,
+      },
+    })
 
     local lint = require('lint')
 

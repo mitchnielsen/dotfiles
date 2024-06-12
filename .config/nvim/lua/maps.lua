@@ -39,7 +39,7 @@ map_key('i', '<expr><TAB>', 'pumvisible() ? "\\<C-n>" : "\\<TAB>"')
 map_key('i', '<expr><S-TAB>', 'pumvisible() ? "\\<C-p>" : "\\<C-h>"')
 
 -- Show full error
-map_key('n', 'ge', '<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>')
+map_key('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
 
 -- Jump between errors
 map_key('n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>')
