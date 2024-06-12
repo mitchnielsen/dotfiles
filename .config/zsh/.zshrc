@@ -148,9 +148,13 @@ function gwa() {
   cd "${location}"
 }
 
+# git worktree remove: changes back to the
+# default branch directory and removes the PR
+# branch directory.
 function gwr() {
   local branch_name=$(basename "${PWD}")
-  cd ../master || cd ../main
+  local default_branch_name=$(git default-branch)
+  cd ../${default_branch_name}
   git worktree remove "${branch_name}"
 }
 
