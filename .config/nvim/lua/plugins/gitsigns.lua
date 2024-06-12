@@ -9,17 +9,11 @@ return {
     { "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>", desc = "reset git hunk" },
   },
   opts = {
-    signs = {
-      add = { text = "+", numhl = "GitSignsAddNr" },
-      change = { text = "~", numhl = "GitSignsChangeNr" },
-      delete = { text = "-", numhl = "GitSignsDeleteNr" },
-      topdelete = { text = "-", numhl = "GitSignsDeleteNr" },
-      changedelete = { text = "~", numhl = "GitSignsChangeNr" },
-    },
+    signcolumn = false,
+    linehl = false,
+    numhl = true,
     watch_gitdir = {
       interval = 100,
     },
-    sign_priority = 100, -- take priority over diagnostics
-    status_formatter = nil, -- Use default
   }
 }
