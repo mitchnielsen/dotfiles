@@ -224,6 +224,7 @@ function ql() {
 alias ll='ls -lahL'
 alias t='tree -C -a -I .git'
 alias d='docker'
+alias dc='docker-compose'
 alias dr='docker run --rm -it'
 alias dr-amd='dr --platform=linux/amd64'
 alias de='docker exec -it'
@@ -241,6 +242,13 @@ alias randompw='openssl rand -base64 18'
 alias cdd='cd $(find ~/code -maxdepth 4 -type d | sort -u | fzf)'
 alias note='(cd /Users/mnielsen/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian/Notes && nvim .)'
 alias rg='rg --column --line-number --no-heading --smart-case --hidden --no-ignore --glob "!.git/*"'
+alias code='codium'
+alias tf='terraform'
+
+# Python
+alias python='python3'
+alias python-venv='if [ ! -f ./bin/activate ]; then echo Creating virtualenv...; uv venv --python=3.11; fi; source .venv/bin/activate'
+alias pip='uv pip'
 
 # ===================
 # Prompt settings
