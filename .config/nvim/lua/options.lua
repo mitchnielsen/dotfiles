@@ -1,8 +1,6 @@
 local options = {
   -- Decorations
-  -- show up to 1 sign for lsp
-  -- set to 'yes' instead of 'auto' so it doesn't jump
-  signcolumn = "yes:1",
+  signcolumn = "auto:2", -- show up to 2 signs, like diff + lsp
   cmdheight = 2,
   timeoutlen = 400,
   pumheight = 20,
@@ -20,7 +18,7 @@ local options = {
   -- Editing,
   termguicolors = true,
   number = true,
-  relativenumber = false,
+  relativenumber = true,
   showmode = false,
   fileformat = "unix",
   laststatus = 0,
