@@ -1,16 +1,17 @@
 return {
-  'EdenEast/nightfox.nvim',
-  name = 'nightfox',
+  "catppuccin/nvim",
+  name = "catppuccin",
   priority = 1000,
   lazy = false,
   config = function()
-    require("nightfox").setup({
-      options = {
-        transparent = false,
-      }
+    require('catppuccin').setup({
+      flavour = "frappe", -- latte, frappe, macchiato, mocha
+      background = {
+        light = 'latte',
+        dark = 'frappe',
+      },
     })
 
-    -- setup must be called before loading
-    vim.cmd.colorscheme "nordfox"
-  end
+    vim.cmd.colorscheme 'catppuccin'
+  end,
 }
