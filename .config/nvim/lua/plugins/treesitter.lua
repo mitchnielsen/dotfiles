@@ -14,7 +14,7 @@ return {
         max_file_lines = nil, -- Do not enable for files with more than n lines, int
       },
       indent = {
-        enable = true,
+        enable = false,
       },
       incremental_selection = {
         enable = true,
