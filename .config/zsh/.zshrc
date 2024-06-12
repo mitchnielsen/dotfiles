@@ -177,6 +177,7 @@ function kdelete() {
 
   if [ "${context}" = "quit" ]; then
     echo 'No context selected, exiting...'
+    return
   fi
 
   echo "deleting $context"
