@@ -162,13 +162,12 @@ function koff() {
   kubechu
 }
 
+# Uses https://github.com/DevOpsHiveHQ/kubech to set
+# kube context per-shell (instead of globally with kubectx).
 function kon() {
   koff > /dev/null
 
   kubechc $(yq '.contexts[].name' ~/.kube/config | fzf) > /dev/null
-
-  kubens
-  NAMESPACE=$(kubens --current)
 }
 
 function kdelete() {
