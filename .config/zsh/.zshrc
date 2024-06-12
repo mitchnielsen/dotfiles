@@ -66,7 +66,6 @@ bindkey '^E' end-of-line
 # Sources
 # ===================
 
-source "$(brew --prefix asdf)/libexec/asdf.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke:
@@ -98,13 +97,6 @@ fi
 # ===================
 # Functions
 # ===================
-
-# A shortcut for asdf managed direnv.
-direnv() { asdf exec direnv "$@"; }
-
-function asdf-add() {
-  cut -d' ' -f1 .tool-versions | xargs -i asdf plugin add {}
-}
 
 # Function to work quickly with Tmux sessions
 function tm {
