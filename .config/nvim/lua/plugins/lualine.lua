@@ -13,10 +13,10 @@ return {
       lualine_a = {
         {
           'buffers',
-          show_filename_only = true,
+          show_filename_only = false,
           hide_filename_extension = false,
           show_modified_status = true,
-          mode = 2,
+          mode = 0,
           buffers_color = {
             active = 'lualine_a_normal',
             inactive = 'gray',
