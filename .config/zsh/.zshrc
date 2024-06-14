@@ -70,9 +70,11 @@ bindkey '^E' end-of-line
 
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke:
 #   gcloud components install gke-gcloud-auth-plugin
-source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
-source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+if [ -d "/opt/homebrew/share/google-cloud-sdk" ]; then
+  source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+  source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
+  export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+fi
 
 # Hook direnv into your shell.
 # Slow
@@ -85,7 +87,9 @@ source <(kubectl completion zsh)
 # Switch kubernetes contexts (https://github.com/DevOpsHiveHQ/kubech)
 source ~/.kubech/kubech
 
-eval "$(mise activate zsh)"
+if command -v mise; then
+  eval "$(mise activate zsh)"
+fi
 
 autoload -U compinit && compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
