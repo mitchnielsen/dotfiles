@@ -11,6 +11,7 @@ return {
     "lua",
     "yaml",
     "python",
+    "tf",
     "terraform",
   },
   keys = {
