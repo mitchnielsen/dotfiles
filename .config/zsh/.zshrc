@@ -80,10 +80,6 @@ fi
 # Slow
 eval "$(direnv hook zsh)"
 
-# kubectl completion
-# Slow
-source <(kubectl completion zsh)
-
 # Switch kubernetes contexts (https://github.com/DevOpsHiveHQ/kubech)
 source ~/.kubech/kubech
 
@@ -164,6 +160,9 @@ function kon() {
   koff > /dev/null
 
   kubechc $(yq '.contexts[].name' ~/.kube/config | fzf) > /dev/null
+
+  # kubectl completion (slow)
+  source <(kubectl completion zsh)
 }
 
 function kdelete() {
