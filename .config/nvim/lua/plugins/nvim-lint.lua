@@ -26,12 +26,13 @@ return {
     lint.linters_by_ft = {
       sh = {'shellcheck'},
       bash = {'shellcheck'},
-      yaml = {'yamllint', 'golangcilint'},
+      yaml = {'yamllint'},
       markdown = {'markdownlint', 'vale'},
       ruby = {'rubocop'},
       json = {'jsonlint'},
       python = {'ruff'},
       terraform = {'tflint'},
+      go = {'golangcilint'},
     }
 
     lint.try_lint()
