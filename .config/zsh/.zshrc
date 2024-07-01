@@ -221,7 +221,7 @@ function ql() {
 alias ll='ls -lahL'
 alias t='tree -C -a -I .git'
 alias d='docker'
-alias dc='docker-compose'
+alias dc='docker compose'
 alias dr='docker run --rm -it'
 alias dr-amd='dr --platform=linux/amd64'
 alias de='docker exec -it'
