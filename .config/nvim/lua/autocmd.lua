@@ -42,12 +42,6 @@ autocmd({ "BufNewFile", "BufEnter" }, {
   group = augroup("YAML", { clear = true }),
 })
 
-autocmd({ "BufNewFile", "BufEnter" }, {
-  pattern = { "*.dockerfile", "Dockerfile.*" },
-  command = "set syntax=dockerfile",
-  group = augroup("Dockerfile", { clear = true }),
-})
-
 autocmd("FileType", {
   pattern = { "*.txt", "*.md", "gitcommit", "gitrebase" },
   command = "setlocal spell textwidth=72 comments=fb:>,fb:*,fb:+,fb:-",
@@ -69,11 +63,6 @@ autocmd("FileType", {
 autocmd("FileType", {
   pattern = "*.go",
   command = vim.cmd("autocmd FileType sh map <leader>r :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>"),
-})
-
-autocmd("FileType", {
-  pattern = "*.rb",
-  command = vim.cmd("autocmd FileType ruby map <leader>r :w<CR>:exec '!ruby' shellescape(@%, 1)<CR>"),
 })
 
 autocmd("FileType", {
