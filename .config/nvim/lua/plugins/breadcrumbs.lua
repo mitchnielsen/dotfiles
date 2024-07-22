@@ -1,6 +1,6 @@
 return {
   "SmiteshP/nvim-navic",
-  config = {
+  opts = {
     lsp = { auto_attach = true },
     click = true
   }
