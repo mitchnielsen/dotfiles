@@ -1,0 +1,4 @@
+[tools]
+actionlint = '1.7.1'
+golang = 'system'
+helm = 'system'
