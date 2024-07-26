@@ -26,7 +26,7 @@ return {
     lint.linters_by_ft = {
       sh = {'shellcheck'},
       bash = {'shellcheck'},
-      yaml = {'yamllint'},
+      yaml = {'yamllint', 'actionlint'},
       markdown = {'markdownlint', 'vale'},
       ruby = {'rubocop'},
       json = {'jsonlint'},
