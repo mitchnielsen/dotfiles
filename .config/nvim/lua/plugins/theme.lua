@@ -1,19 +1,16 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    'navarasu/onedark.nvim',
     priority = 1000,
     lazy = false,
-    config = function()
-      require('catppuccin').setup({
-        flavour = "frappe", -- latte, frappe, macchiato, mocha
-        background = {
-          light = 'latte',
-          dark = 'frappe',
-        },
-      })
-
-      vim.cmd.colorscheme 'catppuccin'
-    end,
-  },
+    config = function ()
+      require('onedark').setup {
+          style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
+          lualine = {
+            transparent = true, -- lualine center bar transparency
+          },
+      }
+      require('onedark').load()
+    end
+  }
 }

@@ -19,7 +19,7 @@ export FZF_DEFAULT_COMMAND="rg --color=always --no-ignore --hidden --glob '!.git
 export FZF_DEFAULT_OPTS=""
 export XDG_CONFIG_HOME="$HOME/.config"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
-export BAT_THEME="Catppuccin Frappe" # bat --list-themes
+export BAT_THEME="OneHalfDark" # bat --list-themes
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
