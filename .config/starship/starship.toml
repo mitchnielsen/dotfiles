@@ -1,5 +1,5 @@
 format = """
-$directory$git_branch$git_status$git_state$python$kubernetes$cmd_duration$fill
+$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$fill
 $character
 """
 
@@ -51,6 +51,10 @@ disabled = true
 [kubernetes]
 disabled = false
 format = 'in [☸ $context:$namespace](blue) '
+
+[terraform]
+disabled = false
+format = '[tf:$workspace]($style) '
 
 # # -----
 # # https://starship.rs/presets/pure-preset.html
