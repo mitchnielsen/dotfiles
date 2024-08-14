@@ -28,7 +28,14 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-    require("lsp_signature").setup({ hint_enable = false })
+    require("lsp_signature").setup({
+      hint_enable = true,
+      floating_window = false,
+      hint_prefix = "arg: ",
+      handler_opts = {
+        border = "none",
+      },
+    })
 
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
