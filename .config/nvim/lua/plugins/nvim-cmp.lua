@@ -8,13 +8,19 @@ return {
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-vsnip',
         'hrsh7th/vim-vsnip',
+        'onsails/lspkind.nvim',
       },
       config = function()
         local vim = vim
         local cmp = require'cmp'
+        local lspkind = require'lspkind'
+
         vim.o.completeopt = "menu,menuone,noselect"
 
         cmp.setup({
+          formatting = {
+            format = lspkind.cmp_format(),
+          },
           snippet = {
             expand = function(args)
               vim.fn["vsnip#anonymous"](args.body)
