@@ -20,7 +20,7 @@ return {
     {"gr", "<cmd>FzfLua lsp_references<CR>", desc = "lsp: references"},
     {"gi", "<cmd>FzfLua lsp_implementations<CR>", desc = "lsp: implementation"},
     {"gd", "<cmd>FzfLua lsp_definitions<CR>", desc = "lsp: definition"},
-    {"ca", "<cmd>FzfLua lsp_code_actions<CR>", desc = "lsp: code action"},
+    {"ga", "<cmd>FzfLua lsp_code_actions<CR>", desc = "lsp: code action"},
   },
   config = function()
     local vim = vim
