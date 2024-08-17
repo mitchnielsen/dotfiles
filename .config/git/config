@@ -3,6 +3,8 @@
 [user]
 	name = Mitchell Nielsen
 	email = me@mitchn.io
+[core]
+  pager = delta
 [pull]
 	rebase = false # don't automatically rebase on `git pull`
 [fetch]
@@ -12,10 +14,20 @@
 [rebase]
 	autosquash = true # automatically squash fixup/squash commits
 [diff]
-  algorithm = histogram # makes diffs easier to parse
+  # https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+  # https://link.springer.com/article/10.1007/s10664-019-09772-z
+  algorithm = default
   colorMoved = default # uses different colours to highlight lines in diffs that have been “moved”
 [merge]
-  conflictStyle = zdiff3 # more context in diffs
+  conflictStyle = diff3 # more context in diffs, was zdiff3 but delta recommends diff3
+[delta]
+	features = line-numbers decorations # side-by-side
+	navigate = true
+	whitespace-error-style = 22 reverse
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
 [alias]
 	co = checkout
 	cm = commit --verbose
