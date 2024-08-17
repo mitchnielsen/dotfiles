@@ -1,0 +1,40 @@
+# https://jvns.ca/blog/2024/02/16/popular-git-config-options/
+
+[user]
+	name = Mitchell Nielsen
+	email = me@mitchn.io
+[pull]
+	rebase = false # don't automatically rebase on `git pull`
+[fetch]
+	prune = true # delete branches that no longer exist upstream (merged)
+[push]
+  autosetupremote = true # automatically set up the remote origin when pushing
+[rebase]
+	autosquash = true # automatically squash fixup/squash commits
+[diff]
+  algorithm = histogram # makes diffs easier to parse
+  colorMoved = default # uses different colours to highlight lines in diffs that have been “moved”
+[merge]
+  conflictStyle = zdiff3 # more context in diffs
+[alias]
+	co = checkout
+	cm = commit --verbose
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	default-branch = !git rev-parse --abbrev-ref origin/HEAD | cut -d '/' -f2
+	db = default-branch
+	d = diff
+	ds = diff --staged
+	dm = !git diff $(git merge-base HEAD $(git db))
+	l = log --all --graph --decorate --oneline --simplify-by-decoration
+	pl = !git pull origin $(git branch --show-current)
+	plm = !git fetch origin && git pull origin $(git db)
+	ps = !git push origin $(git branch --show-current)
+[commit]
+	template = /Users/mitchellnielsen/.config/git/gitmessage
+  verbose = true # show the entire diff in the commit window for context
+[init]
+	defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only # highlight syntax when running 'git add -p'
