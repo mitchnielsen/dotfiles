@@ -32,7 +32,7 @@
 	plm = !git fetch origin && git pull origin $(git db)
 	ps = !git push origin $(git branch --show-current)
 [commit]
-	template = /Users/mitchellnielsen/.config/git/gitmessage
+	template = ~/.config/git/gitmessage
   verbose = true # show the entire diff in the commit window for context
 [init]
 	defaultBranch = main
