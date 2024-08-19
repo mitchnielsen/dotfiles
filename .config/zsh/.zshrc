@@ -28,7 +28,8 @@ export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
 
 # Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
-export DOCKER_HOST="unix:///$HOME/.colima/docker/docker.sock"
+export COLIMA_HOME="$HOME/.config/colima"
+export DOCKER_HOST="unix://$COLIMA_HOME/docker/docker.sock"
 
 # Kubernetes
 # Disable default connection to cluster
@@ -226,8 +227,10 @@ alias dr='docker run --rm -it'
 alias dr-amd='dr --platform=linux/amd64'
 alias de='docker exec -it'
 alias docker-ip='colima list --profile=docker --json | jq -r .address'
-alias docker-start='colima start --cpu 4 --memory 8 --disk 100 --profile docker --arch aarch64 --vm-type=vz --vz-rosetta'
+alias docker-start='colima start docker'
 alias docker-stop='colima stop docker'
+alias kubernetes-start='colima start kubernetes'
+alias kubernetes-stop='colima stop kubernetes'
 alias kubernetes-start='docker-start --kubernetes --profile k8s'
 alias g='git'
 alias v='nvim'

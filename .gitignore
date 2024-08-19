@@ -9,3 +9,7 @@
 .config/zsh/.zsh_sessions
 .vagrant
 .config/karabiner/automatic_backups
+
+.config/colima/*
+!.config/colima/docker
+!.config/colima/kubernetes
