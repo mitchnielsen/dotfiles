@@ -162,7 +162,7 @@ function koff() {
 function kon() {
   koff > /dev/null
 
-  kubechc $(yq '.contexts[].name' ~/.kube/config | fzf) > /dev/null
+  kubechc $(kubectl config get-contexts -o name | fzf) > /dev/null
 
   # kubectl completion (slow)
   source <(kubectl completion zsh)
