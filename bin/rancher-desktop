@@ -1,0 +1,41 @@
+#!/bin/bash
+
+function docker-up () {
+  rdctl start
+  await-success 'docker ps'
+}
+
+function docker-down () {
+  rdctl shutdown
+  await-failure 'docker ps'
+}
+
+function kubernetes-up () {
+  rdctl set --kubernetes.enabled=true
+  await-success 'kubectl get nodes'
+}
+
+function kubernetes-down () {
+  rdctl set --kubernetes.enabled=false
+  await-failure 'kubectl get nodes'
+}
+
+function await-success () {
+  until $1 2>/dev/null; do echo 'waiting...'; sleep 5; done
+}
+
+function await-failure () {
+  until ! $1 2>/dev/null; do echo 'waiting...'; sleep 5; done
+}
+
+function help() {
+  printf "usage:\n  rancher-desktop [{docker,kubernetes}-{up,down}]"
+}
+
+TARGET=${@:-help}
+
+for target in ${TARGET}; do
+  echo "Running ${target}..."
+  ${target}
+done
+
