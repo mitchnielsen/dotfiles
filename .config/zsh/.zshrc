@@ -37,6 +37,9 @@ export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
 # - disconnect with `koff`
 export KUBECONFIG="$HOME/.kube/config.dest.d/*:$HOME/.kube/config"
 
+# zsh
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
+
 # ===================
 # Settings
 # ===================
