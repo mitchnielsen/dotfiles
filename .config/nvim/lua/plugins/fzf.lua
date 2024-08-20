@@ -3,12 +3,11 @@ return {
   dependencies = "kyazdani42/nvim-web-devicons",
   cmd = "FzfLua",
   keys = {
-    { "<leader>g", "<cmd>FzfLua live_grep_glob<CR>", desc = "grep" },
-    { "<leader>G", "<cmd>FzfLua live_grep_resume<CR>", desc = "grep resume" },
+    { "<leader>gg", "<cmd>FzfLua live_grep_glob<CR>", desc = "grep" },
+    { "<leader>gG", "<cmd>FzfLua live_grep_resume<CR>", desc = "grep resume" },
+    { "<leader>gw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
     { "<leader>f", "<cmd>FzfLua files<CR>", desc = "files" },
-    { "<leader>rw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
     { "<leader>b", "<cmd>FzfLua buffers<CR>", desc = "grep buffers" },
-    { "<leader>st", "<cmd>FzfLua git_status<CR>", desc = "git status" },
   },
   config = function ()
     local actions = require "fzf-lua.actions"
