@@ -260,6 +260,8 @@ source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-se
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
+setopt HIST_IGNORE_ALL_DUPS # history substring search: ignore dups
+
 zstyle ':completion:*:descriptions' format '%F{blue}%d%f'
 # Declare the variable
 typeset -A ZSH_HIGHLIGHT_STYLES
