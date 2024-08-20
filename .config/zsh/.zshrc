@@ -25,11 +25,11 @@ export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
+export PATH="$HOME/.rd/bin:$PATH"
 
 # Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
-export COLIMA_HOME="$HOME/.config/colima"
-export DOCKER_HOST="unix://$COLIMA_HOME/docker/docker.sock"
+export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
 
 # Kubernetes
 # Disable default connection to cluster
@@ -226,12 +226,10 @@ alias dc='docker compose'
 alias dr='docker run --rm -it'
 alias dr-amd='dr --platform=linux/amd64'
 alias de='docker exec -it'
-alias docker-ip='colima list --profile=docker --json | jq -r .address'
-alias docker-start='colima start docker'
-alias docker-stop='colima stop docker'
-alias kubernetes-start='colima start kubernetes'
-alias kubernetes-stop='colima stop kubernetes'
-alias kubernetes-start='docker-start --kubernetes --profile k8s'
+alias docker-start='rdctl start'
+alias docker-stop='rdctl shutdown'
+alias kubernetes-start='rdctl set --kubernetes.enabled=true'
+alias kubernetes-stop='rdctl set --kubernetes.enabled=false'
 alias g='git'
 alias v='nvim'
 alias v-changed='nvim $(git dm --name-only)'

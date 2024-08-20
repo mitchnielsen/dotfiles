@@ -8,5 +8,4 @@ function run {
   $1
 }
 
-run 'colima list'
 run 'docker ps'
