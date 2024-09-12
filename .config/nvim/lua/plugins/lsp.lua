@@ -29,11 +29,10 @@ return {
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     require("lsp_signature").setup({
-      hint_enable = true,
-      floating_window = false,
-      hint_prefix = "arg: ",
+      hint_enable = false,
+      floating_window = true,
       handler_opts = {
-        border = "none",
+        border = "single",
       },
     })
 
