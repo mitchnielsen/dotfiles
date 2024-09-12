@@ -1,0 +1,6 @@
+#/usr/bin/env bash
+
+git log --oneline -G \
+  $1 \
+  | awk '{print $1}' \
+  | fzf --preview 'git show --color=always {}'
