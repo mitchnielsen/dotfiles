@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# https://www.notion.so/prefect/Connecting-to-Cloud-SQL-databases-via-IAM-987dfc40878f46f78738431c70ab82a9
+
 env=$1
 
 if [ -z $env ]; then
