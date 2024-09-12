@@ -46,6 +46,7 @@ return {
       },
       view = {
         preserve_window_proportions = true,
+        adaptive_size = true,
       }
     }
   end
