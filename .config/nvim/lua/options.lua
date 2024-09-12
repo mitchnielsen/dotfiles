@@ -14,6 +14,7 @@ local options = {
   expandtab = true,
   softtabstop = 2,
   smartindent = true,
+  breakindent = true,
 
   -- Editing,
   termguicolors = true,
