@@ -2,8 +2,6 @@
 
 Forever-changing dotfiles for tools I use.
 
-[![Screenshot](img/screenshot.png "Screenshot of dev environment")](https://gitlab.com/mitchenielsen/dotfiles/-/raw/main/img/screenshot.png)
-
 ## Installation
 
 Run the following commands to set up the development environment:
