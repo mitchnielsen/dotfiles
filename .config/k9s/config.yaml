@@ -1,6 +1,6 @@
 k9s:
   liveViewAutoRefresh: false
-  screenDumpDir: /Users/mnielsen/Library/Application Support/k9s/screen-dumps
+  screenDumpDir: ~/mitch/.config/k9s/screen-dumps
   refreshRate: 2
   maxConnRetry: 5
   readOnly: false
@@ -29,8 +29,8 @@ k9s:
     tail: 100
     buffer: 5000
     sinceSeconds: -1
-    # fullScreenLogs: false
-    textWrap: false
+    fullScreenLogs: false
+    textWrap: true
     showTime: false
   thresholds:
     cpu:
