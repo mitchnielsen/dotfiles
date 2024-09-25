@@ -3,15 +3,21 @@
 # https://www.notion.so/prefect/Connecting-to-Cloud-SQL-databases-via-IAM-987dfc40878f46f78738431c70ab82a9
 
 env=$1
+db=$2
 
 if [ -z $env ]; then
-  printf "error: must set env:\n  sql-connect {dev,stg,prd}\n"
+  printf "error: must set env:\n  sql-connect {dev,stg,prd} {orion,nebula}\n"
   exit 1
 fi
 
-printf "\nInstance: $env\nConnect: psql -h localhost -p 9470 -U mitchell@prefect.io orion\n\n"
+if [ -z $db ]; then
+  printf "error: must set db:\n  sql-connect {dev,stg,prd} {orion,nebula}\n"
+  exit 1
+fi
+
+printf "\nInstance: $env\nConnect: psql -h localhost -p 9470 -U mitchell@prefect.io ${db}\n\n"
 
 cloud-sql-proxy \
     --auto-iam-authn \
     --private-ip \
-    "prefect-$env-cloud2:us-east1:orion-$env?port=9470"
+    "prefect-$env-cloud2:us-east1:${db}-$env?port=9470"
