@@ -44,7 +44,7 @@ return {
       "ruff",       -- Python
       "ruff_lsp",   -- Python
       "pyright",    -- Python
-      "tsserver",   -- Typescript
+      "ts_ls",      -- Typescript
       "marksman",   -- Markdown
       "terraformls", -- Terraform
       "tflint",     -- Terraform
