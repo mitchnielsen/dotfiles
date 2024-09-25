@@ -1,6 +1,6 @@
 local options = {
   -- Decorations
-  signcolumn = "no",
+  signcolumn = "yes:2",
   cmdheight = 2,
   timeoutlen = 400,
   pumheight = 20,

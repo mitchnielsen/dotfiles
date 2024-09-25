@@ -9,9 +9,9 @@ return {
     { "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>", desc = "reset git hunk" },
   },
   opts = {
-    signcolumn = false,
+    signcolumn = true,
     linehl = false,
-    numhl = true,
+    numhl = false,
     watch_gitdir = {
       interval = 100,
     },
