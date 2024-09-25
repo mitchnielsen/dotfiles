@@ -9,6 +9,7 @@ return {
         'hrsh7th/cmp-vsnip',
         'hrsh7th/vim-vsnip',
         'onsails/lspkind.nvim',
+        'zbirenbaum/copilot-cmp',
       },
       config = function()
         local vim = vim
@@ -17,9 +18,15 @@ return {
 
         vim.o.completeopt = "menu,menuone,noselect"
 
+        require('copilot_cmp').setup()
+
         cmp.setup({
           formatting = {
-            format = lspkind.cmp_format(),
+            format = lspkind.cmp_format({
+              mode = "symbol",
+              max_width = 50,
+              symbol_map = { Copilot = "" },
+            }),
           },
           snippet = {
             expand = function(args)
@@ -42,6 +49,7 @@ return {
             ['<C-e>'] = cmp.mapping.abort(),
           }),
           sources = cmp.config.sources({
+            { name = 'copilot', },
             { name = 'nvim_lsp' },
             { name = 'path' },
             { name = 'vsnip' },
