@@ -1,6 +1,13 @@
 return {
   'ray-x/go.nvim',
-  config = true,
+  config = function ()
+    require('go').setup({
+      lsp_inlay_hints = {
+        enable = true,
+        style = 'eol',
+      },
+    })
+  end,
   ft = {
     "go",
     "gomod",
