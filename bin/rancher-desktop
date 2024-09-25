@@ -32,10 +32,20 @@ function help() {
   printf "usage:\n  rancher-desktop [{docker,kubernetes}-{up,down}]"
 }
 
-TARGET=${@:-help}
+TARGET=${@:-}
+targets="
+help
+docker-up
+docker-down
+kubernetes-up
+kubernetes-down
+"
+
+if [[ "${TARGET}" == "" ]]; then
+  TARGET=$(fzf --preview="echo {}" --preview-window=down:3:wrap <<< "${targets}")
+fi
 
 for target in ${TARGET}; do
   echo "Running ${target}..."
   ${target}
 done
-
