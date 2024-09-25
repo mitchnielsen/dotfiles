@@ -29,6 +29,10 @@ function symlink() {
   # binaries
   mkdir -p "$HOME/bin"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
+
+  # VSCode (VSCodium) configs
+  ln -s ~/dotfiles/.config/vscodium/settings.json ~/Library/Application\ Support/VSCodium/User/settings.json
+  ln -s ~/dotfiles/.config/vscodium/keybindings.json ~/Library/Application\ Support/VSCodium/User/keybindings.json
 }
 
 function dependencies() {
