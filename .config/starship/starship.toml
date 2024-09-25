@@ -32,9 +32,6 @@ disabled = true
 [gcloud]
 disabled = true
 
-[vagrant]
-disabled = true
-
 [python]
 disabled = false
 python_binary = 'python3'
