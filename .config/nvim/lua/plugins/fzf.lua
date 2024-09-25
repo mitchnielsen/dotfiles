@@ -37,8 +37,7 @@ return {
       },
       previewers = {
         bat = {
-          -- https://github.com/catppuccin/bat
-          theme = 'Catppuccin Frappe', -- bat --list-themes
+          theme = 'OneHalfDark', -- bat --list-themes
         },
       },
       files = {
