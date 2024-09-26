@@ -4,6 +4,7 @@ return {
     'mrjones2014/nvim-ts-rainbow',
     'ray-x/lsp_signature.nvim',
     'nvim-lua/lsp-status.nvim',
+    'hrsh7th/cmp-nvim-lsp',
   },
   ft = {
     "go",
@@ -24,9 +25,12 @@ return {
   },
   config = function()
     local vim = vim
+    local lspconfig = require('lspconfig')
+    local lsp_status = require('lsp-status')
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
 
     require("lsp_signature").setup({
       hint_enable = false,
@@ -36,68 +40,54 @@ return {
       },
     })
 
-    local lsp_status = require('lsp-status')
     lsp_status.register_progress()
-    capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
-    local servers = {
-      "ruff",       -- Python
-      "ruff_lsp",   -- Python
-      "pyright",    -- Python
-      "ts_ls",      -- Typescript
-      "marksman",   -- Markdown
-      "terraformls", -- Terraform
-      "tflint",     -- Terraform
+    -- Simple servers without custom config
+    local servers = { "ruff", "ruff_lsp", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
+
+    -- Servers with custom config
+    local custom_servers = {
+      lua_ls = {
+        settings = {
+          Lua = {
+            runtime = { version = 'LuaJIT' },
+            diagnostics = { globals = {'vim'} },
+            workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+            telemetry = { enable = false },
+          },
+        },
+      },
+      gopls = {
+        settings = {
+          gopls = {
+            ["ui.inlayhint.hints"] = {
+              assignVariableTypes = false,
+              compositeLiteralFields = false,
+              compositeLiteralTypes = false,
+              constantValues = false,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = false,
+            },
+          },
+        },
+      },
     }
 
-    for _, lsp in ipairs(servers) do
-      require("lspconfig")[lsp].setup {
+    -- Setup simple servers
+    for _, server in ipairs(servers) do
+      lspconfig[server].setup({
         capabilities = capabilities,
-        on_attach = lsp_status.on_attach
-      }
+        on_attach = lsp_status.on_attach,
+      })
     end
 
-    require("lspconfig").gopls.setup({
-      capabilities = capabilities,
-      on_attach = lsp_status.on_attach,
-      settings = {
-        gopls = {
-          -- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
-          ["ui.inlayhint.hints"] = {
-            assignVariableTypes = false,
-            compositeLiteralFields = false,
-            compositeLiteralTypes = false,
-            constantValues = false,
-            functionTypeParameters = true,
-            parameterNames = true,
-            rangeVariableTypes = false,
-          },
-        },
-      },
-    })
-
-    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
-    require'lspconfig'.lua_ls.setup {
-      settings = {
-        Lua = {
-          runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
-          },
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = {'vim'},
-          },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-          },
-          -- Do not send telemetry data containing a randomized but unique identifier
-          telemetry = {
-            enable = false,
-          },
-        },
-      },
-    }
-  end,
+    -- Setup servers with custom config
+    for server, config in pairs(custom_servers) do
+      lspconfig[server].setup(vim.tbl_extend("force", {
+        capabilities = capabilities,
+        on_attach = lsp_status.on_attach,
+      }, config))
+    end
+  end
 }
