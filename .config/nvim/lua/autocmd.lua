@@ -66,11 +66,6 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
-  pattern = "*.py",
-  command = vim.cmd("autocmd FileType python map <leader>r :w<CR>:exec '!python3' shellescape(@%, 1)<CR>")
-})
-
-autocmd("FileType", {
   pattern = "*.go",
   command = vim.cmd("autocmd FileType go map <leader>r :w<CR>:exec '!go run' shellescape(@%, 1)<CR>")
 })
@@ -78,6 +73,11 @@ autocmd("FileType", {
 autocmd("FileType", {
   pattern = "*.go",
   command = vim.cmd("autocmd FileType go map <leader>t :w<CR>:exec '!go test'<CR>")
+})
+
+autocmd("FileType", {
+  pattern = "*.py",
+  command = vim.cmd("autocmd FileType python map <leader>r :w<CR>:exec '!python3' shellescape(@%, 1)<CR>")
 })
 
 autocmd("BufWritePre", {
