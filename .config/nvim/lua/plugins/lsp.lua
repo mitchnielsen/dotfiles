@@ -1,7 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    'mrjones2014/nvim-ts-rainbow',
     'ray-x/lsp_signature.nvim',
     'nvim-lua/lsp-status.nvim',
     'hrsh7th/cmp-nvim-lsp',
