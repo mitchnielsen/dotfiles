@@ -17,6 +17,9 @@ return {
   keys = {
     {"K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "lsp: hover"},
     {"gR", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "lsp: rename"},
+    {"ge", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "lsp: show full error"},
+    {"]e", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "lsp: next error"},
+    {"[e", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "lsp: previous error"},
     {"gr", "<cmd>FzfLua lsp_references<CR>", desc = "lsp: references"},
     {"gi", "<cmd>FzfLua lsp_implementations<CR>", desc = "lsp: implementation"},
     {"gd", "<cmd>FzfLua lsp_definitions<CR>", desc = "lsp: definition"},
