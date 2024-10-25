@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: add this
-# git clone https://github.com/aabouzaid/kubech ~/.kubech
-
 function symlink() {
   # zprofile
   if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$HOME/.zprofile"; fi

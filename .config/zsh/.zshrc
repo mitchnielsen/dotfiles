@@ -31,12 +31,6 @@ export PATH="$HOME/.rd/bin:$PATH"
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
 
-# Kubernetes
-# Disable default connection to cluster
-# - reconnect with `kon`
-# - disconnect with `koff`
-export KUBECONFIG="$HOME/.kube/config.dest.d/*:$HOME/.kube/config"
-
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
 
@@ -86,8 +80,6 @@ fi
 # Slow
 eval "$(direnv hook zsh)"
 
-# Switch kubernetes contexts (https://github.com/DevOpsHiveHQ/kubech)
-source ~/.kubech/kubech
 
 if command -v mise; then
   eval "$(mise activate zsh)"
@@ -157,22 +149,20 @@ function gwr() {
 }
 
 function koff() {
-  kubechu
+  unset KUBECONFIG
 }
 
-# Uses https://github.com/DevOpsHiveHQ/kubech to set
-# kube context per-shell (instead of globally with kubectx).
 function kon() {
-  koff > /dev/null
+  context=$(ls $HOME/.kube/contexts | fzf)
+  export KUBECONFIG=$HOME/.kube/contexts/$context
+}
 
-  kubechc $(kubectl config get-contexts -o name | fzf) > /dev/null
-
-  # kubectl completion (slow)
+function kcomplete() {
   source <(kubectl completion zsh)
 }
 
 function kdelete() {
-  contexts=$(kubectx | sort)
+  contexts=$(ls ~/.kube/contexts | sort)
   context=$(printf "${contexts}\nquit" \
     | fzf --header='Select context to delete')
 
@@ -182,23 +172,16 @@ function kdelete() {
   fi
 
   echo "deleting $context"
-  kubectx -d "${context}"
+  rm ~/.kube/contexts/$context
 }
 
 function krename() {
-  contexts=$(kubectx | sort)
-  context=$(printf "${contexts}\nquit" \
-    | fzf --header='Select context to rename')
-
-  if [ "${context}" = "quit" ]; then
-    echo 'No context selected, exiting...'
-    return
-  fi
-
+  context=$(kubectl config current-context)
   read new_name\?"New name for ${context}: "
 
   echo "renaming $context"
   kubectl config rename-context ${context} ${new_name}
+  mv ~/.kube/contexts/${context} ~/.kube/contexts/${new_name}
 }
 
 function digg() {
@@ -233,7 +216,7 @@ alias g='git'
 alias v='nvim'
 alias v-changed='nvim $(git dm --name-only)'
 alias k='kubectl'
-alias kk='k9s --crumbsless --headless --logoless'
+alias kk='k9s --kubeconfig=$HOME/.kube/contexts/$(ls $HOME/.kube/contexts | fzf)'
 alias cat='bat'
 alias randompw='openssl rand -base64 18'
 alias cdd='cd $(find ~/code -maxdepth 4 -type d | sort -u | fzf)'
