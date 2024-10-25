@@ -21,12 +21,21 @@ return {
       },
     })
 
+    -- create custom filetypes for use by specific linters
+    vim.filetype.add({
+      pattern = {
+        ['.*/.github/workflows/.*%.yml'] = 'yaml.ghaction',
+        ['.*/.github/workflows/.*%.yaml'] = 'yaml.ghaction',
+      },
+    })
+
     local lint = require('lint')
 
     lint.linters_by_ft = {
       sh = {'shellcheck'},
       bash = {'shellcheck'},
-      yaml = {'yamllint', 'actionlint'},
+      ghaction = {'actionlint'},
+      yaml = {'yamllint'},
       markdown = {'markdownlint', 'vale'},
       ruby = {'rubocop'},
       json = {'jsonlint'},
