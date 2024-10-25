@@ -80,10 +80,8 @@ fi
 # Slow
 eval "$(direnv hook zsh)"
 
-
-if command -v mise; then
-  eval "$(mise activate zsh)"
-fi
+# For managing tool version
+eval "$(mise activate zsh)"
 
 autoload -U compinit && compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
@@ -146,6 +144,7 @@ function gwr() {
   local default_branch_name=$(git default-branch)
   cd ../${default_branch_name}
   git worktree remove "${branch_name}"
+  git branch -D "${branch_name}"
 }
 
 function koff() {
