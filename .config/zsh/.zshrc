@@ -188,12 +188,20 @@ function digg() {
 }
 
 function image-size() {
-  skopeo inspect \
+  compressed=$(skopeo inspect \
     --override-arch=amd64 \
     --override-os=linux \
     docker://$1 \
     | jq '[.LayersData[].Size] | add' \
-    | numfmt --to=iec-i --suffix=B --format="%9.2f"
+    | numfmt --to=iec-i --suffix=B --format="%9.2f")
+
+  docker pull $1
+  uncompressed=$(docker inspect \
+    $1 \
+    | jq '.[].Size' \
+    | numfmt --to=iec-i --suffix=B --format="%9.2f")
+
+  printf "uncompressed: %s\ncompressed: %s\n" "${uncompressed}" "${compressed}"
 }
 
 function ql() {
