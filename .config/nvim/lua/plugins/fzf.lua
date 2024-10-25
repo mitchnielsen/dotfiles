@@ -23,7 +23,6 @@ return {
 
     require'fzf-lua'.setup {
       winopts = {
-        split      = 'belowright new', -- open in a bottom split
         preview = {
           wrap = 'wrap', -- wrap|nowrap
         },
