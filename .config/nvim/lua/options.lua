@@ -4,7 +4,6 @@ local options = {
   cmdheight = 2,
   timeoutlen = 400,
   pumheight = 20,
-  foldmethod = "manual",
   list = false,
   listchars = { tab = '▸ ', trail = '·'},
 
@@ -40,6 +39,17 @@ local options = {
   diffopt = "vertical",
   cursorline = true,
   conceallevel = 0,
+
+  -- folding
+  -- https://www.jackfranklin.co.uk/blog/code-folding-in-vim-neovim
+  foldmethod = "expr", -- manual, indent
+  foldexpr = "v:lua.vim.treesitter.foldexpr()",
+  foldcolumn = "0", -- don't create a column to show fold status
+  foldtext = "",
+  foldlevel = 99,
+  foldlevelstart = 0, -- keep folds open between buffers
+  foldnestmax = 4,
+  foldenable = false, -- closed on start
 }
 
 for k, v in pairs(options) do
