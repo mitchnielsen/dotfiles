@@ -32,7 +32,18 @@ return {
         end,
       },
       lualine_y = {'searchcount', 'progress', 'location'},
-      lualine_z = {'branch'}
+      lualine_z = {
+        function()
+          local filetype = vim.bo.filetype
+          local linters = require("lint").linters_by_ft[filetype]
+
+          if linters then
+            return "linters:" .. filetype .. ": " .. table.concat(linters, ", ")
+          else
+            return "linters: " .. filetype .. "none"
+          end
+        end
+      }
     }
   }
 }
