@@ -22,6 +22,7 @@ return {
     local files_opts = rg_common_opts .. ' ' .. '--files --follow'
 
     require'fzf-lua'.setup {
+      fzf_colors = true, -- auto generate based on current nvim theme
       winopts = {
         preview = {
           wrap = 'wrap', -- wrap|nowrap
