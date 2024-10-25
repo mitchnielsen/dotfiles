@@ -49,6 +49,11 @@ return {
         rg_opts = rg_common_opts,
         actions = sharedActions,
       },
+      lsp = {
+        jump_to_single_result = true,
+        ignore_current_line = true,
+        includeDeclaration = false
+      }
     }
   end
 }
