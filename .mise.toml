@@ -2,3 +2,4 @@
 actionlint = '1.7.1'
 golang = 'system'
 helm = 'system'
+terraform = '1.9.8'
