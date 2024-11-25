@@ -5,6 +5,7 @@
 	email = inbox@mitchn.me
 [core]
   pager = delta
+  excludesfile = ~/.config/git/ignore
 [pull]
 	rebase = false # don't automatically rebase on `git pull`
 [fetch]
