@@ -1,6 +1,10 @@
 #/usr/bin/env bash
 
-git log --oneline -G \
-  $1 \
+commit=$(git log --oneline -G \
+  "${1}" \
   | awk '{print $1}' \
-  | fzf --preview 'git show --color=always {}'
+  | fzf --preview 'git show --color=always {}')
+
+echo -n "${commit}" | pbcopy
+
+echo "Commit: ${commit} copied to clipboard"
