@@ -11,6 +11,7 @@ function docker-down () {
 }
 
 function kubernetes-up () {
+  export KUBECONFIG="$HOME/.kube/contexts/rancher-desktop"
   rdctl set --kubernetes.enabled=true
   await-success 'kubectl get nodes'
 }
@@ -18,6 +19,7 @@ function kubernetes-up () {
 function kubernetes-down () {
   rdctl set --kubernetes.enabled=false
   await-failure 'kubectl get nodes'
+  unset KUBECONFIG
 }
 
 function await-success () {
