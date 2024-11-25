@@ -45,7 +45,7 @@ return {
     lsp_status.register_progress()
 
     -- Simple servers without custom config
-    local servers = { "ruff", "ruff_lsp", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
+    local servers = { "ruff", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
 
     -- Servers with custom config
     local custom_servers = {
