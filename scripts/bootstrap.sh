@@ -8,10 +8,6 @@ function symlink() {
   [ -f ~/.tmux.conf ] && rm ~/.tmux.conf
   ln -s ~/dotfiles/.config/tmux/.tmux.conf ~/.tmux.conf
 
-  # mise config
-  [ -f ~/.mise.toml ] && rm ~/.mise.toml
-  ln -s ~/dotfiles/.mise.toml ~/.mise.toml
-
   # ssh
   [ -f ~/.ssh/config ] && mv ~/.ssh/config ~/.ssh/config.bak.$(date '+%Y-%m-%d-%H:%M:%S')
   ln -s ~/dotfiles/.ssh/config ~/.ssh/config
