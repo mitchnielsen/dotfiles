@@ -4,8 +4,12 @@ echo '# System Status'
 echo '==============='
 
 function run {
-  printf "\n\n## $1\n\n"
+  printf "\n\n## $1\n"
   $1
 }
 
 run 'docker ps'
+
+if [ -f "$HOME/.kube/config" ]; then
+  printf "\n\n ~/.kube/config exists; remember to split into individual files in ~/.kube/contexts/.\n"
+fi
