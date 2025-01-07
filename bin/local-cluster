@@ -1,0 +1,16 @@
+#!/bin/bash
+
+name="mycluster"
+
+if ! k3d cluster get $name > /dev/null 2>&1; then
+  # For mltiple servers, or adding servers to an instance, see:
+  # https://k3d.io/v5.7.4/usage/multiserver/
+  k3d cluster create $name \
+    --kubeconfig-switch-context=false \
+    --kubeconfig-update-default=false
+
+  # https://k3d.io/v5.7.4/usage/kubeconfig
+  k3d kubeconfig get $name > ~/.kube/contexts/k3d
+fi
+
+echo "Cluster ${name} is running."
