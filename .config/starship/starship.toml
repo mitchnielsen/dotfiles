@@ -1,5 +1,5 @@
 format = """
-$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$fill
+$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$jobs$fill
 $character
 """
 
@@ -7,6 +7,13 @@ $character
 disabled = true
 symbol = '-'
 style = 'gray'
+
+[jobs]
+disabled = false
+number_threshold = 1
+symbol = '&'
+style = 'yellow'
+format = ' [$symbol$number]($style) '
 
 [line_break]
 disabled = false
