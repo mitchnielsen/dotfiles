@@ -1,0 +1,2 @@
+docker_path: 'unix:///Users/mitch/.rd/docker.sock'
+prompt: '> '
