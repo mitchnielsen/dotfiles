@@ -20,7 +20,7 @@ return {
       ["ctrl-t"]      = actions.file_tabedit,
     }
 
-    local rg_common_opts = '--color=always --no-ignore --hidden --smart-case --line-number --glob "!.git/*"'
+    local rg_common_opts = '--color=always --no-ignore --hidden --smart-case --line-number --column --glob "!.git/*"'
     local files_opts = rg_common_opts .. ' ' .. '--files --follow'
 
     require'fzf-lua'.setup {
