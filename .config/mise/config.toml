@@ -2,9 +2,8 @@
 actionlint = '1.7.1'
 golang = 'system'
 helm = 'system'
-terraform = '1.9.8'
-
 rust = 'latest' # for uvx
+terraform = "1.10.5"
 uv = 'latest' # for python
 
 [settings]
