@@ -68,6 +68,7 @@ brew "mosh", args: ["HEAD"]
 brew "neofetch"
 brew "neovim"
 brew "neovide", link: false
+brew "nvm"
 brew "openldap"
 brew "podman"
 brew "postgresql@14"

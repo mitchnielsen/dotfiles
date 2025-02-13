@@ -82,7 +82,14 @@ fi
 eval "$(direnv hook zsh)"
 
 # For managing tool version
-eval "$(mise activate zsh)"
+eval "$(${HOME}/.local/bin/mise activate zsh)"
+
+# Node/NVM
+function nvm-source {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+}
 
 autoload -U compinit && compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
