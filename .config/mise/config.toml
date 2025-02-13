@@ -4,6 +4,8 @@ golang = 'system'
 helm = 'system'
 terraform = '1.9.8'
 
+rust = 'latest' # for uvx
+uv = 'latest' # for python
 
 [settings]
 
