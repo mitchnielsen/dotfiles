@@ -1,9 +1,7 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    'ray-x/lsp_signature.nvim',
-    'nvim-lua/lsp-status.nvim',
-    'hrsh7th/cmp-nvim-lsp',
+    'saghen/blink.cmp',
   },
   ft = {
     "go",
@@ -28,21 +26,6 @@ return {
   config = function()
     local vim = vim
     local lspconfig = require('lspconfig')
-    local lsp_status = require('lsp-status')
-
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-    capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
-
-    require("lsp_signature").setup({
-      hint_enable = false,
-      floating_window = true,
-      handler_opts = {
-        border = "single",
-      },
-    })
-
-    lsp_status.register_progress()
 
     -- Simple servers without custom config
     local servers = { "ruff", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
@@ -76,11 +59,12 @@ return {
       },
     }
 
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
+
     -- Setup simple servers
     for _, server in ipairs(servers) do
       lspconfig[server].setup({
         capabilities = capabilities,
-        on_attach = lsp_status.on_attach,
       })
     end
 
@@ -88,7 +72,6 @@ return {
     for server, config in pairs(custom_servers) do
       lspconfig[server].setup(vim.tbl_extend("force", {
         capabilities = capabilities,
-        on_attach = lsp_status.on_attach,
       }, config))
     end
   end
