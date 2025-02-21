@@ -52,7 +52,7 @@ return {
         actions = sharedActions,
       },
       lsp = {
-        jump_to_single_result = true,
+        jump1 = true, -- jump directly when only 1 result
         ignore_current_line = true,
         includeDeclaration = false
       }
