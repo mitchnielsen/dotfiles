@@ -83,7 +83,12 @@ return {
       },
     },
 
-    signature = { enabled = true },
+    signature = {
+      enabled = true,
+      window = {
+        border = 'single'
+      }
+    },
 
     completion = {
       menu = { border = 'single' },
