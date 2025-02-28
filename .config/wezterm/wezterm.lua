@@ -16,8 +16,9 @@ config.colors = {
   cursor_border = '#242b38',
 }
 
+-- wezterm ls-fonts
 config.font = wezterm.font 'JetBrains Mono'
-config.font_size = 13.0
+config.font_size = 12.5
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 config.enable_tab_bar = false
