@@ -9,3 +9,5 @@ views:
       - STATUS
       - IP
       - AGE
+      # Custom columns: <NAME>:<JSON expression>
+      # - APP:.metadata.labels.app
