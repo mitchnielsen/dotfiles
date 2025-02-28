@@ -9,6 +9,13 @@ end
 
 config.color_scheme = 'OneHalfDark'
 
+-- Match the 'cool' variant of onedark theme
+config.colors = {
+  background = '#242b38',
+  cursor_fg = '#242b38',
+  cursor_border = '#242b38',
+}
+
 config.font = wezterm.font 'JetBrains Mono'
 config.font_size = 13.0
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
