@@ -235,7 +235,7 @@ alias kk='k9s --kubeconfig=$HOME/.kube/contexts/$(ls $HOME/.kube/contexts | fzf)
 alias cat='bat'
 alias randompw='openssl rand -base64 18'
 alias cdd='cd $(find ~/code -maxdepth 4 -type d | sort -u | fzf)'
-alias note='(cd /Users/mnielsen/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian/Notes && nvim .)'
+alias note='(cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .)'
 alias rg='rg --column --line-number --no-heading --smart-case --hidden --no-ignore --glob "!.git/*"'
 alias code='codium'
 alias tf='terraform'
