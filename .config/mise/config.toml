@@ -1,4 +1,5 @@
 [tools]
+aws = 'latest'
 actionlint = '1.7.1'
 golang = 'system'
 helm = 'system'
@@ -7,8 +8,6 @@ terraform = "1.10.5"
 uv = 'latest' # for python
 
 [settings]
-
-# Support new syntax for resolving tools
 experimental = true
 
 # config files with these prefixes will be trusted by default
