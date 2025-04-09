@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+printf "\nGitRepositories:\n"
+kubectl get gitrepositories -n flux-system
+
+printf "\nSuspended Kustomizations:\n"
+flux get kustomizations | awk '{ if ( $3 == "True" ) { printf "* %s\n", $1 } }'
+
+printf "\nSuspended HelmReleases:\n"
+flux get helmreleases -A | awk '{ if ( $4 == "True" ) { printf "* %s\n", $1 "/" $2 } }'
