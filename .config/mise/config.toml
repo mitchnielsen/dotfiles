@@ -3,6 +3,7 @@ aws = 'latest'
 actionlint = '1.7.1'
 golang = 'system'
 helm = 'system'
+istioctl = "latest"
 rust = 'latest' # for uvx
 terraform = "1.10.5"
 uv = 'latest' # for python
