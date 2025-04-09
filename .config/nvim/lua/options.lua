@@ -59,6 +59,37 @@ end
 -- Hide EndOfBuffer
 vim.opt.fillchars:append { eob = " " }
 
+-- Hide built-in themes
+vim.opt.wildignore:append({
+  "blue.vim",
+  "darkblue.vim",
+  "delek.vim",
+  "desert.vim",
+  "elflord.vim",
+  "evening.vim",
+  "habamax.vim",
+  "industry.vim",
+  "koehler.vim",
+  "lunaperche.vim",
+  "morning.vim",
+  "murphy.vim",
+  "pablo.vim",
+  "peachpuff.vim",
+  "quiet.vim",
+  "retrobox.vim",
+  "ron.vim",
+  "shine.vim",
+  "slate.vim",
+  "sorbet.vim",
+  "torte.vim",
+  "unokai.vim",
+  "vim",
+  "vim.vim",
+  "wildcharm.vim",
+  "zaibatsu.vim",
+  "zellner.vim",
+})
+
 -- Highlight trailing whitespace in red
 vim.cmd([[highlight ExtraWhitespace ctermbg=red guibg=red]])
 vim.cmd([[match ExtraWhitespace /\s\+$/]])
