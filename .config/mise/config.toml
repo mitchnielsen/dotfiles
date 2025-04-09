@@ -6,6 +6,7 @@ helm = 'system'
 rust = 'latest' # for uvx
 terraform = "1.10.5"
 uv = 'latest' # for python
+python = "latest"
 
 [settings]
 experimental = true
