@@ -44,6 +44,7 @@
 	pl = !git pull origin $(git branch --show-current)
 	plm = !git fetch origin && git pull origin $(git db)
 	ps = !git push origin $(git branch --show-current)
+        reauthor = !git commit --amend --no-edit
 [commit]
 	template = ~/.config/git/gitmessage
   verbose = true # show the entire diff in the commit window for context
