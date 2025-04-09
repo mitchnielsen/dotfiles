@@ -15,7 +15,7 @@ config.font_size = 12.5
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 config.enable_tab_bar = false
-config.window_decorations = 'TITLE | RESIZE'
+config.window_decorations = 'RESIZE'
 
 wezterm.on('format-window-title',
   function ()
