@@ -42,6 +42,12 @@ autocmd({ "BufNewFile", "BufEnter" }, {
   group = augroup("YAML", { clear = true }),
 })
 
+autocmd({ "BufNewFile", "BufEnter" }, {
+  pattern = {"*.md.tmpl"},
+  command = "set syntax=markdown",
+  group = augroup("markdown", { clear = true }),
+})
+
 autocmd("FileType", {
   pattern = { "*.txt", "*.md", "gitcommit", "gitrebase" },
   command = "setlocal spell textwidth=72 comments=fb:>,fb:*,fb:+,fb:-",
