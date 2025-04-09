@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "One Dark Pro",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.suggest.preview": true,
     "terraform.experimentalFeatures.prefillRequiredFields": true,

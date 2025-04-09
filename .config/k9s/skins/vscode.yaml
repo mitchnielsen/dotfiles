@@ -1,0 +1,111 @@
+# Generated with Claude: https://claude.ai/artifacts/1d572c74-8385-4567-a4d0-0296f0514331
+
+background: &background "#1f1f1f"
+foreground: &foreground "#d4d4d4"
+black: &black "#1f1f1f"
+red: &red "#f44747"
+green: &green "#608b4e"
+yellow: &yellow "#dcdcaa"
+blue: &blue "#569cd6"
+purple: &purple "#c678dd"
+cyan: &cyan "#56b6c2"
+white: &white "#d4d4d4"
+gray: &gray "#808080"
+selection_bg: &selection_bg "#dcdcaa"
+selection_fg: &selection_fg "#1f1f1f"
+cursor_bg: &cursor_bg "#d4d4d4"
+cursor_fg: &cursor_fg "#1f1f1f"
+current_line: &current_line "#252525"
+
+# Skin
+k9s:
+  # General K9s styles
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *blue
+  # ClusterInfoView styles
+  info:
+    fgColor: *cyan
+    sectionColor: *foreground
+  # Dialog styles
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: *foreground
+    buttonBgColor: *blue
+    buttonFocusFgColor: *background
+    buttonFocusBgColor: *yellow
+    labelFgColor: *cyan
+    fieldFgColor: *foreground
+  frame:
+    # Borders styles
+    border:
+      fgColor: *gray
+      focusColor: *blue
+    menu:
+      fgColor: *foreground
+      keyColor: *blue
+      numKeyColor: *yellow
+    crumbs:
+      fgColor: *foreground
+      bgColor: *current_line
+      activeColor: *blue
+    # Resource status and update styles
+    status:
+      newColor: *green
+      modifyColor: *blue
+      addColor: *green
+      errorColor: *red
+      highlightColor: *yellow
+      killColor: *red
+      completedColor: *gray
+    # Border title styles
+    title:
+      fgColor: *foreground
+      bgColor: *current_line
+      highlightColor: *blue
+      counterColor: *yellow
+      filterColor: *blue
+  views:
+    # Charts skins
+    charts:
+      bgColor: *background
+      defaultDialColors:
+        - *blue
+        - *yellow
+      defaultChartColors:
+        - *blue
+        - *green
+    # TableView attributes
+    table:
+      fgColor: *foreground
+      bgColor: *background
+      cursorFgColor: *selection_fg
+      cursorBgColor: *selection_bg
+      # Header row styles
+      header:
+        fgColor: *blue
+        bgColor: *background
+        sorterColor: *yellow
+    # YAML info styles
+    yaml:
+      keyColor: *cyan
+      colonColor: *foreground
+      valueColor: *green
+    # Logs styles
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *blue
+        bgColor: *background
+        toggleOnColor: *green
+        toggleOffColor: *gray
+    # XRay styles
+    xray:
+      fgColor: *foreground
+      bgColor: *background
+      cursorColor: *blue
+      graphicColor: *blue
+      showIcons: false
