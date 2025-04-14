@@ -6,8 +6,8 @@ helm = 'system'
 istioctl = "latest"
 rust = 'latest' # for uvx
 terraform = "1.10.5"
-uv = 'latest' # for python
-python = "latest"
+python = "3.12"
+uv = "latest" # for python
 
 [settings]
 experimental = true

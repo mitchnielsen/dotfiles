@@ -90,6 +90,9 @@ vim.opt.wildignore:append({
   "zellner.vim",
 })
 
+-- Configure Python executable
+vim.g.python3_host_prog = "/Users/mitch/bin/mise-python"
+
 -- Highlight trailing whitespace in red
 vim.cmd([[highlight ExtraWhitespace ctermbg=red guibg=red]])
 vim.cmd([[match ExtraWhitespace /\s\+$/]])
