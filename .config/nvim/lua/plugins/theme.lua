@@ -25,5 +25,11 @@ return {
       vim.cmd.colorscheme "vscode"
     end,
   },
+  {
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
+    lazy = true,
+    config = true,
+    priority = 1000, -- make sure to load this before all the other start plugins
   }
 }
