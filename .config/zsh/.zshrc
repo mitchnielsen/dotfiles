@@ -71,9 +71,9 @@ source <(fzf --zsh)
 
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke:
 #   gcloud components install gke-gcloud-auth-plugin
-if [ -d "/opt/homebrew/share/google-cloud-sdk" ]; then
-  source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
-  source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
+if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
+  source "$HOME/.local/share/mise/installs/gcloud/latest/completion.zsh.inc" # enable shell command completion for gcloud.
+  source "$HOME/.local/share/mise/installs/gcloud/latest/path.zsh.inc" # add the Google Cloud SDK command line tools to your $PATH.
   export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 fi
 

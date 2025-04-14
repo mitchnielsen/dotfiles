@@ -1,6 +1,7 @@
 [tools]
 aws = "latest"
 actionlint = "1.7.1"
+gcloud = "517.0.0"
 golang = "system"
 helm = "system"
 istioctl = "latest"
