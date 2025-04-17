@@ -15,7 +15,8 @@ unset GOROOT
 export PATH=$PATH:$GOPATH/bin
 
 # Utilities
-export FZF_DEFAULT_COMMAND="rg --color=always --no-ignore --hidden --glob '!.git/*' --glob '!.venv/*' --glob '!node_modules/*' --smart-case --line-number"
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
+export FZF_DEFAULT_COMMAND="rg --color=always --no-ignore --ignore-file=$HOME/.config/ripgrep/.ignore --hidden --smart-case --line-number"
 export FZF_DEFAULT_OPTS=""
 export XDG_CONFIG_HOME="$HOME/.config"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"

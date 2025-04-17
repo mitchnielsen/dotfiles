@@ -20,9 +20,6 @@ return {
       ["ctrl-t"]      = actions.file_tabedit,
     }
 
-    local rg_common_opts = '--color=always --no-ignore --hidden --smart-case --line-number --column --glob "!.git/*" --glob "!.venv/*" --glob "!node_modules/*"'
-    local files_opts = rg_common_opts .. ' ' .. '--files --follow'
-
     require'fzf-lua'.setup {
       fzf_colors = true, -- auto generate based on current nvim theme
       winopts = {
@@ -43,12 +40,10 @@ return {
         },
       },
       files = {
-        rg_opts = files_opts,
         actions = sharedActions,
       },
       grep = {
         prompt = 'rg❯ ',
-        rg_opts = rg_common_opts,
         actions = sharedActions,
       },
       lsp = {
