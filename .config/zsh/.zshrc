@@ -15,7 +15,7 @@ unset GOROOT
 export PATH=$PATH:$GOPATH/bin
 
 # Utilities
-export FZF_DEFAULT_COMMAND="rg --color=always --no-ignore --hidden --glob '!.git/*' --smart-case --line-number"
+export FZF_DEFAULT_COMMAND="rg --color=always --no-ignore --hidden --glob '!.git/*' --glob '!.venv/*' --glob '!node_modules/*' --smart-case --line-number"
 export FZF_DEFAULT_OPTS=""
 export XDG_CONFIG_HOME="$HOME/.config"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
@@ -237,7 +237,7 @@ alias cat='bat'
 alias randompw='openssl rand -base64 18'
 alias cdd='cd $(find ~/code -maxdepth 4 -type d | sort -u | fzf)'
 alias note='(cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .)'
-alias rg='rg --column --line-number --no-heading --smart-case --hidden --no-ignore --glob "!.git/*"'
+alias rg='rg --column --line-number --no-heading --smart-case --hidden --no-ignore --glob "!.git/*" --glob "!.venv/*" --glob "!node_modules/*"'
 alias code='codium'
 alias tf='terraform'
 
