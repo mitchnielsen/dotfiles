@@ -20,8 +20,13 @@ return {
       ["ctrl-t"]      = actions.file_tabedit,
     }
 
-    local rg_common_opts = '--color=always --no-ignore --hidden --smart-case --line-number --column --glob "!.git/*" --glob "!.venv/*" --glob "!node_modules/*"'
-    local files_opts = rg_common_opts .. ' ' .. '--files --follow'
+
+    -- equal to ~/.config/ripgrep/.ignore
+    local ignored_files = {
+      "%.git/",
+      "node_modules/",
+      "%.venv/"
+    }
 
     require'fzf-lua'.setup {
       fzf_colors = true, -- auto generate based on current nvim theme
@@ -43,13 +48,16 @@ return {
         },
       },
       files = {
-        rg_opts = files_opts,
+        follow = true,
+        file_ignore_patterns = ignored_files,
         actions = sharedActions,
       },
       grep = {
         prompt = 'rg❯ ',
-        rg_opts = rg_common_opts,
         actions = sharedActions,
+        RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH, -- reuse config options
+        no_ignore = true, -- define our own ignore pattern below
+        file_ignore_patterns = ignored_files,
       },
       lsp = {
         jump1 = true, -- jump directly when only 1 result

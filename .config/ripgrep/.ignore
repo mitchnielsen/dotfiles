@@ -1,0 +1,4 @@
+# should be equivalent to list in fzf.lua
+.git/*
+.venv/*
+node_modules/*

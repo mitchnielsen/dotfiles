@@ -1,0 +1,14 @@
+# Always use color
+--color=always
+
+# Disregard any local .ignore files and use our own
+--no-ignore
+
+# Search hidden files and directories
+--hidden
+
+# Only use case sensitivity if search includes a capital letter
+--smart-case
+
+# Show line numbers in output
+--line-number
