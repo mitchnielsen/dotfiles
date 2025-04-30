@@ -1,5 +1,5 @@
 format = """
-$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$jobs$fill
+$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$jobs$custom$fill
 $character
 """
 
@@ -87,3 +87,8 @@ style = "green"
 
 [git_state]
 format = '\([$state($progress_current/$progress_total)]($style)\)'
+
+[custom.containers]
+command = 'docker ps -aq | wc -l'
+when = ''' test $(docker ps -aq | wc -l) -ne 0 '''
+format = ' 🐳 [$output]($style)'
