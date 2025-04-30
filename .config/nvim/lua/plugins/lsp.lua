@@ -27,6 +27,10 @@ return {
     local vim = vim
     local lspconfig = require('lspconfig')
 
+    -- Disable to avoid a large log file.
+    -- Set to "debug" when debugging.
+    vim.lsp.set_log_level("off")
+
     -- Simple servers without custom config
     local servers = { "ruff", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
 
