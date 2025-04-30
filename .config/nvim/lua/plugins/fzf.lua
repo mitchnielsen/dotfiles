@@ -48,12 +48,16 @@ return {
         },
       },
       files = {
+        git_icons = false, -- for performance
+        file_icons = false, -- for performance
         follow = true,
         file_ignore_patterns = ignored_files,
         actions = sharedActions,
       },
       grep = {
-        prompt = 'rg❯ ',
+        git_icons = false, -- for performance
+        file_icons = false, -- for performance
+        prompt = 'rg: ',
         actions = sharedActions,
         RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH, -- reuse config options
         no_ignore = true, -- define our own ignore pattern below
