@@ -2,7 +2,7 @@ return {
   {
     'navarasu/onedark.nvim',
     priority = 1000,
-    lazy = true,
+    lazy = false,
     config = function ()
       require('onedark').setup {
           style = 'cool', -- dark, darker, cool, deep, warm, warmer, light
@@ -15,7 +15,7 @@ return {
   },
   {
     'Mofiqul/vscode.nvim',
-    lazy = false,
+    lazy = true,
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function ()
       require('vscode').setup({

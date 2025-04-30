@@ -11,7 +11,7 @@ k9s:
     logoless: true
     crumbsless: false
     noIcons: false
-    skin: vscode
+    skin: one-dark
   skipLatestRevCheck: false
   disablePodCounting: false
   shellPod:

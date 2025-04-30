@@ -7,7 +7,14 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.color_scheme = 'vscode-dark'
+config.color_scheme = 'OneHalfDark'
+
+-- Match the 'cool' variant of onedark theme
+config.colors = {
+  background = '#242b38',
+  cursor_fg = '#242b38',
+  cursor_border = '#242b38',
+}
 
 -- wezterm ls-fonts
 config.font = wezterm.font 'JetBrains Mono'
@@ -15,7 +22,7 @@ config.font_size = 12.5
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 config.enable_tab_bar = false
-config.window_decorations = 'RESIZE'
+config.window_decorations = 'TITLE | RESIZE'
 
 wezterm.on('format-window-title',
   function ()
