@@ -8,7 +8,7 @@ return {
     { "<leader>gw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
     { "<leader>f", "<cmd>FzfLua files<CR>", desc = "files" },
     { "<leader>b", "<cmd>FzfLua buffers<CR>", desc = "grep buffers" },
-    { "<leader>s", "<cmd>FzfLua lsp_document_symbols<CR>", desc = "symbols" },
+    { "<leader>s", "<cmd>FzfLua lsp_document_symbols<CR>", desc = "symbols" }, -- default: gO
     { "<leader>h", "<cmd>FzfLua lsp_document_diagnostics<CR>", desc = "diagnostics" },
   },
   config = function ()
