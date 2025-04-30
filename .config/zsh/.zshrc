@@ -146,17 +146,6 @@ function gwa() {
   cd "${location}"
 }
 
-# git worktree remove: changes back to the
-# default branch directory and removes the PR
-# branch directory.
-function gwr() {
-  local branch_name=$(basename "${PWD}")
-  local default_branch_name=$(git default-branch)
-  cd ../${default_branch_name}
-  git worktree remove "${branch_name}"
-  git branch -D "${branch_name}"
-}
-
 function koff() {
   unset KUBECONFIG
 }
@@ -230,6 +219,7 @@ alias dr='docker run --rm -it'
 alias dr-amd='dr --platform=linux/amd64'
 alias de='docker exec -it'
 alias g='git'
+alias gwr='source ~/bin/git-worktree-remove'
 alias v='nvim'
 alias v-changed='nvim $(git dm --name-only)'
 alias k='kubectl'

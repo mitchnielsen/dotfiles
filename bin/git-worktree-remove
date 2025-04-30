@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# git worktree remove: changes back to the
+# default branch directory and removes the PR
+# branch directory.
+#
+# Because we use 'cd' in this script, it needs to be
+# sourced instead of called directly:
+#
+#  source ~/bin/git-worktree-remove
+#
+# Set this as an alias for easy usage.
+
+set -e
+
+branch_name=$(basename "${PWD}")
+default_branch_name=$(git default-branch)
+
+# Abort if Terraform state directory exists
+if [ -d './.terraform' ]; then
+  echo 'Terraform directory exists, aborting...'
+  exit 1
+fi
+
+cd ../"${default_branch_name}"
+git worktree remove "${branch_name}"
+git branch -D "${branch_name}"
