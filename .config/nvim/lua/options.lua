@@ -6,6 +6,7 @@ local options = {
   pumheight = 20,
   list = false,
   listchars = { tab = '▸ ', trail = '·'},
+  winborder = 'rounded',
 
   -- Spacing,
   shiftwidth = 2,

@@ -38,12 +38,6 @@ map_key('i', '.', '.<c-g>u')
 map_key('i', '!', '!<c-g>u')
 map_key('i', '?', '?<c-g>u')
 
--- https://github.com/tpope/vim-unimpaired
-map_key('n', '[q', '<cmd>cprev<CR>', 'prev quickfix entry')
-map_key('n', ']q', '<cmd>cnext<CR>', 'next quickfix entry')
-map_key('n', '[b', '<cmd>bprev<CR>', 'prev buffer')
-map_key('n', ']b', '<cmd>bnext<CR>', 'next buffer')
-
 -- neovide
 if vim.g.neovide then
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save

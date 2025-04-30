@@ -5,6 +5,8 @@ return {
     vim.diagnostic.config({
       focus = false,
       virtual_text = false,
+      virtual_lines = true,
+      current_line = false, -- only show for the current line
       signs = true,
       severity_sort = true,
       float = {
