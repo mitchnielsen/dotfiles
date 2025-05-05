@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+
+printf "file(s) pattern:\n"
+read -r files
+
+printf "find:\n"
+read -r find
+
+printf "replace:\n"
+read -r replace
+
+find ${files} -type f -exec sed -i '' -e "s;${find};${replace};g" {} \;
