@@ -26,24 +26,9 @@ return {
       lualine_b = {{'diagnostics', sources = {'nvim_diagnostic'}}},
       lualine_c = {'diff', 'navic'},
 
-      lualine_x = {
-        function()
-          return require("lsp-status").status()
-        end,
-      },
-      lualine_y = {'searchcount', 'progress', 'location'},
-      lualine_z = {
-        function()
-          local filetype = vim.bo.filetype
-          local linters = require("lint").linters_by_ft[filetype]
-
-          if linters then
-            return "linters:" .. filetype .. ": " .. table.concat(linters, ", ")
-          else
-            return "linters: " .. filetype .. "none"
-          end
-        end
-      }
+      lualine_x = {'lsp_status'},
+      lualine_y = {'progress', 'location'},
+      lualine_z = {'selectioncount', 'searchcount'}
     }
   }
 }
