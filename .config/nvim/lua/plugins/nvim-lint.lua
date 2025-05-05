@@ -44,6 +44,7 @@ return {
       python = {'ruff'},
       terraform = {'tflint'},
       go = {'golangcilint'},
+      dockerfile = {'hadolint'},
     }
 
     lint.try_lint()
