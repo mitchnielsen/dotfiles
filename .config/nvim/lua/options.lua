@@ -1,3 +1,7 @@
+-- To see current options:
+--   1. Launch nvim: `nvim -V1`
+--   2. Run a command like: `:verbose highlight SpellBad`
+
 local options = {
   -- Decorations
   signcolumn = "yes:2",
