@@ -20,7 +20,6 @@ return {
       ["ctrl-t"]      = actions.file_tabedit,
     }
 
-
     -- equal to ~/.config/ripgrep/.ignore
     local ignored_files = {
       "%.git/",
