@@ -9,6 +9,7 @@ istioctl = "latest"
 rust = "latest" # for uvx
 terraform = "1.10.5"
 python = "3.12"
+updatecli = "latest"
 uv = "latest" # for python
 
 [settings]
