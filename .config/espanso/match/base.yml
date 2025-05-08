@@ -1,3 +1,4 @@
+---
 matches:
   - trigger: ;date
     replace: "{{mydate}}"
@@ -14,3 +15,14 @@ matches:
 
 
       </details>
+
+  - trigger: ;tfcloud
+    replace: |
+      # Add on the same level as `required_providers`
+      # and then run `terraform init -upgrade`
+      cloud {
+        organization = "prefect"
+        workspaces {
+          name = "<tfc workspace name here>"
+        }
+      }
