@@ -8,7 +8,7 @@ matches:
         params:
           format: "%Y/%m/%d"
 
-  - trigger: ;detail
+  - trigger: ;details
     replace: |
       <details>
       <summary>$|$</summary>
