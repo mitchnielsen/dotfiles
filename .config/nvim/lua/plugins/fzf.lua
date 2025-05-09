@@ -24,7 +24,8 @@ return {
     local ignored_files = {
       "%.git/",
       "node_modules/",
-      "%.venv/"
+      "%.venv/",
+      "%.terraform/"
     }
 
     require'fzf-lua'.setup {
