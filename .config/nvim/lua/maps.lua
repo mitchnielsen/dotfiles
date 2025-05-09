@@ -38,6 +38,9 @@ map_key('i', '.', '.<c-g>u')
 map_key('i', '!', '!<c-g>u')
 map_key('i', '?', '?<c-g>u')
 
+-- Search within visual selection - this is magic
+map_key('x', '/', '<Esc>/\\%V')
+
 -- neovide
 if vim.g.neovide then
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
