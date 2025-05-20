@@ -53,6 +53,7 @@ return {
         follow = true,
         file_ignore_patterns = ignored_files,
         actions = sharedActions,
+        line_query = true, -- go to line (myfile.txt:5)
       },
       grep = {
         git_icons = false, -- for performance
