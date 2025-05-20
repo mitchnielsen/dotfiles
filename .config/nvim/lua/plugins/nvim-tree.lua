@@ -25,6 +25,7 @@ return {
   },
   keys = {
     {"<leader>n", "<cmd>NvimTreeFindFileToggle<cr>", desc = "toggle file tree"},
+    {"<leader>N", "<cmd>NvimTreeFindFile<cr>", desc = "find file in tree"},
   },
   lazy = false,
   config = function ()
