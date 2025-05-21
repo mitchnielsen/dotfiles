@@ -11,8 +11,6 @@
 #
 # Set this as an alias for easy usage.
 
-set -e
-
 branch_name=$(basename "${PWD}")
 default_branch_name=$(git default-branch)
 
