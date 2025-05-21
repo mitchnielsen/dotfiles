@@ -233,9 +233,7 @@ alias code='codium'
 alias tf='terraform'
 
 # Python
-alias python='python3'
 alias python-venv='if [ ! -f ./.venv/bin/activate ]; then echo Creating virtualenv...; uv venv --python=3.12; fi; source .venv/bin/activate'
-alias pip='uv pip'
 
 # ===================
 # Prompt settings
