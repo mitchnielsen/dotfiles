@@ -3,16 +3,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
--- Run gofmt + goimport on save
-autocmd("BufWritePre", {
-  pattern = "*.go",
-  -- command = "silent! lua require('go.format').goimport()",
-  callback = function()
-    require('go.format').goimport()
-  end,
-  group = augroup("gofmt", { clear = true }),
-})
-
 -- https://github.com/ibhagwan/fzf-lua/pull/505/files
 autocmd("VimResized", {
   pattern = '*',
