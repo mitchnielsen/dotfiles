@@ -7,13 +7,18 @@ helm = "latest"
 istioctl = "latest"
 terraform = "1.10.5"
 updatecli = "latest"
+
 stylua = "latest"
+
 # Python
 python = "3.12"
 uv = "latest" # for python
 rust = "latest" # for uvx
 aws = "latest" # specify after 'python' to control PATH
 ruff = "latest"
+
+# Go
+"go:go.xrstf.de/stalk" = "latest" # https://codeberg.org/xrstf/stalk
 
 [settings]
 experimental = true
