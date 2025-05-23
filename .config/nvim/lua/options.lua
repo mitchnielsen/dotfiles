@@ -9,8 +9,8 @@ local options = {
   timeoutlen = 400,
   pumheight = 20,
   list = false,
-  listchars = { tab = '▸ ', trail = '·'},
-  winborder = 'rounded',
+  listchars = { tab = "▸ ", trail = "·" },
+  winborder = "rounded",
 
   -- Spacing,
   shiftwidth = 2,
@@ -62,7 +62,7 @@ for k, v in pairs(options) do
 end
 
 -- Hide EndOfBuffer
-vim.opt.fillchars:append { eob = " " }
+vim.opt.fillchars:append({ eob = " " })
 
 -- Hide built-in themes
 vim.opt.wildignore:append({
