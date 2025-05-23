@@ -1,17 +1,19 @@
 [tools]
-aws = "latest"
 actionlint = "1.7.1"
 flux2 = "2.5.1"
 gcloud = "517.0.0"
 golang = "system"
 helm = "system"
 istioctl = "latest"
-rust = "latest" # for uvx
 terraform = "1.10.5"
-python = "3.12"
 updatecli = "latest"
 stylua = "latest"
+# Python
+python = "3.12"
 uv = "latest" # for python
+rust = "latest" # for uvx
+aws = "latest" # specify after 'python' to control PATH
+ruff = "latest"
 
 [settings]
 experimental = true
