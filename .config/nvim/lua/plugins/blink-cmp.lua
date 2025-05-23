@@ -14,7 +14,15 @@ return {
     -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
     -- See the full "keymap" documentation for information on defining your own keymap.
-    keymap = { preset = 'enter' },
+    keymap = {
+      preset = 'enter',
+
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+
+      ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
@@ -91,9 +99,13 @@ return {
     },
 
     completion = {
-      menu = { border = 'single' },
+      menu = {
+        border = 'single',
+        auto_show = false,
+      },
       ghost_text = {
-        enabled = true
+        enabled = true,
+        show_with_menu = true,
       },
       documentation = {
         auto_show = true,
