@@ -17,10 +17,7 @@ return {
           hide_filename_extension = false,
           show_modified_status = true,
           mode = 0,
-          buffers_color = {
-            active = 'lualine_a_normal',
-            inactive = 'gray',
-          },
+          use_mode_colors = false,
         },
       },
       lualine_b = {{'diagnostics', sources = {'nvim_diagnostic'}}},
