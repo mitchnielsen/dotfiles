@@ -16,13 +16,16 @@ config.colors = {
   cursor_border = "#242b38",
 }
 
--- wezterm ls-fonts
-config.font = wezterm.font 'JetBrains Mono'
-config.font_size = 12.5
-config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+-- List available fonts:
+--   wezterm ls-fonts --list-system
+--   fc-list
+config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
+
+config.font_size = 12.0
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 config.enable_tab_bar = false
-config.window_decorations = 'TITLE | RESIZE'
+config.window_decorations = "RESIZE"
 
 wezterm.on("format-window-title", function()
   return "Terminal"
