@@ -24,9 +24,18 @@ function obsidian () {
   cp -r "${path}" "${target}"
 }
 
+function bitwarden () {
+  target="${backup_dir}/Bitwarden"
+
+  mkdir -p "${target}"
+  bw export --output "${target}/bitwarden_encrypted_export_${date}.json" --format=encrypted_json --password \
+    --session=$(cat ${HOME}/.secret/bw-session)
+}
+
 function all() {
   obsidian
   things
+  bitwarden
 }
 
 TARGET=${@:-all}
