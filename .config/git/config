@@ -1,19 +1,19 @@
 # https://jvns.ca/blog/2024/02/16/popular-git-config-options/
 
 [user]
-	name = Mitchell Nielsen
-	email = inbox@mitchn.me
+  name = Mitchell Nielsen
+  email = inbox@mitchn.me
 [core]
   pager = delta
   excludesfile = ~/.config/git/ignore
 [pull]
-	rebase = false # don't automatically rebase on `git pull`
+  rebase = false # don't automatically rebase on `git pull`
 [fetch]
-	prune = true # delete branches that no longer exist upstream (merged)
+  prune = true # delete branches that no longer exist upstream (merged)
 [push]
   autosetupremote = true # automatically set up the remote origin when pushing
 [rebase]
-	autosquash = true # automatically squash fixup/squash commits
+  autosquash = true # automatically squash fixup/squash commits
 [diff]
   # https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
   # https://link.springer.com/article/10.1007/s10664-019-09772-z
@@ -22,35 +22,35 @@
 [merge]
   conflictStyle = diff3 # more context in diffs, was zdiff3 but delta recommends diff3
 [delta]
-	features = line-numbers decorations # side-by-side
-	navigate = true
-	whitespace-error-style = 22 reverse
+  features = line-numbers decorations # side-by-side
+  navigate = true
+  whitespace-error-style = 22 reverse
 [delta "decorations"]
-	commit-decoration-style = bold yellow box ul
-	file-style = bold yellow ul
-	file-decoration-style = none
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
 [alias]
   a = add .
   ap = add -p .
-	co = checkout
-	cm = commit --verbose
-	st = status
-	unstage = reset HEAD --
-	last = log -1 HEAD
-	default-branch = !git rev-parse --abbrev-ref origin/HEAD | cut -d '/' -f2
-	db = default-branch
-	d = diff
-	ds = diff --staged
-	dm = !git diff $(git merge-base HEAD $(git db))
-	l = log --all --graph --decorate --oneline --simplify-by-decoration
-	pl = !git pull origin $(git branch --show-current)
-	plm = !git fetch origin && git pull origin $(git db)
-	ps = !git push origin $(git branch --show-current)
+  co = checkout
+  cm = commit --verbose
+  st = status
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  default-branch = !git rev-parse --abbrev-ref origin/HEAD | cut -d '/' -f2
+  db = default-branch
+  d = diff
+  ds = diff --staged
+  dm = !git diff $(git merge-base HEAD $(git db))
+  l = log --all --graph --decorate --oneline --simplify-by-decoration
+  pl = !git pull origin $(git branch --show-current)
+  plm = !git fetch origin && git pull origin $(git db)
+  ps = !git push origin $(git branch --show-current)
         reauthor = !git commit --amend --no-edit
 [commit]
-	template = ~/.config/git/gitmessage
+  template = ~/.config/git/gitmessage
   verbose = true # show the entire diff in the commit window for context
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [interactive]
   diffFilter = delta --color-only # highlight syntax when running 'git add -p'
