@@ -30,6 +30,8 @@
 	file-style = bold yellow ul
 	file-decoration-style = none
 [alias]
+  a = add .
+  ap = add -p .
 	co = checkout
 	cm = commit --verbose
 	st = status
