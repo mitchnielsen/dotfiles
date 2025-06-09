@@ -234,6 +234,7 @@ alias note='(cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .)'
 alias rg='rg --ignore-file=$HOME/.config/ripgrep/.ignore'
 alias code='codium'
 alias tf='terraform'
+alias lg='lazygit'
 
 # Python
 alias python-venv='if [ ! -f ./.venv/bin/activate ]; then echo Creating virtualenv...; uv venv --python=3.12; fi; source .venv/bin/activate'
