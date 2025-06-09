@@ -54,6 +54,7 @@ return {
         file_ignore_patterns = ignored_files,
         actions = sharedActions,
         line_query = true, -- go to line (myfile.txt:5)
+        no_ignore = true,
       },
       grep = {
         git_icons = false, -- for performance
