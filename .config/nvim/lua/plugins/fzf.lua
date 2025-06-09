@@ -11,13 +11,13 @@ return {
     { "<leader>s", "<cmd>FzfLua lsp_document_symbols<CR>", desc = "symbols" }, -- default: gO
     { "<leader>h", "<cmd>FzfLua lsp_document_diagnostics<CR>", desc = "diagnostics" },
   },
-  config = function ()
-    local actions = require "fzf-lua.actions"
+  config = function()
+    local actions = require("fzf-lua.actions")
     local sharedActions = {
-      ["default"]     = actions.file_edit_or_qf,
-      ["ctrl-s"]      = actions.file_split,
-      ["ctrl-v"]      = actions.file_vsplit,
-      ["ctrl-t"]      = actions.file_tabedit,
+      ["default"] = actions.file_edit_or_qf,
+      ["ctrl-s"] = actions.file_split,
+      ["ctrl-v"] = actions.file_vsplit,
+      ["ctrl-t"] = actions.file_tabedit,
     }
 
     -- equal to ~/.config/ripgrep/.ignore
@@ -25,14 +25,14 @@ return {
       "%.git/",
       "node_modules/",
       "%.venv/",
-      "%.terraform/"
+      "%.terraform/",
     }
 
-    require'fzf-lua'.setup {
+    require("fzf-lua").setup({
       fzf_colors = true, -- auto generate based on current nvim theme
       winopts = {
         preview = {
-          wrap = 'wrap', -- wrap|nowrap
+          wrap = "wrap", -- wrap|nowrap
         },
       },
       keymap = {
@@ -44,7 +44,7 @@ return {
       },
       previewers = {
         bat = {
-          theme = 'OneHalfDark', -- bat --list-themes
+          theme = "OneHalfDark", -- bat --list-themes
         },
       },
       files = {
@@ -58,7 +58,7 @@ return {
       grep = {
         git_icons = false, -- for performance
         file_icons = false, -- for performance
-        prompt = 'rg: ',
+        prompt = "rg: ",
         actions = sharedActions,
         RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH, -- reuse config options
         no_ignore = true, -- define our own ignore pattern below
@@ -67,8 +67,8 @@ return {
       lsp = {
         jump1 = true, -- jump directly when only 1 result
         ignore_current_line = true,
-        includeDeclaration = false
-      }
-    }
-  end
+        includeDeclaration = false,
+      },
+    })
+  end,
 }
