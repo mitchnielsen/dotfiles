@@ -29,6 +29,9 @@ map_key("n", "+", "<cmd>foldopen<CR>", "open fold")
 map_key("n", "-", "zM", "close fold")
 map_key("n", "=", "zR", "open fold")
 
+-- formatting
+map_key("n", "<leader>=", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", "format code")
+
 -- Replacing
 map_key("n", "<leader>rr", ":%s/<C-R><C-W>//g<Left><Left>", "replace word under cursor")
 
