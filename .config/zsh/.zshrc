@@ -20,7 +20,7 @@ export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
 export FZF_DEFAULT_OPTS=""
 export XDG_CONFIG_HOME="$HOME/.config"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
-export BAT_THEME="OneHalfDark" # bat --list-themes
+export BAT_THEME="ansi" # bat --list-themes
 export MANPAGER='nvim +Man!'
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"

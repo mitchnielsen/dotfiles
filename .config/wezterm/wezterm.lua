@@ -7,14 +7,18 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.color_scheme = "OneHalfDark"
+-- config.color_scheme = "OneHalfDark"
+-- config.color_scheme = "vscode-dark"
+config.color_scheme = "github-dark-default"
+-- config.color_scheme = "github-light-default"
+-- config.color_scheme = "OneNord"
 
 -- Match the 'cool' variant of onedark theme
-config.colors = {
-  background = "#242b38",
-  cursor_fg = "#242b38",
-  cursor_border = "#242b38",
-}
+-- config.colors = {
+--   -- background = "#242b38",
+--   cursor_fg = "#242b38",
+--   cursor_border = "#242b38",
+-- }
 
 -- List available fonts:
 --   wezterm ls-fonts --list-system

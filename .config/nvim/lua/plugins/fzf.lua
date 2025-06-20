@@ -44,7 +44,7 @@ return {
       },
       previewers = {
         bat = {
-          theme = "OneHalfDark", -- bat --list-themes
+          theme = "ansi", -- bat --list-themes
         },
       },
       files = {
