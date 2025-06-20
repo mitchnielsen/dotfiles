@@ -1,0 +1,30 @@
+theme = dark:GitHub-Dark-Default,light:GitHub-Light-Default
+
+font-size = 12
+font-family = "JetBrainsMonoNL Nerd Font"
+
+# blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
+macos-icon = "xray"
+
+# window settings
+macos-titlebar-style = "hidden"
+window-decoration = "none"
+
+
+
+# Keybindings
+# https://www3.rocketsoftware.com/bluezone/help/v42/en/bzadmin/APPENDIX_C/ASCII_Character_Set.htm
+
+# Switch to tmux pane
+keybind = cmd+1=text:\x02\x31
+keybind = cmd+2=text:\x02\x32
+keybind = cmd+3=text:\x02\x33
+keybind = cmd+4=text:\x02\x34
+keybind = cmd+5=text:\x02\x35
+
+# Next/Previous pane
+keybind = cmd+shift+left_bracket=text:\x02\x70
+keybind = cmd+shift+right_bracket=text:\x02\x6E
+
+# Clear screen
+keybind = cmd+k=text:\x0c
