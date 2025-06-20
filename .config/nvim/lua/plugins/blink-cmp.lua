@@ -1,13 +1,13 @@
 return {
   -- https://cmp.saghen.dev/configuration
-  'saghen/blink.cmp',
+  "saghen/blink.cmp",
 
   dependencies = {
-    'giuxtaposition/blink-cmp-copilot',
+    "giuxtaposition/blink-cmp-copilot",
   },
 
   -- use a release tag to download pre-built binaries
-  version = '*',
+  version = "*",
 
   opts = {
     -- 'default' for mappings similar to built-in completion
@@ -15,19 +15,19 @@ return {
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
     -- See the full "keymap" documentation for information on defining your own keymap.
     keymap = {
-      preset = 'enter',
+      preset = "enter",
 
-      ['<Tab>'] = { 'select_next', 'fallback' },
-      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
 
-      ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
-      ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+      ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-d>"] = { "scroll_documentation_down", "fallback" },
     },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+      default = { "lsp", "path", "snippets", "buffer", "copilot" },
       providers = {
         copilot = {
           name = "copilot",
@@ -54,54 +54,54 @@ return {
       use_nvim_cmp_as_default = false,
       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'mono',
+      nerd_font_variant = "mono",
 
       kind_icons = {
         Copilot = "",
-        Text = '󰉿',
-        Method = '󰊕',
-        Function = '󰊕',
-        Constructor = '󰒓',
+        Text = "󰉿",
+        Method = "󰊕",
+        Function = "󰊕",
+        Constructor = "󰒓",
 
-        Field = '󰜢',
-        Variable = '󰆦',
-        Property = '󰖷',
+        Field = "󰜢",
+        Variable = "󰆦",
+        Property = "󰖷",
 
-        Class = '󱡠',
-        Interface = '󱡠',
-        Struct = '󱡠',
-        Module = '󰅩',
+        Class = "󱡠",
+        Interface = "󱡠",
+        Struct = "󱡠",
+        Module = "󰅩",
 
-        Unit = '󰪚',
-        Value = '󰦨',
-        Enum = '󰦨',
-        EnumMember = '󰦨',
+        Unit = "󰪚",
+        Value = "󰦨",
+        Enum = "󰦨",
+        EnumMember = "󰦨",
 
-        Keyword = '󰻾',
-        Constant = '󰏿',
+        Keyword = "󰻾",
+        Constant = "󰏿",
 
-        Snippet = '󱄽',
-        Color = '󰏘',
-        File = '󰈔',
-        Reference = '󰬲',
-        Folder = '󰉋',
-        Event = '󱐋',
-        Operator = '󰪚',
-        TypeParameter = '󰬛',
+        Snippet = "󱄽",
+        Color = "󰏘",
+        File = "󰈔",
+        Reference = "󰬲",
+        Folder = "󰉋",
+        Event = "󱐋",
+        Operator = "󰪚",
+        TypeParameter = "󰬛",
       },
     },
 
     signature = {
       enabled = true,
       window = {
-        border = 'single'
-      }
+        border = "single",
+      },
     },
 
     completion = {
       menu = {
-        border = 'single',
-        auto_show = false,
+        border = "single",
+        auto_show = true,
       },
       ghost_text = {
         enabled = true,
@@ -119,7 +119,6 @@ return {
         },
       },
     },
-
   },
-  opts_extend = { "sources.default" }
+  opts_extend = { "sources.default" },
 }
