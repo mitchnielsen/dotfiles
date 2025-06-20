@@ -33,7 +33,13 @@ autocmd({ "BufNewFile", "BufEnter" }, {
 })
 
 autocmd({ "BufNewFile", "BufEnter" }, {
-  pattern = {"*.md.tmpl"},
+  pattern = { "config" },
+  command = "set syntax=config",
+  group = augroup("config", { clear = true }),
+})
+
+autocmd({ "BufNewFile", "BufEnter" }, {
+  pattern = { "*.md.tmpl" },
   command = "set syntax=markdown",
   group = augroup("markdown", { clear = true }),
 })
