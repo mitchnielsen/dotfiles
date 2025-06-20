@@ -36,17 +36,30 @@
   cm = commit --verbose
   st = status
   unstage = reset HEAD --
+  uncommit = reset --soft HEAD^
+  unstage-all = reset HEAD
   last = log -1 HEAD
   default-branch = !git rev-parse --abbrev-ref origin/HEAD | cut -d '/' -f2
   db = default-branch
   d = diff
   ds = diff --staged
   dm = !git diff $(git merge-base HEAD $(git db))
+  wip = !git add . && git commit -m "WIP"
+  undo-wip = !git log -n 1 | grep -q WIP && git reset HEAD~1
+  save = !git add -A && git commit -m 'SAVEPOINT'
+  undo = reset HEAD~1 --mixed
   l = log --all --graph --decorate --oneline --simplify-by-decoration
   pl = !git pull origin $(git branch --show-current)
   plm = !git fetch origin && git pull origin $(git db)
   ps = !git push origin $(git branch --show-current)
-        reauthor = !git commit --amend --no-edit
+  br = branch
+  bra = branch -a
+  bd = branch -D
+  recent-branches = !git for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+  cleanup = !git branch --merged | grep -v "\\*\\|master\\|main" | xargs -n 1 git branch -d
+  reauthor = !git commit --amend --no-edit
+  today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
+  yesterday = !git log --since=yesterday.midnight --until=midnight --author=\"$(git config user.name)\" --oneline
 [commit]
   template = ~/.config/git/gitmessage
   verbose = true # show the entire diff in the commit window for context
@@ -54,3 +67,7 @@
   defaultBranch = main
 [interactive]
   diffFilter = delta --color-only # highlight syntax when running 'git add -p'
+[url "git@github.com:"]
+  pushInsteadOf = https://github.com/
+[color]
+  ui = auto
