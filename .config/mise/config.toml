@@ -27,3 +27,5 @@ experimental = true
 trusted_config_paths = [
   '~/code',
 ]
+
+idiomatic_version_file_enable_tools = ["node"]
