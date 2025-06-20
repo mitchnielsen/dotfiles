@@ -19,6 +19,7 @@ local options = {
   softtabstop = 2,
   smartindent = true,
   breakindent = true,
+  autoindent = true,
 
   -- Editing,
   termguicolors = true,
@@ -60,6 +61,9 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
 
 -- Hide EndOfBuffer
 vim.opt.fillchars:append({ eob = " " })
