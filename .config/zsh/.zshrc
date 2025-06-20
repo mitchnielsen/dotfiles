@@ -79,9 +79,10 @@ if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
   export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 fi
 
-# Hook direnv into your shell.
-# Slow
-eval "$(direnv hook zsh)"
+# Hook direnv into your shell (slow)
+function direnv-source {
+  eval "$(direnv hook zsh)"
+}
 
 # For managing tool version
 eval "$(${HOME}/.local/bin/mise activate zsh)"
