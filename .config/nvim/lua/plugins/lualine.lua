@@ -27,5 +27,10 @@ return {
       lualine_y = { "progress", "location" },
       lualine_z = { "selectioncount", "searchcount" },
     },
+    extensions = {
+      "nvim-tree",
+      "lazy",
+      "fzf",
+    },
   },
 }
