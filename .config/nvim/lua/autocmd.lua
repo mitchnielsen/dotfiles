@@ -5,8 +5,8 @@ local augroup = vim.api.nvim_create_augroup
 
 -- https://github.com/ibhagwan/fzf-lua/pull/505/files
 autocmd("VimResized", {
-  pattern = '*',
-  command = 'tabdo wincmd = | lua require("fzf-lua").redraw()'
+  pattern = "*",
+  command = 'tabdo wincmd = | lua require("fzf-lua").redraw()',
 })
 
 -- Don't auto-comment new lines
@@ -45,7 +45,7 @@ autocmd("FileType", {
 })
 
 -- Use internal formatting for bindings like gq.
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     vim.bo[args.buf].formatexpr = nil
   end,
@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 autocmd("FileType", {
   pattern = "Makefile.*",
-  command = vim.cmd("setlocal noexpandtab")
+  command = vim.cmd("setlocal noexpandtab"),
 })
 
 autocmd("FileType", {
@@ -63,21 +63,21 @@ autocmd("FileType", {
 
 autocmd("FileType", {
   pattern = "*.go",
-  command = vim.cmd("autocmd FileType go map <leader>r :w<CR>:exec '!go run' shellescape(@%, 1)<CR>")
+  command = vim.cmd("autocmd FileType go map <leader>r :w<CR>:exec '!go run' shellescape(@%, 1)<CR>"),
 })
 
 autocmd("FileType", {
   pattern = "*.go",
-  command = vim.cmd("autocmd FileType go map <leader>t :w<CR>:exec '!go test'<CR>")
+  command = vim.cmd("autocmd FileType go map <leader>t :w<CR>:exec '!go test'<CR>"),
 })
 
 autocmd("FileType", {
   pattern = "*.py",
-  command = vim.cmd("autocmd FileType python map <leader>r :w<CR>:exec '!python3' shellescape(@%, 1)<CR>")
+  command = vim.cmd("autocmd FileType python map <leader>r :w<CR>:exec '!python3' shellescape(@%, 1)<CR>"),
 })
 
 autocmd("BufWritePre", {
-  pattern = {"*.tf", "*.tfvars"},
+  pattern = { "*.tf", "*.tfvars" },
   callback = function()
     vim.lsp.buf.format()
   end,
