@@ -25,6 +25,12 @@
   features = line-numbers decorations # side-by-side
   navigate = true
   whitespace-error-style = 22 reverse
+
+  # GitHub styling: https://github.com/dandavison/delta/issues/949#issuecomment-1066295596
+  line-numbers-minus-style = minus-emph-style
+  line-numbers-plus-style = plus-emph-style
+  line-numbers-left-style = omit
+  line-numbers-right-style = omit
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
