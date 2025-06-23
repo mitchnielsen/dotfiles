@@ -2,4 +2,4 @@
 
 docker run --rm -it \
   --entrypoint "/bin/bash" \
-  prefecthq/prefect:2-latest
+  prefecthq/prefect:3-latest
