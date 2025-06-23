@@ -116,7 +116,7 @@ function tm {
   fi
 
   if ! tmux has-session "${session_name}"; then
-    tmux new-session -s "${session_name}"
+    tmux new-session -d -s "${session_name}"
   fi
 
   tmux attach -t "${session_name}"
