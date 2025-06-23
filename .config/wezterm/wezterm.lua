@@ -7,6 +7,8 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+config.max_fps = 120
+
 -- config.color_scheme = "OneHalfDark"
 -- config.color_scheme = "vscode-dark"
 config.color_scheme = "github-dark-default"
