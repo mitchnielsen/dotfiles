@@ -107,6 +107,10 @@ eval "$(zoxide init zsh)"
 # Functions
 # ===================
 
+# mkdir + cd
+function takedir {
+  mkdir -p $@ && cd ${@:$#}
+}
 
 sshf() {
   local host=$(grep "^Host " ~/.ssh/config | awk '{print $2}' | grep -v "\*" | fzf --prompt="Select SSH host: ")
