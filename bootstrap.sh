@@ -5,23 +5,20 @@ function symlink() {
   if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$HOME/.zprofile"; fi
 
   # ssh
-  [ -f ~/.ssh/config ] && mv ~/.ssh/config ~/.ssh/config.bak.$(date '+%Y-%m-%d-%H:%M:%S')
-  ln -s ~/dotfiles/.ssh/config ~/.ssh/config
+  ln -sf "$HOME/dotfiles/.ssh/config" "$HOME/.ssh/config"
   chmod 644 ~/.ssh/config
 
   # dotfiles
   mkdir -p "$HOME/.config"
-  (cd "$HOME/dotfiles" && stow -v --target="$HOME/.config" .config)
-  rm "$HOME/.zshrc" || true
-  ln -s "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
+  stow .config
 
   # binaries
   mkdir -p "$HOME/bin"
-  (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
+  stow bin
 
   # VSCode (VSCodium) configs
-  ln -sf ~/dotfiles/.config/vscodium/settings.json ~/Library/Application\ Support/VSCodium/User/settings.json
-  ln -sf ~/dotfiles/.config/vscodium/keybindings.json ~/Library/Application\ Support/VSCodium/User/keybindings.json
+  ln -sf "$HOME/dotfiles/.config/vscodium/settings.json"      "$HOME/Library/Application\ Support/VSCodium/User/settings.json"
+  ln -sf "$HOME""/dotfiles/.config/vscodium/keybindings.json" "$HOME/Library/Application\ Support/VSCodium/User/keybindings.json"
 }
 
 function dependencies() {
@@ -41,7 +38,8 @@ function macos_settings() {
   # Show hidden app icons as transparent in the dock
   defaults write com.apple.Dock showhidden -bool TRUE
   # Faster Dock animation
-  defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -int 0
+  defaults write com.apple.dock autohide-delay -float 0
+  defaults write com.apple.dock autohide-time-modifier -int 0
   # Use thin strokes (https://github.com/alacritty/alacritty/releases/tag/v0.11.0)
   defaults write -g AppleFontSmoothing -int 0
   # Adjust key repeat
