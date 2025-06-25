@@ -107,6 +107,14 @@ vim.cmd([[match ExtraWhitespace /\s\+$/]])
 vim.cmd([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
 vim.cmd([[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]])
 
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- Enable spell check
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
+
 local disabled_built_ins = {
   "gzip",
   "zip",
