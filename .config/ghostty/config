@@ -39,3 +39,6 @@ keybind = cmd+shift+right_bracket=text:\x02\x6E
 
 # Clear screen
 keybind = cmd+k=text:\x0c
+
+# Claude Code: shift enter for newlines
+keybind = shift+enter=text:\n
