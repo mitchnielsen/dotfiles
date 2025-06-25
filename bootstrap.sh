@@ -32,16 +32,6 @@ function dependencies() {
 
   # Install packages
   brew bundle install --file=.config/brew/Brewfile
-
-  ## TMUX's TPM
-  if [ ! -d "~/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
-
-  # FZF
-  if [ ! -d '~/.fzf' ]; then (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install); fi
-
-  # neovim
-  mkdir -p "$HOME/go"
-  GOPATH="$HOME/go" nvim --headless +GoInstallBinaries +qa
 }
 
 
