@@ -11,11 +11,11 @@ function symlink() {
 
   # dotfiles
   mkdir -p "$HOME/.config"
-  stow .config
+  (cd "$HOME/dotfiles" && stow -v --target="$HOME/.config" .config)
 
   # binaries
   mkdir -p "$HOME/bin"
-  stow bin
+  (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 
   # VSCode (VSCodium) configs
   ln -sf "$HOME/dotfiles/.config/vscodium/settings.json"    "$HOME/Library/Application Support/VSCodium/User/settings.json"
