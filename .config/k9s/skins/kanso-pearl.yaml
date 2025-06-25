@@ -1,0 +1,117 @@
+# -----------------------------------------------------------------------------
+# Kanso Skin - Pearl Theme (Light)
+# Based on https://github.com/webhooked/kanso.nvim
+# -----------------------------------------------------------------------------
+
+# Color definitions based on kanso pearl theme
+foreground: &foreground "#624c83"     # pearl violet dark
+background: &background default       # transparent background
+primary: &primary "#4d699b"           # pearl blue
+secondary: &secondary "#6f894e"       # pearl green
+accent: &accent "#cc6d00"             # pearl orange
+warning: &warning "#77713f"           # pearl yellow
+error: &error "#c84053"               # pearl red
+muted: &muted "#a09cac"               # pearl violet muted
+border: &border "#c9cbd1"             # pearl violet light
+highlight: &highlight "#c7d7e0"       # pearl blue light
+
+# Skin configuration
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *primary
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *accent
+  info:
+    fgColor: *muted
+    sectionColor: *secondary
+  help:
+    fgColor: *foreground
+    bgColor: *background
+    keyColor: *accent
+    numKeyColor: *primary
+    sectionColor: *secondary
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: *foreground
+    buttonBgColor: *secondary
+    buttonFocusFgColor: *background
+    buttonFocusBgColor: *primary
+    labelFgColor: *accent
+    fieldFgColor: *primary
+  frame:
+    border:
+      fgColor: *border
+      focusColor: *primary
+    menu:
+      fgColor: *foreground
+      keyColor: *accent
+      numKeyColor: *accent
+    crumbs:
+      fgColor: *background
+      bgColor: *secondary
+      activeColor: *accent
+    status:
+      newColor: *primary
+      modifyColor: *secondary
+      addColor: *foreground
+      pendingColor: *warning
+      errorColor: *error
+      highlightColor: *accent
+      killColor: *error
+      completedColor: *muted
+    title:
+      fgColor: *primary
+      bgColor: *background
+      highlightColor: *accent
+      counterColor: *foreground
+      filterColor: *primary
+  views:
+    charts:
+      bgColor: *background
+      defaultDialColors:
+        - *secondary
+        - *error
+      defaultChartColors:
+        - *secondary
+        - *primary
+        - *accent
+        - *warning
+        - *error
+    table:
+      fgColor: *foreground
+      bgColor: *background
+      cursorFgColor: *background
+      cursorBgColor: *primary
+      markColor: *accent
+      header:
+        fgColor: *muted
+        bgColor: *background
+        sorterColor: *accent
+    xray:
+      fgColor: *primary
+      bgColor: *background
+      cursorColor: *foreground
+      graphicColor: *accent
+      showIcons: false
+    yaml:
+      keyColor: *primary
+      colonColor: *muted
+      valueColor: *foreground
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary
+        bgColor: *background
+        toggleOnColor: *secondary
+        toggleOffColor: *muted
+    help:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary

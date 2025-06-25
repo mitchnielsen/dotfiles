@@ -28,7 +28,7 @@ return {
   {
     "projekt0n/github-nvim-theme",
     name = "github-theme",
-    lazy = false,
+    lazy = true,
     dependencies = "f-person/auto-dark-mode.nvim",
     priority = 1000,
     config = function()
@@ -71,6 +71,22 @@ return {
           diagnostics = "underline",
         },
       })
+    end,
+  },
+  {
+    "webhooked/kanso.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("kanso").setup({
+        theme = "zen",
+        background = {
+          dark = "zen",
+          light = "pearl",
+        },
+      })
+
+      vim.cmd("colorscheme kanso")
     end,
   },
 }

@@ -25,6 +25,7 @@
   features = line-numbers decorations # side-by-side
   navigate = true
   whitespace-error-style = 22 reverse
+  light = true
 
   # GitHub styling: https://github.com/dandavison/delta/issues/949#issuecomment-1066295596
   line-numbers-minus-style = minus-emph-style

@@ -1,0 +1,117 @@
+# -----------------------------------------------------------------------------
+# Kanso Skin - Zen Theme (Dark)
+# Based on https://github.com/webhooked/kanso.nvim
+# -----------------------------------------------------------------------------
+
+# Color definitions based on kanso zen theme
+foreground: &foreground "#DCD7BA"     # zen foreground
+background: &background default       # transparent background
+primary: &primary "#7FB4CA"           # zen blue
+secondary: &secondary "#98BB6C"       # zen green
+accent: &accent "#E6C384"             # zen yellow
+warning: &warning "#FF9E3B"           # zen orange
+error: &error "#F7768E"               # zen red
+muted: &muted "#727169"               # zen comment
+border: &border "#54546D"             # zen border
+highlight: &highlight "#2D4F67"       # zen selection
+
+# Skin configuration
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *primary
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *accent
+  info:
+    fgColor: *muted
+    sectionColor: *secondary
+  help:
+    fgColor: *foreground
+    bgColor: *background
+    keyColor: *accent
+    numKeyColor: *primary
+    sectionColor: *secondary
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: *foreground
+    buttonBgColor: *secondary
+    buttonFocusFgColor: *background
+    buttonFocusBgColor: *primary
+    labelFgColor: *accent
+    fieldFgColor: *primary
+  frame:
+    border:
+      fgColor: *border
+      focusColor: *primary
+    menu:
+      fgColor: *foreground
+      keyColor: *accent
+      numKeyColor: *accent
+    crumbs:
+      fgColor: *background
+      bgColor: *secondary
+      activeColor: *accent
+    status:
+      newColor: *primary
+      modifyColor: *secondary
+      addColor: *foreground
+      pendingColor: *warning
+      errorColor: *error
+      highlightColor: *accent
+      killColor: *error
+      completedColor: *muted
+    title:
+      fgColor: *primary
+      bgColor: *background
+      highlightColor: *accent
+      counterColor: *foreground
+      filterColor: *primary
+  views:
+    charts:
+      bgColor: *background
+      defaultDialColors:
+        - *secondary
+        - *error
+      defaultChartColors:
+        - *secondary
+        - *primary
+        - *accent
+        - *warning
+        - *error
+    table:
+      fgColor: *foreground
+      bgColor: *background
+      cursorFgColor: *background
+      cursorBgColor: *primary
+      markColor: *accent
+      header:
+        fgColor: *muted
+        bgColor: *background
+        sorterColor: *accent
+    xray:
+      fgColor: *primary
+      bgColor: *background
+      cursorColor: *foreground
+      graphicColor: *accent
+      showIcons: false
+    yaml:
+      keyColor: *primary
+      colonColor: *muted
+      valueColor: *foreground
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary
+        bgColor: *background
+        toggleOnColor: *secondary
+        toggleOffColor: *muted
+    help:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary
