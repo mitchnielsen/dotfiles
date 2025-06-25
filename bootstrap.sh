@@ -5,7 +5,8 @@ function symlink() {
   if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$HOME/.zprofile"; fi
 
   # ssh
-  ln -sf "$HOME/dotfiles/.ssh/config" "$HOME/.ssh/config"
+  mkdir -p "$HOME/.ssh"
+  ln -sf "$HOME/dotfiles/.config/ssh/config" "$HOME/.ssh/config"
   chmod 644 ~/.ssh/config
 
   # dotfiles
