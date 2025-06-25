@@ -107,6 +107,12 @@ eval "$(zoxide init zsh)"
 # Functions
 # ===================
 
+
+sshf() {
+  local host=$(grep "^Host " ~/.ssh/config | awk '{print $2}' | grep -v "\*" | fzf --prompt="Select SSH host: ")
+  [ -n "$host" ] && ssh "$host"
+}
+
 # Function to work quickly with Tmux sessions
 function tm {
   if [ -z "$1" ]; then
