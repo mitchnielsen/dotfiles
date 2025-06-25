@@ -4,10 +4,6 @@ function symlink() {
   # zprofile
   if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$HOME/.zprofile"; fi
 
-  # Tmux's config (https://github.com/tmux/tmux/issues/142)
-  [ -f ~/.tmux.conf ] && rm ~/.tmux.conf
-  ln -s ~/dotfiles/.config/tmux/.tmux.conf ~/.tmux.conf
-
   # ssh
   [ -f ~/.ssh/config ] && mv ~/.ssh/config ~/.ssh/config.bak.$(date '+%Y-%m-%d-%H:%M:%S')
   ln -s ~/dotfiles/.ssh/config ~/.ssh/config
