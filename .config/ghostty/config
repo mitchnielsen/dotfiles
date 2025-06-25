@@ -2,7 +2,7 @@
 # https://ghostty.zerebos.com
 
 # theme = dark:GitHub-Dark-Default,light:GitHub-Light-Default
-theme = dark:GitHub-Dark-Default,light:kanso-pearl
+theme = dark:kanso-zen,light:kanso-pearl
 
 # Font settings
 font-size = 12
@@ -10,7 +10,7 @@ font-family = "JetBrainsMonoNL Nerd Font"
 adjust-cell-height = "20%"
 
 # Styles: blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
-macos-icon = "xray"
+macos-icon = "glass"
 
 # window settings
 macos-titlebar-style = "hidden"

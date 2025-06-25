@@ -25,7 +25,7 @@
   features = line-numbers decorations # side-by-side
   navigate = true
   whitespace-error-style = 22 reverse
-  light = true
+  detect-dark-light = always # in tmux, requires detach and reattach: https://github.com/dandavison/delta/issues/447#issuecomment-2002011943
 
   # GitHub styling: https://github.com/dandavison/delta/issues/949#issuecomment-1066295596
   line-numbers-minus-style = minus-emph-style
