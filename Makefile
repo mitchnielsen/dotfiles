@@ -1,5 +1,5 @@
 bootstrap:
-	./scripts/bootstrap.sh
+	./bootstrap.sh
 
 backup:
 	brew bundle dump --force --file=.config/brew/Brewfile

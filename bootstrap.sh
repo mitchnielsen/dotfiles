@@ -17,8 +17,8 @@ function symlink() {
   stow bin
 
   # VSCode (VSCodium) configs
-  ln -sf "$HOME/dotfiles/.config/vscodium/settings.json"      "$HOME/Library/Application\ Support/VSCodium/User/settings.json"
-  ln -sf "$HOME""/dotfiles/.config/vscodium/keybindings.json" "$HOME/Library/Application\ Support/VSCodium/User/keybindings.json"
+  ln -sf "$HOME/dotfiles/.config/vscodium/settings.json"    "$HOME/Library/Application Support/VSCodium/User/settings.json"
+  ln -sf "$HOME/dotfiles/.config/vscodium/keybindings.json" "$HOME/Library/Application Support/VSCodium/User/keybindings.json"
 }
 
 function dependencies() {
@@ -57,7 +57,6 @@ function all() {
   dependencies
   symlink
   macos_settings
-  setup_git
 }
 
 TARGET=${@:-all}
