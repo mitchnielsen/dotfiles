@@ -1,17 +1,23 @@
+# https://ghostty.org/docs/config/reference
+# https://ghostty.zerebos.com
 
 # theme = dark:GitHub-Dark-Default,light:GitHub-Light-Default
 theme = dark:GitHub-Dark-Default,light:kanso-pearl
 
+# Font settings
 font-size = 12
 font-family = "JetBrainsMonoNL Nerd Font"
+adjust-cell-height = "20%"
 
-# blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
+# Styles: blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
 macos-icon = "xray"
 
 # window settings
 macos-titlebar-style = "hidden"
+maximize = true
 window-decoration = "none"
-
+window-padding-x = 10
+window-padding-y = 10
 
 
 # Keybindings
@@ -23,6 +29,9 @@ keybind = cmd+2=text:\x02\x32
 keybind = cmd+3=text:\x02\x33
 keybind = cmd+4=text:\x02\x34
 keybind = cmd+5=text:\x02\x35
+
+# For some reason this writes a `#`.
+keybind = cmd+shift+3=ignore
 
 # Next/Previous pane
 keybind = cmd+shift+left_bracket=text:\x02\x70
