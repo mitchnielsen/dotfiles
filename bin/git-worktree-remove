@@ -11,7 +11,8 @@
 #
 # Set this as an alias for easy usage.
 
-branch_name=$(basename "${PWD}")
+branch_name=$(git symbolic-ref --short HEAD)
+worktree_name=$(basename "${PWD}")
 default_branch_name=$(git default-branch)
 
 # Abort if Terraform state directory exists
@@ -20,6 +21,6 @@ if [ -d './.terraform' ]; then
   exit 1
 fi
 
-cd ../"${default_branch_name}"
-git worktree remove "${branch_name}"
+cd ../"${default_branch_name}" || exit
+git worktree remove "${worktree_name}"
 git branch -D "${branch_name}"
