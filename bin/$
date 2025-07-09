@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Allows you to paste a command from documentation
+# that starts with a `$` prompt.
+
+exec "$@"
