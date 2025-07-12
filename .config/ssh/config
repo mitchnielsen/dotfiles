@@ -3,7 +3,7 @@ Host *
     IdentitiesOnly yes
 
 Host app-server
-    Hostname mitchlab.com
+    Hostname app-server
     User dockeruser
 
 Host icloud-photos
@@ -15,7 +15,7 @@ Host homelab-router
     User mitch
 
 Host media-server
-    Hostname media.mitchlab.com
+    Hostname media-server
     User mitch
 
 Host proxmox-apps
