@@ -10,9 +10,8 @@ export KEYTIMEOUT=1 # Disable lag when using vi-mode
 export PATH=$PATH:$HOME/bin
 
 # Golang
-export GOPATH=$HOME/go
-unset GOROOT
-export PATH=$PATH:$GOPATH/bin
+#export GOPATH=$HOME/go
+# export PATH=$PATH:$GOPATH/bin
 
 # Utilities
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
