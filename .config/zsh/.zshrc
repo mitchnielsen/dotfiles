@@ -106,8 +106,6 @@ else
   compinit -C;
 fi;
 
-eval "$(zoxide init zsh)"
-
 # ===================
 # Functions
 # ===================
@@ -229,7 +227,6 @@ function ql() {
 # Aliases
 # ===================
 
-alias cd='z'
 alias ll='ls -lahL'
 alias t='tree -C -a -I .git'
 alias d='docker'
