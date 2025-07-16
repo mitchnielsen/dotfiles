@@ -1,8 +1,7 @@
 # https://ghostty.org/docs/config/reference
 # https://ghostty.zerebos.com
 
-# theme = dark:GitHub-Dark-Default,light:GitHub-Light-Default
-theme = dark:kanso-zen,light:kanso-pearl
+theme = NordFox
 
 # Font settings
 font-size = 12

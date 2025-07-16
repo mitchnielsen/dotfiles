@@ -32,29 +32,8 @@ return {
     dependencies = "f-person/auto-dark-mode.nvim",
     priority = 1000,
     config = function()
-      require("github-theme").setup({
-        options = {
-          transparent = true,
-        },
-        styles = {
-          comments = "italic",
-        },
-      })
-
-      vim.cmd("colorscheme github_dark_default")
-
-      require("auto-dark-mode").setup({
-        update_interval = 3000, -- in milliseconds
-        fallback = "dark",
-        set_dark_mode = function()
-          vim.api.nvim_set_option_value("background", "dark", {})
-          vim.cmd("colorscheme github_dark_default")
-        end,
-        set_light_mode = function()
-          vim.api.nvim_set_option_value("background", "light", {})
-          vim.cmd("colorscheme github_light_default")
-        end,
-      })
+      require("github-theme").setup()
+      vim.cmd("colorscheme github_dark_dimmed")
     end,
   },
   {
@@ -75,7 +54,7 @@ return {
   },
   {
     "webhooked/kanso.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require("kanso").setup({
@@ -87,6 +66,15 @@ return {
       })
 
       vim.cmd("colorscheme kanso")
+    end,
+  },
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nightfox").setup()
+      vim.cmd("colorscheme nordfox")
     end,
   },
 }
