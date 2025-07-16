@@ -10,9 +10,8 @@ export KEYTIMEOUT=1 # Disable lag when using vi-mode
 export PATH=$PATH:$HOME/bin
 
 # Golang
-export GOPATH=$HOME/go
-unset GOROOT
-export PATH=$PATH:$GOPATH/bin
+#export GOPATH=$HOME/go
+# export PATH=$PATH:$GOPATH/bin
 
 # Utilities
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
@@ -20,7 +19,7 @@ export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
 export FZF_DEFAULT_OPTS=""
 export XDG_CONFIG_HOME="$HOME/.config"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
-export BAT_THEME="ansi" # bat --list-themes
+export BAT_THEME="Nord"
 export MANPAGER='nvim +Man!'
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
@@ -36,8 +35,7 @@ export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
 
-# krew
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
 # ===================
 # Settings
@@ -45,6 +43,8 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 set histignorespace # ignore command in history if it starts with space
 unsetopt share_history # don't share history between sessions
+setopt hist_ignore_dups # dont save duplicate entries in history
+unsetopt beep # never beep
 setopt completealiases # perform completions and then expand aliases
 
 # ===================
@@ -60,6 +60,10 @@ bindkey "^[[1;3D" backward-word
 
 # Delete backward by one word or letter using ALT + BCKSP
 bindkey '^[^?' backward-kill-word
+
+# FZF widgets
+bindkey '^T' fzf-file-widget
+bindkey '^G' fzf-cd-widget
 
 # Use emacs-like shortcuts with vi-mode
 bindkey '^A' beginning-of-line
@@ -94,12 +98,13 @@ function nvm-source {
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 }
 
-autoload -U compinit && compinit
+# https://gist.github.com/ctechols/ca1035271ad134841284
+autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
   compinit;
 else
   compinit -C;
-fi
+fi;
 
 eval "$(zoxide init zsh)"
 
@@ -264,8 +269,6 @@ source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 setopt HIST_IGNORE_ALL_DUPS # history substring search: ignore dups
 
-zstyle ':completion:*:descriptions' format '%F{blue}%d%f'
-# Declare the variable
 typeset -A ZSH_HIGHLIGHT_STYLES
 # To differentiate aliases from other command types
 ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'

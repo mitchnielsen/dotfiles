@@ -1,4 +1,3 @@
----
 k9s:
   liveViewAutoRefresh: false
   screenDumpDir: /Users/mitch/.config/k9s/screen-dumps
@@ -12,7 +11,7 @@ k9s:
     logoless: true
     crumbsless: false
     noIcons: false
-    skin: kanso-pearl
+    skin: nord
   skipLatestRevCheck: false
   disablePodCounting: false
   shellPod:
