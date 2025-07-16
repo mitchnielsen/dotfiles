@@ -9,7 +9,8 @@ font-family = "JetBrainsMonoNL Nerd Font"
 adjust-cell-height = "20%"
 
 # Styles: blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
-macos-icon = "glass"
+# Disabled to provide my own
+# macos-icon = ""
 
 # window settings
 macos-titlebar-style = "hidden"
