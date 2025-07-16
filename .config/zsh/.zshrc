@@ -35,8 +35,6 @@ export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
 
-# krew
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # ===================
 # Settings
