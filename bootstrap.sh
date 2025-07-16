@@ -17,6 +17,9 @@ function symlink() {
   mkdir -p "$HOME/bin"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 
+  # Claude Code
+  ln -sf "$HOME/dotfiles/.config/claude" "$HOME/.claude"
+
   # VSCode (VSCodium) configs
   ln -sf "$HOME/dotfiles/.config/vscodium/settings.json"    "$HOME/Library/Application Support/VSCodium/User/settings.json"
   ln -sf "$HOME/dotfiles/.config/vscodium/keybindings.json" "$HOME/Library/Application Support/VSCodium/User/keybindings.json"

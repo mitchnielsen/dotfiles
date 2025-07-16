@@ -35,6 +35,7 @@ export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
 
+export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
 # ===================
 # Settings

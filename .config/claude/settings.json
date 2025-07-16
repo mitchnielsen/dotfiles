@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Bash(find:*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "LS(*)",
+      "MultiEdit(*)",
+      "Read(*)",
+      "Task(*)",
+      "TodoWrite(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "Write(*)",
+      "mcp__linear__list_my_issues"
+    ],
+    "deny": [
+      "Bash(rm:*),"
+    ]
+  },
+  "enableAllProjectMcpServers": true
+}
