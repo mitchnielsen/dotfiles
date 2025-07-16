@@ -26,6 +26,9 @@ return {
       "node_modules/",
       "%.venv/",
       "%.terraform/",
+      "%.zsh_sessions/",
+      "%.zcompcache/",
+      "%.zcompdump",
     }
 
     require("fzf-lua").setup({
