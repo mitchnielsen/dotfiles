@@ -6,12 +6,16 @@
 [core]
   pager = delta
   excludesfile = ~/.config/git/ignore
+[advice]
+  statusHints = false
 [pull]
   rebase = false # don't automatically rebase on `git pull`
+  default = current # pull the current branch from the remote branch of the same name
 [fetch]
   prune = true # delete branches that no longer exist upstream (merged)
 [push]
   autosetupremote = true # automatically set up the remote origin when pushing
+  default = current # push the current branch to the remote branch of the same name
 [rebase]
   autosquash = true # automatically squash fixup/squash commits
 [diff]
@@ -19,6 +23,9 @@
   # https://link.springer.com/article/10.1007/s10664-019-09772-z
   algorithm = default
   colorMoved = default # uses different colours to highlight lines in diffs that have been “moved”
+  context = 5
+  interHunkContext = 10
+  renames = copies
 [merge]
   conflictStyle = diff3 # more context in diffs, was zdiff3 but delta recommends diff3
 [delta]
@@ -27,11 +34,6 @@
   whitespace-error-style = 22 reverse
   detect-dark-light = always # in tmux, requires detach and reattach: https://github.com/dandavison/delta/issues/447#issuecomment-2002011943
 
-  # GitHub styling: https://github.com/dandavison/delta/issues/949#issuecomment-1066295596
-  line-numbers-minus-style = minus-emph-style
-  line-numbers-plus-style = plus-emph-style
-  line-numbers-left-style = omit
-  line-numbers-right-style = omit
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
@@ -45,28 +47,12 @@
   unstage = reset HEAD --
   uncommit = reset --soft HEAD^
   unstage-all = reset HEAD
-  last = log -1 HEAD
   default-branch = !git rev-parse --abbrev-ref origin/HEAD | cut -d '/' -f2
   db = default-branch
   d = diff
   ds = diff --staged
   dm = !git diff $(git merge-base HEAD $(git db))
-  wip = !git add . && git commit -m "WIP"
-  undo-wip = !git log -n 1 | grep -q WIP && git reset HEAD~1
-  save = !git add -A && git commit -m 'SAVEPOINT'
-  undo = reset HEAD~1 --mixed
-  l = log --all --graph --decorate --oneline --simplify-by-decoration
-  pl = !git pull origin $(git branch --show-current)
-  plm = !git fetch origin && git pull origin $(git db)
-  ps = !git push origin $(git branch --show-current)
-  br = branch
-  bra = branch -a
-  bd = branch -D
-  recent-branches = !git for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(refname:short)'
-  cleanup = !git branch --merged | grep -v "\\*\\|master\\|main" | xargs -n 1 git branch -d
   reauthor = !git commit --amend --no-edit
-  today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
-  yesterday = !git log --since=yesterday.midnight --until=midnight --author=\"$(git config user.name)\" --oneline
 [commit]
   template = ~/.config/git/gitmessage
   verbose = true # show the entire diff in the commit window for context
@@ -74,6 +60,7 @@
   defaultBranch = main
 [interactive]
   diffFilter = delta --color-only # highlight syntax when running 'git add -p'
+  singleKey = true
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/
 [color]
