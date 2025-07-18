@@ -84,9 +84,7 @@ if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
 fi
 
 # Hook direnv into your shell (slow)
-function direnv-source {
-  eval "$(direnv hook zsh)"
-}
+eval "$(direnv hook zsh)"
 
 # For managing tool version
 eval "$(${HOME}/.local/bin/mise activate zsh)"
