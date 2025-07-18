@@ -33,7 +33,7 @@ autocmd({ "BufNewFile", "BufEnter" }, {
 })
 
 autocmd({ "BufNewFile", "BufEnter" }, {
-  pattern = { "config" },
+  pattern = { "config", "*.tfrc", ".terraformrc" },
   command = "set syntax=config",
   group = augroup("config", { clear = true }),
 })
