@@ -1,5 +1,5 @@
 format = """
-$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$jobs$custom$fill
+$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$jobs$direnv$custom$fill
 $character
 """
 
@@ -7,6 +7,11 @@ $character
 disabled = true
 symbol = '-'
 style = 'gray'
+
+[direnv]
+disabled = false
+format = " [$symbol$loaded]($style) "
+loaded_msg = "loaded"
 
 [jobs]
 disabled = false
