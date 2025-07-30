@@ -160,6 +160,25 @@ function gwa() {
   cd "${location}"
 }
 
+function kget() {
+    if [ $# -ne 4 ]; then
+        echo "Usage: get_cluster_credentials <context_name> <cluster_name> <region> <project>"
+        echo "Example: get_cluster_credentials my-context my-cluster us-central1-a my-project-id"
+        return 1
+    fi
+
+    local context_name="$1"
+    local cluster_name="$2"
+    local region="$3"
+    local project="$4"
+
+    KUBECONFIG="$HOME/.kube/contexts/$context_name" \
+        gcloud container clusters get-credentials \
+            "$cluster_name" \
+            --region "$region" \
+            --project "$project"
+}
+
 function koff() {
   unset KUBECONFIG
 }
