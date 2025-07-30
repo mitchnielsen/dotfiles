@@ -35,6 +35,10 @@ map_key("n", "<leader>=", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", "
 -- Replacing
 map_key("n", "<leader>rr", ":%s/<C-R><C-W>//g<Left><Left>", "replace word under cursor")
 
+-- Spelling
+map_key("n", "<leader>?", "<cmd>setlocal spell!<CR>", "toggle spell checking")
+map_key("i", "<C-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", "Fix previous spelling mistake")
+
 -- Better break points
 map_key("i", ",", ",<c-g>u")
 map_key("i", ".", ".<c-g>u")
