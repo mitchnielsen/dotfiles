@@ -11,7 +11,7 @@ return {
       dashboard.button("e", "New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("f", "Find file", ":FzfLua files<CR>"),
       dashboard.button("r", "Recent", ":FzfLua oldfiles<CR>"),
-      dashboard.button("g", "Grep", ":FzfLua live_grep_glob<CR>"),
+      dashboard.button("g", "Grep", ":FzfLua live_grep<CR>"),
       dashboard.button("l", "Lazy", ":Lazy<CR>"),
       dashboard.button("s", "Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
       dashboard.button("q", "Quit", ":qa<CR>"),

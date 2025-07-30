@@ -3,7 +3,7 @@ return {
   dependencies = "kyazdani42/nvim-web-devicons",
   cmd = "FzfLua",
   keys = {
-    { "<leader>gg", "<cmd>FzfLua live_grep_glob<CR>", desc = "grep" },
+    { "<leader>gg", "<cmd>FzfLua live_grep<CR>", desc = "grep" },
     { "<leader>gG", "<cmd>FzfLua live_grep_resume<CR>", desc = "grep resume" },
     { "<leader>gw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
     { "<leader>f", "<cmd>FzfLua files<CR>", desc = "files" },
