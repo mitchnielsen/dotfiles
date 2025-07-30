@@ -15,5 +15,5 @@ return {
     watch_gitdir = {
       interval = 100,
     },
-  }
+  },
 }
