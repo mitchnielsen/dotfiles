@@ -87,7 +87,7 @@ fi
 eval "$(direnv hook zsh)"
 
 # For managing tool version
-eval "$(${HOME}/.local/bin/mise activate zsh)"
+eval "$(mise activate zsh)"
 
 # Node/NVM
 function nvm-source {
