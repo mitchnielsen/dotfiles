@@ -225,6 +225,7 @@ function ql() {
 # Aliases
 # ===================
 
+alias ls='ls --color=auto'
 alias ll='ls -lahL'
 alias t='tree -C -a -I .git'
 alias d='docker'
@@ -244,6 +245,8 @@ alias cdd='cd $(find ~/code -maxdepth 4 -type d | sort -u | fzf)'
 alias note='(cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .)'
 alias rg='rg --ignore-file=$HOME/.config/ripgrep/.ignore'
 alias code='codium'
+alias c='claude'
+alias cp='claude code -p'
 alias tf='terraform'
 alias lg='lazygit'
 
