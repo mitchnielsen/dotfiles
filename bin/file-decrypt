@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+file="${1}"
+file_decoded="${file%.enc}"
+
+openssl enc -aes-256-cbc \
+  -d \
+  -md sha512 \
+  -pbkdf2 \
+  -iter 1000000 \
+  -salt \
+  -in "${file}" \
+  -out "${file_decoded}"
