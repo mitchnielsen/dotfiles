@@ -18,7 +18,7 @@ maximize = true
 window-decoration = "none"
 window-padding-x = 10
 window-padding-y = 10
-
+quit-after-last-window-closed = true
 
 # Keybindings
 # https://www3.rocketsoftware.com/bluezone/help/v42/en/bzadmin/APPENDIX_C/ASCII_Character_Set.htm
@@ -42,3 +42,7 @@ keybind = cmd+k=text:\x0c
 
 # Claude Code: shift enter for newlines
 keybind = shift+enter=text:\n
+
+# Other settings
+alpha-blending = linear-corrected
+mouse-hide-while-typing = "true"
