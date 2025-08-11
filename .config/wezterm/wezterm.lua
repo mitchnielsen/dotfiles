@@ -1,32 +1,17 @@
-local helpers = require("helpers")
 local wezterm = require("wezterm")
+local helpers = require("helpers")
 local act = wezterm.action
-local config = {}
-
-if wezterm.config_builder then
-  config = wezterm.config_builder()
-end
+local config = wezterm.config_builder()
 
 config.max_fps = 120
 
--- config.color_scheme = "OneHalfDark"
--- config.color_scheme = "vscode-dark"
-config.color_scheme = "github-dark-default"
--- config.color_scheme = "github-light-default"
--- config.color_scheme = "OneNord"
-
--- Match the 'cool' variant of onedark theme
--- config.colors = {
---   -- background = "#242b38",
---   cursor_fg = "#242b38",
---   cursor_border = "#242b38",
--- }
+config.color_scheme = "nordfox"
 
 -- List available fonts:
 --   wezterm ls-fonts --list-system
 --   fc-list
-config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
-
+config.font = wezterm.font("SFMono Nerd Font")
+config.line_height = 1.25
 config.font_size = 12.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
