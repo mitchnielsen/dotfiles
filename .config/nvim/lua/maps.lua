@@ -6,6 +6,8 @@ end
 -- Line jumping
 map_key("i", "<C-a>", "<C-o>0", "go to end of line in insert mode")
 map_key("i", "<C-e>", "<C-o>$", "go to beginning of line in insert mode")
+map_key("n", "<C-d>", "5<C-d>", "jump down X lines")
+map_key("n", "<C-u>", "5<C-u>", "jump up X lines")
 
 -- Copy/paste
 map_key("n", "<leader>y", '"*y', "yank to the system clipboard")
