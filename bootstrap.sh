@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function symlink() {
-  # zprofile
+  # zsh zprofile
   if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$HOME/.zprofile"; fi
 
   # ssh
@@ -17,9 +17,6 @@ function symlink() {
   mkdir -p "$HOME/bin"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 
-  # Claude Code
-  ln -sf "$HOME/dotfiles/.config/claude" "$HOME/.claude"
-
   # VSCode (VSCodium) configs
   ln -sf "$HOME/dotfiles/.config/vscodium/settings.json"    "$HOME/Library/Application Support/VSCodium/User/settings.json"
   ln -sf "$HOME/dotfiles/.config/vscodium/keybindings.json" "$HOME/Library/Application Support/VSCodium/User/keybindings.json"
@@ -34,7 +31,6 @@ function dependencies() {
   # Install packages
   brew bundle install --file=.config/brew/Brewfile
 }
-
 
 function macos_settings() {
   # Change screenshot type to jpg for smaller filesize
