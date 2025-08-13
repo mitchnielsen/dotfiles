@@ -6,27 +6,23 @@
 export EDITOR=$(which nvim)
 export KEYTIMEOUT=1 # Disable lag when using vi-mode
 
-# Custom scripts
-export PATH=$PATH:$HOME/bin
-
-# Golang
-#export GOPATH=$HOME/go
-# export PATH=$PATH:$GOPATH/bin
-
 # Utilities
+export XDG_CONFIG_HOME="$HOME/.config"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
+export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
 export FZF_DEFAULT_OPTS=""
-export XDG_CONFIG_HOME="$HOME/.config"
-export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export BAT_THEME="Nord"
 export MANPAGER='nvim +Man!'
+
+# Path entries
+export PATH=$PATH:$HOME/bin
+export PATH="$HOME/.rd/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
-export PATH="$HOME/.rd/bin:$PATH"
 
 # Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
@@ -35,6 +31,7 @@ export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
 
+# Claude
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
 # ===================
@@ -46,6 +43,7 @@ unsetopt share_history # don't share history between sessions
 setopt hist_ignore_dups # dont save duplicate entries in history
 unsetopt beep # never beep
 setopt completealiases # perform completions and then expand aliases
+setopt hist_verify # ask for verification when recalling from history
 
 # ===================
 # Bindings
@@ -62,7 +60,7 @@ bindkey "^[[1;3D" backward-word
 bindkey '^[^?' backward-kill-word
 
 # FZF widgets
-bindkey '^T' fzf-file-widget
+bindkey '^F' fzf-file-widget
 bindkey '^G' fzf-cd-widget
 
 # Use emacs-like shortcuts with vi-mode
@@ -74,6 +72,8 @@ bindkey '^E' end-of-line
 # ===================
 
 source <(fzf --zsh)
+eval "$(direnv hook zsh)"
+eval "$(mise activate zsh)"
 
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke:
 #   gcloud components install gke-gcloud-auth-plugin
@@ -83,16 +83,10 @@ if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
   export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 fi
 
-# Hook direnv into your shell (slow)
-eval "$(direnv hook zsh)"
-
-# For managing tool version
-eval "$(mise activate zsh)"
-
 # Node/NVM
 function nvm-source {
   export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # loads nvm
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 }
 
@@ -113,27 +107,12 @@ function takedir {
   mkdir -p $@ && cd ${@:$#}
 }
 
-sshf() {
+function sshf() {
   local host=$(grep "^Host " ~/.ssh/config | awk '{print $2}' | grep -v "\*" | fzf --prompt="Select SSH host: ")
   [ -n "$host" ] && ssh "$host"
 }
 
-# Function to work quickly with Tmux sessions
-function tm {
-  if [ -z "$1" ]; then
-    session_name=$(tmux ls -F "#{session_name}" | fzf)
-  else
-    session_name=$1
-  fi
-
-  if ! tmux has-session "${session_name}"; then
-    tmux new-session -d -s "${session_name}"
-  fi
-
-  tmux attach -t "${session_name}"
-}
-
-# Function to decode base64-encoded values
+# Decode base64-encoded values
 function decode { echo ${1} | base64 --decode - }
 
 # Check running ports
@@ -244,7 +223,7 @@ function ql() {
 # Aliases
 # ===================
 
-alias ls='ls --color=auto'
+alias ls='eza --icons=automatic'
 alias ll='ls -lahL'
 alias t='tree -C -a -I .git'
 alias d='docker'
@@ -266,8 +245,8 @@ alias cdd='cd $(find ~/code -maxdepth 4 -type d | sort -u | fzf)'
 alias note='(cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .)'
 alias rg='rg --ignore-file=$HOME/.config/ripgrep/.ignore'
 alias code='codium'
-alias cc='claude'
-alias ccp='claude code -p'
+alias cl='claude'
+alias clp='claude code -p'
 alias tf='terraform'
 alias lg='lazygit'
 
