@@ -9,6 +9,7 @@ export KEYTIMEOUT=1 # Disable lag when using vi-mode
 # Utilities
 export XDG_CONFIG_HOME="$HOME/.config"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
 export FZF_DEFAULT_OPTS=""
@@ -71,7 +72,11 @@ bindkey '^E' end-of-line
 # Sources
 # ===================
 
+source "${HOME}/.config/zsh/functions.sh"
+source "${HOME}/.config/zsh/aliases.sh"
+
 source <(fzf --zsh)
+
 eval "$(direnv hook zsh)"
 eval "$(mise activate zsh)"
 
@@ -83,13 +88,6 @@ if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
   export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 fi
 
-# Node/NVM
-function nvm-source {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-}
-
 # https://gist.github.com/ctechols/ca1035271ad134841284
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
@@ -97,161 +95,6 @@ if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 else
   compinit -C;
 fi;
-
-# ===================
-# Functions
-# ===================
-
-# mkdir + cd
-function takedir {
-  mkdir -p $@ && cd ${@:$#}
-}
-
-function sshf() {
-  local host=$(grep "^Host " ~/.ssh/config | awk '{print $2}' | grep -v "\*" | fzf --prompt="Select SSH host: ")
-  [ -n "$host" ] && ssh "$host"
-}
-
-# Decode base64-encoded values
-function decode { echo ${1} | base64 --decode - }
-
-# Check running ports
-function port { lsof -i :$1 }
-
-function dns-flush {
-  dscacheutil -flushcache
-  sudo killall -HUP mDNSResponder
-}
-
-# Adds a git worktree using the project and branch name
-function gwa() {
-  local branch_name="${1}"
-  local branch_name_escaped="$(echo $branch_name | sed 's;\/;-;g')"
-  local location="../${branch_name_escaped}"
-
-  local args=""
-  if [ $(git branch --all | grep "remotes/origin/${branch_name}" | wc -l) -eq 0 ]; then
-    echo 'Branch does not exist on remote. Checking out a new branch...'
-    args="-b"
-  fi
-
-  git worktree add ${location} ${args} ${branch_name}
-  cd "${location}"
-}
-
-function kget() {
-    if [ $# -ne 4 ]; then
-        echo "Usage: get_cluster_credentials <context_name> <cluster_name> <region> <project>"
-        echo "Example: get_cluster_credentials my-context my-cluster us-central1-a my-project-id"
-        return 1
-    fi
-
-    local context_name="$1"
-    local cluster_name="$2"
-    local region="$3"
-    local project="$4"
-
-    KUBECONFIG="$HOME/.kube/contexts/$context_name" \
-        gcloud container clusters get-credentials \
-            "$cluster_name" \
-            --region "$region" \
-            --project "$project"
-}
-
-function koff() {
-  unset KUBECONFIG
-}
-
-function kon() {
-  context=$(ls $HOME/.kube/contexts | fzf)
-  export KUBECONFIG=$HOME/.kube/contexts/$context
-}
-
-function kcomplete() {
-  source <(kubectl completion zsh)
-}
-
-function kdelete() {
-  contexts=$(ls ~/.kube/contexts | sort)
-  context=$(printf "${contexts}\nquit" \
-    | fzf --header='Select context to delete')
-
-  if [ "${context}" = "quit" ]; then
-    echo 'No context selected, exiting...'
-    return
-  fi
-
-  echo "deleting $context"
-  rm ~/.kube/contexts/$context
-}
-
-function krename() {
-  context=$(kubectl config current-context)
-  read new_name\?"New name for ${context}: "
-
-  echo "renaming $context"
-  kubectl config rename-context ${context} ${new_name}
-  mv ~/.kube/contexts/${context} ~/.kube/contexts/${new_name}
-}
-
-function digg() {
-  dig $1 +nocmd +multiline +noall +answer
-}
-
-function image-size() {
-  compressed=$(skopeo inspect \
-    --override-arch=amd64 \
-    --override-os=linux \
-    docker://$1 \
-    | jq '[.LayersData[].Size] | add' \
-    | numfmt --to=iec-i --suffix=B --format="%9.2f")
-
-  docker pull $1
-  uncompressed=$(docker inspect \
-    $1 \
-    | jq '.[].Size' \
-    | numfmt --to=iec-i --suffix=B --format="%9.2f")
-
-  printf "uncompressed: %s\ncompressed: %s\n" "${uncompressed}" "${compressed}"
-}
-
-function ql() {
-  qlmanage -p "$@"
-}
-
-# ===================
-# Aliases
-# ===================
-
-alias ls='eza --icons=automatic'
-alias ll='ls -lahL'
-alias t='tree -C -a -I .git'
-alias d='docker'
-alias dc='docker compose'
-alias dr='docker run --rm -it'
-alias dr-amd='dr --platform=linux/amd64'
-alias de='docker exec -it'
-alias g='git'
-alias gwr='source ~/bin/git-worktree-remove'
-alias g-clean-branches='git branch --merged main | grep -v "^\*" | xargs -n 1 git branch -d'
-alias v='nvim'
-alias v-changed='nvim $(git dm --name-only)'
-alias v-conflicts='nvim $(git diff --name-only --diff-filter=U)'
-alias k='kubectl'
-alias kk='k9s --kubeconfig=$HOME/.kube/contexts/$(ls $HOME/.kube/contexts | fzf)'
-alias cat='bat'
-alias randompw='openssl rand -base64 18'
-alias cdd='cd $(find ~/code -maxdepth 4 -type d | sort -u | fzf)'
-alias note='(cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .)'
-alias rg='rg --ignore-file=$HOME/.config/ripgrep/.ignore'
-alias code='codium'
-alias cl='claude'
-alias clp='claude code -p'
-alias tf='terraform'
-alias lg='lazygit'
-
-# Python
-alias python-venv='if [ ! -f ./.venv/bin/activate ]; then echo Creating virtualenv...; uv venv --python=3.12; fi; source .venv/bin/activate'
 
 # ===================
 # Prompt settings
@@ -275,5 +118,4 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # To disable highlighting of globbing expressions
 ZSH_HIGHLIGHT_STYLES[globbing]='none'
 
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"
