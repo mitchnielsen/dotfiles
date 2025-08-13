@@ -29,3 +29,15 @@ trusted_config_paths = [
 ]
 
 idiomatic_version_file_enable_tools = ["node"]
+
+[tasks.bootstrap]
+description = "Run bootstrap script to set up dotfiles"
+run = "./bootstrap.sh"
+
+[tasks.backup]
+description = "Backup current brew packages to Brewfile"
+run = "brew bundle dump --force --file=.config/brew/Brewfile"
+
+[tasks.install]
+description = "Install packages from Brewfile"
+run = "brew bundle install --file=.config/brew/Brewfile"
