@@ -4,3 +4,9 @@ formatter:
   retain_line_breaks: true
   include_document_start: true
   eof_newline: false
+
+# Skip Helm files, which are unsupported
+# due to the double bracket syntax `{{ }}`.
+doublestar: true
+exclude:
+- "**/templates/*.yaml"
