@@ -44,6 +44,8 @@
   co = checkout
   cm = commit --verbose
   st = status
+  pl = pull
+  plm = pull origin main
   unstage = reset HEAD --
   uncommit = reset --soft HEAD^
   unstage-all = reset HEAD
