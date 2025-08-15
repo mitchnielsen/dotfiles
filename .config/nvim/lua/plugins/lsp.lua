@@ -11,6 +11,13 @@ return {
     "python",
     "tf",
     "terraform",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
   },
   keys = {
     { "K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "lsp: hover" },

@@ -1,5 +1,5 @@
 format = """
-$directory$git_branch$git_status$git_state$python$kubernetes$terraform$cmd_duration$jobs$direnv$custom$fill
+$directory$git_branch$git_status$git_state$python$kubernetes$terraform$nodejs$cmd_duration$jobs$direnv$custom$fill
 $character
 """
 
@@ -52,7 +52,8 @@ symbol = ''
 format = '[(${version} )(\($virtualenv\) )]($style)'
 
 [nodejs]
-disabled = true
+disabled = false
+format = '[node:($version)]($style) '
 
 [docker_context]
 disabled = true
