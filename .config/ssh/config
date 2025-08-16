@@ -7,7 +7,7 @@ Host app-server
     User dockeruser
 
 Host icloud-photos
-    Hostname 192.168.68.66
+    Hostname 192.168.68.71
     User root
 
 Host homelab-router
