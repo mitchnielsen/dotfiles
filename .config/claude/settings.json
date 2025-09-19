@@ -22,6 +22,9 @@
     ]
   },
   "enableAllProjectMcpServers": true,
+  "env": {
+    "RIPGREP_CONFIG_PATH": "dummy"
+  },
   "feedbackSurveyState": {
     "lastShownTime": 1754598531219
   },
