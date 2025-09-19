@@ -24,3 +24,7 @@
 
 # tmux
 .config/tmux/plugins/
+
+# Codex
+!.config/codex/AGENTS.md
+.config/codex/
