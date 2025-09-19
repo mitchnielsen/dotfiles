@@ -49,6 +49,12 @@ config.keys = {
       act.SendKey({ key = "P" }),
     }),
   },
+  {
+    -- Claude Code: shift+enter
+    key = "Enter",
+    mods = "SHIFT",
+    action = wezterm.action({ SendString = "\x1b\r" }),
+  },
 }
 
 -- Add bindings for changing tmux panes
