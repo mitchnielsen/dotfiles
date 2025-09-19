@@ -8,6 +8,8 @@
   excludesfile = ~/.config/git/ignore
 [advice]
   statusHints = false
+[remote]
+  pushdefault = origin
 [pull]
   rebase = false # don't automatically rebase on `git pull`
   default = current # pull the current branch from the remote branch of the same name
