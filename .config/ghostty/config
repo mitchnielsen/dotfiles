@@ -1,7 +1,7 @@
 # https://ghostty.org/docs/config/reference
 # https://ghostty.zerebos.com
 
-theme = NordFox
+theme = Nord
 
 # Font settings
 font-size = 12
@@ -13,22 +13,21 @@ adjust-cell-height = "25%"
 # macos-icon = ""
 
 # window settings
-macos-titlebar-style = "hidden"
 maximize = true
 window-decoration = "none"
-window-padding-x = 10
-window-padding-y = 10
+window-padding-x = 0
+window-padding-y = 0
 quit-after-last-window-closed = true
 
 # Keybindings
 # https://www3.rocketsoftware.com/bluezone/help/v42/en/bzadmin/APPENDIX_C/ASCII_Character_Set.htm
 
 # Switch to tmux pane
-keybind = cmd+1=text:\x02\x31
-keybind = cmd+2=text:\x02\x32
-keybind = cmd+3=text:\x02\x33
-keybind = cmd+4=text:\x02\x34
-keybind = cmd+5=text:\x02\x35
+keybind = cmd+physical:one=text:\x02\x31
+keybind = cmd+physical:two=text:\x02\x32
+keybind = cmd+physical:three=text:\x02\x33
+keybind = cmd+physical:four=text:\x02\x34
+keybind = cmd+physical:five=text:\x02\x35
 
 # For some reason this writes a `#`.
 keybind = cmd+shift+3=ignore
