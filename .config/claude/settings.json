@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "Bash(*)",
-      "Bash(find:*)",
+      "Bash",
+      "Bash",
       "Edit(*)",
       "Glob(*)",
       "Grep(*)",
@@ -12,13 +12,13 @@
       "Read(*)",
       "Task(*)",
       "TodoWrite(*)",
-      "WebFetch(*)",
-      "WebSearch(*)",
+      "WebFetch",
+      "WebSearch",
       "Write(*)",
       "mcp__linear__list_my_issues"
     ],
     "deny": [
-      "Bash(rm:*),"
+      "Bash(rm:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
