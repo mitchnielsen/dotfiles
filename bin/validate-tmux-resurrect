@@ -2,4 +2,4 @@
 
 dir="$HOME/.local/share/tmux/resurrect"
 
-ls -ltr $dir | tail -n 2
+ls -ltr "$dir" | tail -n 3
