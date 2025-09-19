@@ -34,8 +34,11 @@ return {
     require("fzf-lua").setup({
       fzf_colors = true, -- auto generate based on current nvim theme
       winopts = {
+        fullscreen = true,
+        backdrop = 100, -- transparent
         preview = {
           wrap = "wrap", -- wrap|nowrap
+          border = "rounded",
         },
       },
       keymap = {
