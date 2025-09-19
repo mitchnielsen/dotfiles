@@ -16,6 +16,14 @@ export FZF_DEFAULT_OPTS=""
 export BAT_THEME="Nord"
 export MANPAGER='nvim +Man!'
 
+# Claude
+export ANTHROPIC_API_KEY=$(cat "${HOME}/secret/anthropic-api-key.txt")
+export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
+export DISABLE_AUTOUPDATER=1 # update via homebrew
+
+# Codex
+export CODEX_HOME="${HOME}/.config/codex"
+
 # Path entries
 export PATH=$PATH:$HOME/bin
 export PATH="$HOME/.rd/bin:$PATH"
