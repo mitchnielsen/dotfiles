@@ -32,11 +32,10 @@ return {
   }, -- ctrl-S for signature help in insert and select mode
   config = function()
     local vim = vim
-    local lspconfig = require("lspconfig")
 
     -- Disable to avoid a large log file.
     -- Set to "debug" when debugging.
-    vim.lsp.set_log_level("off")
+    vim.lsp.log.set_level("off")
 
     -- Simple servers without custom config
     local servers = { "ruff", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
@@ -74,16 +73,18 @@ return {
 
     -- Setup simple servers
     for _, server in ipairs(servers) do
-      lspconfig[server].setup({
+      vim.lsp.config(server, {
         capabilities = capabilities,
       })
+      vim.lsp.enable(server)
     end
 
     -- Setup servers with custom config
     for server, config in pairs(custom_servers) do
-      lspconfig[server].setup(vim.tbl_extend("force", {
+      vim.lsp.config(server, vim.tbl_extend("force", {
         capabilities = capabilities,
       }, config))
+      vim.lsp.enable(server)
     end
   end,
 }
