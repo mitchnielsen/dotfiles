@@ -101,7 +101,7 @@ return {
     completion = {
       menu = {
         border = "single",
-        auto_show = true,
+        auto_show = false,
       },
       ghost_text = {
         enabled = true,
