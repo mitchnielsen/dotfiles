@@ -3,7 +3,6 @@
   "permissions": {
     "allow": [
       "Bash",
-      "Bash",
       "Edit(*)",
       "Glob(*)",
       "Grep(*)",
@@ -17,8 +16,9 @@
       "Write(*)",
       "mcp__linear__list_my_issues"
     ],
-    "deny": [
-      "Bash(rm:*)"
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(git push:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
