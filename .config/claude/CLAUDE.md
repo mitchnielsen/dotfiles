@@ -178,6 +178,7 @@ When multiple valid approaches exist, choose based on:
 
 **NEVER**:
 - Use `--no-verify` to bypass commit hooks
+- Amend or squash commits unless explicitly told
 - Disable tests instead of fixing them
 - Commit code that doesn't compile
 - Make assumptions - verify with existing code
