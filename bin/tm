@@ -6,7 +6,7 @@ else
   session_name=$1
 fi
 
-if ! tmux has-session "${session_name}"; then
+if ! tmux has-session -t "${session_name}"; then
   tmux new-session -d -s "${session_name}"
 fi
 
