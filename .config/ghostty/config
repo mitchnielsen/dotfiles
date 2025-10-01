@@ -15,8 +15,8 @@ adjust-cell-height = "25%"
 # window settings
 maximize = true
 macos-titlebar-style = hidden
-window-padding-x = 0
-window-padding-y = 0
+window-padding-x = 10
+window-padding-y = 10
 quit-after-last-window-closed = true
 
 # Keybindings
