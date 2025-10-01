@@ -8,6 +8,7 @@ istioctl = "latest"
 terraform = "1.10.5"
 updatecli = "latest"
 redis-cli = "latest"
+pre-commit = "latest"
 
 stylua = "latest"
 
