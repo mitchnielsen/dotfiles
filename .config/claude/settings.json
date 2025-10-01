@@ -23,7 +23,7 @@
   },
   "enableAllProjectMcpServers": true,
   "env": {
-    "RIPGREP_CONFIG_PATH": "dummy"
+    "USE_BUILTIN_RIPGREP": 0
   },
   "feedbackSurveyState": {
     "lastShownTime": 1754598531219
