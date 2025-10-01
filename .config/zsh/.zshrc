@@ -21,15 +21,16 @@ export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libpq)/lib"
 export CPPFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix libpq)/include"
 
 # Claude
+export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 export ANTHROPIC_API_KEY=$(cat "${HOME}/secret/anthropic-api-key.txt")
 export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
-export DISABLE_AUTOUPDATER=1 # update via homebrew
 
 # Codex
 export CODEX_HOME="${HOME}/.config/codex"
 
 # Path entries
-export PATH=$PATH:$HOME/bin
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.rd/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
@@ -43,9 +44,6 @@ export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
 
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
-
-# Claude
-export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
 # ===================
 # Settings
