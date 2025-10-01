@@ -16,6 +16,10 @@ export FZF_DEFAULT_OPTS=""
 export BAT_THEME="Nord"
 export MANPAGER='nvim +Man!'
 
+# For building dependencies
+export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libpq)/lib"
+export CPPFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix libpq)/include"
+
 # Claude
 export ANTHROPIC_API_KEY=$(cat "${HOME}/secret/anthropic-api-key.txt")
 export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
