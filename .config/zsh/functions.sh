@@ -42,6 +42,7 @@ function gwa() {
 
   git worktree add "${location}" ${args} "${branch_name}"
   cd "${location}" || exit
+  pre-commit install --allow-missing-config || true
 }
 
 function kget() {
@@ -127,4 +128,3 @@ function nvm-source {
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 }
-
