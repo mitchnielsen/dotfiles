@@ -1,5 +1,5 @@
 # Always use color
---color=always
+--color=auto
 
 # Disregard any local .ignore files and use our own
 --no-ignore
