@@ -12,8 +12,9 @@ NEVER EVER `amend` a commit under any circumstances. Ask for my help instead.
 NEVER USE `git commit --no-verify` under any circumstance. Ask for my help
 instead.
 
-Then push them up to the current branch with `git push origin <branch>`. If
-there is a conflict, `git pull --rebase`, resolve any conflicts, and try again.
+Then, after asking me, push them up to the current branch with `git push origin
+<branch>`. If there is a conflict, `git pull --rebase`, resolve any conflicts,
+and try again.
 
 ## Commit/PR descriptions
 
