@@ -14,7 +14,10 @@
       "WebFetch",
       "WebSearch",
       "Write(*)",
-      "mcp__linear__list_my_issues"
+      "mcp__linear__list_my_issues",
+      "mcp__linear-server__list_teams",
+      "mcp__linear-server__get_user",
+      "mcp__linear-server__create_issue"
     ],
     "ask": [
       "Bash(rm:*)",
