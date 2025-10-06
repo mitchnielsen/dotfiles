@@ -1,5 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "USE_BUILTIN_RIPGREP": "0"
+  },
   "permissions": {
     "allow": [
       "Bash",
@@ -14,10 +17,15 @@
       "WebFetch",
       "WebSearch",
       "Write(*)",
-      "mcp__linear__list_my_issues",
-      "mcp__linear-server__list_teams",
+      "mcp__linear-server__create_issue",
+      "mcp__linear-server__get_issue",
       "mcp__linear-server__get_user",
-      "mcp__linear-server__create_issue"
+      "mcp__linear-server__get_team",
+      "mcp__linear-server__list_cycles",
+      "mcp__linear-server__list_issue_labels",
+      "mcp__linear-server__list_issue_statuses",
+      "mcp__linear-server__list_teams",
+      "mcp__linear__list_my_issues"
     ],
     "ask": [
       "Bash(rm:*)",
@@ -25,15 +33,13 @@
     ]
   },
   "enableAllProjectMcpServers": true,
-  "env": {
-    "USE_BUILTIN_RIPGREP": 0
-  },
-  "feedbackSurveyState": {
-    "lastShownTime": 1754598531219
-  },
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
   },
-  "spinnerTipsEnabled": false
+  "spinnerTipsEnabled": false,
+  "alwaysThinkingEnabled": false,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754598531219
+  }
 }
