@@ -60,7 +60,7 @@ disabled = true
 
 [kubernetes]
 disabled = false
-format = 'in [☸ $context:$namespace](blue) '
+format = 'in [☸ $context:$namespace](purple) '
 
 [terraform]
 disabled = false
@@ -93,8 +93,3 @@ style = "green"
 
 [git_state]
 format = '\([$state($progress_current/$progress_total)]($style)\)'
-
-[custom.containers]
-command = 'docker ps -aq | wc -l'
-when = ''' test $(docker ps -aq | wc -l) -ne 0 '''
-format = ' 🐳 [$output]($style)'
