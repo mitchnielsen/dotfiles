@@ -22,7 +22,7 @@ if [[ "$current_dir" == "$home_dir" ]]; then
     rel_dir="~"
 elif [[ "$current_dir" == "$home_dir"/* ]]; then
     # Inside home directory, show relative path with ~ prefix
-    rel_path="${current_dir#$home_dir/}"
+    rel_path="${current_dir#"$home_dir"/}"
     rel_dir="~/$rel_path"
 else
     # Outside home directory, show full path
