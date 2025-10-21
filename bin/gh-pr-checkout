@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -e
+
+# Check out a pull request from a fork using git worktrees
+# Usage: gh-pr-checkout <pr-number>
+
+if [ $# -ne 1 ]; then
+    echo "Usage: gh-pr-checkout <pr-number>"
+    echo "Example: gh-pr-checkout 10"
+    exit 1
+fi
+
+PR_NUMBER="$1"
+
+# Get PR details using gh CLI
+echo "Fetching PR #${PR_NUMBER} details..."
+PR_DATA=$(gh pr view "$PR_NUMBER" --json headRefName,headRepository,headRepositoryOwner,number)
+
+BRANCH_NAME=$(echo "$PR_DATA" | jq -r '.headRefName')
+FORK_OWNER=$(echo "$PR_DATA" | jq -r '.headRepositoryOwner.login')
+REPO_NAME=$(echo "$PR_DATA" | jq -r '.headRepository.name')
+
+echo "PR #${PR_NUMBER}: ${FORK_OWNER}/${REPO_NAME}/${BRANCH_NAME}"
+
+# Create worktree location name (escape slashes in branch name)
+BRANCH_NAME_ESCAPED="${BRANCH_NAME//\//-}"
+WORKTREE_LOCATION="../${BRANCH_NAME_ESCAPED}"
+
+# Check if remote already exists, if not add it
+REMOTE_NAME="fork-${FORK_OWNER}"
+if ! git remote | grep -q "^${REMOTE_NAME}$"; then
+    echo "Adding remote ${REMOTE_NAME}..."
+    gh repo view "${FORK_OWNER}/${REPO_NAME}" --json url -q '.url' | xargs git remote add "${REMOTE_NAME}"
+fi
+
+# Fetch the branch from the fork
+echo "Fetching ${BRANCH_NAME} from ${REMOTE_NAME}..."
+git fetch "${REMOTE_NAME}" "${BRANCH_NAME}"
+
+# Create worktree and checkout the branch
+echo "Creating worktree at ${WORKTREE_LOCATION}..."
+git worktree add "${WORKTREE_LOCATION}" -b "${BRANCH_NAME}" "${REMOTE_NAME}/${BRANCH_NAME}"
+
+# Change to worktree directory
+cd "${WORKTREE_LOCATION}" || exit
+
+# Install pre-commit hooks if available
+pre-commit install --allow-missing-config 2>/dev/null || true
+
+echo ""
+echo "Successfully checked out PR #${PR_NUMBER} to ${WORKTREE_LOCATION}"
