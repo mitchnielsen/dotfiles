@@ -32,8 +32,20 @@ function bitwarden () {
     --session=$(cat "${HOME}/.secret/bw-session")
 }
 
+function passwords () {
+  if [ ! -f Passwords.csv ]; then
+    echo "Export from the Passwords app before continuing."
+    exit 1
+  fi
+
+  mv Passwords.csv "Passwords-${date}.csv"
+  file-encrypt "Passwords-${date}.csv"
+
+  rm "Passwords-${date}.csv"
+}
+
 function all() {
-  obsidian
+  # obsidian
   things
   # bitwarden
 }
