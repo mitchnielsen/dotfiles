@@ -19,6 +19,8 @@ NEVER EVER `amend` a commit under any circumstances. Ask for my help instead.
 NEVER USE `git commit --no-verify` under any circumstance. Ask for my help
 instead.
 
+DO NOT push until explicitly told to push.
+
 ## Commit/PR descriptions
 
 - IMPORTANT: THIS STYLE GUIDE IS REQUIRED AND MANDATORY
