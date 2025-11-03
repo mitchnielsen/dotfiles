@@ -2,11 +2,13 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "saghen/blink.cmp",
+    "b0o/schemastore.nvim",
   },
   ft = {
     "go",
     "ruby",
     "lua",
+    "json",
     "yaml",
     "python",
     "tf",
@@ -38,7 +40,7 @@ return {
     vim.lsp.log.set_level("off")
 
     -- Simple servers without custom config
-    local servers = { "ruff", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
+    local servers = { "ruff", "pyright", "ts_ls", "marksman", "terraformls", "tflint", "jsonls", "yamlls" }
 
     -- Servers with custom config
     local custom_servers = {
@@ -67,6 +69,41 @@ return {
           },
         },
       },
+      jsonls = {
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      },
+      yamlls = {
+        settings = {
+          yaml = {
+            schemaStore = {
+              -- You must disable built-in schemaStore support if you want to use
+              -- this plugin and its advanced options like `ignore`.
+              enable = false,
+
+              -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+              url = "",
+            },
+
+            schemas = require("schemastore").yaml.schemas({
+              extra = {
+                {
+                  name = "Kubernetes",
+                  description = "Kubernetes resource manifest",
+                  url = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.34.1-standalone/all.json",
+                  fileMatch = {
+                    "**/*.yaml",
+                  },
+                },
+              },
+            }),
+          },
+        },
+      },
     }
 
     local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -81,9 +118,12 @@ return {
 
     -- Setup servers with custom config
     for server, config in pairs(custom_servers) do
-      vim.lsp.config(server, vim.tbl_extend("force", {
-        capabilities = capabilities,
-      }, config))
+      vim.lsp.config(
+        server,
+        vim.tbl_extend("force", {
+          capabilities = capabilities,
+        }, config)
+      )
       vim.lsp.enable(server)
     end
   end,
