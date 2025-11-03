@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# https://www.reddit.com/r/tmux/comments/1fprgew/a_new_plugin_sending_your_buffer_to_vim_or_any/
+
+# file=$(mktemp).sh
+# tmux capture-pane -pS -32768 > "$file"
+# tmux new-window -n:mywindow "nvim '+ normal G $' $file"
+
+tmux capture-pane -S -3000
+tmp_file="$(mktemp)"
+tmux save-buffer "$tmp_file"
+
+PREFER="$(which nvim vim vi nano ed | head -1)"
+EDIT="${VISUAL:-${EDITOR:-$PREFER}}"
+
+tmux new-window "$EDIT $tmp_file && tmux load-buffer $tmp_file && tmux delete-buffer && rm $tmp_file"
