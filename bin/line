@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Show the specified line number from a file:
+#   cat README.md | line 3
+
+set -e
+set -u
+
+head -n "$1" | tail -n 1
