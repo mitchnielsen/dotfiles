@@ -17,19 +17,9 @@
       "WebFetch",
       "WebSearch",
       "Write(*)",
-      "mcp__linear-server__create_issue",
-      "mcp__linear-server__get_issue",
-      "mcp__linear-server__get_user",
-      "mcp__linear-server__get_team",
-      "mcp__linear-server__list_cycles",
-      "mcp__linear-server__list_issue_labels",
-      "mcp__linear-server__list_issue_statuses",
-      "mcp__linear-server__list_teams",
-      "mcp__linear__list_my_issues",
-      "mcp__prometheus__execute_query",
-      "mcp__prometheus__execute_range_query",
-      "mcp__prometheus__list_metrics",
-      "mcp__prometheus__get_metric_metadata"
+      "mcp__linear__*",
+      "mcp__prefect-docs__*",
+      "mcp__prometheus__*"
     ],
     "ask": [
       "Bash(rm:*)",
