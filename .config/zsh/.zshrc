@@ -15,6 +15,7 @@ export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
 export FZF_DEFAULT_OPTS=""
 export BAT_THEME="Nord"
 export MANPAGER='nvim +Man!'
+export PAGER=nvimpager
 
 # For building dependencies
 export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libpq)/lib"
