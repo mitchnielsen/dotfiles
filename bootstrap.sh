@@ -23,6 +23,10 @@ function symlink() {
 
   # Kube settings
   ln -sf "$HOME/dotfiles/.config/kube/kuberc" "$HOME/.kube/kuberc"
+
+  # OpenCode - symlink to Claude Code's custom commands
+  mkdir -p "$HOME/.config/opencode/command"
+  ln -sf "$HOME/.config/claude/commands" "$HOME/.config/opencode/command/"
 }
 
 function dependencies() {
