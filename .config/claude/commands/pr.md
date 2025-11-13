@@ -10,6 +10,8 @@ Then, use `gh pr create` to create the PR. If there is only a single
 commit, use the commit message as the PR message. If there are multiple commits,
 synthesize a new one that covers all of those changes.
 
+Assign the PR to me.
+
 ## Commit/PR descriptions
 
 - IMPORTANT: THIS STYLE GUIDE IS REQUIRED AND MANDATORY
