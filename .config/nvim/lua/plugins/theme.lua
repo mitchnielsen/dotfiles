@@ -29,43 +29,15 @@ return {
     "projekt0n/github-nvim-theme",
     name = "github-theme",
     lazy = true,
-    dependencies = "f-person/auto-dark-mode.nvim",
     priority = 1000,
     config = function()
-      require("github-theme").setup()
+      require("github-theme").setup({
+        options = {
+          transparent = true,
+        },
+      })
+
       vim.cmd("colorscheme github_dark_dimmed")
-    end,
-  },
-  {
-    "rmehri01/onenord.nvim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      require("onenord").setup({
-        theme = "dark", -- "dark" or "light"
-
-        -- Style that is applied to various groups: see `highlight-args` for options
-        styles = {
-          comments = "italic",
-          diagnostics = "underline",
-        },
-      })
-    end,
-  },
-  {
-    "webhooked/kanso.nvim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      require("kanso").setup({
-        theme = "zen",
-        background = {
-          dark = "zen",
-          light = "pearl",
-        },
-      })
-
-      vim.cmd("colorscheme kanso")
     end,
   },
   {
@@ -75,6 +47,31 @@ return {
     config = function()
       require("nightfox").setup()
       vim.cmd("colorscheme nordfox")
+    end,
+  },
+  {
+    "zenbones-theme/zenbones.nvim",
+    lazy = true,
+    priority = 1000,
+    dependencies = "rktjmp/lush.nvim",
+    config = function()
+      vim.g.zenbones_darken_comments = 45
+      -- vim.cmd.colorscheme("zenwritten")
+      -- vim.cmd("set background=light")
+
+      vim.cmd.colorscheme("nordbones")
+    end,
+  },
+  {
+    "sam4llis/nvim-tundra",
+    lazy = true,
+    priority = 1000,
+    config = function()
+      require("nvim-tundra").setup({})
+
+      vim.g.tundra_biome = "arctic" -- arctic or jungle
+      vim.opt.background = "dark"
+      vim.cmd.colorscheme("tundra")
     end,
   },
 }
