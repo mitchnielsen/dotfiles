@@ -9,6 +9,12 @@ map_key("i", "<C-e>", "<C-o>$", "go to beginning of line in insert mode")
 map_key("n", "<C-d>", "5<C-d>", "jump down X lines")
 map_key("n", "<C-u>", "5<C-u>", "jump up X lines")
 
+-- Color scheme
+map_key("n", "<leader>cs", ":FzfLua colorschemes<cr>", "change color scheme")
+
+-- Line numbers
+map_key("n", "<leader>l", ":set number! relativenumber!<cr>", "toggle line numbers")
+
 -- Copy/paste
 map_key("n", "<leader>y", '"*y', "yank to the system clipboard")
 map_key("v", "<leader>y", '"*y', "yank to the system clipboard")
