@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# setup: Set up a development environment in tmux windows
+
+# Rename current window and start neovim
+tmux rename-window 'nvim'
+tmux send-keys 'nvim' C-m
+
+# Create new window for claude
+tmux new-window -n 'claude'
+tmux send-keys 'claude' C-m
+
+# Create new window for lazygit
+tmux new-window -n 'lazygit'
+tmux send-keys 'lazygit' C-m
+
+# Create new window with empty shell
+tmux new-window -n 'shell'
+
+# Return to the first window (neovim)
+tmux select-window -t 0
