@@ -1,30 +1,40 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   lazy = false,
+  build = ":TSUpdate",
+  branch = "master",
   config = function()
-    require("nvim-treesitter.configs").setup {
-      ensure_installed = { "bash", "dockerfile", "go", "graphql", "json", "lua", "make", "ruby", "yaml", "hcl", "terraform" },
+    ---@diagnostic disable-next-line: missing-fields
+    require("nvim-treesitter.configs").setup({
+      auto_install = true,
+      ensure_installed = {
+        "bash",
+        "dockerfile",
+        "go",
+        "graphql",
+        "hcl",
+        "json",
+        "lua",
+        "make",
+        "ruby",
+        "terraform",
+        "yaml",
+      },
       highlight = {
         enable = true,
-        use_langtree = true,
-      },
-      rainbow = {
-        enable = true,
-        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-        max_file_lines = nil, -- Do not enable for files with more than n lines, int
       },
       indent = {
-        enable = false,
+        enable = true,
       },
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = '<CR>',
-          scope_incremental = '<CR>',
-          node_incremental = '<TAB>',
-          node_decremental = '<S-TAB>',
+          init_selection = "<CR>",
+          scope_incremental = "<CR>",
+          node_incremental = "<TAB>",
+          node_decremental = "<S-TAB>",
         },
       },
-    }
+    })
   end,
 }
