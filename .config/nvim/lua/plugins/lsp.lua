@@ -5,6 +5,7 @@ return {
     "b0o/schemastore.nvim",
   },
   ft = {
+    "markdown",
     "go",
     "ruby",
     "lua",
@@ -101,6 +102,18 @@ return {
                 },
               },
             }),
+          },
+        },
+      },
+      harper_ls = {
+        settings = {
+          ["harper-ls"] = {
+            -- https://writewithharper.com/docs/rules
+            linters = {
+              SentenceCapitalization = false,
+              SpellCheck = false,
+              SplitWords = false,
+            },
           },
         },
       },

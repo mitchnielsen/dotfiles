@@ -9,6 +9,8 @@ terraform = "1.10.5"
 updatecli = "latest"
 redis-cli = "latest"
 pre-commit = "latest"
+harper-cli = "latest"
+harper-ls = "latest"
 
 stylua = "latest"
 
