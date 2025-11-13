@@ -1,3 +1,4 @@
+---
 k9s:
   liveViewAutoRefresh: false
   screenDumpDir: /Users/mitch/.config/k9s/screen-dumps

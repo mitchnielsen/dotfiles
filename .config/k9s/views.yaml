@@ -1,3 +1,4 @@
+---
 # $XDG_CONFIG_HOME/k9s/views.yml
 views:
   # Alters the pod view column layout. Uses GVR as key
@@ -11,3 +12,33 @@ views:
       - AGE
       # Custom columns: <NAME>:<JSON expression>
       # - APP:.metadata.labels.app
+
+  # Flux GitRepository resources
+  source.toolkit.fluxcd.io/v1/gitrepositories:
+    columns:
+      - NAMESPACE
+      - NAME
+      - READY
+      - SUSPENDED:.spec.suspend
+      - STATUS
+      - AGE
+
+  # Flux Kustomization resources
+  kustomize.toolkit.fluxcd.io/v1/kustomizations:
+    columns:
+      - NAMESPACE
+      - NAME
+      - URL
+      - AGE
+      - READY
+      - SUSPENDED:.spec.suspend
+      - STATUS
+
+  # Flux HelmRelease resources
+  helm.toolkit.fluxcd.io/v2/helmreleases:
+    columns:
+      - NAMESPACE
+      - NAME
+      - READY
+      - SUSPENDED:.spec.suspend
+      - STATUS
