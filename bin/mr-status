@@ -1,3 +1,0 @@
-#!/bin/bash
-
-glab mr view | grep '^state:' | awk '{print $2}'
