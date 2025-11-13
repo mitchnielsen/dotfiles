@@ -15,15 +15,6 @@ autocmd("BufEnter", {
   command = "set fo-=c fo-=r fo-=o",
 })
 
--- Highlight on yank
-autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  pattern = "*",
-  group = augroup("Highlight", { clear = true }),
-})
-
 -- Filetype-based mappings
 
 autocmd({ "BufNewFile", "BufEnter" }, {
