@@ -3,6 +3,8 @@ return {
   dependencies = {
     "tpope/vim-rhubarb", -- GitHub support
     "shumphrey/fugitive-gitlab.vim", -- GitLab support
+    "farhanmustar/fugitive-delta.nvim", -- Delta in Fugitive
+    "junegunn/gv.vim", -- git log browser
   },
   lazy = false,
   keys = {
@@ -13,6 +15,7 @@ return {
     { "<leader>gd", ":Git diff<cr>", desc = "git diff" },
     { "<leader>gps", ":Git push<cr>", desc = "git push" },
     { "<leader>gpl", ":Git pull<cr>", desc = "git pull" },
-    { "<leader>gl", ":Git log --oneline<cr>", desc = "git log" },
+    { "<leader>gl", ":GV<cr>", desc = "git log" },
+    { "<leader>gL", ":GV!<cr>", desc = "git log for current file" },
   },
 }
