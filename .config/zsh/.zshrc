@@ -93,11 +93,22 @@ eval "$(mise activate zsh)"
 
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke:
 #   gcloud components install gke-gcloud-auth-plugin
-if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
-  source "$HOME/.local/share/mise/installs/gcloud/latest/completion.zsh.inc" # enable shell command completion for gcloud.
-  source "$HOME/.local/share/mise/installs/gcloud/latest/path.zsh.inc" # add the Google Cloud SDK command line tools to your $PATH.
-  export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-fi
+function gcloud-source() {
+  if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
+    source "$HOME/.local/share/mise/installs/gcloud/latest/completion.zsh.inc" # enable shell command completion for gcloud.
+    source "$HOME/.local/share/mise/installs/gcloud/latest/path.zsh.inc" # add the Google Cloud SDK command line tools to your $PATH.
+    export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+    export GCLOUD_SOURCED=True
+  fi
+}
+
+function gcloud() {
+  if [ -z "$GCLOUD_SOURCED" ]; then
+    gcloud-source
+  fi
+
+  mise exec gcloud -- gcloud $@
+}
 
 # https://gist.github.com/ctechols/ca1035271ad134841284
 autoload -Uz compinit
