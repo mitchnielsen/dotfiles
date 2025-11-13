@@ -4,7 +4,7 @@
 theme = NordFox
 
 # Font settings
-font-size = 12
+font-size = 13
 font-family = "SFMono Nerd Font"
 adjust-cell-height = "25%"
 
