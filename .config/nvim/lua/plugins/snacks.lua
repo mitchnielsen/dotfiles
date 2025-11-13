@@ -6,18 +6,6 @@ return {
     indent = {
       animate = { enabled = false },
     },
-    gitbrowse = {},
-    picker = {
-      layout = "ivy",
-      sources = {
-        explorer = {
-          hidden = true,
-        },
-        files = {
-          hidden = true,
-        },
-      },
-    },
 
     -- dashboard = {
     --   sections = {
@@ -47,26 +35,5 @@ return {
     --     },
     --   },
     -- },
-  },
-  keys = {
-    {
-      "<leader>gbr",
-      function()
-        Snacks.gitbrowse()
-      end,
-      desc = "Open in GitHub",
-    },
-    {
-      "<leader>gbR",
-      function()
-        Snacks.gitbrowse.open({
-          open = function(url)
-            vim.fn.setreg("+", url)
-            vim.notify("Yanked url to clipboard")
-          end,
-        })
-      end,
-      desc = "Copy GitHub URL",
-    },
   },
 }
