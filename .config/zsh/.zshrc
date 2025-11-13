@@ -21,6 +21,9 @@ export PAGER=nvimpager
 export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libpq)/lib"
 export CPPFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix libpq)/include"
 
+# mcp-router
+export MCPR_TOKEN="$(cat ${HOME}/secret/mcpr-token.txt)"
+
 # Claude
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 export ANTHROPIC_API_KEY=$(cat "${HOME}/secret/anthropic-api-key.txt")

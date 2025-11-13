@@ -8,5 +8,18 @@
       "git *": "ask",
       "*": "allow"
     }
+  },
+  "mcp": {
+    "mcp-router": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "npx",
+        "-y",
+        "@mcp_router/cli@latest",
+        "connect"
+      ],
+      "environment": {}
+    }
   }
 }
