@@ -7,10 +7,14 @@ return {
   config = function()
     local nvim_tree_shift = {
       function()
-        len = vim.api.nvim_win_get_width(require("nvim-tree.view").get_winnr()) - 1
-        title = "Nvim-Tree"
-        left = (len - #title) / 2
-        right = len - left - #title
+        local winnr = require("nvim-tree.view").get_winnr()
+        if not winnr then
+          return ""
+        end
+        local len = vim.api.nvim_win_get_width(winnr) - 1
+        local title = "Nvim-Tree"
+        local left = (len - #title) / 2
+        local right = len - left - #title
 
         return string.rep(" ", left) .. title .. string.rep(" ", right)
       end,
