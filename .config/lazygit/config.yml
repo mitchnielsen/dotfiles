@@ -1,3 +1,4 @@
+---
 gui:
   theme:
     lightTheme: false
@@ -6,9 +7,9 @@ gui:
   nerdFontsVersion: "3"
 git:
   autoForwardBranches: none
-  paging:
-    colorArg: always
-    pager: "delta --paging=never"
+  pagers:
+    - colorArg: always
+      pager: "delta --paging=never"
 os:
   editPreset: 'nvim'
 keybinding:
