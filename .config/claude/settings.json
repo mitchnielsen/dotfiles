@@ -17,9 +17,11 @@
       "WebFetch",
       "WebSearch",
       "Write(*)",
-      "mcp__linear__*",
-      "mcp__prefect-docs__*",
-      "mcp__prometheus__*"
+      "mcp__mcp-router",
+      "mcp__linear",
+      "mcp__prefect-docs",
+      "mcp__prometheus",
+      "mcp__grafana"
     ],
     "ask": [
       "Bash(rm:*)",
