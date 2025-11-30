@@ -21,33 +21,38 @@ export PAGER=nvimpager
 export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libpq)/lib"
 export CPPFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix libpq)/include"
 
-# mcp-router
-export MCPR_TOKEN="$(cat ${HOME}/secret/mcpr-token.txt)"
-
-# Claude
-export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
-export ANTHROPIC_API_KEY=$(cat "${HOME}/secret/anthropic-api-key.txt")
-export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
-
-# Codex
-export CODEX_HOME="${HOME}/.config/codex"
-
 # Path entries
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.rd/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
 
-# Docker
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
-export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
-
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
+
+# Work-specific settings
+if [ ! -f "${HOME}/.personal_device_marker" ]; then
+  # mcp-router
+  export MCPR_TOKEN="$(cat ${HOME}/secret/mcpr-token.txt)"
+
+  # Claude
+  export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
+  export ANTHROPIC_API_KEY=$(cat "${HOME}/secret/anthropic-api-key.txt")
+  export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
+
+  # Codex
+  export CODEX_HOME="${HOME}/.config/codex"
+
+  # Docker
+  export DOCKER_DEFAULT_PLATFORM=linux/amd64
+  export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
+
+  # Path entries
+  export PATH="$HOME/.rd/bin:$PATH"
+fi
 
 # ===================
 # Settings
