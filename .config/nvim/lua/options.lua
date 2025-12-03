@@ -8,11 +8,11 @@ local options = {
   cmdheight = 2,
   timeoutlen = 400,
   pumheight = 20,
-  list = false,
+  list = true,
   listchars = { tab = "▸ ", trail = "·" },
   winborder = "rounded",
 
-  -- Spacing,
+  -- Spacing
   shiftwidth = 2,
   tabstop = 2,
   expandtab = true,
