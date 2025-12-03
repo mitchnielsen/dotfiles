@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# access my custom scripts
+function bins() {
+  local script
+  script=$(find "${HOME}/bin" \( -type f -o -type l \) -exec basename {} \; | fzf --prompt="Select a script")
+  [[ -n "$script" ]] && print -z "$script"
+}
+
 # mkdir + cd
 function takedir() {
   mkdir -p "${@}" && cd "${@:$#}" || exit
@@ -18,7 +25,7 @@ function decode() {
 
 # Check running ports
 function port() {
-  lsof -i :"$1" 
+  lsof -i :"$1"
 }
 
 function dns-flush() {
@@ -42,7 +49,12 @@ function gwa() {
 
   git worktree add "${location}" ${args} "${branch_name}"
   cd "${location}" || exit
-  pre-commit install --allow-missing-config || true
+
+  if [ -d ".husky" ]; then
+    npm install
+  else
+    pre-commit install --allow-missing-config || true
+  fi
 }
 
 function kget() {
@@ -75,7 +87,7 @@ function kon() {
 
 function kdelete() {
   contexts=$(find ~/.kube/contexts -type f -printf "%f\n" | sort)
-  context=$(printf "${contexts}\nquit" \
+  context=$(printf "%s\nquit" "${contexts}" \
     | fzf --header='Select context to delete')
 
   if [ "${context}" = "quit" ]; then
@@ -89,6 +101,7 @@ function kdelete() {
 
 function krename() {
   context=$(kubectl config current-context)
+  local new_name
   read -r new_name\?"New name for ${context}: "
 
   echo "renaming $context"
@@ -125,6 +138,18 @@ function ql() {
 # Node/NVM
 function nvm-source {
   export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+}
+
+# AWS
+function aws-profile {
+  profile=$(cat ~/.aws/config | grep 'profile' | sed 's;];;g' | awk '{print $2}' | fzf)
+  export AWS_PROFILE="${profile}"
+
+  echo "configured AWS_PROFILE=${profile}"
+}
+
+function aws-off {
+  unset AWS_PROFILE
 }
