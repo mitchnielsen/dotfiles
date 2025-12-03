@@ -1,3 +1,0 @@
-return {
-  'artempyanykh/marksman',
-}
