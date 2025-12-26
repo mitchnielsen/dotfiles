@@ -35,6 +35,10 @@ return {
         lualine_a = {
           nvim_tree_shift,
           {
+            "tabs",
+            mode = 0,
+          },
+          {
             "buffers",
             show_filename_only = false,
             hide_filename_extension = false,

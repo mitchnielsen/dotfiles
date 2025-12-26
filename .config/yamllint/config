@@ -6,6 +6,12 @@ yaml-files:
   - '*.yml'
   - '.yamllint'
 
+ignore: |
+  templates/*.yaml
+  templates/*.yml
+  */templates/*.yaml
+  */templates/*.yml
+
 rules:
   anchors: enable
   braces: enable

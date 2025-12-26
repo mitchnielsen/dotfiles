@@ -1,17 +1,27 @@
 ---
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+
 gui:
-  theme:
-    lightTheme: false
   showIcons: true
-  showFileTree: true # for rendering changes files in a tree format
+  showFileTree: true
   nerdFontsVersion: "3"
+
+promptToReturnFromSubprocess: false
+
 git:
+  autoFetch: false
+  autoRefresh: false
   autoForwardBranches: none
   pagers:
     - colorArg: always
       pager: "delta --paging=never"
+
 os:
   editPreset: 'nvim'
+
 keybinding:
   universal:
     quit: "q"
+  files:
+    commitChangesWithEditor: c
+    commitChangesWithoutHook: C
