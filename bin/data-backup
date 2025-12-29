@@ -6,7 +6,7 @@ date=$(date '+%Y-%m-%d')
 backup_dir="${HOME}/backups"
 
 function things () {
-  path="$HOME/Library/Group Containers/JLMPQHK86H.com.culturedcode.ThingsMac/ThingsData-RE5PT"
+  path="$HOME/Library/Group Containers/JLMPQHK86H.com.culturedcode.ThingsMac/ThingsData-EV52M"
   file="Things Database.thingsdatabase"
 
   target="${backup_dir}/Things/"
@@ -45,9 +45,13 @@ function passwords () {
 }
 
 function all() {
-  # obsidian
   things
+  passwords
+
+  # Inactive
+  #
   # bitwarden
+  # obsidian
 }
 
 TARGET=${@:-all}
