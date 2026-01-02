@@ -24,6 +24,11 @@ map_key("n", "<leader>p", '"*p', "paste from the system clipboard")
 map_key("n", "<leader>p", '"*p', "paste from the system clipboard")
 map_key("n", "Y", "y$", "yank to end of line")
 
+-- Buffers
+map_key("n", "<leader>d", "<cmd>bd<cr>", "delete buffer")
+map_key("n", "<leader>yr", "<cmd>let @+ = expand('%:~:.')<cr>", "relative path")
+map_key("n", "<leader>yf", "<cmd>let @+ = expand('%:p')<cr>", "full path")
+
 -- Wrapping
 map_key("v", "<leader>'", "<esc>`>a'<esc>`<i'<esc>')", "wrap selection with '")
 map_key("v", '<leader>"', '<esc>`>a"<esc>`<i"<esc>', 'wrap selection with ""')
@@ -52,6 +57,10 @@ map_key("i", ",", ",<c-g>u")
 map_key("i", ".", ".<c-g>u")
 map_key("i", "!", "!<c-g>u")
 map_key("i", "?", "?<c-g>u")
+
+-- Better indenting
+map_key("v", "<", "<gv")
+map_key("v", ">", ">gv")
 
 -- Searching
 map_key("x", "/", "<Esc>/\\%V", "Search within visual selection")

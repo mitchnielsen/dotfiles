@@ -21,7 +21,7 @@ local options = {
   breakindent = true,
   autoindent = true,
 
-  -- Editing,
+  -- Editing
   termguicolors = true,
   number = false,
   relativenumber = false,
@@ -36,6 +36,7 @@ local options = {
   showmatch = true,
   ignorecase = true,
   smartcase = true,
+  infercase = true, -- Infer case in built-in completion
   inccommand = "nosplit", -- see subsitutions in realtime
   wildmenu = true, -- Autocomplete filenames,
   wildignore = "*.o,*.hi,*.pyc",
@@ -44,7 +45,10 @@ local options = {
   splitright = true,
   diffopt = "vertical",
   cursorline = true,
+  cursorcolumn = false,
+  cursorlineopt = "screenline,number", -- Highlight per screen line and number
   conceallevel = 0,
+  iskeyword = "@,48-57,192-255", -- Characters that form keywords (includes dash)
 
   -- folding
   -- https://www.jackfranklin.co.uk/blog/code-folding-in-vim-neovim
@@ -56,6 +60,9 @@ local options = {
   foldlevelstart = 0, -- keep folds open between buffers
   foldnestmax = 4,
   foldenable = false, -- closed on start
+
+  -- Limit ShaDa file size for faster startup
+  shada = "'100,<50,s10,:1000,/100,@100,h",
 }
 
 for k, v in pairs(options) do
@@ -110,6 +117,7 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 -- Enable spell check
 vim.opt.spell = false
 vim.opt.spelllang = { "en_us" }
+vim.opt.spelloptions = "camel" -- Treat camelCase as separate words for spell checking
 
 local disabled_built_ins = {
   "gzip",
