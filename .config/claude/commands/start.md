@@ -1,11 +1,11 @@
-Starts work on a new feature branch for a Linear or Github issue.
+Starts work on a new feature branch for a Linear or GitHub issue.
 
 Issue: #$ARGUMENTS
 
 If the issue here looks like "ABC-123", it is likely a Linear issue ID, so
 you can look it up using the `linear` MCP tools. If the argument here looks
-like #123, it is likely a Github issue ID, so you can look it up using the `gh`
-CLI tool.  Otherwise, if it's just a bunch of words, it's an idea I want
+like #123, it is likely a GitHub issue ID, so you can look it up using the `gh`
+CLI tool. Otherwise, if it's just a bunch of words, it's an idea I want
 to try out and will just be specified as English, in which case it is
 not tied to an issue tracker.
 
