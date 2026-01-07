@@ -35,16 +35,9 @@ return {
         lualine_a = {
           nvim_tree_shift,
           {
-            "tabs",
-            mode = 0,
-          },
-          {
-            "buffers",
-            show_filename_only = false,
-            hide_filename_extension = false,
-            show_modified_status = true,
-            mode = 0,
-            use_mode_colors = false,
+            "filename",
+            file_status = true,
+            path = 1, -- relative path
           },
         },
         lualine_b = { { "diagnostics", sources = { "nvim_diagnostic" } } },
