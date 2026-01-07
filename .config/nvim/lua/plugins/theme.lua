@@ -5,7 +5,7 @@ return {
     lazy = true,
     config = function()
       require("onedark").setup({
-        style = "cool", -- dark, darker, cool, deep, warm, warmer, light
+        style = "dark", -- dark, darker, cool, deep, warm, warmer, light
         lualine = {
           transparent = true, -- lualine center bar transparency
         },
@@ -20,24 +20,10 @@ return {
     config = function()
       require("vscode").setup({
         transparent = false,
+        disable_nvimtree_bg = true,
       })
 
       vim.cmd.colorscheme("vscode")
-    end,
-  },
-  {
-    "projekt0n/github-nvim-theme",
-    name = "github-theme",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      require("github-theme").setup({
-        options = {
-          transparent = true,
-        },
-      })
-
-      vim.cmd("colorscheme github_dark_dimmed")
     end,
   },
   {
@@ -46,32 +32,30 @@ return {
     priority = 1000,
     config = function()
       require("nightfox").setup()
-      vim.cmd("colorscheme nordfox")
+      vim.cmd("colorscheme carbonfox")
     end,
   },
   {
-    "zenbones-theme/zenbones.nvim",
+    "shaunsingh/nord.nvim",
     lazy = true,
     priority = 1000,
-    dependencies = "rktjmp/lush.nvim",
     config = function()
-      vim.g.zenbones_darken_comments = 45
-      -- vim.cmd.colorscheme("zenwritten")
-      -- vim.cmd("set background=light")
+      vim.g.nord_italic = false
+      vim.g.nord_bold = false
 
-      vim.cmd.colorscheme("nordbones")
+      require("lualine").setup({
+        options = {
+          theme = "nord",
+        },
+      })
+
+      vim.cmd.colorscheme("nord")
     end,
   },
   {
-    "sam4llis/nvim-tundra",
+    "rmehri01/onenord.nvim",
     lazy = true,
     priority = 1000,
-    config = function()
-      require("nvim-tundra").setup({})
-
-      vim.g.tundra_biome = "arctic" -- arctic or jungle
-      vim.opt.background = "dark"
-      vim.cmd.colorscheme("tundra")
-    end,
+    config = true,
   },
 }

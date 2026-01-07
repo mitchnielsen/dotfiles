@@ -1,7 +1,7 @@
 # https://ghostty.org/docs/config/reference
 # https://ghostty.zerebos.com
 
-theme = NordFox
+theme = CarbonFox
 
 # Font settings
 font-size = 13
@@ -28,6 +28,9 @@ keybind = cmd+physical:two=text:\x02\x32
 keybind = cmd+physical:three=text:\x02\x33
 keybind = cmd+physical:four=text:\x02\x34
 keybind = cmd+physical:five=text:\x02\x35
+
+# edit tmux pane
+keybind = cmd+y=write_scrollback_file:open
 
 # For some reason this writes a `#`.
 keybind = cmd+shift+3=ignore

@@ -13,7 +13,7 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
 export FZF_DEFAULT_OPTS=""
-export BAT_THEME="Nord"
+export BAT_THEME="ansi"
 export MANPAGER='nvim +Man!'
 
 # For building dependencies
