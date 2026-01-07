@@ -1,6 +1,6 @@
 return {
-  'mfussenegger/nvim-lint',
-  event = 'LspAttach',
+  "mfussenegger/nvim-lint",
+  event = "LspAttach",
   config = function()
     vim.diagnostic.config({
       focus = false,
@@ -10,12 +10,12 @@ return {
       signs = true,
       severity_sort = true,
       float = {
-        header = 'Diagnostics',
+        header = "Diagnostics",
         source = true,
-        border = 'rounded',
+        border = "rounded",
         format = function(diagnostic)
           if diagnostic.user_data and diagnostic.user_data.code then
-            return string.format('%s %s', diagnostic.user_data.code, diagnostic.message)
+            return string.format("%s %s", diagnostic.user_data.code, diagnostic.message)
           else
             return diagnostic.message
           end
@@ -23,28 +23,31 @@ return {
       },
     })
 
-    -- create custom filetypes for use by specific linters
     vim.filetype.add({
       pattern = {
-        ['.*/.github/workflows/.*%.yml'] = 'yaml.ghaction',
-        ['.*/.github/workflows/.*%.yaml'] = 'yaml.ghaction',
+        [".*/.github/workflows/.*%.yml"] = "yaml.ghaction",
+        [".*/.github/workflows/.*%.yaml"] = "yaml.ghaction",
       },
     })
 
-    local lint = require('lint')
+    local lint = require("lint")
+
+    -- Ensures that shellcheck can follow external sources
+    -- https://github.com/mfussenegger/nvim-lint/issues/43
+    lint.linters.shellcheck.args = { "-s", "sh", "--format", "json", "-x", "-" }
 
     lint.linters_by_ft = {
-      sh = {'shellcheck'},
-      bash = {'shellcheck'},
-      ghaction = {'actionlint'},
-      yaml = {'yamllint'},
-      markdown = {'markdownlint', 'vale'},
-      ruby = {'rubocop'},
-      json = {'jsonlint'},
-      python = {'ruff'},
-      terraform = {'tflint'},
-      go = {'golangcilint'},
-      dockerfile = {'hadolint'},
+      sh = { "shellcheck" },
+      bash = { "shellcheck" },
+      ghaction = { "actionlint" },
+      yaml = { "yamllint" },
+      markdown = { "markdownlint", "vale" },
+      ruby = { "rubocop" },
+      json = { "jsonlint" },
+      python = { "ruff" },
+      terraform = { "tflint" },
+      go = { "golangcilint" },
+      dockerfile = { "hadolint" },
     }
 
     lint.try_lint()
@@ -66,5 +69,5 @@ return {
         print("No linters configured for filetype: " .. filetype)
       end
     end, {})
-  end
+  end,
 }
