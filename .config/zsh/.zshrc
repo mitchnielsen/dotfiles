@@ -79,7 +79,7 @@ bindkey "^[[1;3D" backward-word
 bindkey '^[^?' backward-kill-word
 
 # FZF widgets
-bindkey '^F' fzf-file-widget
+bindkey '^T' fzf-file-widget
 bindkey '^G' fzf-cd-widget
 
 # Use emacs-like shortcuts with vi-mode
