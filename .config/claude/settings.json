@@ -28,7 +28,6 @@
       "Bash(git push:*)"
     ]
   },
-  "model": "sonnet[1m]",
   "enableAllProjectMcpServers": true,
   "statusLine": {
     "type": "command",
