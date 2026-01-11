@@ -59,6 +59,10 @@ function macos_settings() {
   defaults write com.apple.dock no-bouncing -bool TRUE # disable app icon bouncing
   # Show hidden files in Finder
   defaults write com.apple.Finder AppleShowAllFiles true
+  # Always open everything in Finder's list view.
+  defaults write com.apple.Finder FXPreferredViewStyle Nlsv
+  # Show the ~/Library folder.
+  chflags nohidden ~/Library
   # Save settings
   killall Dock
 }
