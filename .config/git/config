@@ -58,6 +58,8 @@
   ds = diff --staged
   dm = !git diff $(git merge-base HEAD $(git db))
   reauthor = !git commit --amend --no-edit
+  latest-tag = !gh release list -L 2 --json tagName -q '.[0].tagName'
+  previous-tag = !gh release list -L 2 --json tagName -q '.[1].tagName'
 [commit]
   template = ~/.config/git/gitmessage
   verbose = true # show the entire diff in the commit window for context
