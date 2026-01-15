@@ -4,6 +4,8 @@ return {
   lazy = false,
   config = function()
     require("mini.ai").setup()
+    require("mini.cmdline").setup()
+
     require("mini.comment").setup()
     require("mini.cursorword").setup()
 
