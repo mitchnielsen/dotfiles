@@ -45,6 +45,7 @@
   ap = add -p .
   co = checkout
   cm = commit --verbose
+  cp = cherry-pick
   st = status
   pl = pull
   plm = pull origin main
