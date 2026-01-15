@@ -26,7 +26,7 @@ fi
 parent_branch=$(git reflog show HEAD --format="%gs" | \
   grep -E "checkout: moving from .* to ${branch_name}" | \
   head -1 | \
-  sed -E "s/checkout: moving from (.*) to ${branch_name}/\1/")
+  sed -E "s;checkout: moving from (.*) to ${branch_name};\1;")
 
 # Fall back to default branch if we can't determine parent
 if [ -z "${parent_branch}" ]; then
