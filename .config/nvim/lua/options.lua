@@ -23,7 +23,7 @@ local options = {
 
   -- Editing
   termguicolors = true,
-  number = false,
+  number = true,
   relativenumber = false,
   showmode = false,
   fileformat = "unix",
