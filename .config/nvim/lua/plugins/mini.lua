@@ -6,6 +6,17 @@ return {
     require("mini.ai").setup()
     require("mini.comment").setup()
     require("mini.cursorword").setup()
+
+    require("mini.diff").setup({
+      view = {
+        style = "sign",
+        signs = { add = "+", change = "~", delete = "-" },
+      },
+      mappings = {
+        apply = "ghs",
+        reset = "ghr",
+      },
+    })
     require("mini.git").setup()
     require("mini.icons").setup()
     require("mini.pairs").setup()
@@ -63,6 +74,13 @@ return {
         require("mini.files").open(vim.api.nvim_buf_get_name(0))
       end,
       desc = "file explorer (current file)",
+    },
+    {
+      "<leader>ghp",
+      function()
+        require("mini.diff").toggle_overlay()
+      end,
+      desc = "toggle git hunk preview",
     },
   },
 }
