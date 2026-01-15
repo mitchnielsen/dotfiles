@@ -146,5 +146,7 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # To disable highlighting of globbing expressions
 ZSH_HIGHLIGHT_STYLES[globbing]='none'
+# disable cursor style changes, just use the block
+ZVM_CURSOR_STYLE_ENABLED=false
 
 eval "$(starship init zsh)"
