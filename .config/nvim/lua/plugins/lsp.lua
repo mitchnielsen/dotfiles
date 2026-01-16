@@ -170,6 +170,18 @@ return {
         },
       },
       yamlls = {
+        root_dir = function(fname, _bufnr)
+          -- Handle case where fname might be a buffer number
+          if type(fname) == "number" then
+            fname = vim.api.nvim_buf_get_name(fname)
+          end
+          local util = require("lspconfig.util")
+          -- Disable yamlls for Helm chart templates
+          if fname:match("templates/.*%.yaml$") or fname:match("templates/.*%.yml$") then
+            return nil
+          end
+          return util.find_git_ancestor(fname) or util.path.dirname(fname)
+        end,
         settings = {
           yaml = {
             schemaStore = {
