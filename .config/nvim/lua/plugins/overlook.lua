@@ -4,21 +4,21 @@ return {
 
   keys = {
     {
-      "<leader>pd",
+      "<leader>gd",
       function()
         require("overlook.api").peek_definition()
       end,
       desc = "Overlook: Peek definition",
     },
     {
-      "<leader>pc",
+      "<leader>gc",
       function()
         require("overlook.api").close_all()
       end,
       desc = "Overlook: Close all popup",
     },
     {
-      "<leader>pu",
+      "<leader>gu",
       function()
         require("overlook.api").restore_popup()
       end,
