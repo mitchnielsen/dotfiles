@@ -23,7 +23,28 @@ return {
     require("mini.icons").setup()
     require("mini.pairs").setup()
     require("mini.surround").setup()
-    require("mini.trailspace").setup()
+    require("mini.trailspace").setup({
+      only_in_normal_buffers = true,
+    })
+
+    -- Disable trailspace in snacks dashboard
+    local trailspace_group = vim.api.nvim_create_augroup("MiniTrailspaceDashboard", { clear = true })
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "snacks_dashboard",
+      callback = function()
+        vim.b.minitrailspace_disable = true
+        require("mini.trailspace").unhighlight()
+      end,
+      group = trailspace_group,
+    })
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "SnacksDashboardOpened",
+      callback = function()
+        vim.b.minitrailspace_disable = true
+        require("mini.trailspace").unhighlight()
+      end,
+      group = trailspace_group,
+    })
 
     require("mini.bracketed").setup({
       buffer = { suffix = "b", options = {} },
