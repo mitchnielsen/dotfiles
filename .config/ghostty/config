@@ -8,6 +8,9 @@ font-size = 13
 font-family = "SFMono Nerd Font"
 adjust-cell-height = "25%"
 
+# Cursor settings
+cursor-style = block
+
 # Styles: blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
 # Disabled to provide my own
 # macos-icon = ""
