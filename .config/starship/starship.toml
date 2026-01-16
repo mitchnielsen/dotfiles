@@ -1,12 +1,23 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
-$directory$git_branch$git_status$git_state$python$kubernetes$terraform$nodejs$cmd_duration$jobs$direnv$custom$fill
+$directory$git_branch$git_status$git_state $fill $python$kubernetes$aws$terraform$nodejs$cmd_duration$jobs$direnv
 $character
 """
 
+docker_context = { disabled = true }
+gcloud = { disabled = true }
+golang = { disabled = true }
+helm = { disabled = true }
+hostname = { disabled = true }
+package = { disabled = true }
+ruby = { disabled = true }
+username = { disabled = true }
+
 [fill]
-disabled = true
+disabled = false
 symbol = '-'
-style = 'gray'
+style = '240'
 
 [direnv]
 disabled = false
@@ -23,27 +34,6 @@ format = ' [$symbol$number]($style) '
 [line_break]
 disabled = false
 
-[package]
-disabled = true
-
-[helm]
-disabled = true
-
-[ruby]
-disabled = true
-
-[golang]
-disabled = true
-
-[hostname]
-disabled = true
-
-[username]
-disabled = true
-
-[gcloud]
-disabled = true
-
 [python]
 disabled = false
 python_binary = 'python3'
@@ -55,20 +45,19 @@ format = '[(${version} )(\($virtualenv\) )]($style)'
 disabled = false
 format = '[node:($version)]($style) '
 
-[docker_context]
-disabled = true
-
 [kubernetes]
 disabled = false
-format = 'in [☸ $context:$namespace](purple) '
+format = ' [☸ $context:$namespace](purple)'
 
 [terraform]
 disabled = false
 format = '[tf:$workspace]($style) '
 
-# # -----
-# # https://starship.rs/presets/pure-preset.html
-# # -----
+[aws]
+disabled = false
+format = ' [aws:$symbol($profile )(\($region\) )]($style)'
+symbol = ''
+
 [character]
 success_symbol = '[\$](white)'
 error_symbol = '[\$](red)'
@@ -79,8 +68,7 @@ truncate_to_repo = false
 style = "white"
 
 [git_status]
-# format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](red)($ahead_behind$stashed)]($style)"
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](red)($ahead_behind$stashed)](white)"
+format =   "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](red)($ahead_behind$stashed)](white)"
 ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
