@@ -65,11 +65,11 @@ return {
           end
 
           return MiniStatusline.combine_groups({
-            { hl = "MiniStatuslineFilename", strings = { filename } },
-            { hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
+            { hl = "", strings = { filename } },
+            { hl = "", strings = { diagnostics } },
             "%<",
             "%=",
-            { hl = "MiniStatuslineFileinfo", strings = { selection, search, location } },
+            { hl = "", strings = { selection, search, location } },
           })
         end,
       },
