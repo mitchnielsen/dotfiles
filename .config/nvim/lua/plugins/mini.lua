@@ -23,6 +23,22 @@ return {
     require("mini.icons").setup()
     require("mini.pairs").setup()
     require("mini.surround").setup()
+
+    require("mini.starter").setup({
+      evaluate_single = true,
+      items = {
+        require("mini.starter").sections.builtin_actions(),
+        require("mini.starter").sections.recent_files(5, false),
+        require("mini.starter").sections.recent_files(5, true),
+      },
+      content_hooks = {
+        require("mini.starter").gen_hook.indexing("all", { "Builtin actions" }),
+        require("mini.starter").gen_hook.padding(3, 2),
+        require("mini.starter").gen_hook.aligning("center", "center"),
+      },
+      footer = "", -- hide instructions
+    })
+
     require("mini.trailspace").setup({
       only_in_normal_buffers = true,
     })
