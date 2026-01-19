@@ -3,13 +3,14 @@ return {
   dependencies = "kyazdani42/nvim-web-devicons",
   cmd = "FzfLua",
   keys = {
-    { "<leader>gg", "<cmd>FzfLua live_grep<CR>", desc = "grep" },
-    { "<leader>gG", "<cmd>FzfLua live_grep_resume<CR>", desc = "grep resume" },
-    { "<leader>gw", "<cmd>FzfLua grep_cword<CR>", desc = "grep cursor word" },
-    { "<leader>f", "<cmd>FzfLua files<CR>", desc = "files" },
-    { "<leader>b", "<cmd>FzfLua buffers<CR>", desc = "grep buffers" },
-    { "<leader>s", "<cmd>FzfLua lsp_document_symbols<CR>", desc = "symbols" }, -- default: gO
-    { "<leader>h", "<cmd>FzfLua lsp_document_diagnostics<CR>", desc = "diagnostics" },
+    { "<leader>ff", "<cmd>FzfLua files<CR>", desc = "[f]ind [f]iles" },
+    { "<leader>fg", "<cmd>FzfLua live_grep<CR>", desc = "[f]ind with [g]rep" },
+    { "<leader>fG", "<cmd>FzfLua live_grep_resume<CR>", desc = "[f]ind with [g]rep (resume)" },
+    { "<leader>fw", "<cmd>FzfLua grep_cword<CR>", desc = "[f]ind [w]ord under cursor with grep" },
+    { "<leader>fb", "<cmd>FzfLua buffers<CR>", desc = "[f]ind [b]uffers" },
+    { "<leader>fs", "<cmd>FzfLua lsp_document_symbols<CR>", desc = "[f]ind [s]ymbols" }, -- default: gO
+    { "<leader>fd", "<cmd>FzfLua lsp_document_diagnostics<CR>", desc = "[f]ind [d]iagnostics" },
+    { "<leader>fc", "<cmd>FzfLua command_history<CR>", desc = "[f]ind [c]ommand history" },
   },
   config = function()
     local actions = require("fzf-lua.actions")
