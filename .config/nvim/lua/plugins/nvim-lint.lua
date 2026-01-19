@@ -58,6 +58,15 @@ return {
       end,
     })
 
+    -- Add a keymap to toggle linters
+    vim.keymap.set("n", "<leader>l", function()
+      if vim.diagnostic.is_enabled() then
+        vim.diagnostic.enable(false)
+      else
+        vim.diagnostic.enable(true)
+      end
+    end, { desc = "toggle linters" })
+
     -- Show linters for the current buffer's file type
     vim.api.nvim_create_user_command("LintInfo", function()
       local filetype = vim.bo.filetype
