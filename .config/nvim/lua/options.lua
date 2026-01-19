@@ -29,7 +29,6 @@ local options = {
   relativenumber = false,
   showmode = false,
   fileformat = "unix",
-  laststatus = 0,
   paste = false,
   errorbells = false,
   mouse = "a",

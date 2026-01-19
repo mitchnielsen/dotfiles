@@ -39,6 +39,47 @@ return {
       footer = "", -- hide instructions
     })
 
+    require("mini.statusline").setup({
+      set_vim_settings = false, -- We'll use winbar instead
+      content = {
+        active = function()
+          -- we'll use statusline's location information
+          vim.opt.ruler = false
+
+          local MiniStatusline = require("mini.statusline")
+
+          local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+          local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+          local search = MiniStatusline.section_searchcount({})
+          local location = MiniStatusline.section_location({})
+
+          -- Selection count (replicates lualine's selectioncount)
+          local selection = ""
+          local mode_char = vim.fn.mode()
+          if mode_char:match("[vV\22]") then
+            local starts = vim.fn.line("v")
+            local ends = vim.fn.line(".")
+            local lines = math.abs(ends - starts) + 1
+            local vcount = vim.fn.wordcount()
+            local chars = vcount.visual_chars or 0
+            selection = string.format("%dL %dC", lines, chars)
+          end
+
+          return MiniStatusline.combine_groups({
+            { hl = "MiniStatuslineFilename", strings = { filename } },
+            { hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
+            "%<",
+            "%=",
+            { hl = "MiniStatuslineFileinfo", strings = { selection, search, location } },
+          })
+        end,
+      },
+    })
+
+    -- Use winbar (top) instead of statusline (bottom)
+    vim.o.laststatus = 0
+    vim.o.winbar = "%!v:lua.MiniStatusline.active()"
+
     require("mini.trailspace").setup({
       only_in_normal_buffers = true,
     })
