@@ -11,6 +11,7 @@ local options = {
   list = true,
   listchars = { tab = "▸ ", trail = "·" },
   winborder = "rounded",
+  shortmess = "CFOSWaco", -- Disable some built-in completion messages
 
   -- Spacing
   shiftwidth = 2,
@@ -19,6 +20,7 @@ local options = {
   softtabstop = 2,
   smartindent = true,
   breakindent = true,
+  breakindentopt = "list:-1", -- Add padding for lists (if 'wrap' is set)
   autoindent = true,
 
   -- Editing
@@ -45,8 +47,8 @@ local options = {
   splitright = true,
   diffopt = "vertical",
   cursorline = true,
-  cursorcolumn = false,
   cursorlineopt = "screenline,number", -- Highlight per screen line and number
+  cursorcolumn = false,
   conceallevel = 0,
   iskeyword = "@,48-57,192-255", -- Characters that form keywords (includes dash)
 
