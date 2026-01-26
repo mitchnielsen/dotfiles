@@ -26,4 +26,4 @@ alias clp='claude code -p'
 alias tf='terraform'
 alias lg='lazygit'
 
-alias python-venv='if [ ! -f ./.venv/bin/activate ]; then echo Creating virtualenv...; uv venv --python=3.12; fi; source .venv/bin/activate'
+alias python-venv='if [ ! -f ./.venv/bin/activate ]; then echo Creating virtualenv...; uv venv --python=3.13; fi; source .venv/bin/activate'
