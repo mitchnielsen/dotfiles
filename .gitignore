@@ -28,3 +28,8 @@
 # Codex
 !.config/codex/AGENTS.md
 .config/codex/
+
+# Glide
+.config/glide/glide.d.ts
+.config/glide/tsconfig.json
+.config/glide/package.json
