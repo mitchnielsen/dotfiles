@@ -1,0 +1,29 @@
+# vi: ft=conf :
+# koda-light theme based on https://github.com/oskarnurm/koda.nvim
+
+# normal colors
+palette = 0=#101010
+palette = 1=#ca0043
+palette = 2=#407f00
+palette = 3=#b07700
+palette = 4=#006acf
+palette = 5=#af00db
+palette = 6=#0253be
+palette = 7=#3d3d3d
+
+# bright colors
+palette = 8=#808080
+palette = 9=#ca0043
+palette = 10=#407f00
+palette = 11=#b07700
+palette = 12=#006acf
+palette = 13=#af00db
+palette = 14=#0253be
+palette = 15=#000000
+
+background = #faf9f5
+foreground = #101010
+cursor-color = #3d3d3d
+
+selection-background = #006acf
+selection-foreground = #faf9f5
