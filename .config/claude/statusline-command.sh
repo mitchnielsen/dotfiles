@@ -1,43 +1,60 @@
 #!/bin/bash
 
-# Claude Code Status Line Script
-# Shows current directory and git branch information
-
 # Read JSON input from stdin
 input=$(cat)
 
-# Extract paths and model info
-current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
-project_dir=$(echo "$input" | jq -r '.workspace.project_dir')
-model=$(echo "$input" | jq -r '.model.display_name')
+# Format numbers with K/M suffixes
+format_number() {
+    local num=$1
+    if [ -z "$num" ] || [ "$num" -eq 0 ] 2>/dev/null; then
+        echo "0"
+    elif [ "$num" -ge 1000000 ] 2>/dev/null; then
+        awk "BEGIN {printf \"%.2fM\", $num/1000000}"
+    elif [ "$num" -ge 1000 ] 2>/dev/null; then
+        awk "BEGIN {printf \"%.1fK\", $num/1000}"
+    else
+        echo "$num"
+    fi
+}
 
-# Get git information (skip locks for performance)
-cd "$current_dir" 2>/dev/null || cd "/"
-git_branch=$(git branch --show-current 2>/dev/null)
+# Extract values using jq
+CURRENT_DIR=$(echo "$input" | jq -r '.workspace.current_dir')
+# Replace home directory with ~
+CURRENT_DIR="${CURRENT_DIR/#$HOME/~}"
+MODEL=$(echo "$input" | jq -r '.model.display_name')
+REMAINING_PERCENT=$(echo "$input" | jq -r '.context_window.remaining_percentage // 100')
+USED_PERCENT=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
 
-# Calculate directory display relative to home
-home_dir="$HOME"
-if [[ "$current_dir" == "$home_dir" ]]; then
-    # At home directory
-    rel_dir="~"
-elif [[ "$current_dir" == "$home_dir"/* ]]; then
-    # Inside home directory, show relative path with ~ prefix
-    rel_path="${current_dir#"$home_dir"/}"
-    rel_dir="~/$rel_path"
+# Create a bar chart for context remaining (battery drains as context is used)
+BLOCKS=$((REMAINING_PERCENT / 10))
+BAR=""
+for ((i=0; i<10; i++)); do
+    if [ $i -lt $BLOCKS ]; then
+        BAR="${BAR}█"
+    else
+        BAR="${BAR}░"
+    fi
+done
+
+# Color the battery bar based on remaining context
+if [ "$REMAINING_PERCENT" -lt 12 ]; then
+    BAR="\033[38;5;196m${BAR}\033[0m"  # Red
+elif [ "$REMAINING_PERCENT" -lt 25 ]; then
+    BAR="\033[38;5;226m${BAR}\033[0m"  # Yellow
 else
-    # Outside home directory, show full path
-    rel_dir="$current_dir"
+    BAR="\033[38;5;114m${BAR}\033[0m"  # Green
 fi
 
-# Build status line
-status_line="$rel_dir"
-
-# Add git branch info if available
-if [[ -n "$git_branch" ]]; then
-    status_line="$status_line ($git_branch)"
+# Calculate transcript tokens from character count
+TRANSCRIPT_PATH=$(echo "$input" | jq -r '.transcript_path')
+if [ -f "$TRANSCRIPT_PATH" ]; then
+    CHAR_COUNT=$(wc -c < "$TRANSCRIPT_PATH")
+    TRANSCRIPT_TOKENS=$((CHAR_COUNT / 4))
+else
+    TRANSCRIPT_TOKENS=0
 fi
+TRANSCRIPT_TOKENS_FORMATTED=$(format_number $TRANSCRIPT_TOKENS)
 
-# Add model info
-status_line="$status_line [$model]"
-
-printf "%s" "$status_line"
+# Format and output the statusline
+printf "  🤖 %s 🔋 %b 📝 %s  " \
+    "$MODEL" "$BAR" "$TRANSCRIPT_TOKENS_FORMATTED"
