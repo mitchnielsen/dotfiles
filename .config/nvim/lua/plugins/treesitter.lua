@@ -1,40 +1,29 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    "daliusd/incr.nvim", -- incremental selection
+  },
   lazy = false,
   build = ":TSUpdate",
-  branch = "master",
+  branch = "main",
   config = function()
-    ---@diagnostic disable-next-line: missing-fields
-    require("nvim-treesitter.configs").setup({
-      auto_install = true,
-      ensure_installed = {
-        "bash",
-        "dockerfile",
-        "go",
-        "graphql",
-        "hcl",
-        "json",
-        "lua",
-        "make",
-        "ruby",
-        "terraform",
-        "yaml",
-      },
-      highlight = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<CR>",
-          scope_incremental = "<CR>",
-          node_incremental = "<TAB>",
-          node_decremental = "<S-TAB>",
-        },
-      },
+    require("nvim-treesitter").install({
+      "bash",
+      "dockerfile",
+      "go",
+      "graphql",
+      "hcl",
+      "json",
+      "lua",
+      "make",
+      "ruby",
+      "terraform",
+      "yaml",
+    })
+
+    require("incr").setup({
+      incr_key = "<tab>",
+      decr_key = "<s-tab>",
     })
   end,
 }
