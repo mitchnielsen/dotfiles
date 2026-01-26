@@ -37,7 +37,7 @@ return {
   config = function()
     local vim = vim
 
-    -- Disable to avoid a large log file.
+    -- Disable to avoid a large logfile.
     -- Set to "debug" when debugging.
     vim.lsp.log.set_level("off")
 
@@ -170,17 +170,17 @@ return {
         },
       },
       yamlls = {
-        root_dir = function(fname, _bufnr)
+        root_dir = function(fname, _)
           -- Handle case where fname might be a buffer number
           if type(fname) == "number" then
             fname = vim.api.nvim_buf_get_name(fname)
           end
-          local util = require("lspconfig.util")
+
           -- Disable yamlls for Helm chart templates
           if fname:match("templates/.*%.yaml$") or fname:match("templates/.*%.yml$") then
             return nil
           end
-          return util.find_git_ancestor(fname) or util.path.dirname(fname)
+          return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1]) or vim.fs.dirname
         end,
         settings = {
           yaml = {
