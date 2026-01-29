@@ -15,7 +15,6 @@ Use the following indicators to apply metadata to the issue:
 
 - Team: usually Platform, but customer-managed-related repositories indicate
   that the issue should be created in the Customer Managed team.
-- Cycle: assign the currently-active cycle.
 - Assignee: assign myself.
 - Labels: infer labels from the `type` and `repo` label groups.
 - Infer labels, estimate, and priority from the pull request details and changes.
