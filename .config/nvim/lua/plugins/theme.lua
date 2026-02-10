@@ -89,6 +89,9 @@ return {
         bold = true, -- disable bold for functions and keywords
         italic = false, -- enable italics for comments and strings
         transparent = false, -- enable for transparent backgrounds
+        colors = {
+          bg = "#ffffff",
+        },
       })
 
       vim.cmd("colorscheme koda")
