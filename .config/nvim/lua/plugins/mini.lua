@@ -49,7 +49,6 @@ return {
           local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
           local filename = MiniStatusline.section_filename({ trunc_width = 140 })
           local search = MiniStatusline.section_searchcount({})
-          local location = MiniStatusline.section_location({})
 
           -- Selection count (replicates lualine's selectioncount)
           local selection = ""
@@ -68,7 +67,7 @@ return {
             { hl = "", strings = { diagnostics } },
             "%<",
             "%=",
-            { hl = "", strings = { selection, search, location } },
+            { hl = "", strings = { selection, search } },
           })
         end,
       },
