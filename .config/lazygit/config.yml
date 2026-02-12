@@ -14,7 +14,7 @@ git:
   autoForwardBranches: none
   pagers:
     - colorArg: always
-      pager: "delta --paging=never --light"
+      pager: "delta --paging=never"
 
 os:
   editPreset: 'nvim'
