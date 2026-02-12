@@ -10,6 +10,7 @@ gcloud = { disabled = true }
 golang = { disabled = true }
 helm = { disabled = true }
 hostname = { disabled = true }
+nodejs = { disabled = true }
 package = { disabled = true }
 ruby = { disabled = true }
 username = { disabled = true }
@@ -40,10 +41,6 @@ python_binary = 'python3'
 pyenv_version_name = true
 symbol = ''
 format = '[(${version} )(\($virtualenv\) )]($style)'
-
-[nodejs]
-disabled = false
-format = '[node:($version)]($style) '
 
 [kubernetes]
 disabled = false
