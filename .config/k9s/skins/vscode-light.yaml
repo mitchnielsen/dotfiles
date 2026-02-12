@@ -1,0 +1,113 @@
+# VSCode Light theme for k9s
+
+foreground: &foreground "#000000"
+background: &background default
+primary: &primary "#007acc"
+secondary: &secondary "#008000"
+accent: &accent "#af00db"
+warning: &warning "#bf8803"
+error: &error "#c72e0f"
+muted: &muted "#808080"
+border: &border "#d4d4d4"
+highlight: &highlight "#add6ff"
+
+# Skin configuration
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *primary
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *accent
+  info:
+    fgColor: *muted
+    sectionColor: *secondary
+  help:
+    fgColor: *foreground
+    bgColor: *background
+    keyColor: *accent
+    numKeyColor: *primary
+    sectionColor: *secondary
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: "#ffffff"
+    buttonBgColor: *primary
+    buttonFocusFgColor: *foreground
+    buttonFocusBgColor: *highlight
+    labelFgColor: *primary
+    fieldFgColor: *foreground
+  frame:
+    border:
+      fgColor: *border
+      focusColor: *primary
+    menu:
+      fgColor: *foreground
+      keyColor: *primary
+      numKeyColor: *warning
+    crumbs:
+      fgColor: "#ffffff"
+      bgColor: *primary
+      activeColor: *accent
+    status:
+      newColor: *secondary
+      modifyColor: *primary
+      addColor: *secondary
+      pendingColor: *warning
+      errorColor: *error
+      highlightColor: *warning
+      killColor: *error
+      completedColor: *muted
+    title:
+      fgColor: *primary
+      bgColor: *background
+      highlightColor: *accent
+      counterColor: *foreground
+      filterColor: *primary
+  views:
+    charts:
+      bgColor: *background
+      defaultDialColors:
+        - *secondary
+        - *error
+      defaultChartColors:
+        - *primary
+        - *secondary
+        - *accent
+        - *warning
+        - *error
+    table:
+      fgColor: *foreground
+      bgColor: *background
+      cursorFgColor: *foreground
+      cursorBgColor: *highlight
+      markColor: *accent
+      header:
+        fgColor: *muted
+        bgColor: *background
+        sorterColor: *warning
+    xray:
+      fgColor: *primary
+      bgColor: *background
+      cursorColor: *foreground
+      graphicColor: *accent
+      showIcons: false
+    yaml:
+      keyColor: *primary
+      colonColor: *muted
+      valueColor: *secondary
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary
+        bgColor: *background
+        toggleOnColor: *secondary
+        toggleOffColor: *muted
+    help:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary

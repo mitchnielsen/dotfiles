@@ -1,0 +1,23 @@
+# No clown fiesta light ghostty theme
+palette = 0=#E1E1E1
+palette = 1=#A04030
+palette = 2=#6A8944
+palette = 3=#C78F40
+palette = 4=#4A90D9
+palette = 5=#8B5A82
+palette = 6=#5E8A7D
+palette = 7=#2A2A2A
+palette = 8=#606060
+palette = 9=#F5F5F5
+palette = 10=#F0F5EF
+palette = 11=#C78F40
+palette = 12=#F0F2F5
+palette = 13=#8B5A82
+palette = 14=#5E8A7D
+palette = 15=#151515
+
+background = #E1E1E1
+foreground = #2A2A2A
+cursor-color = #404040
+selection-background = #2A2A2A
+selection-foreground = #FAFAFA
