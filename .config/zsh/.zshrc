@@ -27,7 +27,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
 
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
@@ -57,12 +56,12 @@ fi
 # Settings
 # ===================
 
-set histignorespace # ignore command in history if it starts with space
-unsetopt share_history # don't share history between sessions
+setopt histignorespace # ignore command in history if it starts with space
 setopt hist_ignore_dups # dont save duplicate entries in history
-unsetopt beep # never beep
 setopt completealiases # perform completions and then expand aliases
 setopt hist_verify # ask for verification when recalling from history
+unsetopt share_history # don't share history between sessions
+unsetopt beep # never beep
 
 # ===================
 # Bindings
