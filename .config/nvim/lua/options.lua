@@ -8,7 +8,7 @@ local options = {
   cmdheight = 2,
   timeoutlen = 400,
   pumheight = 20,
-  list = true,
+  list = false,
   listchars = { tab = "▸ ", trail = "·" },
   winborder = "rounded",
   shortmess = "CFOSWaco", -- Disable some built-in completion messages
