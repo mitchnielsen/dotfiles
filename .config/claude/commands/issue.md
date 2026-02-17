@@ -2,8 +2,8 @@ Create an issue in Linear using the Linear MCP server.
 
 Use the following context in the issue: #$ARGUMENTS
 
-If I don't specify which team to use for the issue, use "Platform" team under
-the "Engineering" team.
+If I don't specify which team to use for the issue, use "Platform"
+(ID: 0cf54a8c-b85d-4637-b6fd-89670b625782).
 
 If I don't specify a status, use Backlog.
 

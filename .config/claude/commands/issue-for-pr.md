@@ -13,8 +13,10 @@ in DEF".
 
 Use the following indicators to apply metadata to the issue:
 
-- Team: usually Platform, but customer-managed-related repositories indicate
-  that the issue should be created in the Customer Managed team.
+- Team: usually Platform (ID: 0cf54a8c-b85d-4637-b6fd-89670b625782), but
+  customer-managed-related repositories indicate that the issue should be
+  created in the Customer Managed team
+  (ID: 6154c1ee-2d52-4d3b-a5cd-395789c8696e).
 - Assignee: assign myself.
 - Labels: infer labels from the `type` and `repo` label groups.
 - Infer labels, estimate, and priority from the pull request details and changes.
