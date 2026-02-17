@@ -33,6 +33,7 @@ Please identify the subject matter EXPERT or EXPERTS most qualified to provide a
 - Use `gh` for interacting with GitHub.
 - Use `mise` for running tasks when `.mise.toml` is present
 - Use `make` when a Makefile is present
+- Do not use em-dashes (-). Use separate sentences instead.
 
 ## Philosophy
 
