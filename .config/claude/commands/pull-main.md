@@ -1,8 +1,12 @@
-Pull in changes from the main branch.
+---
+name: pull-main
+description: Pull in changes from the main branch
+---
 
-Use `git pull origin main` to bring in changes from the main
-branch. DO NOT use `--rebase`. I want this to be a merge commit
-so I can see it in the git history and revert if needed.
+Use `git pull origin main` to bring in changes from the main branch.
 
-Address any merge conflicts that might arise. If you're unsure
-of how to resolve them, stop and ask me.
+DO NOT use `--rebase`. I want this to be a merge commit so I can see it in the
+git history and revert if needed.
+
+Address any merge conflicts that might arise. If you're unsure of how to
+resolve them, stop and ask me.

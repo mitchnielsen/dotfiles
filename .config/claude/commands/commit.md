@@ -1,4 +1,9 @@
-# Commit our changes in version control
+---
+name: commit
+description: Commit our changes in version control
+---
+
+# Commit
 
 ## Prerequisites
 

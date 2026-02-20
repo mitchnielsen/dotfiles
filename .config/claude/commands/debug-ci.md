@@ -1,6 +1,9 @@
-Debug a CI failure.
+---
+name: debug-ci
+description: Debug a CI failure
+---
 
-CI run: #$ARGUMENTS
+CI run reference: $ARGUMENTS
 
 Use the `gh` CLI to look at the logs for the CI run provided
 as the argument to this command.

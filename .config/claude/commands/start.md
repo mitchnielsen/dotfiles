@@ -1,6 +1,9 @@
-Starts work on a new feature branch for a Linear or GitHub issue.
+---
+name: start
+description: Starts work on a new feature branch for a Linear or GitHub issue
+---
 
-Issue: #$ARGUMENTS
+Issue: $ARGUMENTS
 
 If the issue here looks like "ABC-123", it is likely a Linear issue ID, so
 you can look it up using the `linear` MCP tools. If the argument here looks

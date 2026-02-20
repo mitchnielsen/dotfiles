@@ -1,7 +1,10 @@
-Push changes to the git remote.
+---
+name: push
+description: Push changes to the git remote
+---
 
 Push the branch to the remote with `git push origin
 <branch>`.
 
-If there is a conflict, `git pull --rebase`, resolve any conflicts,
-and try again.
+If there are changes on the target branch that are not present locally,
+run `git pull --rebase`.

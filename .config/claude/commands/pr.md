@@ -1,4 +1,7 @@
-Create a PR based on our current branch using the `gh` command-line tool.
+---
+name: pr
+description: Create a PR based on our current branch using the `gh` command-line tool
+---
 
 Additional context from me to include in the PR and commit messages: $ARGUMENTS
 
@@ -12,15 +15,24 @@ synthesize a new one that covers all of those changes.
 
 Assign the PR to me.
 
-## Commit/PR descriptions
+## Pull request title and description
+
+### Content
+
+- Title: follow the Conventional Commits format. If the title is
+  automatically generated from a commit that does not follow the
+  format, update the pull request title to follow it.
+- Always mention related issues when available
+  - Based on our conversation, use "Closes #1234" or "Closes ENG-1234"
+- Include contextual links (logs, issues, PRs, materials) that would help a
+  reviewer get oriented on what we're talking about
+
+### Style
 
 - IMPORTANT: THIS STYLE GUIDE IS REQUIRED AND MANDATORY
 - Be conversational and humble, avoid "comprehensive" or confident
   "root cause" claims, it highlights your Dunning-Kruger issues
 - Brief, focus on what/why not how
-- No checklists or file lists (but change lists OK)
+- No checklists or file lists necessary, but consider existing checklist
+  items if they exist in the pull request template
 - No "Test Plan" checklist
-- Always mention related issues when available
-  - Based on our conversation, use "Closes #1234" or "Closes ENG-1234"
-- Include contextual links (logs, issues, PRs, materials) that would help a
-  reviewer get oriented on what we're talking about

@@ -1,6 +1,9 @@
-Try some work without committing.
+---
+name: try
+description: Try some work without committing
+---
 
 Address the following instructions without committing via git,
 so I have a chance to review the changes first.
 
-#$ARGUMENTS
+Instructions: $ARGUMENTS

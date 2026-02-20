@@ -1,6 +1,9 @@
-Create an issue in Linear using the Linear MCP server.
+---
+name: issue
+description: Create an issue in Linear using the Linear MCP server
+---
 
-Use the following context in the issue: #$ARGUMENTS
+Use the following context in the issue: $ARGUMENTS
 
 If I don't specify which team to use for the issue, use "Platform"
 (ID: 0cf54a8c-b85d-4637-b6fd-89670b625782).
