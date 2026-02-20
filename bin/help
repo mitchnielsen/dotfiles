@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Quick access to cheatsheets
+# from https://cht.sh.
+
+tool="${1}"
+
+curl cht.sh/"${tool}"
