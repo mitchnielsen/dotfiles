@@ -18,9 +18,6 @@ format_number() {
 }
 
 # Extract values using jq
-CURRENT_DIR=$(echo "$input" | jq -r '.workspace.current_dir')
-# Replace home directory with ~
-CURRENT_DIR="${CURRENT_DIR/#$HOME/~}"
 MODEL=$(echo "$input" | jq -r '.model.display_name')
 REMAINING_PERCENT=$(echo "$input" | jq -r '.context_window.remaining_percentage // 100')
 USED_PERCENT=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
