@@ -6,7 +6,8 @@
 
 count=$(docker ps -q | wc -l)
 
-case $count in 1) echo "| $count container" ;;
-  2) echo "| $count containers" ;;
-  *) exit 0 ;;
+case $count in
+  0) exit 0 ;;
+  1) echo "| $count container" ;;
+  *) echo "| $count containers" ;;
 esac
