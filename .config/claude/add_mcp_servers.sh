@@ -19,8 +19,6 @@ add_mcp_if_not_exists grafana add-json grafana --scope=user "{\"command\": \"/op
 
 add_mcp_if_not_exists prefect-docs add prefect-docs --transport=http --scope=user https://docs.prefect.io/mcp
 
-# add_mcp_if_not_exists linear add linear --scope=user --transport=sse https://mcp.linear.app/sse
-# https://github.com/anthropics/claude-code/issues/9127#issuecomment-3419682335
-add_mcp_if_not_exists linear-server add linear --scope user --transport stdio -- npx mcp-remote@0.1.13 https://mcp.linear.app/sse
+add_mcp_if_not_exists linear add linear --scope=user --transport=http https://mcp.linear.app/mcp
 
 add_mcp_if_not_exists mcp-router add mcp-router --scope user --transport stdio -- npx -y @mcp_router/cli@latest connect
