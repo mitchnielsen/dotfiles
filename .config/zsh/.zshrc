@@ -42,9 +42,6 @@ if [ ! -f "${HOME}/.personal_device_marker" ]; then
   export ANTHROPIC_API_KEY=$(cat "${HOME}/secret/anthropic-api-key.txt")
   export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
 
-  # Codex
-  export CODEX_HOME="${HOME}/.config/codex"
-
   # Docker
   export DOCKER_DEFAULT_PLATFORM=linux/amd64
   export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
