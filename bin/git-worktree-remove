@@ -17,8 +17,8 @@ default_branch_name=$(git default-branch)
 
 # Abort if Terraform state directory exists
 if [ -d './.terraform' ]; then
-  echo 'Terraform directory exists, aborting...'
-  exit 1
+  echo 'Error: Terraform directory exists, aborting...'
+  return 1
 fi
 
 # Try to determine the parent branch from reflog
@@ -33,6 +33,6 @@ if [ -z "${parent_branch}" ]; then
   parent_branch="${default_branch_name}"
 fi
 
-cd ../"${parent_branch}" || exit
+cd ../"${parent_branch}" || { echo "Error: could not cd to ../${parent_branch}"; return 1; }
 git worktree remove "${worktree_name}"
 git branch -D "${branch_name}"
