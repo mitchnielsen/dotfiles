@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Remove stale worktree/project entries from Claude Code config.
+# When git worktrees are removed, their per-directory config
+# entries in .claude.json stick around. This script cleans them up.
+
+config="$HOME/.config/claude/.claude.json"
+
+if [ ! -f "$config" ]; then
+  echo "error: $config not found" >&2
+  exit 1
+fi
+
+if ! command -v jq &>/dev/null; then
+  echo "error: jq is required" >&2
+  exit 1
+fi
+
+# Collect all unique paths from both sections
+all_paths=$(jq -r '
+  ((.projects // {}) | keys[]),
+  ((.githubRepoPaths // {}) | to_entries[] | .value[])
+' "$config" | sort -u)
+
+# Build a JSON array of paths that still exist on disk
+existing_paths=$(echo "$all_paths" | while IFS= read -r path; do
+  [ -d "$path" ] && printf '%s\n' "$path"
+done | jq -R . | jq -s .)
+
+# Count before
+before_projects=$(jq '.projects | keys | length' "$config")
+before_repo_paths=$(jq '.githubRepoPaths | to_entries | map(.value | length) | add // 0' "$config")
+
+# Build filtered result
+filtered=$(jq --argjson existing "$existing_paths" '
+  .projects = (
+    .projects | to_entries
+    | map(select(.key as $k | $existing | index($k)))
+    | from_entries
+  )
+  | .githubRepoPaths = (
+    .githubRepoPaths | to_entries
+    | map(.value = (.value | map(select(. as $p | $existing | index($p)))))
+    | map(select(.value | length > 0))
+    | from_entries
+  )
+' "$config")
+
+# Count after
+after_projects=$(echo "$filtered" | jq '.projects | keys | length')
+after_repo_paths=$(echo "$filtered" | jq '.githubRepoPaths | to_entries | map(.value | length) | add // 0')
+
+removed_projects=$((before_projects - after_projects))
+removed_repo_paths=$((before_repo_paths - after_repo_paths))
+
+if [ "$removed_projects" -eq 0 ] && [ "$removed_repo_paths" -eq 0 ]; then
+  echo "Nothing to clean up."
+  exit 0
+fi
+
+echo "Will remove:"
+echo "  $removed_projects stale projects ($before_projects -> $after_projects)"
+echo "  $removed_repo_paths stale repo paths ($before_repo_paths -> $after_repo_paths)"
+
+read -r -p "Proceed? [y/N] " confirm
+if [[ "$confirm" != [yY] ]]; then
+  echo "Aborted."
+  exit 0
+fi
+
+backup="${config}.bak.$(date +%Y%m%d%H%M%S)"
+cp "$config" "$backup"
+echo "Backup: $backup"
+
+echo "$filtered" > "$config"
+echo "Done."
