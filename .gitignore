@@ -25,6 +25,10 @@
 # tmux
 .config/tmux/plugins/
 
+# Pi
+.config/pi/auth.json
+.config/pi/sessions/
+
 # Docker Compose
 .env
 

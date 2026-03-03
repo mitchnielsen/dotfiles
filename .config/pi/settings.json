@@ -1,0 +1,9 @@
+{
+  "lastChangelogVersion": "0.55.4",
+  "skills": [
+    "~/.config/claude/commands"
+  ],
+  "packages": [
+    "~/.config/pi/packages/linear-mcp"
+  ]
+}
