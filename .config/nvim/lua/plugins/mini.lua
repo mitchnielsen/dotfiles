@@ -19,7 +19,6 @@ return {
         reset = "ghr",
       },
     })
-    require("mini.git").setup()
     require("mini.icons").setup()
     require("mini.surround").setup()
 
