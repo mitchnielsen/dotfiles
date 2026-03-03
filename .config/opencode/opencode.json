@@ -20,6 +20,34 @@
         "connect"
       ],
       "environment": {}
+    },
+    "grafana": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8100/sse"
+    },
+    "prometheus": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8101/mcp"
+    },
+    "notion": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "datadog": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"
+    },
+    "pagerduty": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.pagerduty.com/mcp",
+      "headers": {
+        "Authorization": "Token {env:PAGERDUTY_TOKEN}"
+      }
     }
   }
 }
