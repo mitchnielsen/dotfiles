@@ -17,7 +17,7 @@ username = { disabled = true }
 
 [fill]
 disabled = false
-symbol = '-'
+symbol = '.'
 style = '240'
 
 [direnv]
