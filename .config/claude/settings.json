@@ -19,6 +19,7 @@
       "Write(*)",
       "mcp__mcp-router",
       "mcp__linear",
+      "mcp__pagerduty",
       "mcp__prefect-docs",
       "mcp__prometheus",
       "mcp__grafana"
