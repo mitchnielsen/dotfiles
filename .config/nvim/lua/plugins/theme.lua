@@ -2,14 +2,19 @@ return {
   {
     "navarasu/onedark.nvim",
     priority = 1000,
-    lazy = true,
+    lazy = false,
     config = function()
       require("onedark").setup({
         style = "dark", -- dark, darker, cool, deep, warm, warmer, light
+        transparent = true,
         lualine = {
           transparent = true, -- lualine center bar transparency
         },
+        code_style = {
+          comments = "none",
+        },
       })
+
       require("onedark").load()
     end,
   },
@@ -28,11 +33,11 @@ return {
   },
   {
     "EdenEast/nightfox.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require("nightfox").setup()
-      vim.cmd("colorscheme nordfox")
+      vim.cmd("colorscheme dayfox")
     end,
   },
   {
@@ -56,7 +61,25 @@ return {
     "rmehri01/onenord.nvim",
     lazy = true,
     priority = 1000,
-    config = true,
+    config = function()
+      require("onenord").setup({
+        theme = nil, -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
+        borders = true, -- Split window borders
+        fade_nc = false, -- Fade non-current windows, making them more distinguishable
+        -- Style that is applied to various groups: see `highlight-args` for options
+        styles = {
+          comments = "italic",
+          strings = "NONE",
+          keywords = "NONE",
+          functions = "NONE",
+          variables = "NONE",
+          diagnostics = "underline",
+        },
+        disable = {
+          background = true, -- Disable setting the background color
+        },
+      })
+    end,
   },
   {
     "aktersnurra/no-clown-fiesta.nvim",

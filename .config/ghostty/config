@@ -1,7 +1,7 @@
 # https://ghostty.org/docs/config/reference
 # https://ghostty.zerebos.com
 
-theme = NordFox
+theme = onenord
 
 # Font settings
 font-size = 13
