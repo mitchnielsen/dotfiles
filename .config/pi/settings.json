@@ -4,6 +4,7 @@
     "~/.config/claude/commands"
   ],
   "packages": [
-    "~/.config/pi/packages/linear-mcp"
+    "~/.config/pi/packages/linear-mcp",
+    "~/.config/pi/packages/pagerduty"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "name": "pi-pagerduty",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Pi extension for PagerDuty — replaces the PagerDuty MCP server",
+  "keywords": ["pi-package"],
+  "pi": {
+    "extensions": ["./index.ts"]
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*",
+    "@sinclair/typebox": "*",
+    "@mariozechner/pi-ai": "*"
+  }
+}
