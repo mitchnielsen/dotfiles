@@ -13,12 +13,8 @@ add_mcp_if_not_exists() {
   claude mcp "$@"
 }
 
-GRAFANA_TOKEN=$(cat "$HOME/secret/grafana-service-account-token.txt")
-
-add_mcp_if_not_exists grafana add-json grafana --scope=user "{\"command\": \"/opt/homebrew/bin/docker\", \"args\": [\"run\", \"--rm\", \"-i\", \"-e\", \"GRAFANA_URL=https://grafana.private.prefect.cloud/\", \"-e\", \"GRAFANA_SERVICE_ACCOUNT_TOKEN=${GRAFANA_TOKEN}\", \"mcp/grafana\", \"-t\", \"stdio\"]}"
-
+# Docker-based servers (requires: docker compose up -d from ~/dotfiles)
+add_mcp_if_not_exists grafana add grafana --transport sse --scope user http://localhost:8100/sse
+add_mcp_if_not_exists prometheus add prometheus --transport http --scope user http://localhost:8101/mcp
 add_mcp_if_not_exists prefect-docs add prefect-docs --transport=http --scope=user https://docs.prefect.io/mcp
-
 add_mcp_if_not_exists linear add linear --scope=user --transport=http https://mcp.linear.app/mcp
-
-add_mcp_if_not_exists mcp-router add mcp-router --scope user --transport stdio -- npx -y @mcp_router/cli@latest connect

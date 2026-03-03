@@ -25,6 +25,9 @@
 # tmux
 .config/tmux/plugins/
 
+# Docker Compose
+.env
+
 # Glide
 .config/glide/glide.d.ts
 .config/glide/tsconfig.json
