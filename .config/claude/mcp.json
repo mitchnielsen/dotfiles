@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "grafana": {
+      "type": "sse",
+      "url": "http://localhost:8100/sse"
+    },
+    "prometheus": {
+      "type": "http",
+      "url": "http://localhost:8101/mcp"
+    },
+    "notion": {
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "datadog-mcp": {
+      "type": "http",
+      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"
+    },
+    "pagerduty": {
+      "type": "http",
+      "url": "https://mcp.pagerduty.com/mcp",
+      "headers": {
+        "Authorization": "Token ${PAGERDUTY_TOKEN}"
+      }
+    }
+  }
+}

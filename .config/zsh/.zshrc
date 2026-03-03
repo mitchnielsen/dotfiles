@@ -32,6 +32,8 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
 
+export PAGERDUTY_TOKEN="$(cat ${HOME}/secret/pagerduty-token.txt)"
+
 # Work-specific settings
 if [ ! -f "${HOME}/.personal_device_marker" ]; then
   # mcp-router
