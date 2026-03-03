@@ -17,8 +17,8 @@ export BAT_THEME="ansi"
 export MANPAGER='nvim +Man!'
 
 # For building dependencies
-export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix libpq)/lib"
-export CPPFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix libpq)/include"
+export LDFLAGS="-L/opt/homebrew/opt/openssl/lib -L/opt/homebrew/opt/libpq/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl/include -I/opt/homebrew/opt/libpq/include"
 
 # Path entries
 export PATH="$HOME/bin:$PATH"
