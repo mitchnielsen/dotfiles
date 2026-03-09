@@ -39,5 +39,9 @@
   "feedbackSurveyState": {
     "lastShownTime": 1754598531219
   },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "model": "opus[1m]"
 }
