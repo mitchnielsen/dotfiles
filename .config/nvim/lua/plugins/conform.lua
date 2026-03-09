@@ -11,6 +11,7 @@ return {
         sh = { "shellcheck" },
         lua = { "stylua" },
         yaml = { "yamlfmt" },
+        json = { "jq" },
       },
 
       format_on_save = function(bufnr)
