@@ -33,19 +33,26 @@
       "Bash(git push:*)"
     ]
   },
+  "model": "opus[1m]",
   "enableAllProjectMcpServers": true,
   "statusLine": {
     "type": "command",
     "command": "bash ~/.config/claude/statusline-command.sh"
+  },
+  "extraKnownMarketplaces": {
+    "prefecthq-internal-skills": {
+      "source": {
+        "source": "github",
+        "repo": "prefecthq/internal-skills"
+      }
+    }
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754598531219
   },
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
-  "model": "opus[1m]"
+  "enabledPlugins": {
+    "prefect-internal-skills@prefecthq-internal-skills": true
+  }
 }
