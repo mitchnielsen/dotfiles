@@ -18,3 +18,4 @@ Finally,
 - Write a quick summary of your thoughts on the pull request for me.
 - Include your recommendation: merge as-is, request edits, or close.
 - When applicable, include a suggested comment for me to post to the author.
+- If a suggested comment is applicable, add it to my clipboard via `pbcopy`
