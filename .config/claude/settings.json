@@ -3,6 +3,10 @@
   "env": {
     "USE_BUILTIN_RIPGREP": "0"
   },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash",
