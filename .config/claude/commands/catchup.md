@@ -3,7 +3,8 @@ name: catchup
 description: Catch up with the current changes
 ---
 
-Read all of the changed files in the current git branch.
+Read all the changed files in the current git branch.
+If a pull request exists, look at the title, description, and diff.
 
 Consider the following additional context for these changes: $ARGUMENTS
 
