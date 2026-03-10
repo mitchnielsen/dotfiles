@@ -19,3 +19,15 @@ services:
       PROMETHEUS_URL: https://prometheus.private.prefect.cloud/
       PROMETHEUS_MCP_SERVER_TRANSPORT: http
     restart: unless-stopped
+
+  terraform:
+    image: hashicorp/terraform-mcp-server:0.4.0
+    container_name: mcp-terraform
+    ports:
+      - "8102:8080"
+    environment:
+      TFE_ADDRESS: "https://app.terraform.io"
+      TFE_TOKEN: ${TFE_TOKEN}
+      TRANSPORT_MODE: streamable-http
+      TRANSPORT_HOST: 0.0.0.0
+    restart: unless-stopped

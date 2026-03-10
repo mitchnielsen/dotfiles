@@ -26,7 +26,8 @@
       "mcp__pagerduty",
       "mcp__prefect-docs",
       "mcp__prometheus",
-      "mcp__grafana"
+      "mcp__grafana",
+      "mcp__terraform"
     ],
     "ask": [
       "Bash(rm:*)",

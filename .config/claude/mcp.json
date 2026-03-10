@@ -8,6 +8,10 @@
       "type": "http",
       "url": "http://localhost:8101/mcp"
     },
+    "terraform": {
+      "type": "http",
+      "url": "http://localhost:8102/mcp"
+    },
     "linear": {
       "type": "http",
       "url": "https://mcp.linear.app/mcp"
