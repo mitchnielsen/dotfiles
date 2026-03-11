@@ -47,11 +47,8 @@ if [ ! -f "${HOME}/.personal_device_marker" ]; then
   export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
 
   # Docker
+  export DOCKER_HOST="unix:///${HOME}/.docker/run/docker.sock"
   export DOCKER_DEFAULT_PLATFORM=linux/amd64
-  export DOCKER_HOST="unix://$HOME/.rd/docker.sock"
-
-  # Path entries
-  export PATH="$HOME/.rd/bin:$PATH"
 fi
 
 # ===================
