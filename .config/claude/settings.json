@@ -25,7 +25,9 @@
       "mcp__linear",
       "mcp__pagerduty",
       "mcp__prefect-docs",
-      "mcp__prometheus",
+      "mcp__prometheus-prd",
+      "mcp__prometheus-dev",
+      "mcp__prometheus-stg",
       "mcp__grafana",
       "mcp__terraform"
     ],

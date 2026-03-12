@@ -4,9 +4,17 @@
       "type": "sse",
       "url": "http://localhost:8100/sse"
     },
-    "prometheus": {
+    "prometheus-prd": {
       "type": "http",
       "url": "http://localhost:8101/mcp"
+    },
+    "prometheus-dev": {
+      "type": "http",
+      "url": "http://localhost:8103/mcp"
+    },
+    "prometheus-stg": {
+      "type": "http",
+      "url": "http://localhost:8104/mcp"
     },
     "terraform": {
       "type": "http",
