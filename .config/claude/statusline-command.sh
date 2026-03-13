@@ -53,5 +53,5 @@ fi
 TRANSCRIPT_TOKENS_FORMATTED=$(format_number $TRANSCRIPT_TOKENS)
 
 # Format and output the statusline
-printf "  🤖 %s 🔋 %b 📝 %s  " \
+printf "  %s 🔋 %b 📝 %s  " \
     "$MODEL" "$BAR" "$TRANSCRIPT_TOKENS_FORMATTED"
