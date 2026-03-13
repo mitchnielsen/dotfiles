@@ -57,7 +57,7 @@ fi
 
 setopt histignorespace # ignore command in history if it starts with space
 setopt hist_ignore_dups # dont save duplicate entries in history
-setopt completealiases # perform completions and then expand aliases
+unsetopt completealiases # let zsh expand aliases before completing
 setopt hist_verify # ask for verification when recalling from history
 unsetopt share_history # don't share history between sessions
 unsetopt beep # never beep
@@ -119,7 +119,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source /opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 setopt HIST_IGNORE_ALL_DUPS # history substring search: ignore dups
 
@@ -132,5 +131,12 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[globbing]='none'
 # disable cursor style changes, just use the block
 ZVM_CURSOR_STYLE_ENABLED=false
+
+# Load completions for mise-managed tools, then map aliases
+source <(kubectl completion zsh)
+source <(docker completion zsh)
+compdef g=git
+compdef k=kubectl
+compdef d=docker
 
 eval "$(starship init zsh)"
