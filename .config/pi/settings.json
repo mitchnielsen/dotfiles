@@ -1,10 +1,11 @@
 {
-  "lastChangelogVersion": "0.55.4",
+  "lastChangelogVersion": "0.57.1",
   "skills": [
     "~/.config/claude/commands"
   ],
   "packages": [
     "~/.config/pi/packages/linear-mcp",
-    "~/.config/pi/packages/pagerduty"
+    "~/.config/pi/packages/pagerduty",
+    "https://github.com/davebcn87/pi-autoresearch"
   ]
 }
