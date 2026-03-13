@@ -95,7 +95,16 @@ source <(fzf --zsh)
 
 eval "$(direnv hook zsh)"
 eval "$(mise activate zsh)"
-eval "$(thefuck --alias)"
+
+# Lazy-load thefuck: only initialize when first called
+fuck() {
+  unfunction fuck
+  eval "$(thefuck --alias)"
+  fuck "$@"
+}
+
+# Load compinit early with -C (skip security checks) so gcloud doesn't re-init
+autoload -Uz compinit && compinit -C -d "${ZDOTDIR:-$HOME}/.zcompdump"
 
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke:
 #   gcloud components install gke-gcloud-auth-plugin
@@ -105,6 +114,13 @@ if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
   export USE_GKE_GCLOUD_AUTH_PLUGIN=True
   export GCLOUD_SOURCED=True
 fi
+
+# Load completions for mise-managed tools, then map aliases
+source <(kubectl completion zsh)
+source <(docker completion zsh)
+compdef g=git
+compdef k=kubectl
+compdef d=docker
 
 # ===================
 # Prompt settings
@@ -116,6 +132,8 @@ bindkey '^[[B' history-substring-search-down
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# disable cursor style changes, just use the block
+ZVM_CURSOR_STYLE_ENABLED=false
 source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source /opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
@@ -129,14 +147,5 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # To disable highlighting of globbing expressions
 ZSH_HIGHLIGHT_STYLES[globbing]='none'
-# disable cursor style changes, just use the block
-ZVM_CURSOR_STYLE_ENABLED=false
-
-# Load completions for mise-managed tools, then map aliases
-source <(kubectl completion zsh)
-source <(docker completion zsh)
-compdef g=git
-compdef k=kubectl
-compdef d=docker
 
 eval "$(starship init zsh)"
