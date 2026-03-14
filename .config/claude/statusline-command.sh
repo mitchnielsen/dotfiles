@@ -42,16 +42,12 @@ else
     BAR="\033[38;5;114m${BAR}\033[0m"  # Green
 fi
 
-# Calculate transcript tokens from character count
-TRANSCRIPT_PATH=$(echo "$input" | jq -r '.transcript_path')
-if [ -f "$TRANSCRIPT_PATH" ]; then
-    CHAR_COUNT=$(wc -c < "$TRANSCRIPT_PATH")
-    TRANSCRIPT_TOKENS=$((CHAR_COUNT / 4))
-else
-    TRANSCRIPT_TOKENS=0
-fi
-TRANSCRIPT_TOKENS_FORMATTED=$(format_number $TRANSCRIPT_TOKENS)
+# Extract input and output token counts
+INPUT_TOKENS=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
+OUTPUT_TOKENS=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
+INPUT_FORMATTED=$(format_number $INPUT_TOKENS)
+OUTPUT_FORMATTED=$(format_number $OUTPUT_TOKENS)
 
 # Format and output the statusline
-printf "  %s 🔋 %b 📝 %s  " \
-    "$MODEL" "$BAR" "$TRANSCRIPT_TOKENS_FORMATTED"
+printf "  %s 🔋 %b ⬇ %s ⬆ %s  " \
+    "$MODEL" "$BAR" "$INPUT_FORMATTED" "$OUTPUT_FORMATTED"
