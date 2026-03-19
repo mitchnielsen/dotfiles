@@ -32,10 +32,6 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
 
-export PAGERDUTY_TOKEN="$(cat ${HOME}/secret/pagerduty-token.txt)" # for pagerduty mcp in Claude
-export PAGERDUTY_API_KEY="$(cat ${HOME}/secret/pagerduty-token.txt)" # for pagerduty mcp in Claude
-export LINEAR_API_KEY="$(cat ${HOME}/secret/linear-api-key.txt)"
-
 # Work-specific settings
 if [ ! -f "${HOME}/.personal_device_marker" ]; then
   # mcp-router
@@ -49,6 +45,11 @@ if [ ! -f "${HOME}/.personal_device_marker" ]; then
   # Docker
   export DOCKER_HOST="unix:///${HOME}/.docker/run/docker.sock"
   export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+  # MCP servers
+  export PAGERDUTY_TOKEN="$(cat ${HOME}/secret/pagerduty-token.txt)"
+  export PAGERDUTY_API_KEY="$(cat ${HOME}/secret/pagerduty-token.txt)"
+  export LINEAR_API_KEY="$(cat ${HOME}/secret/linear-api-key.txt)"
 fi
 
 # ===================
