@@ -11,10 +11,6 @@ adjust-cell-height = "25%"
 # Cursor settings
 cursor-style = block
 
-# Styles: blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
-# Disabled to provide my own
-# macos-icon = ""
-
 # window settings
 maximize = true
 macos-titlebar-style = hidden
