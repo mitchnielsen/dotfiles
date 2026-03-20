@@ -1,7 +1,11 @@
 {
-  "lastChangelogVersion": "0.57.1",
+  "lastChangelogVersion": "0.60.0",
+  "quietStartup": true,
   "skills": [
-    "~/.config/claude/commands"
+    "~/.config/claude/skills"
+  ],
+  "extensions": [
+    "extensions/minimal-header.ts"
   ],
   "packages": [
     "~/.config/pi/packages/linear-mcp",
@@ -9,3 +13,4 @@
     "https://github.com/davebcn87/pi-autoresearch"
   ]
 }
+
