@@ -76,6 +76,12 @@ return {
     vim.o.laststatus = 0
     vim.o.winbar = "%!v:lua.MiniStatusline.active()"
 
+    -- Make statusline/winbar transparent
+    vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "WinBar", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "WinBarNC", { bg = "NONE" })
+
     require("mini.trailspace").setup({
       only_in_normal_buffers = true,
     })
