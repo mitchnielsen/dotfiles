@@ -2,7 +2,7 @@ return {
   {
     "navarasu/onedark.nvim",
     priority = 1000,
-    lazy = false,
+    lazy = true,
     config = function()
       require("onedark").setup({
         style = "dark", -- dark, darker, cool, deep, warm, warmer, light
@@ -59,7 +59,7 @@ return {
   },
   {
     "rmehri01/onenord.nvim",
-    lazy = true,
+    lazy = false,
     priority = 1000,
     config = function()
       require("onenord").setup({
