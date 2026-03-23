@@ -42,11 +42,21 @@
     "type": "command",
     "command": "bash ~/.config/claude/statusline-command.sh"
   },
+  "enabledPlugins": {
+    "prefect-internal-skills@prefecthq-internal-skills": true,
+    "visual-explainer@visual-explainer-marketplace": true
+  },
   "extraKnownMarketplaces": {
     "prefecthq-internal-skills": {
       "source": {
         "source": "github",
         "repo": "prefecthq/internal-skills"
+      }
+    },
+    "visual-explainer-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "nicobailon/visual-explainer"
       }
     }
   },
@@ -54,8 +64,5 @@
   "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754598531219
-  },
-  "enabledPlugins": {
-    "prefect-internal-skills@prefecthq-internal-skills": true
   }
 }
