@@ -39,12 +39,21 @@ When multiple valid approaches exist, choose based on:
 
 ## Code Intelligence
 
-Prefer LSP over Grep/Read for code navigation — it's faster, precise, and avoids reading entire files:
-- `workspaceSymbol` to find where something is defined
-- `findReferences` to see all usages across the codebase
+<!-- https://karanbansal.in/blog/claude-code-lsp -->
+
+Prefer LSP over Grep/Glob/Read for code navigation:
 - `goToDefinition` / `goToImplementation` to jump to source
+- `findReferences` to see all usages across the codebase
+- `workspaceSymbol` to find where something is defined
+- `documentSymbol` to list all symbols in a file
 - `hover` for type info without reading the file
+- `incomingCalls` / `outgoingCalls` for call hierarchy
 
-Use Grep only when LSP isn't available or for text/pattern searches (comments, strings, config).
+Before renaming or changing a function signature, use
+`findReferences` to find all call sites first.
 
-After writing or editing code, check LSP diagnostics and fix errors before proceeding.
+Use Grep/Glob only for text/pattern searches (comments,
+strings, config values) where LSP doesn't help.
+
+After writing or editing code, check LSP diagnostics before
+moving on. Fix any type errors or missing imports immediately.
