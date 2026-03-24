@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec claude --mcp-config "${HOME}/.config/claude/mcp.json" $@
