@@ -22,6 +22,7 @@
       "WebSearch",
       "Write(*)",
       "mcp__mcp-router",
+      "mcp__clickhouse",
       "mcp__linear",
       "mcp__pagerduty",
       "mcp__prefect-docs",
