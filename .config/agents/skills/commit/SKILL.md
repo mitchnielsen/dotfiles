@@ -25,7 +25,9 @@ Write a commit with the following guidelines.
 ### What to include
 
 - Additional context from me to include in the commit message: $ARGUMENTS
-- Follow the Conventional Commits format for commit tiles. Examples:
+- Follow the Conventional Commits format for commit tiles.
+  Run `git log -n 50 --pretty=format:%s` to see commonly used scopes.
+  Examples:
   - docs: correct spelling of CHANGELOG
   - feat(api): send an email to the customer when a product is shipped
 - Be conversational and humble: avoid "comprehensive" or confident
@@ -35,6 +37,8 @@ Write a commit with the following guidelines.
   reviewer get context
 - Always mention related issues when available:
   "Closes #1234" or "Closes ENG-1234"
+- If it is unclear whether a file should be included, ask the user which
+  files to commit.
 
 Finally, include a brief summary of the development session that produced the
 changes. Focus on context a reviewer wouldn't get from reading the code: what
