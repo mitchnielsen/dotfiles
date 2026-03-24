@@ -5,8 +5,8 @@
 tmux rename-window 'nvim'
 tmux send-keys 'nvim' C-m
 
-# Create new window for claude
-tmux new-window -n 'claude'
+# Create new window for agent
+tmux new-window -n 'agent'
 tmux send-keys 'claude' C-m
 
 # Create new window for lazygit
