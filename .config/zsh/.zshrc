@@ -44,7 +44,7 @@ if [ ! -f "${HOME}/.personal_device_marker" ]; then
   export ENABLE_LSP_TOOL=1 # https://karanbansal.in/blog/claude-code-lsp/
 
   # Docker
-  export DOCKER_HOST="unix:///${HOME}/.docker/run/docker.sock"
+  export DOCKER_HOST="unix://${HOME}/.docker/run/docker.sock"
   export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
   # MCP servers
