@@ -1,7 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "USE_BUILTIN_RIPGREP": "0"
+    "USE_BUILTIN_RIPGREP": "0",
+    "ENABLE_LSP_TOOL": "1"
   },
   "attribution": {
     "commit": "",
@@ -45,7 +46,9 @@
   },
   "enabledPlugins": {
     "prefect-internal-skills@prefecthq-internal-skills": true,
-    "visual-explainer@visual-explainer-marketplace": true
+    "visual-explainer@visual-explainer-marketplace": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "prefecthq-internal-skills": {
