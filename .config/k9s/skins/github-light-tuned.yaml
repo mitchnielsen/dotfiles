@@ -1,0 +1,113 @@
+# GitHub Light Tuned theme for k9s
+# Matches ghostty github-light-tuned + tmux light config
+
+foreground: &foreground "#24292f"
+background: &background default
+primary: &primary "#0969da"
+secondary: &secondary "#116329"
+accent: &accent "#8250df"
+warning: &warning "#7a6520"
+error: &error "#b33a2b"
+muted: &muted "#6e7781"
+border: &border "#d0d7de"
+highlight: &highlight "#ddf4ff"
+
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *primary
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *accent
+  info:
+    fgColor: *muted
+    sectionColor: *secondary
+  help:
+    fgColor: *foreground
+    bgColor: *background
+    keyColor: *accent
+    numKeyColor: *primary
+    sectionColor: *secondary
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: "#ffffff"
+    buttonBgColor: *primary
+    buttonFocusFgColor: *foreground
+    buttonFocusBgColor: *highlight
+    labelFgColor: *primary
+    fieldFgColor: *foreground
+  frame:
+    border:
+      fgColor: *border
+      focusColor: *primary
+    menu:
+      fgColor: *foreground
+      keyColor: *primary
+      numKeyColor: *warning
+    crumbs:
+      fgColor: "#ffffff"
+      bgColor: *primary
+      activeColor: *accent
+    status:
+      newColor: *secondary
+      modifyColor: *primary
+      addColor: *secondary
+      pendingColor: *warning
+      errorColor: *error
+      highlightColor: *warning
+      killColor: *error
+      completedColor: *muted
+    title:
+      fgColor: *primary
+      bgColor: *background
+      highlightColor: *accent
+      counterColor: *foreground
+      filterColor: *primary
+  views:
+    charts:
+      bgColor: *background
+      defaultDialColors:
+        - *secondary
+        - *error
+      defaultChartColors:
+        - *primary
+        - *secondary
+        - *accent
+        - *warning
+        - *error
+    table:
+      fgColor: *foreground
+      bgColor: *background
+      cursorFgColor: *foreground
+      cursorBgColor: *highlight
+      markColor: *accent
+      header:
+        fgColor: *muted
+        bgColor: *background
+        sorterColor: *primary
+    xray:
+      fgColor: *primary
+      bgColor: *background
+      cursorColor: *foreground
+      graphicColor: *accent
+      showIcons: false
+    yaml:
+      keyColor: *primary
+      colonColor: *muted
+      valueColor: *secondary
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary
+        bgColor: *background
+        toggleOnColor: *secondary
+        toggleOffColor: *muted
+    help:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary

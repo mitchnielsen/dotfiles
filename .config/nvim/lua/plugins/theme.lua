@@ -8,7 +8,7 @@ return {
         style = "dark", -- dark, darker, cool, deep, warm, warmer, light
         transparent = true,
         lualine = {
-          transparent = true, -- lualine center bar transparency
+          transparent = true,
         },
         code_style = {
           comments = "none",
@@ -21,7 +21,7 @@ return {
   {
     "Mofiqul/vscode.nvim",
     lazy = true,
-    priority = 1000, -- make sure to load this before all the other start plugins
+    priority = 1000,
     config = function()
       require("vscode").setup({
         transparent = false,
@@ -59,14 +59,13 @@ return {
   },
   {
     "rmehri01/onenord.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require("onenord").setup({
-        theme = nil, -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
-        borders = true, -- Split window borders
+        theme = "dark", -- "dark" or "light"
+        borders = true,
         fade_nc = false, -- Fade non-current windows, making them more distinguishable
-        -- Style that is applied to various groups: see `highlight-args` for options
         styles = {
           comments = "italic",
           strings = "NONE",
@@ -76,7 +75,7 @@ return {
           diagnostics = "underline",
         },
         disable = {
-          background = true, -- Disable setting the background color
+          background = true,
         },
       })
     end,
@@ -87,8 +86,8 @@ return {
     priority = 1000,
     config = function()
       require("no-clown-fiesta").setup({
-        theme = "dark", -- supported themes are: dark, dim, light
-        transparent = false, -- Enable this to disable the bg color
+        theme = "dark", -- dark, dim, light
+        transparent = false,
         styles = {
           comments = {},
           functions = {},
@@ -105,13 +104,13 @@ return {
   },
   {
     "oskarnurm/koda.nvim",
-    lazy = true, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    lazy = true,
+    priority = 1000,
     config = function()
       require("koda").setup({
-        bold = true, -- disable bold for functions and keywords
-        italic = false, -- enable italics for comments and strings
-        transparent = false, -- enable for transparent backgrounds
+        bold = true,
+        italic = false,
+        transparent = false,
         colors = {
           bg = "#ffffff",
         },
@@ -120,6 +119,20 @@ return {
       vim.cmd("colorscheme koda")
       vim.cmd("set background=light")
       vim.cmd("highlight Cursor guibg=#000000 guifg=#000000")
+    end,
+  },
+  {
+    "projekt0n/github-nvim-theme",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("github-theme").setup({
+        options = {
+          transparent = true,
+        },
+      })
+
+      vim.cmd("colorscheme github_light_default")
     end,
   },
 }

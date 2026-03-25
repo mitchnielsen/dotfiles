@@ -1,12 +1,12 @@
 # https://ghostty.org/docs/config/reference
 # https://ghostty.zerebos.com
 
-theme = Onenord
+theme = github-light-tuned
 
 # Font settings
-font-size = 13
+font-size = 14
 font-family = "SFMono Nerd Font"
-adjust-cell-height = "25%"
+adjust-cell-height = "15%"
 
 # Cursor settings
 cursor-style = block

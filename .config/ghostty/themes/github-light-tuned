@@ -1,0 +1,32 @@
+# vi: ft=conf :
+# GitHub Light Default with softer background and slightly desaturated palette
+
+# normal colors
+palette = 0=#24292f
+palette = 1=#b33a2b
+palette = 2=#116329
+palette = 3=#7a6520
+palette = 4=#0969da
+palette = 5=#8250df
+palette = 6=#1b7c83
+palette = 7=#57606a
+
+# bright colors
+palette = 8=#6e7781
+palette = 9=#b33a2b
+palette = 10=#116329
+palette = 11=#7a6520
+palette = 12=#0969da
+palette = 13=#8250df
+palette = 14=#1b7c83
+palette = 15=#24292f
+
+# background = #f6f6f6
+# background = #f4f4f4
+background = #fafafa
+
+foreground = #24292f
+cursor-color = #0969da
+
+selection-background = #0969da
+selection-foreground = #ffffff
