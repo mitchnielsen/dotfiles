@@ -1,2 +1,3 @@
-docker_path: 'unix:///Users/mitch/.rd/docker.sock'
+---
+docker_path: 'unix:///Users/mitch/.docker/run/docker.sock'
 prompt: '> '
