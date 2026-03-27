@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Tools, shortened
-alias ls='eza --icons=automatic'
 alias ll='ls -lahL'
 alias d='docker'
 alias dc='docker compose'
