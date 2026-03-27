@@ -1,7 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$directory$git_branch$git_status$git_state $fill $python$kubernetes$aws$terraform$nodejs$cmd_duration$jobs$direnv
+$fill
+$directory$git_branch$git_status$git_state$python$kubernetes$aws$terraform$nodejs$cmd_duration$jobs$direnv
 $character
 """
 
@@ -17,7 +18,7 @@ username = { disabled = true }
 
 [fill]
 disabled = false
-symbol = '.'
+symbol = '―'
 style = '240'
 
 [direnv]
