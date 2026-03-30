@@ -20,6 +20,11 @@ require("mini.surround").setup()
 
 require("mini.starter").setup({
   evaluate_single = true,
+  header = table.concat({
+    [[│ ╲ ││]],
+    [[││╲╲││]],
+    [[││ ╲ │]],
+  }, "\n"),
   items = {
     require("mini.starter").sections.builtin_actions(),
     require("mini.starter").sections.recent_files(5, true),
@@ -115,6 +120,12 @@ require("mini.files").setup({
   },
 })
 
-vim.keymap.set("n", "<leader>e", function() require("mini.files").open() end, { desc = "file explorer" })
-vim.keymap.set("n", "<leader>E", function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end, { desc = "file explorer (current file)" })
-vim.keymap.set("n", "<leader>ghp", function() require("mini.diff").toggle_overlay() end, { desc = "toggle git hunk preview" })
+vim.keymap.set("n", "<leader>e", function()
+  require("mini.files").open()
+end, { desc = "file explorer" })
+vim.keymap.set("n", "<leader>E", function()
+  require("mini.files").open(vim.api.nvim_buf_get_name(0))
+end, { desc = "file explorer (current file)" })
+vim.keymap.set("n", "<leader>ghp", function()
+  require("mini.diff").toggle_overlay()
+end, { desc = "toggle git hunk preview" })
