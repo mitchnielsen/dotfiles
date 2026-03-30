@@ -8,7 +8,6 @@
 
 ## Important Reminders
 
-- Always ask for confirmation before pushing changes via git
 - Never use `--no-verify` to bypass commit hooks; fix the errors
 - Never amend or squash commits unless explicitly told
 - Never make assumptions; verify with existing code
