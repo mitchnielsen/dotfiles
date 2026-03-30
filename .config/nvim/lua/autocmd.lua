@@ -15,8 +15,14 @@ autocmd("BufEnter", {
   command = "set fo-=c fo-=r fo-=o",
 })
 
--- Set up custom filetype before plugins load for LSP to load correct providers
+-- Set up custom filetypes before plugins load for LSP to load correct providers
 vim.filetype.add({
+  filename = {
+    ["go.work"] = "gowork",
+  },
+  extension = {
+    tmpl = "gotmpl",
+  },
   pattern = {
     [".*/%.github/workflows/.*%.ya?ml"] = "yaml.ghactions",
   },
