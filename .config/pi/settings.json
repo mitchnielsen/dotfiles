@@ -10,6 +10,7 @@
   "packages": [
     "~/.config/pi/packages/linear-mcp",
     "~/.config/pi/packages/pagerduty",
+    "~/.config/pi/packages/prometheus",
     "https://github.com/davebcn87/pi-autoresearch"
   ],
   "theme": "light"

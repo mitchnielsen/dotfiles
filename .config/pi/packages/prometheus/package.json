@@ -1,0 +1,16 @@
+{
+  "name": "pi-prometheus",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Pi extension for Prometheus — replaces prometheus-mcp-server with native pi tools, supporting dev/stg/prd environments",
+  "keywords": ["pi-package"],
+  "pi": {
+    "extensions": ["./index.ts"]
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*",
+    "@sinclair/typebox": "*",
+    "@mariozechner/pi-ai": "*"
+  }
+}
