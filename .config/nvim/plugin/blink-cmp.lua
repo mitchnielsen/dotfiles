@@ -1,5 +1,5 @@
 vim.pack.add({
-  { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.0") },
+  { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.10") },
   "https://github.com/giuxtaposition/blink-cmp-copilot",
 }, { confirm = false })
 
