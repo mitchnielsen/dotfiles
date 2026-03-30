@@ -8,6 +8,7 @@ local options = {
   cmdheight = 2,
   timeoutlen = 400,
   pumheight = 20,
+  pumborder = "rounded",
   list = false,
   listchars = { tab = "▸ ", trail = "·" },
   winborder = "rounded",
