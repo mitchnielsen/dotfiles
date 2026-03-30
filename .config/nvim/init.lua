@@ -1,25 +1,10 @@
 vim.g.mapleader = " "
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
+-- Core config (shared with nvim config via symlinks)
 require("autocmd")
 require("maps")
 require("options")
 
-require("lazy").setup("plugins", {
-  change_detection = {
-    enabled = true,
-    notify = false,
-  },
-})
+-- Plugins are declared and configured in plugin/*.lua files.
+-- They are sourced automatically by Neovim in alphabetical order.
+-- Each file calls vim.pack.add() for its own plugins and runs setup.
