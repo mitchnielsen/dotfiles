@@ -46,7 +46,10 @@ require("mini.statusline").setup({
       local MiniStatusline = require("mini.statusline")
 
       local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-      local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+
+      -- hide filename on ministarter screens
+      local filename = vim.bo.filetype == "ministarter" and "" or MiniStatusline.section_filename({ trunc_width = 140 })
+
       local search = MiniStatusline.section_searchcount({})
 
       local selection = ""
