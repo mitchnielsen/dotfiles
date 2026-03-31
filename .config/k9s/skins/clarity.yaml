@@ -1,0 +1,112 @@
+# clarity theme for k9s
+# Matches clarity.lua nvim colorscheme + ghostty github-light-tuned
+
+foreground: &foreground "#24292f"
+background: &background default
+primary: &primary "#0969da"
+secondary: &secondary "#1a8a0e"
+warning: &warning "#7a6520"
+error: &error "#a12a2a"
+muted: &muted "#6e7781"
+border: &border "#d0d7de"
+highlight: &highlight "#e8e8e8"
+faint: &faint "#b0b8c1"
+
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *muted
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *primary
+  info:
+    fgColor: *muted
+    sectionColor: *foreground
+  help:
+    fgColor: *foreground
+    bgColor: *background
+    keyColor: *primary
+    numKeyColor: *primary
+    sectionColor: *foreground
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: "#ffffff"
+    buttonBgColor: *primary
+    buttonFocusFgColor: *foreground
+    buttonFocusBgColor: *highlight
+    labelFgColor: *foreground
+    fieldFgColor: *foreground
+  frame:
+    border:
+      fgColor: *border
+      focusColor: *primary
+    menu:
+      fgColor: *muted
+      keyColor: *primary
+      numKeyColor: *primary
+    crumbs:
+      fgColor: "#ffffff"
+      bgColor: *primary
+      activeColor: *secondary
+    status:
+      newColor: *secondary
+      modifyColor: *primary
+      addColor: *secondary
+      pendingColor: *warning
+      errorColor: *error
+      highlightColor: *warning
+      killColor: *error
+      completedColor: *muted
+    title:
+      fgColor: *foreground
+      bgColor: *background
+      highlightColor: *primary
+      counterColor: *muted
+      filterColor: *primary
+  views:
+    charts:
+      bgColor: *background
+      defaultDialColors:
+        - *secondary
+        - *error
+      defaultChartColors:
+        - *primary
+        - *secondary
+        - *warning
+        - *error
+    table:
+      fgColor: *foreground
+      bgColor: *background
+      cursorFgColor: "#ffffff"
+      cursorBgColor: "#d0d0d0"
+      markColor: *primary
+      header:
+        fgColor: *muted
+        bgColor: *background
+        sorterColor: *primary
+    xray:
+      fgColor: *foreground
+      bgColor: *background
+      cursorColor: *primary
+      graphicColor: *muted
+      showIcons: false
+    yaml:
+      keyColor: *foreground
+      colonColor: *muted
+      valueColor: *secondary
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary
+        bgColor: *background
+        toggleOnColor: *secondary
+        toggleOffColor: *muted
+    help:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *primary

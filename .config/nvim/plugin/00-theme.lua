@@ -16,4 +16,5 @@ require("github-theme").setup({
     transparent = true,
   },
 })
-vim.cmd("colorscheme github_light_default")
+
+vim.cmd("colorscheme clarity")

@@ -12,7 +12,15 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
-export FZF_DEFAULT_OPTS=""
+# clarity theme for fzf
+export FZF_DEFAULT_OPTS=" \
+  --color=fg:#24292f,bg:-1,hl:#0969da \
+  --color=fg+:#24292f,bg+:#d0d0d0,hl+:#0969da \
+  --color=info:#6e7781,prompt:#24292f,pointer:#0969da \
+  --color=marker:#1a8a0e,spinner:#6e7781,header:#6e7781 \
+  --color=border:#d0d7de,gutter:-1 \
+  --border=rounded --separator='' --scrollbar='│' \
+  --prompt='› ' --pointer='▌' --marker='✓'"
 export BAT_THEME="ansi"
 export MANPAGER='nvim +Man!'
 
