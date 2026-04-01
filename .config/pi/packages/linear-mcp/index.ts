@@ -134,12 +134,12 @@ export default function linearMcpExtension(pi: ExtensionAPI) {
       }
 
       connected = true;
-      ctx?.ui.notify(`Connected to Linear MCP — ${toolCount} tools registered`, "success");
-      ctx?.ui.setStatus("linear", "Linear ✓");
+      // silent on connect
+
       return true;
     } catch (err: any) {
       ctx?.ui.notify(`Failed to connect to Linear: ${err.message}`, "error");
-      ctx?.ui.setStatus("linear", "Linear ✗");
+
       connected = false;
       return false;
     }
@@ -156,12 +156,14 @@ export default function linearMcpExtension(pi: ExtensionAPI) {
     mcpClient = null;
   }
 
-  // Auto-connect on session start
+  // Auto-connect on session start — fire-and-forget so startup isn't blocked
+  // by the SSE network round-trip. Tools already handle the not-yet-connected
+  // case gracefully, and errors are surfaced via ctx.ui.notify.
   pi.on("session_start", async (_event, ctx) => {
     if (process.env.LINEAR_API_KEY) {
-      await connect(ctx);
+      connect(ctx);
     } else {
-      ctx.ui.setStatus("linear", "Linear (no key)");
+      console.debug("Linear MCP: no LINEAR_API_KEY set, skipping connect");
     }
   });
 
