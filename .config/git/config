@@ -4,7 +4,7 @@
   name = Mitchell Nielsen
   email = inbox@mitchn.me
 [core]
-  pager = delta
+  pager = delta-auto
   excludesfile = ~/.config/git/ignore
 [advice]
   statusHints = false
@@ -35,7 +35,6 @@
   navigate = true
   whitespace-error-style = 22 reverse
   detect-dark-light = always # in tmux, requires detach and reattach: https://github.com/dandavison/delta/issues/447#issuecomment-2002011943
-  side-by-side = true
 
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul

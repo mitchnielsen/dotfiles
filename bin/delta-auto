@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Wrapper around delta that enables side-by-side diffs only when the terminal
+# is wide enough. The threshold is 160 columns; adjust to taste.
+
+THRESHOLD=160
+WIDTH="${COLUMNS:-$(tput cols 2>/dev/null || echo 80)}"
+
+if [ "$WIDTH" -ge "$THRESHOLD" ]; then
+  exec delta --side-by-side "$@"
+else
+  exec delta "$@"
+fi
