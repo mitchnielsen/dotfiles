@@ -18,6 +18,12 @@ services:
     environment:
       PROMETHEUS_URL: https://prometheus.private.prefect.dev/
       PROMETHEUS_MCP_SERVER_TRANSPORT: http
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "prometheus-mcp-server"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
     restart: unless-stopped
 
   prometheus-stg:
@@ -28,6 +34,12 @@ services:
     environment:
       PROMETHEUS_URL: https://prometheus.private.stg.prefect.dev/
       PROMETHEUS_MCP_SERVER_TRANSPORT: http
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "prometheus-mcp-server"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
     restart: unless-stopped
 
   prometheus-prd:
@@ -38,6 +50,12 @@ services:
     environment:
       PROMETHEUS_URL: https://prometheus.private.prefect.cloud/
       PROMETHEUS_MCP_SERVER_TRANSPORT: http
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "prometheus-mcp-server"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
     restart: unless-stopped
 
   terraform:
