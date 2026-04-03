@@ -7,6 +7,7 @@ vim.diagnostic.config({
   current_line = false,
   signs = true,
   severity_sort = true,
+  update_in_insert = false, -- don't update when typing
   float = {
     header = "Diagnostics",
     source = true,
