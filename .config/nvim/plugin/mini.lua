@@ -74,8 +74,8 @@ require("mini.statusline").setup({
   },
 })
 
--- Use winbar instead of statusline
-vim.o.laststatus = 0
+-- Use winbar for file info, global statusline for split separation
+vim.o.laststatus = 3
 vim.o.winbar = "%!v:lua.MiniStatusline.active()"
 
 -- Make statusline/winbar transparent

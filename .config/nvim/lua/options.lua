@@ -75,7 +75,7 @@ end
 vim.g.markdown_recommended_style = 0
 
 -- Hide EndOfBuffer
-vim.opt.fillchars:append({ eob = " " })
+vim.opt.fillchars:append({ eob = " ", vert = "│", horiz = "─", horizup = "┴", horizdown = "┬", vertleft = "┤", vertright = "├", verthoriz = "┼" })
 
 -- Hide built-in themes
 vim.opt.wildignore:append({
