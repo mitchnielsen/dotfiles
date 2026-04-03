@@ -13,5 +13,7 @@
     "~/.config/pi/packages/prometheus",
     "https://github.com/davebcn87/pi-autoresearch"
   ],
-  "theme": "light"
+  "theme": "light",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-6"
 }
