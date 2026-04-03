@@ -21,16 +21,15 @@ if [ -d './.terraform' ]; then
   return 1
 fi
 
-# Try to determine the parent branch from reflog
-# Look for the most recent branch checkout before entering this worktree
-parent_branch=$(git reflog show HEAD --format="%gs" | \
-  grep -E "checkout: moving from .* to ${branch_name}" | \
-  head -1 | \
-  sed -E "s;checkout: moving from (.*) to ${branch_name};\1;")
+# Use explicit argument, or fall back to default branch
+parent_branch="${1:-${default_branch_name}}"
 
-# Fall back to default branch if we can't determine parent
-if [ -z "${parent_branch}" ]; then
-  parent_branch="${default_branch_name}"
+# Verify the target worktree directory exists
+if [ ! -d "../${parent_branch}" ]; then
+  echo "Error: worktree directory ../${parent_branch} does not exist"
+  echo "Available sibling worktrees:"
+  ls -d ../*/  2>/dev/null | sed 's|\.\./||; s|/||'
+  return 1
 fi
 
 cd ../"${parent_branch}" || { echo "Error: could not cd to ../${parent_branch}"; return 1; }
