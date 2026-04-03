@@ -30,6 +30,7 @@ local options = {
   relativenumber = false,
   showmode = false,
   fileformat = "unix",
+  formatoptions = "rqnl1j", -- Improve comment editing
   paste = false,
   errorbells = false,
   mouse = "a",
@@ -51,6 +52,12 @@ local options = {
   cursorcolumn = false,
   conceallevel = 0,
   iskeyword = "@,48-57,192-255", -- Characters that form keywords (includes dash)
+  splitkeep = "screen", -- Reduce scroll during window split
+
+  -- Pattern for a start of numbered list (used in `gw`). This reads as
+  -- "Start of list item is: at least one special character (digit, -, +, *)
+  -- possibly followed by punctuation (. or `)`) followed by at least one space".
+  formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]],
 
   -- folding
   -- https://www.jackfranklin.co.uk/blog/code-folding-in-vim-neovim
@@ -75,7 +82,16 @@ end
 vim.g.markdown_recommended_style = 0
 
 -- Hide EndOfBuffer
-vim.opt.fillchars:append({ eob = " ", vert = "│", horiz = "─", horizup = "┴", horizdown = "┬", vertleft = "┤", vertright = "├", verthoriz = "┼" })
+vim.opt.fillchars:append({
+  eob = " ",
+  vert = "│",
+  horiz = "─",
+  horizup = "┴",
+  horizdown = "┬",
+  vertleft = "┤",
+  vertright = "├",
+  verthoriz = "┼",
+})
 
 -- Hide built-in themes
 vim.opt.wildignore:append({
