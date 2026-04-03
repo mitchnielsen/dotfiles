@@ -37,3 +37,6 @@
 .config/glide/glide.d.ts
 .config/glide/tsconfig.json
 .config/glide/package.json
+
+# worktrunk
+.config/worktrunk/config.toml.lock

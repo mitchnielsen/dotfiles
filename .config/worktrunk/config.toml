@@ -1,0 +1,34 @@
+# Worktrunk config
+# https://worktrunk.dev
+
+# Worktree path template: https://worktrunk.dev/config
+worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
+skip-shell-integration-prompt = true
+
+##########
+
+# Worktree hooks: https://worktrunk.dev/hook
+
+[post-start]
+husky = """
+if [ -d ".husky" ]; then
+  npm install
+"""
+pre-commit = """
+if [ -f ".pre-commit-config.yaml" ]; then
+  pre-commit install
+"""
+direnv = """
+if [ -f ".envrc" ]; then
+  direnv allow
+"""
+
+[pre-remove]
+terraform-state-check = """
+if [ -d './.terraform' ]; then
+  echo 'Error: Terraform directory exists, aborting...'
+  exit 1
+fi
+"""
+
+[projects]

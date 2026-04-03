@@ -150,6 +150,8 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 setopt HIST_IGNORE_ALL_DUPS # history substring search: ignore dups
 
+eval "$(command wt config shell init zsh)"
+
 typeset -A ZSH_HIGHLIGHT_STYLES
 # To differentiate aliases from other command types
 ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'

@@ -14,6 +14,7 @@
 
 ## Specific guidelines
 
+- Use `wt` (worktrunk) for worktrees, NOT Claude worktrees
 - Use `gh` for interacting with GitHub.
 - Use project's existing build system (`make`, `mise`, etc)
 - Use project's formatter/linter settings

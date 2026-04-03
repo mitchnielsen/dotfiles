@@ -33,30 +33,6 @@ function dns-flush() {
   sudo killall -HUP mDNSResponder
 }
 
-# Adds a git worktree using the project and branch name
-function gwa() {
-  local branch_name="${1}"
-  local branch_name_escaped
-
-  branch_name_escaped="${branch_name//\//-}"
-  local location="../${branch_name_escaped}"
-
-  local args=""
-  if [ $(git branch --all | grep -c "remotes/origin/${branch_name}") -eq 0 ]; then
-    echo 'Branch does not exist on remote. Checking out a new branch...'
-    args="-b"
-  fi
-
-  git worktree add "${location}" ${args} "${branch_name}"
-  cd "${location}" || exit
-
-  if [ -d ".husky" ]; then
-    npm install
-  else
-    pre-commit install --allow-missing-config || true
-  fi
-}
-
 function kget() {
     if [ $# -ne 4 ]; then
         echo "Usage: get_cluster_credentials <context_name> <cluster_name> <region> <project>"
