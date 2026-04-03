@@ -2,7 +2,7 @@
 set -e
 
 # Check out a pull request from a fork using git worktrees
-# Usage: gh-pr-checkout <pr-number>
+# Usage: pr-checkout <pr-number>
 
 if [ $# -ne 1 ]; then
     echo "Usage: gh-pr-checkout <pr-number>"
