@@ -9,7 +9,7 @@
       "src": "https://github.com/giuxtaposition/blink-cmp-copilot"
     },
     "blink.cmp": {
-      "rev": "451168851e8e2466bc97ee3e026c3dcb9141ce07",
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.10.0 - 1.11.0"
     },
@@ -18,7 +18,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "0a3e09122cfd21e62a1e9d183c61aa1cacdd7da6",
+      "rev": "07aa57148ac28986bab9f55e87ee3d929e2726b1",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "diffview.nvim": {
@@ -38,7 +38,7 @@
       "src": "https://github.com/shumphrey/fugitive-gitlab.vim"
     },
     "fzf-lua": {
-      "rev": "c9e7b7bfbd01f949164988ee1684035468e1995c",
+      "rev": "9f0432fdd7825ab163520045831a40b6df82ea28",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "github-nvim-theme": {
@@ -46,7 +46,7 @@
       "src": "https://github.com/projekt0n/github-nvim-theme"
     },
     "go.nvim": {
-      "rev": "fe8e1de03157f8a68e9e5b819409368ce33aeb87",
+      "rev": "c97cac0cd9e56b44ae5d4b95034d414cedb20145",
       "src": "https://github.com/ray-x/go.nvim"
     },
     "gv.vim": {
@@ -70,11 +70,11 @@
       "src": "https://github.com/artempyanykh/marksman"
     },
     "mini.nvim": {
-      "rev": "af5f75c9ce572a4d1f0c77d6fb4ea764d16c1b3c",
+      "rev": "402ee6c6ec8ea44b22330446c8fb4e615fd3953e",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "neogit": {
-      "rev": "4681c1fdac1b730592ae195576e87406f7255750",
+      "rev": "5a7fca171e3ad07380745d573d791e95268b8f3f",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nightfox.nvim": {
@@ -94,7 +94,7 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim-bqf": {
-      "rev": "f65fba733268ffcf9c5b8ac381287eca7c223422",
+      "rev": "c282a62bec6c0621a1ef5132aa3f4c9fc4dcc2c7",
       "src": "https://github.com/kevinhwang91/nvim-bqf"
     },
     "nvim-lint": {
@@ -102,7 +102,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "16812abf0e8d8175155f26143a8504e8253e92b0",
+      "rev": "a776085e04f7b15d0b59fae2244df07d98360ab4",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-tree-preview.lua": {
@@ -110,23 +110,23 @@
       "src": "https://github.com/b0o/nvim-tree-preview.lua"
     },
     "nvim-tree.lua": {
-      "rev": "4cbe79526f8bc0bdb1a500d261dc5cc1be4e77d5",
+      "rev": "31503ad5d869fca61461d82a9126f62480ecb0ab",
       "src": "https://github.com/kyazdani42/nvim-tree.lua"
     },
     "nvim-treesitter": {
-      "rev": "7caec274fd19c12b55902a5b795100d21531391f",
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-context": {
-      "rev": "adf4b6b0420b7be6c717ef0ac7993183d6c201b1",
+      "rev": "b0c45cefe2c8f7b55fc46f34e563bc428ef99636",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "nvim-web-devicons": {
-      "rev": "d7462543c9e366c0d196c7f67a945eaaf5d99414",
+      "rev": "40e9d5a6cc3db11b309e39593fc7ac03bb844e38",
       "src": "https://github.com/kyazdani42/nvim-web-devicons"
     },
     "octo.nvim": {
-      "rev": "b51e52888e678441a266bfd5ae2dc0a02a21d67e",
+      "rev": "0a2375f2526560f39ac27c218f6d2eab17e6698e",
       "src": "https://github.com/pwntester/octo.nvim"
     },
     "onedark.nvim": {
@@ -142,7 +142,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "4f1c58a59d3a4da095743dd6f04b73caa0cefc3d",
+      "rev": "6d0329adb9c8cbe51b9a28299890a5eb104db7dc",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "scope.nvim": {
@@ -166,7 +166,7 @@
       "src": "https://github.com/Mofiqul/vscode.nvim"
     },
     "wtf.nvim": {
-      "rev": "7c4033fc133e8ea4f7bd185c0c65091401caaad9",
+      "rev": "ef7c22daf5c99f4c96fc2d0719d6f1848802fc02",
       "src": "https://github.com/piersolenski/wtf.nvim"
     }
   }
