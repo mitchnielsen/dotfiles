@@ -1,13 +1,22 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "permission": {
-    "edit": "ask",
     "bash": {
       "terraform *": "ask",
       "rm *": "ask",
       "git *": "ask",
       "*": "allow"
-    }
+    },
+    "mcp__clickhouse_*": "allow",
+    "mcp__grafana_*": "allow",
+    "mcp__linear_*": "allow",
+    "mcp__mcp-router_*": "allow",
+    "mcp__pagerduty_*": "allow",
+    "mcp__prefect-docs_*": "allow",
+    "mcp__prometheus-dev_*": "allow",
+    "mcp__prometheus-prd_*": "allow",
+    "mcp__prometheus-stg_*": "allow",
+    "mcp__terraform_*": "allow",
   },
   "mcp": {
     "mcp-router": {
@@ -26,10 +35,20 @@
       "type": "remote",
       "url": "http://localhost:8100/sse"
     },
-    "prometheus": {
+    "prometheus-prd": {
       "enabled": true,
       "type": "remote",
       "url": "http://localhost:8101/mcp"
+    },
+    "prometheus-dev": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8103/mcp"
+    },
+    "prometheus-stg": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8104/mcp"
     },
     "notion": {
       "enabled": true,
