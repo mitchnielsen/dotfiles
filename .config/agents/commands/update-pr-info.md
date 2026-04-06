@@ -1,5 +1,4 @@
 ---
-name: update-pr-info
 description: Update pull request title and description
 ---
 

@@ -1,5 +1,4 @@
 ---
-name: document
 description: Create documentation for a given prompt
 ---
 

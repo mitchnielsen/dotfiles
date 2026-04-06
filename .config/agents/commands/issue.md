@@ -1,5 +1,4 @@
 ---
-name: issue
 description: Create an issue in Linear using the Linear MCP server
 ---
 

@@ -26,9 +26,9 @@ function symlink() {
     # Kube settings
     ln -sf "$HOME/dotfiles/.config/kube/kuberc" "$HOME/.kube/kuberc"
 
-    # OpenCode - symlink to Claude Code's custom commands
-    mkdir -p "$HOME/.config/opencode/command"
-    ln -sf "$HOME/.config/claude/commands" "$HOME/.config/opencode/command/"
+    # OpenCode - symlink skills and commands to shared agents dir
+    ln -sf "$HOME/.config/agents/skills" "$HOME/.config/opencode/skills"
+    ln -sf "$HOME/.config/agents/commands" "$HOME/.config/opencode/commands"
   fi
 }
 

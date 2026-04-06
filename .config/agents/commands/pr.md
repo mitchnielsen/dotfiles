@@ -1,6 +1,5 @@
 ---
-name: pr
-description: Create a PR based on our current branch using the `gh` command-line tool
+description: Create a PR based on our current branch using the gh command-line tool
 ---
 
 Additional context from me to include in the PR and commit messages: $ARGUMENTS

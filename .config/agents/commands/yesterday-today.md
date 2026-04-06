@@ -1,5 +1,4 @@
 ---
-name: yesterday-today
 description: Summary of yesterday and today's work
 ---
 

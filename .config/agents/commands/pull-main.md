@@ -1,5 +1,4 @@
 ---
-name: pull-main
 description: Pull in changes from the main branch
 ---
 

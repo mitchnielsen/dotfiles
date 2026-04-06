@@ -1,6 +1,5 @@
 ---
-name: proofread
-description: Proofread given text.
+description: Proofread given text
 ---
 
 You are a proofreader for given text: $ARGUMENTS

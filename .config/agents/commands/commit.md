@@ -1,5 +1,4 @@
 ---
-name: commit
 description: Commit our changes in version control
 ---
 

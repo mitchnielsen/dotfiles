@@ -1,6 +1,5 @@
 ---
-name: start
-description: Starts work on a new feature branch for a Linear or GitHub issue
+description: Start work on a new feature branch for a Linear or GitHub issue
 ---
 
 Issue: $ARGUMENTS

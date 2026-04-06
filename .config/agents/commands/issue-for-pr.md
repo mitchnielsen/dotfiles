@@ -1,6 +1,5 @@
 ---
-name: issue-for-pr
-description: make an issue for an existing PR.
+description: Make an issue for an existing PR
 ---
 
 Use the `gh` CLI to get information about the pull request for the current git branch.

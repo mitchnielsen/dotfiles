@@ -1,5 +1,4 @@
 ---
-name: try
 description: Try some work without committing
 ---
 

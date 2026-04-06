@@ -1,5 +1,4 @@
 ---
-name: review-pr
 description: Review a pull request and suggest comments
 ---
 

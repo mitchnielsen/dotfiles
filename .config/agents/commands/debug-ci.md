@@ -1,5 +1,4 @@
 ---
-name: debug-ci
 description: Debug a CI failure
 ---
 
