@@ -55,6 +55,11 @@
       "headers": {
         "Authorization": "Token {env:PAGERDUTY_TOKEN}"
       }
+    },
+    "terraform": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8102/mcp"
     }
   }
 }
