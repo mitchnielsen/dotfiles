@@ -9,6 +9,7 @@ alias k='kubectl'
 alias v='nvim'
 alias cl='claude'
 alias clp='claude -p'
+alias oc='opencode'
 alias tf='terraform'
 alias lg='lazygit'
 
