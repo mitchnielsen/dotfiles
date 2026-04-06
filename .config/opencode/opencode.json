@@ -10,7 +10,6 @@
     "mcp__clickhouse_*": "allow",
     "mcp__grafana_*": "allow",
     "mcp__linear_*": "allow",
-    "mcp__mcp-router_*": "allow",
     "mcp__pagerduty_*": "allow",
     "mcp__prefect-docs_*": "allow",
     "mcp__prometheus-dev_*": "allow",
@@ -19,17 +18,6 @@
     "mcp__terraform_*": "allow",
   },
   "mcp": {
-    "mcp-router": {
-      "type": "local",
-      "enabled": true,
-      "command": [
-        "npx",
-        "-y",
-        "@mcp_router/cli@latest",
-        "connect"
-      ],
-      "environment": {}
-    },
     "grafana": {
       "enabled": true,
       "type": "remote",
