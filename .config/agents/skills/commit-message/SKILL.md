@@ -10,6 +10,15 @@ Use this skill when writing git commit messages. These conventions apply
 to all commits regardless of how they are created (explicit commands,
 ad-hoc requests, or any other workflow).
 
+## Git Author
+
+The git author for commits is always:
+
+- Name: `Mitchell Nielsen`
+- Email: `inbox@mitchn.me`
+
+Do not look up git user config. Use these values directly.
+
 ## Safety Rules
 
 - NEVER amend or squash commits unless explicitly told to.
