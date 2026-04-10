@@ -29,6 +29,10 @@ function symlink() {
     # OpenCode - symlink skills and commands to shared agents dir
     ln -sf "$HOME/.config/agents/skills" "$HOME/.config/opencode/skills"
     ln -sf "$HOME/.config/agents/commands" "$HOME/.config/opencode/commands"
+
+    # Claude - symlink skills and commands to shared agents dir
+    ln -sf "$HOME/.config/agents/commands" "$HOME/.config/claude/commands"
+    ln -sf "$HOME/.config/agents/skills" "$HOME/.config/claude/skills"
   fi
 }
 
