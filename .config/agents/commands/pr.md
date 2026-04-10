@@ -22,7 +22,10 @@ Assign the PR to me.
   automatically generated from a commit that does not follow the
   format, update the pull request title to follow it.
 - Always mention related issues when available
-  - Based on our conversation, use "Closes #1234" or "Closes ENG-1234"
+  - For a GitHub issue, use "Related to #1234"
+  - For a Linear issue, use "Related to ENG-1234"
+  - If the pull request completely addresses the issue, replace "Related to"
+    with "Closes"
 - Include contextual links (logs, issues, PRs, materials) that would help a
   reviewer get oriented on what we're talking about
 
