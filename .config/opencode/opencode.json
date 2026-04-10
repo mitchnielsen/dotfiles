@@ -60,6 +60,11 @@
       "enabled": true,
       "type": "remote",
       "url": "http://localhost:8102/mcp"
+    },
+    "linear": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp"
     }
   }
 }
