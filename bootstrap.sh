@@ -27,12 +27,12 @@ function symlink() {
     ln -sf "$HOME/dotfiles/.config/kube/kuberc" "$HOME/.kube/kuberc"
 
     # OpenCode - symlink skills and commands to shared agents dir
-    ln -sf "$HOME/.config/agents/skills" "$HOME/.config/opencode/skills"
-    ln -sf "$HOME/.config/agents/commands" "$HOME/.config/opencode/commands"
+    ln -sfn "$HOME/.config/agents/skills" "$HOME/.config/opencode/skills"
+    ln -sfn "$HOME/.config/agents/commands" "$HOME/.config/opencode/commands"
 
     # Claude - symlink skills and commands to shared agents dir
-    ln -sf "$HOME/.config/agents/commands" "$HOME/.config/claude/commands"
-    ln -sf "$HOME/.config/agents/skills" "$HOME/.config/claude/skills"
+    ln -sfn "$HOME/.config/agents/commands" "$HOME/.config/claude/commands"
+    ln -sfn "$HOME/.config/agents/skills" "$HOME/.config/claude/skills"
   fi
 }
 
