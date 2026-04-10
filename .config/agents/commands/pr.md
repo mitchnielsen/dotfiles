@@ -2,39 +2,14 @@
 description: Create a PR based on our current branch using the gh command-line tool
 ---
 
-Additional context from me to include in the PR and commit messages: $ARGUMENTS
+Additional context from me to include in the PR: $ARGUMENTS
 
-Create a pull request from this branch in `draft` state. If there is a pull
-request template file, usually in `.github/pull_request_template.md`, then
-follow that template for the pull request title and body.
-
-Then, use `gh pr create` to create the PR. If there is only a single
-commit, use the commit message as the PR message. If there are multiple commits,
-synthesize a new one that covers all of those changes.
-
+Create a pull request from this branch in `draft` state using `gh pr create`.
 Assign the PR to me.
 
-## Pull request title and description
+If there is a PR template (usually `.github/pull_request_template.md`),
+follow it. If there is only a single commit, use the commit message as the
+PR message. If there are multiple commits, synthesize a new one that covers
+all of the changes.
 
-### Content
-
-- Title: follow the Conventional Commits format. If the title is
-  automatically generated from a commit that does not follow the
-  format, update the pull request title to follow it.
-- Always mention related issues when available
-  - For a GitHub issue, use "Related to #1234"
-  - For a Linear issue, use "Related to ENG-1234"
-  - If the pull request completely addresses the issue, replace "Related to"
-    with "Closes"
-- Include contextual links (logs, issues, PRs, materials) that would help a
-  reviewer get oriented on what we're talking about
-
-### Style
-
-- IMPORTANT: THIS STYLE GUIDE IS REQUIRED AND MANDATORY
-- Be conversational and humble, avoid "comprehensive" or confident
-  "root cause" claims, it highlights your Dunning-Kruger issues
-- Brief, focus on what/why not how
-- No checklists or file lists necessary, but consider existing checklist
-  items if they exist in the pull request template
-- No "Test Plan" checklist
+Follow the `pr-description` skill for title and description conventions.

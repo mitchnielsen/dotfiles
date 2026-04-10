@@ -2,18 +2,7 @@
 description: Create an issue in Linear using the Linear MCP server
 ---
 
-Use the following context in the issue: $ARGUMENTS
+Create a Linear issue using the Linear MCP server. Follow the
+`linear-issue` skill for conventions.
 
-If I don't specify which team to use for the issue, use "Platform"
-(ID: 0cf54a8c-b85d-4637-b6fd-89670b625782).
-
-If I don't specify a status, use Backlog.
-
-Make a best effort guess to choose labels. If the team used is "Platform",
-make sure to apply a label for each of the "type" and "repo" label groups.
-
-If I don't specify a priority, make a best effort guess. If you're unsure,
-"Medium" is a safe guess.
-
-When finished, tell me the title of the issue and provide a link for me to click
-to open the issue in Linear.
+Context for the issue: $ARGUMENTS
