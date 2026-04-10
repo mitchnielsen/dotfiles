@@ -71,7 +71,7 @@ require("fzf-lua").setup({
 
 vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<CR>", { desc = "[f]ind [f]iles" })
 vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>", { desc = "[f]ind with [g]rep" })
-vim.keymap.set("n", "<leader>fG", "<cmd>FzfLua live_grep_resume<CR>", { desc = "[f]ind with [g]rep (resume)" })
+vim.keymap.set("n", "<leader>fG", "<cmd>FzfLua.live_grep({resume=true})<CR>", { desc = "[f]ind with [g]rep (resume)" })
 vim.keymap.set("n", "<leader>fw", "<cmd>FzfLua grep_cword<CR>", { desc = "[f]ind [w]ord under cursor with grep" })
 vim.keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", { desc = "[f]ind [b]uffers" })
 vim.keymap.set("n", "<leader>fs", "<cmd>FzfLua lsp_document_symbols<CR>", { desc = "[f]ind [s]ymbols" })
