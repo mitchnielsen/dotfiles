@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/opt/homebrew/opt/tpm/share/tpm/bin/update_plugins all
