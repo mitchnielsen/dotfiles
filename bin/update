@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# Tmux
-/opt/homebrew/opt/tpm/share/tpm/bin/update_plugins all
-
-# Brew
-brew update; brew upgrade
