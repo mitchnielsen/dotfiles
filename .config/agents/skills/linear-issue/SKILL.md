@@ -52,3 +52,5 @@ issue.
 
 After creating an issue, always provide the title and a clickable
 link to the issue in Linear.
+
+Example: https://linear.app/prefect/issue/ABC-123

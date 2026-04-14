@@ -37,3 +37,9 @@ from a commit that does not follow the format, rewrite it.
 - No checklists or file lists, but respect existing checklist items
   if a PR template defines them.
 - No "Test Plan" checklist.
+
+## Output
+
+After creating or updating a PR, always provide the title and a clickable link.
+
+Example: https://github.com/PrefectHQ/platform/pull/123
