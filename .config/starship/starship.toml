@@ -17,7 +17,7 @@ ruby = { disabled = true }
 username = { disabled = true }
 
 [fill]
-disabled = false
+disabled = true
 symbol = '―'
 style = '240'
 
