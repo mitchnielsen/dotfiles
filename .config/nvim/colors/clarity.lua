@@ -13,7 +13,7 @@ vim.o.background = "light"
 local c = {
   none = "NONE",
   fg = "#24292f",
-  bg = "NONE", -- transparent, Ghostty provides #fafafa
+  bg = "NONE", -- transparent, Ghostty provides color
   dim = "#6e7781",
   faint = "#b0b8c1",
   subtle_bg = "#f0f0f0",
@@ -342,8 +342,20 @@ hi("MiniTrailspace", { bg = "#fbe5e1" })
 hi("FzfLuaNormal", { fg = c.fg, bg = c.float_bg })
 hi("FzfLuaBorder", { fg = c.border, bg = c.float_bg })
 hi("FzfLuaTitle", { fg = c.fg, bg = c.float_bg, bold = true })
+hi("FzfLuaPreviewNormal", { fg = c.fg, bg = c.float_bg })
+hi("FzfLuaPreviewBorder", { fg = c.border, bg = c.float_bg })
+hi("FzfLuaPreviewTitle", { fg = c.fg, bg = c.float_bg, bold = true })
 hi("FzfLuaCursorLine", { bg = c.visual })
 hi("FzfLuaSearch", { fg = c.blue })
+hi("FzfLuaHeaderBind", { fg = c.blue })
+hi("FzfLuaHeaderText", { fg = c.dim })
+hi("FzfLuaFzfNormal", { fg = c.fg, bg = c.float_bg })
+hi("FzfLuaFzfGutter", { bg = c.float_bg })
+hi("FzfLuaFzfHeader", { fg = c.dim })
+hi("FzfLuaFzfInfo", { fg = c.dim })
+hi("FzfLuaFzfPointer", { fg = c.blue })
+hi("FzfLuaFzfPrompt", { fg = c.blue })
+hi("FzfLuaFzfMatch", { fg = c.blue })
 
 -- ┌──────────────────────────────────┐
 -- │  Neogit                          │
