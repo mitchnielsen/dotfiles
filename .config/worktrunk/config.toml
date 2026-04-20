@@ -13,14 +13,17 @@ skip-shell-integration-prompt = true
 husky = """
 if [ -d ".husky" ]; then
   npm install
+fi
 """
 pre-commit = """
 if [ -f ".pre-commit-config.yaml" ]; then
   pre-commit install
+fi
 """
 direnv = """
 if [ -f ".envrc" ]; then
   direnv allow
+fi
 """
 
 [pre-remove]
