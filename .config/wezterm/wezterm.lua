@@ -3,7 +3,11 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 
 -- Appearance
-config.color_scheme = "nordfox"
+config.term = "xterm-256color"
+config.color_scheme = "clarity"
+config.color_schemes = {
+  clarity = wezterm.color.load_scheme(wezterm.config_dir .. "/colors/clarity.toml"),
+}
 config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = false
 config.use_fancy_tab_bar = false
@@ -26,29 +30,29 @@ config.font_size = 12.0
 config.line_height = 1.25
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
--- Tab bar colors (nordfox palette)
+-- Tab bar colors (clarity palette)
 config.colors = {
   tab_bar = {
-    background = "#2e3440",
+    background = "#efefed",
     active_tab = {
-      bg_color = "#3b4252",
-      fg_color = "#eceff4",
+      bg_color = "#f0f0f0",
+      fg_color = "#24292f",
     },
     inactive_tab = {
-      bg_color = "#2e3440",
-      fg_color = "#616e88",
+      bg_color = "#efefed",
+      fg_color = "#6e7781",
     },
     inactive_tab_hover = {
-      bg_color = "#3b4252",
-      fg_color = "#d8dee9",
+      bg_color = "#f0f0f0",
+      fg_color = "#24292f",
     },
     new_tab = {
-      bg_color = "#2e3440",
-      fg_color = "#616e88",
+      bg_color = "#efefed",
+      fg_color = "#6e7781",
     },
     new_tab_hover = {
-      bg_color = "#3b4252",
-      fg_color = "#d8dee9",
+      bg_color = "#f0f0f0",
+      fg_color = "#24292f",
     },
   },
 }
@@ -56,8 +60,8 @@ config.colors = {
 -- Tab bar: show workspace name on the right (like tmux session name)
 wezterm.on("update-right-status", function(window, _)
   window:set_right_status(wezterm.format({
-    { Background = { Color = "#2e3440" } },
-    { Foreground = { Color = "#88c0d0" } },
+    { Background = { Color = "#efefed" } },
+    { Foreground = { Color = "#0969da" } },
     { Text = " " .. window:active_workspace() .. " " },
   }))
 end)

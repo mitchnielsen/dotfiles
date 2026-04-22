@@ -1,0 +1,40 @@
+# (Clarity) Minimal light scheme for legibility
+# Mirrors .config/nvim/colors/clarity.lua
+# Color used sparingly: green/red/blue/yellow carry semantics, most text is fg.
+
+[metadata]
+name = "clarity"
+
+[colors]
+background = '#efefed'
+foreground = '#24292f'
+
+cursor_bg = '#24292f'
+cursor_border = '#24292f'
+cursor_fg = '#efefed'
+
+selection_bg = '#d1e5fa'
+selection_fg = '#24292f'
+
+# ansi: normal intensity
+# 0 black / 1 red / 2 green / 3 yellow / 4 blue / 5 magenta / 6 cyan / 7 white
+ansi = [
+    '#24292f',
+    '#a12a2a',
+    '#1a8a0e',
+    '#7a6520',
+    '#0969da',
+    '#6e40c9',
+    '#1b7c83',
+    '#6e7781',
+]
+brights = [
+    '#6e7781',
+    '#cf222e',
+    '#3a7d10',
+    '#9a7d00',
+    '#218bff',
+    '#8250df',
+    '#3192aa',
+    '#b0b8c1',
+]
