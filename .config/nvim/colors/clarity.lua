@@ -3,7 +3,8 @@
 -- Most code is the foreground color. Color is used sparingly:
 --   green  (#3a7d10) — strings, additions, success
 --   red    (#a12a2a) — errors, deletions, important warnings
---   blue   (#0969da) — links, references, interactive elements
+--   blue   (#0969da) — functions, methods, links, references
+--   yellow (#7a6520) — parameters, warnings
 --   muted  (#6e7781) — comments, dim UI, deemphasized text
 
 vim.cmd("highlight clear")
@@ -105,7 +106,7 @@ hi("Boolean", { fg = c.fg, bold = true })
 hi("Float", { fg = c.fg })
 
 hi("Identifier", { fg = c.fg })
-hi("Function", { fg = c.fg })
+hi("Function", { fg = c.blue })
 
 hi("Statement", { fg = c.fg, bold = true })
 hi("Conditional", { fg = c.fg, bold = true })
@@ -151,13 +152,13 @@ hi("@number", { link = "Number" })
 hi("@boolean", { link = "Boolean" })
 hi("@float", { link = "Float" })
 
-hi("@function", { fg = c.fg })
-hi("@function.builtin", { fg = c.fg })
-hi("@function.call", { fg = c.fg })
-hi("@function.macro", { fg = c.fg })
-hi("@method", { fg = c.fg })
-hi("@method.call", { fg = c.fg })
-hi("@constructor", { fg = c.fg })
+hi("@function", { fg = c.blue })
+hi("@function.builtin", { fg = c.blue })
+hi("@function.call", { fg = c.blue })
+hi("@function.macro", { fg = c.blue })
+hi("@method", { fg = c.blue })
+hi("@method.call", { fg = c.blue })
+hi("@constructor", { fg = c.blue })
 
 hi("@keyword", { fg = c.fg, bold = true })
 hi("@keyword.function", { fg = c.fg, bold = true })
@@ -169,8 +170,8 @@ hi("@exception", { fg = c.red, bold = true })
 hi("@include", { fg = c.fg, bold = true })
 
 hi("@variable", { fg = c.fg })
-hi("@variable.builtin", { fg = c.fg, italic = true })
-hi("@parameter", { fg = c.fg })
+hi("@variable.builtin", { fg = c.yellow, italic = true })
+hi("@parameter", { fg = c.yellow })
 hi("@field", { fg = c.fg })
 hi("@property", { fg = c.fg })
 
@@ -226,11 +227,11 @@ hi("@lsp.type.class", { fg = c.fg })
 hi("@lsp.type.enum", { fg = c.fg })
 hi("@lsp.type.interface", { fg = c.fg })
 hi("@lsp.type.struct", { fg = c.fg })
-hi("@lsp.type.parameter", { fg = c.fg })
+hi("@lsp.type.parameter", { fg = c.yellow })
 hi("@lsp.type.variable", { fg = c.fg })
 hi("@lsp.type.property", { fg = c.fg })
-hi("@lsp.type.function", { fg = c.fg })
-hi("@lsp.type.method", { fg = c.fg })
+hi("@lsp.type.function", { fg = c.blue })
+hi("@lsp.type.method", { fg = c.blue })
 hi("@lsp.type.macro", { fg = c.fg })
 hi("@lsp.type.decorator", { fg = c.fg })
 hi("@lsp.type.comment", { link = "Comment" })
