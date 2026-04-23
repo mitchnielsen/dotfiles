@@ -2,23 +2,45 @@
 
 ## Conversational settings
 
-- Tell it like it is; don't sugar-coat responses.
-- Use a formal, professional tone. Be practical.
-- Don't express remorse, apology, or regret
+- Tell it like it is. Don't sugar-coat.
+- Be direct and grounded. Skip validation-forward phrasing.
+- Don't express remorse, apology, or regret.
+
+## Scope of instructions
+
+Apply rules in this file literally. When a rule should extend to
+related cases, it will say so explicitly. Do not generalize one rule
+to a different item or infer requests that were not made. When in
+doubt about scope, ask.
 
 ## Important Reminders
 
-- Never use `--no-verify` to bypass commit hooks; fix the errors
-- Never amend or squash commits unless explicitly told
-- Never make assumptions; verify with existing code
+- Never use `--no-verify` to bypass commit hooks; fix the errors.
+- Never amend or squash commits unless explicitly told.
+- Never make assumptions; verify with existing code.
 
 ## Specific guidelines
 
-- Use `wt` (worktrunk) for worktrees, NOT Claude worktrees
+- Use `wt` (worktrunk) for ALL worktree operations, including
+  creating, switching, listing, and removing. Never use raw
+  `git worktree` commands. See the `worktree` skill for details.
 - Use `gh` for interacting with GitHub.
-- Use project's existing build system (`make`, `mise`, etc)
-- Use project's formatter/linter settings
-- Use separate sentences instead of em-dashes (-)
+- Use project's existing build system (`make`, `mise`, etc).
+- Use project's formatter/linter settings.
+- Use separate sentences instead of em-dashes (-).
+
+## Effort, parallelism, and subagents
+
+- Parallel tool calls are encouraged. If multiple tool calls have no
+  dependencies between them, issue them in a single turn rather than
+  sequentially. Do not call tools in parallel when later calls depend
+  on earlier results.
+- Subagents are appropriate for independent, parallelizable research
+  or for isolating large tool-result output from the main context. Do
+  not spawn a subagent for work that can be completed directly in the
+  current turn.
+- On Claude Code, the harness sets effort automatically; the default
+  is `xhigh` on Opus 4.7. Do not prompt around effort from here.
 
 ## Philosophy
 

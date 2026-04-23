@@ -4,35 +4,50 @@ description: Start work on a new feature branch for a Linear or GitHub issue
 
 Issue: $ARGUMENTS
 
-If the issue here looks like "ABC-123", it is likely a Linear issue ID, so
-you can look it up using the `linear` MCP tools.
+## Identify the issue
 
-- If the argument here looks like #123, it is likely a GitHub issue ID, so
-  you can look it up using the `gh` CLI tool.
-- Otherwise, if it's just a bunch of words, it's an idea I want to try out
-  and will just be specified as English, in which case it is not tied to
-  an issue tracker.
+Parse the argument as follows:
 
-First, read the issue from the issue tracker, and follow any other links or
-references provided in the issue description to understand what it's about.
+- If it matches `ABC-123`, treat it as a Linear issue ID and look it
+  up via the `linear` MCP tools.
+- If it matches `#123`, treat it as a GitHub issue ID and look it up
+  via the `gh` CLI.
+- Otherwise, treat the argument as a free-text description of an
+  idea to try. There is no issue tracker entry in this case.
 
-Then, create a comprehensive plan for implementing or fixing the issue,
-including how you're going to test it.
+Read the issue description and follow any links or references in it
+to understand the full scope.
 
-- Use planning mode if possible. Testing should be the first priority in
-  most repositories.
-- If you're unsure about how to test something, ask me for clarification.
-- Some repositories don't have any unit test suites, or the test suites
-  they have aren't runnable locally, and that is okay.
+## Plan the work
 
-Then, present the plan to me and wait for my approval before proceeding with the
-implementation. After I've approved, please proceed with the implementation
-unattended and autonomously.
+This is a long-horizon agentic task. Plan before writing code.
 
-- If there are relevant tests, write them first and
-  then use them to guide your work. Don't stop and declare victory until the
-  tests are passing.
-- Use git worktrees to keep changes isolated. For example, given a directory like
-  `myrepo/main`, make a new worktree next to that directory, `myrepo/myfeaturebranch`.
-- The feature branch should NOT have any slashes (`/`) in the name. Use dashes (`-`)
-  instead when necessary. This prevents confusion with subdirectories.
+1. Enter planning mode if the current harness supports it.
+2. Produce a comprehensive implementation plan that includes how the
+   change will be tested.
+3. Prioritize testing. If the repository has a runnable test suite,
+   write tests first and use them to drive implementation.
+4. If the repository has no test suite or its tests are not runnable
+   locally, state that explicitly in the plan and proceed without
+   tests. This is acceptable.
+5. If any part of the testing approach is unclear, ask before
+   proceeding.
+
+Present the plan and wait for my approval.
+
+## Set up the worktree
+
+Use the `worktree` skill. Create a new worktree with `wt switch
+--create <branch>`. Do not use raw `git worktree` commands and do
+not invent a directory layout; `wt` handles that.
+
+Branch names must not contain slashes. Use dashes instead.
+
+## Implement
+
+After I approve the plan, implement it autonomously and unattended.
+
+- If tests exist, do not declare victory until they pass.
+- Do not stop at partial implementations.
+- If you hit an unexpected blocker that changes the plan, stop and
+  report rather than silently changing direction.
