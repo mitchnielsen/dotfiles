@@ -3,7 +3,6 @@ local config = wezterm.config_builder()
 local M = {}
 
 function M.setup(config)
-  config.term = "xterm-256color"
   config.color_scheme = "clarity"
   config.color_schemes = {
     clarity = wezterm.color.load_scheme(wezterm.config_dir .. "/colors/clarity.toml"),

@@ -47,6 +47,7 @@ if [ ! -f "${HOME}/.personal_device_marker" ]; then
   export ANTHROPIC_API_KEY=$(cat "${HOME}/secret/anthropic-api-key.txt")
   export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
   export ENABLE_LSP_TOOL=1 # https://karanbansal.in/blog/claude-code-lsp/
+  # export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
 
   # Docker
   export DOCKER_HOST="unix://${HOME}/.docker/run/docker.sock"

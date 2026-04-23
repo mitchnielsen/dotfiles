@@ -72,6 +72,9 @@ local options = {
 
   -- Limit ShaDa file size for faster startup
   shada = "'100,<50,s10,:1000,/100,@100,h",
+
+  -- Disable termsync to work around rendering issues in Wezterm with multiplexing
+  termsync = false,
 }
 
 for k, v in pairs(options) do
