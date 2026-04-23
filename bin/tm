@@ -10,4 +10,11 @@ if ! tmux has-session -t "${session_name}"; then
   tmux new-session -d -s "${session_name}"
 fi
 
-tmux attach -t "${session_name}"
+# Check if we're already in a tmux session
+if [ -n "$TMUX" ]; then
+  # If we're in tmux, switch to the session instead of attaching
+  tmux switch-client -t "${session_name}"
+else
+  # If we're not in tmux, attach normally
+  tmux attach -t "${session_name}"
+fi
