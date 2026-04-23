@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 function symlink() {
   # zsh zprofile
-  if [ ! -f "$HOME/.zprofile" ]; then echo 'export ZDOTDIR=$HOME/.config/zsh' > "$HOME/.zprofile"; fi
+  grep -qF 'ZDOTDIR' "$HOME/.zprofile" 2>/dev/null \
+    || echo 'export ZDOTDIR=$HOME/.config/zsh' >> "$HOME/.zprofile"
 
   # ssh
   mkdir -p "$HOME/.ssh"
@@ -39,7 +42,7 @@ function symlink() {
 function dependencies() {
   # Install homebrew if needed
   command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  grep homebrew "$HOME/.zprofile" || echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+  grep -q homebrew "$HOME/.zprofile" || echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
   # Install packages
@@ -69,6 +72,8 @@ function macos_settings() {
   chflags nohidden ~/Library
   # Save settings
   killall Dock
+  killall Finder
+  killall SystemUIServer
 }
 
 function all() {
@@ -84,4 +89,3 @@ for target in ${TARGET}; do
   ${target}
   echo "${target} complete."
 done
-
