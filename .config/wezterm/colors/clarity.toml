@@ -13,7 +13,7 @@ cursor_bg = '#24292f'
 cursor_border = '#24292f'
 cursor_fg = '#efefed'
 
-selection_bg = '#d1e5fa'
+selection_bg = '#d8dee4'
 selection_fg = '#24292f'
 
 # ansi: normal intensity
@@ -22,7 +22,7 @@ ansi = [
     '#24292f',
     '#a12a2a',
     '#1a8a0e',
-    '#7a6520',
+    '#8a5a00',
     '#0969da',
     '#6e40c9',
     '#1b7c83',
@@ -32,7 +32,7 @@ brights = [
     '#6e7781',
     '#cf222e',
     '#3a7d10',
-    '#9a7d00',
+    '#8a5a00',
     '#218bff',
     '#8250df',
     '#3192aa',

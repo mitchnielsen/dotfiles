@@ -5,11 +5,11 @@ foreground: &foreground "#24292f"
 background: &background default
 primary: &primary "#0969da"
 secondary: &secondary "#1a8a0e"
-warning: &warning "#7a6520"
+warning: &warning "#8a5a00"
 error: &error "#a12a2a"
 muted: &muted "#6e7781"
 border: &border "#d0d7de"
-highlight: &highlight "#e8e8e8"
+highlight: &highlight "#d8dee4"
 faint: &faint "#b0b8c1"
 
 k9s:
@@ -81,7 +81,7 @@ k9s:
       fgColor: *foreground
       bgColor: *background
       cursorFgColor: "#ffffff"
-      cursorBgColor: "#d0d0d0"
+      cursorBgColor: *highlight
       markColor: *primary
       header:
         fgColor: *muted
