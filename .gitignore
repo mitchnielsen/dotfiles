@@ -40,3 +40,7 @@
 
 # worktrunk
 .config/worktrunk/config.toml.lock
+
+# Codex
+.config/codex/
+!.config/codex/config.toml
