@@ -1,7 +1,7 @@
 -- clarity.lua — minimal light colorscheme for legibility
 -- Designed to match a Ghostty terminal with #fafafa background.
 -- Most code is the foreground color. Color is used sparingly:
---   green  (#3a7d10) — strings, additions, success
+--   green  (#1a8a0e) — strings, additions, success
 --   red    (#a12a2a) — errors, deletions, important warnings
 --   blue   (#0969da) — functions, methods, links, references
 --   yellow (#7a6520) — parameters, warnings
