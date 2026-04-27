@@ -14,11 +14,11 @@
       "version": "1.10.0 - 1.11.0"
     },
     "conform.nvim": {
-      "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
+      "rev": "dca1a190aa85f9065979ef35802fb77131911106",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "aeca454727486d488a6ecbcde30db72e741e3524",
+      "rev": "3b95c93d804077dd409d62a6da53a8c92ac8f415",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "diffview.nvim": {
@@ -38,7 +38,7 @@
       "src": "https://github.com/shumphrey/fugitive-gitlab.vim"
     },
     "fzf-lua": {
-      "rev": "3da04a92518453a1898d6bce213532eec73dcc27",
+      "rev": "2e29d5f233defe3c5587df0e4dd29af2bd95a5a7",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "github-nvim-theme": {
@@ -70,11 +70,11 @@
       "src": "https://github.com/artempyanykh/marksman"
     },
     "mini.nvim": {
-      "rev": "d76247d6e3ffa222784be5b156770e37c665f67e",
+      "rev": "be81509b7160aa02264a59789164a2e1c4a6750a",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "neogit": {
-      "rev": "d1cfc4986195239cac55700b675cea7a9578d430",
+      "rev": "792c139da736230855e8341ebe6175bb6eb8268b",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nightfox.nvim": {
@@ -102,7 +102,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "e05fb8c3bd61d909dacff24f77f23beb644daf54",
+      "rev": "eeef061d58d759b5419c1e20c4b3a5bc3154f871",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-tree-preview.lua": {
@@ -110,7 +110,7 @@
       "src": "https://github.com/b0o/nvim-tree-preview.lua"
     },
     "nvim-tree.lua": {
-      "rev": "d277467fc0d1d0e2bca88165a1de6b526f9f6fe8",
+      "rev": "24cfcc94372e526fd9e1c2803ede9e0f1715e33f",
       "src": "https://github.com/kyazdani42/nvim-tree.lua"
     },
     "nvim-treesitter": {
@@ -122,11 +122,11 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "nvim-web-devicons": {
-      "rev": "c72328a5494b4502947a022fe69c0c47e53b6aa6",
+      "rev": "8069e89df2d7259704286a5906a11c5b27d5b440",
       "src": "https://github.com/kyazdani42/nvim-web-devicons"
     },
     "octo.nvim": {
-      "rev": "65550fa020775fb18e6eacab86b80145560bfd9c",
+      "rev": "34e67cc2d247e9b9271e2b54baeb6d4f6d1035bb",
       "src": "https://github.com/pwntester/octo.nvim"
     },
     "onedark.nvim": {
@@ -142,7 +142,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "250aed7415ddd6cb3ea321490c7b35094ed9148d",
+      "rev": "527b18ff9d4353510f5eccbae27766688cabdb62",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "scope.nvim": {
