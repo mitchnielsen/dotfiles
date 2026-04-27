@@ -71,5 +71,9 @@
   "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754598531219
-  }
+  },
+  "theme": "light",
+  "editorMode": "vim",
+  "preferredNotifChannel": "notifications_disabled",
+  "terminalProgressBarEnabled": false
 }
