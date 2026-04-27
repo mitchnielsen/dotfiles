@@ -1,8 +1,9 @@
 ---
 services:
   grafana:
-    image: mcp/grafana
+    image: grafana/mcp-grafana
     container_name: mcp-grafana
+    command: ["-t", "streamable-http", "--address", ":8000"]
     ports:
       - "8100:8000"
     environment:
@@ -68,4 +69,61 @@ services:
       TFE_TOKEN: ${TFE_TOKEN}
       TRANSPORT_MODE: streamable-http
       TRANSPORT_HOST: 0.0.0.0
+    restart: unless-stopped
+
+  prefect-prd:
+    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+    container_name: mcp-prefect-prd
+    command:
+      - uvx
+      - --from
+      - prefect-mcp
+      - python
+      - -c
+      - >-
+        from prefect_mcp_server.server import mcp;
+        mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
+    ports:
+      - "8105:8000"
+    environment:
+      PREFECT_API_URL: ${PREFECT_PRD_API_URL}
+      PREFECT_API_KEY: ${PREFECT_PRD_API_KEY}
+    restart: unless-stopped
+
+  prefect-dev:
+    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+    container_name: mcp-prefect-dev
+    command:
+      - uvx
+      - --from
+      - prefect-mcp
+      - python
+      - -c
+      - >-
+        from prefect_mcp_server.server import mcp;
+        mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
+    ports:
+      - "8106:8000"
+    environment:
+      PREFECT_API_URL: ${PREFECT_DEV_API_URL}
+      PREFECT_API_KEY: ${PREFECT_DEV_API_KEY}
+    restart: unless-stopped
+
+  prefect-stg:
+    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+    container_name: mcp-prefect-stg
+    command:
+      - uvx
+      - --from
+      - prefect-mcp
+      - python
+      - -c
+      - >-
+        from prefect_mcp_server.server import mcp;
+        mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
+    ports:
+      - "8107:8000"
+    environment:
+      PREFECT_API_URL: ${PREFECT_STG_API_URL}
+      PREFECT_API_KEY: ${PREFECT_STG_API_KEY}
     restart: unless-stopped

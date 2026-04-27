@@ -26,6 +26,7 @@
       "mcp__clickhouse",
       "mcp__linear",
       "mcp__pagerduty",
+      "mcp__prefect",
       "mcp__prefect-docs",
       "mcp__prometheus-prd",
       "mcp__prometheus-dev",

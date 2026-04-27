@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "grafana": {
-      "type": "sse",
-      "url": "http://localhost:8100/sse"
+      "type": "http",
+      "url": "http://localhost:8100/mcp"
     },
     "prometheus-prd": {
       "type": "http",
@@ -20,6 +20,18 @@
       "type": "http",
       "url": "http://localhost:8102/mcp"
     },
+    "prefect-prd": {
+      "type": "http",
+      "url": "http://localhost:8105/mcp"
+    },
+    "prefect-dev": {
+      "type": "http",
+      "url": "http://localhost:8106/mcp"
+    },
+    "prefect-stg": {
+      "type": "http",
+      "url": "http://localhost:8107/mcp"
+    },
     "linear": {
       "type": "http",
       "url": "https://mcp.linear.app/mcp"
@@ -30,7 +42,11 @@
     },
     "datadog": {
       "type": "http",
-      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"
+      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core",
+      "headers": {
+        "DD_API_KEY": "${DD_API_KEY}",
+        "DD_APPLICATION_KEY": "${DD_APPLICATION_KEY}"
+      }
     },
     "pagerduty": {
       "type": "http",

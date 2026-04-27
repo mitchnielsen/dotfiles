@@ -8,20 +8,24 @@
       "*": "allow"
     },
     "mcp__clickhouse_*": "allow",
+    "mcp__datadog_*": "allow",
     "mcp__grafana_*": "allow",
     "mcp__linear_*": "allow",
     "mcp__pagerduty_*": "allow",
+    "mcp__prefect-dev_*": "allow",
     "mcp__prefect-docs_*": "allow",
+    "mcp__prefect-prd_*": "allow",
+    "mcp__prefect-stg_*": "allow",
     "mcp__prometheus-dev_*": "allow",
     "mcp__prometheus-prd_*": "allow",
     "mcp__prometheus-stg_*": "allow",
-    "mcp__terraform_*": "allow",
+    "mcp__terraform_*": "allow"
   },
   "mcp": {
     "grafana": {
       "enabled": true,
       "type": "remote",
-      "url": "http://localhost:8100/sse"
+      "url": "http://localhost:8100/mcp"
     },
     "prometheus-prd": {
       "enabled": true,
@@ -46,7 +50,11 @@
     "datadog": {
       "enabled": true,
       "type": "remote",
-      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"
+      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core",
+      "headers": {
+        "DD_API_KEY": "{env:DD_API_KEY}",
+        "DD_APPLICATION_KEY": "{env:DD_APPLICATION_KEY}"
+      }
     },
     "pagerduty": {
       "enabled": true,
@@ -60,6 +68,21 @@
       "enabled": true,
       "type": "remote",
       "url": "http://localhost:8102/mcp"
+    },
+    "prefect-prd": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8105/mcp"
+    },
+    "prefect-dev": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8106/mcp"
+    },
+    "prefect-stg": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8107/mcp"
     },
     "linear": {
       "enabled": true,
