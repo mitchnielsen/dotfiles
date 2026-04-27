@@ -36,6 +36,9 @@
     ],
     "ask": [
       "Bash(rm:*)"
+    ],
+    "deny": [
+      "EnterWorktree"
     ]
   },
   "model": "opus[1m]",
