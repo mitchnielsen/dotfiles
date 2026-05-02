@@ -6,8 +6,16 @@
 [core]
   pager = delta-auto
   excludesfile = ~/.config/git/ignore
+[column]
+  ui = auto # can display results in columns
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
 [advice]
   statusHints = false
+[help]
+  autocorrect = prompt
 [remote]
   pushdefault = origin
 [pull]
@@ -15,16 +23,24 @@
   default = current # pull the current branch from the remote branch of the same name
 [fetch]
   prune = true # delete branches that no longer exist upstream (merged)
+  pruneTags = true # same for tags
+  all = true # fetch all remotes
 [push]
-  autosetupremote = true # automatically set up the remote origin when pushing
+  autoSetupRemote = true # automatically set up the remote origin when pushing
   default = current # push the current branch to the remote branch of the same name
 [rebase]
-  autosquash = true # automatically squash fixup/squash commits
+  autoSquash = true # automatically squash fixup/squash commits
+  autoStash = true
+  updateRefs = true
+[rerere]
+  enabled = true # reuse rebase conflict fixes
+  autoupdate = true
 [diff]
   # https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
   # https://link.springer.com/article/10.1007/s10664-019-09772-z
-  algorithm = default
-  colorMoved = default # uses different colours to highlight lines in diffs that have been “moved”
+  # https://blog.gitbutler.com/how-git-core-devs-configure-git
+  algorithm = histogram
+  colorMoved = plain # uses different colours to highlight lines in diffs that have been “moved”
   context = 5
   interHunkContext = 10
   renames = copies
