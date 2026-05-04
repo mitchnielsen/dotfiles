@@ -1,0 +1,53 @@
+model = "gpt-5.5"
+
+[projects."/Users/mitch/dotfiles"]
+trust_level = "trusted"
+
+[mcp_servers.datadog]
+url = "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core"
+
+[mcp_servers.datadog.env_http_headers]
+DD_API_KEY = "DD_API_KEY"
+DD_APPLICATION_KEY = "DD_APPLICATION_KEY"
+
+[mcp_servers.grafana]
+url = "http://localhost:8100/mcp"
+
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+
+[mcp_servers.notion]
+url = "https://mcp.notion.com/mcp"
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+[mcp_servers.pagerduty]
+url = "https://mcp.pagerduty.com/mcp"
+
+[mcp_servers.pagerduty.env_http_headers]
+Authorization = "PAGERDUTY_AUTHORIZATION"
+
+[mcp_servers.prefect-dev]
+url = "http://localhost:8106/mcp"
+
+[mcp_servers.prefect-prd]
+url = "http://localhost:8105/mcp"
+
+[mcp_servers.prefect-stg]
+url = "http://localhost:8107/mcp"
+
+[mcp_servers.prometheus-dev]
+url = "http://localhost:8103/mcp"
+
+[mcp_servers.prometheus-prd]
+url = "http://localhost:8101/mcp"
+
+[mcp_servers.prometheus-stg]
+url = "http://localhost:8104/mcp"
+
+[mcp_servers.terraform]
+url = "http://localhost:8102/mcp"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 2
