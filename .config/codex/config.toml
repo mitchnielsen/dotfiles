@@ -3,6 +3,9 @@ model = "gpt-5.5"
 [projects."/Users/mitch/dotfiles"]
 trust_level = "trusted"
 
+[projects."/Users/mitch/code"]
+trust_level = "trusted"
+
 [mcp_servers.datadog]
 url = "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core"
 
@@ -50,4 +53,4 @@ url = "http://localhost:8104/mcp"
 url = "http://localhost:8102/mcp"
 
 [tui.model_availability_nux]
-"gpt-5.5" = 2
+"gpt-5.5" = 3
