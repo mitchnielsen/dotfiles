@@ -12,6 +12,7 @@
   "permissions": {
     "allow": [
       "Bash",
+      "Bash(wt:*)",
       "Edit(*)",
       "Glob(*)",
       "Grep(*)",
