@@ -106,6 +106,12 @@ function image-size() {
   printf "uncompressed: %s\ncompressed: %s\n" "${uncompressed}" "${compressed}"
 }
 
+# Add a pwd label when running one-off containers so I
+# can later find where I started them.
+function dr() {
+  docker run --rm -it --label host.pwd="$PWD" "$@"
+}
+
 # MacOS QuickLook
 function ql() {
   qlmanage -p "$@"

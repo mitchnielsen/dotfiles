@@ -14,9 +14,9 @@ alias tf='terraform'
 alias lg='lazygit'
 
 # Commands, shortened
-alias dr='docker run --rm -it'
 alias dr-amd='dr --platform=linux/amd64'
 alias de='docker exec -it'
+alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Label \"host.pwd\"}}"'
 alias v-changed='nvim $(git dm --name-only)'
 alias v-conflicts='nvim $(git diff --name-only --diff-filter=U)'
 alias kk='k9s --kubeconfig=$HOME/.kube/contexts/$(ls $HOME/.kube/contexts | fzf)'
