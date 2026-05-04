@@ -20,7 +20,7 @@ services:
       PROMETHEUS_URL: https://prometheus.private.prefect.dev/
       PROMETHEUS_MCP_SERVER_TRANSPORT: http
     healthcheck:
-      test: ["CMD", "pgrep", "-f", "prometheus-mcp-server"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -36,7 +36,7 @@ services:
       PROMETHEUS_URL: https://prometheus.private.stg.prefect.dev/
       PROMETHEUS_MCP_SERVER_TRANSPORT: http
     healthcheck:
-      test: ["CMD", "pgrep", "-f", "prometheus-mcp-server"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -52,10 +52,10 @@ services:
       PROMETHEUS_URL: https://prometheus.private.prefect.cloud/
       PROMETHEUS_MCP_SERVER_TRANSPORT: http
     healthcheck:
-      test: ["CMD", "pgrep", "-f", "prometheus-mcp-server"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
-      timeout: 10s
       retries: 3
+      timeout: 10s
       start_period: 5s
     restart: unless-stopped
 
@@ -81,8 +81,7 @@ services:
       - python
       - -c
       - >-
-        from prefect_mcp_server.server import mcp;
-        mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
+        from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
     ports:
       - "8105:8000"
     environment:
@@ -100,8 +99,7 @@ services:
       - python
       - -c
       - >-
-        from prefect_mcp_server.server import mcp;
-        mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
+        from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
     ports:
       - "8106:8000"
     environment:
@@ -119,8 +117,7 @@ services:
       - python
       - -c
       - >-
-        from prefect_mcp_server.server import mcp;
-        mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
+        from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
     ports:
       - "8107:8000"
     environment:
