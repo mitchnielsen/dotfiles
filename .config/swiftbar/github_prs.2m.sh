@@ -29,7 +29,7 @@ fi
 if [ "$COUNT" -gt 0 ]; then
   color="#8b0000"
 else
-  color="#2e8b57"
+  color="#ffffff"
 fi
 
 REVIEW_URL="https://github.com/pulls?q=is%3Aopen+is%3Apr+review-requested%3Amitchnielsen+archived%3Afalse+draft%3Afalse+-label%3Aautomated-dependency-updates+-label%3Adependencies+-reviewed-by%3A%40me+-review-requested%3AEngineering"

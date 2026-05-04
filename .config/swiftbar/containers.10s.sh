@@ -30,7 +30,7 @@ fi
 count=$((total - mcp))
 
 if [ "$count" -eq 0 ]; then
-  color="#2e8b57"
+  color="#ffffff"
 else
   color="#1e6fd9"
 fi
