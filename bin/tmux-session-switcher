@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Source: https://github.com/raine/tmux-tools/blob/main/tmux-session-switcher
+
+target=$(tmux list-sessions -F '#{session_last_attached} #{session_name}' \
+  | sort -rn \
+  | sed -E 's/^[0-9]* //' \
+  | grep -v "^$(tmux display-message -p '#S')$" \
+  | fzf --reverse)
+
+if [[ -n "$target" ]]; then
+  tmux switch-client -t "$target"
+fi
