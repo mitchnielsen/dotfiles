@@ -24,7 +24,7 @@
 [fetch]
   prune = true # delete branches that no longer exist upstream (merged)
   pruneTags = true # same for tags
-  all = true # fetch all remotes
+  all = false # don't fetch all remotes
 [push]
   autoSetupRemote = true # automatically set up the remote origin when pushing
   default = current # push the current branch to the remote branch of the same name
