@@ -1,48 +1,7 @@
 [tools]
-actionlint = "1.7.1"
-flux2 = "2.5.1"
-gcloud = "517.0.0"
-golang = "latest"
-helm = "latest"
-istioctl = "latest"
-terraform = "1.10.5"
-updatecli = "latest"
-pre-commit = "latest"
-prek = "latest"
-harper-cli = "latest"
-harper-ls = "latest"
-trivy = "latest"
-
-stylua = "latest"
-
-# Python
-python = "3.12"
-uv = "latest" # for python
-rust = "latest" # for uvx
-aws = "latest" # specify after 'python' to control PATH
-ruff = "latest"
-
-# Go
 "go:go.xrstf.de/stalk" = "latest" # https://codeberg.org/xrstf/stalk
 
 [settings]
 experimental = true
-
-# config files with these prefixes will be trusted by default
-trusted_config_paths = [
-  '~/code',
-]
-
+trusted_config_paths = ['~/code']
 idiomatic_version_file_enable_tools = ["node"]
-
-[tasks.bootstrap]
-description = "Run bootstrap script to set up dotfiles"
-run = "./bootstrap.sh"
-
-[tasks.backup]
-description = "Backup current brew packages to Brewfile"
-run = "brew bundle dump --force --file=.config/brew/Brewfile"
-
-[tasks.install]
-description = "Install packages from Brewfile"
-run = "brew bundle install --file=.config/brew/Brewfile"
