@@ -11,13 +11,13 @@ function M.setup(config)
   -- Tab bar colors (clarity palette)
   config.colors = {
     tab_bar = {
-      background = "#efefed",
+      background = "#eeeeee",
       active_tab = {
         bg_color = "#f0f0f0",
         fg_color = "#24292f",
       },
       inactive_tab = {
-        bg_color = "#efefed",
+        bg_color = "#eeeeee",
         fg_color = "#6e7781",
       },
       inactive_tab_hover = {
@@ -25,7 +25,7 @@ function M.setup(config)
         fg_color = "#24292f",
       },
       new_tab = {
-        bg_color = "#efefed",
+        bg_color = "#eeeeee",
         fg_color = "#6e7781",
       },
       new_tab_hover = {

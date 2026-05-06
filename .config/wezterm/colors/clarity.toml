@@ -6,12 +6,12 @@
 name = "clarity"
 
 [colors]
-background = '#efefed'
+background = '#eeeeee'
 foreground = '#24292f'
 
 cursor_bg = '#24292f'
 cursor_border = '#24292f'
-cursor_fg = '#efefed'
+cursor_fg = '#eeeeee'
 
 selection_bg = '#d8dee4'
 selection_fg = '#24292f'
