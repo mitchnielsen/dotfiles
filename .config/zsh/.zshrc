@@ -37,6 +37,7 @@ export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/share/google-cloud-sdk/path.zsh.inc:$PATH"
 
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
@@ -110,27 +111,18 @@ source <(fzf --zsh)
 
 eval "$(direnv hook zsh)"
 eval "$(mise activate zsh)"
-
-# Lazy-load thefuck: only initialize when first called
-fuck() {
-  unfunction fuck
-  eval "$(thefuck --alias)"
-  fuck "$@"
-}
+eval "$(thefuck --alias)"
 
 # Load compinit early with -C (skip security checks) so gcloud doesn't re-init
 autoload -Uz compinit && compinit -C -d "${ZDOTDIR:-$HOME}/.zcompdump"
 
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke:
 #   gcloud components install gke-gcloud-auth-plugin
-if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
-  source "$HOME/.local/share/mise/installs/gcloud/latest/completion.zsh.inc" # enable shell command completion for gcloud.
-  source "$HOME/.local/share/mise/installs/gcloud/latest/path.zsh.inc" # add the Google Cloud SDK command line tools to your $PATH.
-  export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-  export GCLOUD_SOURCED=True
-fi
+source "/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc" # enable shell command completion for gcloud.
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export GCLOUD_SOURCED=True
 
-# Load completions for mise-managed tools, then map aliases
+# Load completions, then map aliases
 source <(kubectl completion zsh)
 source <(docker completion zsh)
 compdef g=git
