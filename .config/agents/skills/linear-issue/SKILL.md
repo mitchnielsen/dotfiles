@@ -50,7 +50,14 @@ issue.
 
 ## Output
 
-After creating an issue, always provide the title and a clickable
-link to the issue in Linear.
+After creating an issue, always provide the title and a bare,
+unwrapped URL to the issue in Linear. Do not put the URL inside
+markdown link syntax (`[title](url)`) — paste the raw URL so the
+user can click or copy it directly from the terminal.
 
-Example: https://linear.app/prefect/issue/ABC-123
+Example:
+
+```
+Created PLA-1234: Some issue title
+https://linear.app/prefect/issue/PLA-1234/some-issue-title
+```

@@ -20,8 +20,23 @@ whose PR has just closed.
 ## Verify the PR is actually closed
 
 Before removing anything, confirm with `gh pr view <branch> --json
-state,merged` that the PR is `MERGED` or `CLOSED`. If it is still
+state,mergedAt` that the PR is `MERGED` or `CLOSED`. If it is still
 open, stop and report. Do not remove worktrees for open PRs.
+
+## Sync main before removing
+
+PRs are typically squash- or rebase-merged on GitHub, which produces
+a new commit that the local branch does not contain. Without it,
+`wt remove` sees the feature branch as unmerged and refuses to
+delete it.
+
+If the current branch is `main`, run `git pull --rebase` in the
+main worktree first so the merge commit is local. Then `wt remove`
+will recognize the branch as merged and clean it up safely.
+
+If the current branch is the feature branch, skip this step. The
+main worktree's `git pull` is the user's job after they leave this
+session.
 
 ## Remove
 
@@ -35,6 +50,7 @@ adding flags.
   inside the worktree being removed.
 - From `main`: run `wt remove <branch>` directly.
 
-If `wt remove` reports untracked files or an unmerged branch, stop
-and report what it found. Do not reach for `--force` or
-`--force-delete` without my say-so.
+If `wt remove` still reports the branch as unmerged after pulling
+main, the PR's merge commit may not yet have propagated, or the
+branch has commits that were never pushed. Stop and report. Do
+not reach for `--force` or `--force-delete` without my say-so.
