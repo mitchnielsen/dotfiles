@@ -106,21 +106,17 @@ bindkey '^E' end-of-line
 source "${HOME}/.config/zsh/functions.sh"
 source "${HOME}/.config/zsh/aliases.sh"
 
-# Defer heavy inits until the first prompt. They cost ~110ms combined and
-# nothing before the first prompt depends on them. Keybindings declared
-# earlier (^T, ^G) reference widgets that fzf --zsh defines here; zsh
-# resolves widget names lazily on key press, so the order is fine.
-_deferred_init() {
-  source <(fzf --zsh)
-  eval "$(direnv hook zsh)"
-  eval "$(mise activate zsh)"
-  eval "$(command wt config shell init zsh)"
+source <(fzf --zsh)
+
+eval "$(direnv hook zsh)"
+eval "$(mise activate zsh)"
+
+# Lazy-load thefuck: only initialize when first called
+fuck() {
+  unfunction fuck
   eval "$(thefuck --alias)"
-  add-zsh-hook -d precmd _deferred_init
-  unfunction _deferred_init
+  fuck "$@"
 }
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd _deferred_init
 
 # Load compinit early with -C (skip security checks) so gcloud doesn't re-init
 autoload -Uz compinit && compinit -C -d "${ZDOTDIR:-$HOME}/.zcompdump"
@@ -134,21 +130,9 @@ if [ -d "$HOME/.local/share/mise/installs/gcloud/latest" ]; then
   export GCLOUD_SOURCED=True
 fi
 
-# Lazy completions: load on first TAB by registering a stub completion that
-# swaps itself out for the real thing.
-_lazy_complete() {
-  local cmd=$1 src=$2
-  eval "_${cmd}() {
-    unfunction _${cmd}
-    source <(${src})
-    _${cmd} \"\$@\"
-  }"
-  compdef _${cmd} ${cmd}
-}
-_lazy_complete kubectl 'kubectl completion zsh'
-_lazy_complete docker 'docker completion zsh'
-unfunction _lazy_complete
-
+# Load completions for mise-managed tools, then map aliases
+source <(kubectl completion zsh)
+source <(docker completion zsh)
 compdef g=git
 compdef k=kubectl
 compdef d=docker
@@ -170,6 +154,8 @@ source /opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 setopt HIST_IGNORE_ALL_DUPS # history substring search: ignore dups
+
+eval "$(command wt config shell init zsh)"
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 # To differentiate aliases from other command types
