@@ -45,3 +45,13 @@
 .config/codex/*
 !.config/codex/
 !.config/codex/config.toml
+
+# Claude — only the four files below are tracked. Everything else under
+# .config/claude is Claude Code runtime state that lives in ~/.config/claude
+# (a real directory, not a stow symlink to this repo). Ignoring everything
+# else defends against stale setups where the symlink still points here.
+.config/claude/*
+!.config/claude/CLAUDE.md
+!.config/claude/mcp.json
+!.config/claude/settings.json
+!.config/claude/statusline-command.sh

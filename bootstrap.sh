@@ -20,6 +20,14 @@ function symlink() {
   mkdir -p "$HOME/bin"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 
+  # Claude config - file-level symlinks so runtime state (cache, projects,
+  # sessions, etc.) stays in ~/.config/claude and never lands in dotfiles.
+  # Stow ignores .config/claude (see .config/.stow-local-ignore).
+  mkdir -p "$HOME/.config/claude"
+  for f in CLAUDE.md mcp.json settings.json statusline-command.sh; do
+    ln -sfn "$HOME/dotfiles/.config/claude/$f" "$HOME/.config/claude/$f"
+  done
+
   # Work-only utilities
   if [ ! -f "$HOME/.personal_device_marker" ]; then
     # Kube settings
