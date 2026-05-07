@@ -22,10 +22,6 @@ function symlink() {
 
   # Work-only utilities
   if [ ! -f "$HOME/.personal_device_marker" ]; then
-    # VSCode (VSCodium) configs
-    ln -sf "$HOME/dotfiles/.config/vscodium/settings.json"    "$HOME/Library/Application Support/VSCodium/User/settings.json"
-    ln -sf "$HOME/dotfiles/.config/vscodium/keybindings.json" "$HOME/Library/Application Support/VSCodium/User/keybindings.json"
-
     # Kube settings
     ln -sf "$HOME/dotfiles/.config/kube/kuberc" "$HOME/.kube/kuberc"
 
