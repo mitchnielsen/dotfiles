@@ -135,3 +135,19 @@ function aws-profile {
 function aws-off {
   unset AWS_PROFILE
 }
+
+# 1Password environment cache: snapshot `op environment show` to a file
+# under ~/.config/op-env so every shell can source it without hitting `op`.
+function op-env-refresh() {
+  local dir="${HOME}/.config/op-env"
+  local id="7gwfr3jp2i4hdnf77eg5c7zzn4"
+  local out="${dir}/default.env"
+  mkdir -p "$dir" && chmod 700 "$dir"
+  if ! op environment read "$id" >"${out}.tmp"; then
+    rm -f "${out}.tmp"
+    echo "op-env-refresh: failed" >&2
+    return 1
+  fi
+  chmod 600 "${out}.tmp" && mv "${out}.tmp" "$out"
+  echo "wrote $out"
+}

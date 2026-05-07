@@ -54,17 +54,15 @@ if [ ! -f "${HOME}/.personal_device_marker" ]; then
   export DOCKER_HOST="unix://${HOME}/.docker/run/docker.sock"
   export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
-  # MCP servers
-  export PAGERDUTY_TOKEN="$(cat ${HOME}/secret/pagerduty-token.txt)"
-  export PAGERDUTY_API_KEY="$(cat ${HOME}/secret/pagerduty-token.txt)"
-  export PAGERDUTY_AUTHORIZATION="Token ${PAGERDUTY_TOKEN}"
-  export LINEAR_API_KEY="$(cat ${HOME}/secret/linear-api-key.txt)"
-  export PREFECT_DEV_API_URL="https://api.prefect.dev/api/accounts/9a67b081-4f14-4035-b000-1f715f46231b/workspaces/61ed380f-f0f5-4688-a88c-0bc19b5f59c7"
-  export PREFECT_DEV_API_KEY="$(cat ${HOME}/secret/prefect-dev-api-key.txt)"
-  export PREFECT_STG_API_URL="https://api.stg.prefect.dev/api/accounts/9a67b081-4f14-4035-b000-1f715f46231b/workspaces/60305128-9439-47ef-b353-f2a8f6a7a8b4"
-  export PREFECT_STG_API_KEY="$(cat ${HOME}/secret/prefect-stg-api-key.txt)"
-  export PREFECT_PRD_API_URL="https://api.prefect.cloud/api/accounts/12242a57-9f05-4bf5-8853-9bff595d4bab/workspaces/9648a429-137e-4868-8c73-2617543a50a2"
-  export PREFECT_PRD_API_KEY="$(cat ${HOME}/secret/prefect-prd-api-key.txt)"
+  # 1Password environment variables (refresh with `op-env-refresh`)
+  if [ -d "${HOME}/.config/op-env" ]; then
+    set -a
+    for _openv in "${HOME}"/.config/op-env/*.env(N); do
+      source "$_openv"
+    done
+    unset _openv
+    set +a
+  fi
 fi
 
 # ===================
