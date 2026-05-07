@@ -37,11 +37,11 @@
       "mcp__grafana",
       "mcp__terraform"
     ],
-    "ask": [
-      "Bash(rm:*)"
-    ],
     "deny": [
       "EnterWorktree"
+    ],
+    "ask": [
+      "Bash(rm:*)"
     ]
   },
   "model": "opus[1m]",
@@ -72,11 +72,11 @@
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": false,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754598531219
-  },
   "theme": "light",
   "editorMode": "vim",
   "preferredNotifChannel": "notifications_disabled",
-  "terminalProgressBarEnabled": false
+  "terminalProgressBarEnabled": false,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754598531219
+  }
 }
