@@ -37,7 +37,7 @@ export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PATH="/opt/homebrew/share/google-cloud-sdk/path.zsh.inc:$PATH"
+source "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc"
 
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
@@ -110,6 +110,7 @@ source <(fzf --zsh)
 eval "$(direnv hook zsh)"
 eval "$(mise activate zsh)"
 eval "$(thefuck --alias)"
+eval "$(wt config shell init zsh)"
 
 # Load compinit early with -C (skip security checks) so gcloud doesn't re-init
 autoload -Uz compinit && compinit -C -d "${ZDOTDIR:-$HOME}/.zcompdump"
@@ -144,8 +145,6 @@ source /opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 setopt HIST_IGNORE_ALL_DUPS # history substring search: ignore dups
-
-eval "$(command wt config shell init zsh)"
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 # To differentiate aliases from other command types
