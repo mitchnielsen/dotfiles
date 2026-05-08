@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# @raycast.title Clarity Auto
+# @raycast.author Mitchell Nielsen
+# @raycast.description Detect macOS appearance and sync tmux/k9s/opencode/nvim.
+# @raycast.icon 🌗
+# @raycast.mode compact
+# @raycast.packageName Clarity
+# @raycast.schemaVersion 1
+
+exec "$HOME/dotfiles/bin/clarity-mode" auto
