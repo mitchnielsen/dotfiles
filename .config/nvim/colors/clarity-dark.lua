@@ -1,37 +1,37 @@
--- clarity.lua — minimal light colorscheme for legibility
--- Designed to match a Ghostty terminal with #efefed background.
+-- clarity-dark.lua — minimal dark colorscheme for legibility
+-- Dark counterpart to clarity-light, using the GitHub Dark Default palette.
 -- Most code is the foreground color. Color is used sparingly:
---   green  (#1a8a0e) — strings, additions, success
---   red    (#a12a2a) — errors, deletions, important warnings
---   blue   (#0969da) — functions, methods, links
---   yellow (#8a5a00) — parameters, warnings
---   muted  (#6e7781) — comments, dim UI, deemphasized text
+--   green  (#3fb950) — strings, additions, success
+--   red    (#f85149) — errors, deletions, important warnings
+--   blue   (#2f81f7) — functions, methods, links
+--   yellow (#d29922) — parameters, warnings
+--   muted  (#7d8590) — comments, dim UI, deemphasized text
 
 vim.cmd("highlight clear")
-vim.g.colors_name = "clarity"
-vim.o.background = "light"
+vim.g.colors_name = "clarity-dark"
+vim.o.background = "dark"
 
 local c = {
   none = "NONE",
-  fg = "#24292f",
-  bg = "NONE", -- transparent, Ghostty provides color
-  dim = "#6e7781",
-  faint = "#b0b8c1",
-  subtle_bg = "#f6f8fa",
-  float_bg = "#eeeeee",
-  border = "#d0d7de",
-  green = "#1a8a0e",
-  red = "#a12a2a",
-  blue = "#0969da",
-  link = "#0969da",
-  function_blue = "#0969da",
-  info = "#57606a",
-  yellow = "#8a5a00",
-  param = "#6f5e2e",
-  visual = "#d8dee4",
-  cursor_line = "#eaeef2",
-  search = "#fbe5a0",
-  match = "#eaeef2",
+  fg = "#e6edf3",
+  bg = "NONE", -- transparent, terminal provides color
+  dim = "#7d8590",
+  faint = "#484f58",
+  subtle_bg = "#23262b",
+  float_bg = "#23262b",
+  border = "#30363d",
+  green = "#3fb950",
+  red = "#f85149",
+  blue = "#2f81f7",
+  link = "#2f81f7",
+  function_blue = "#2f81f7",
+  info = "#8b949e",
+  yellow = "#d29922",
+  param = "#c9a55a",
+  visual = "#264f78",
+  cursor_line = "#23262b",
+  search = "#5d4a1e",
+  match = "#1f2733",
 }
 
 local function hi(group, opts)
@@ -145,7 +145,6 @@ hi("Todo", { fg = c.info, bold = true })
 -- ┌──────────────────────────────────┐
 -- │  Treesitter                      │
 -- └──────────────────────────────────┘
--- Override only what diverges from the Vim defaults above.
 hi("@comment", { link = "Comment" })
 hi("@string", { link = "String" })
 hi("@string.escape", { fg = c.dim })
@@ -255,17 +254,17 @@ hi("DiagnosticUnderlineError", { sp = c.red, undercurl = true })
 hi("DiagnosticUnderlineWarn", { sp = c.yellow, undercurl = true })
 hi("DiagnosticUnderlineInfo", { sp = c.info, undercurl = true })
 hi("DiagnosticUnderlineHint", { sp = c.dim, undercurl = true })
-hi("DiagnosticVirtualTextError", { fg = c.red, bg = "#fdf0f0" })
-hi("DiagnosticVirtualTextWarn", { fg = c.yellow, bg = "#fff8e5" })
+hi("DiagnosticVirtualTextError", { fg = c.red, bg = "#3a1414" })
+hi("DiagnosticVirtualTextWarn", { fg = c.yellow, bg = "#3d2e07" })
 hi("DiagnosticVirtualTextInfo", { fg = c.info, bg = c.subtle_bg })
 hi("DiagnosticVirtualTextHint", { fg = c.dim, bg = c.subtle_bg })
 
 -- ┌──────────────────────────────────┐
 -- │  Diff                            │
 -- └──────────────────────────────────┘
-hi("DiffAdd", { bg = "#dafbe1" })
+hi("DiffAdd", { bg = "#0f2c1a" })
 hi("DiffChange", { bg = c.subtle_bg })
-hi("DiffDelete", { bg = "#fbe5e1" })
+hi("DiffDelete", { bg = "#3a1414" })
 hi("DiffText", { bg = c.visual })
 hi("Added", { fg = c.green })
 hi("Changed", { fg = c.info })
@@ -341,7 +340,7 @@ hi("MiniClueNextKey", { fg = c.link, bold = true })
 -- ┌──────────────────────────────────┐
 -- │  mini.trailspace                 │
 -- └──────────────────────────────────┘
-hi("MiniTrailspace", { bg = "#fbe5e1" })
+hi("MiniTrailspace", { bg = "#3a1414" })
 
 -- ┌──────────────────────────────────┐
 -- │  FzfLua                          │
@@ -367,8 +366,8 @@ hi("FzfLuaFzfMatch", { fg = c.link })
 -- ┌──────────────────────────────────┐
 -- │  Neogit                          │
 -- └──────────────────────────────────┘
-hi("NeogitDiffAdd", { fg = c.green, bg = "#dafbe1" })
-hi("NeogitDiffDelete", { fg = c.red, bg = "#fbe5e1" })
+hi("NeogitDiffAdd", { fg = c.green, bg = "#0f2c1a" })
+hi("NeogitDiffDelete", { fg = c.red, bg = "#3a1414" })
 hi("NeogitHunkHeader", { fg = c.fg, bg = c.subtle_bg, bold = true })
 hi("NeogitBranch", { fg = c.link, bold = true })
 hi("NeogitRemote", { fg = c.green })

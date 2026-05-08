@@ -72,7 +72,7 @@
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": false,
-  "theme": "light",
+  "theme": "auto",
   "editorMode": "vim",
   "preferredNotifChannel": "notifications_disabled",
   "terminalProgressBarEnabled": false,

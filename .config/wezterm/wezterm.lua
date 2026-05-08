@@ -72,6 +72,17 @@ wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
   return padded
 end)
 
+-- Reload config when macOS appearance changes so clarity-light/dark follows.
+wezterm.on("window-config-reloaded", function(window, _)
+  local appearance = wezterm.gui.get_appearance()
+  local overrides = window:get_config_overrides() or {}
+  local target = appearance:find("Dark") and "clarity-dark" or "clarity-light"
+  if overrides.color_scheme ~= target then
+    overrides.color_scheme = target
+    window:set_config_overrides(overrides)
+  end
+end)
+
 -- Hide the scrollbar when there is no scrollback or alternate screen is active
 wezterm.on("update-status", function(window, pane)
   local overrides = window:get_config_overrides() or {}

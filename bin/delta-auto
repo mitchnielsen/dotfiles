@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
-# Wrapper around delta that enables side-by-side diffs only when the terminal
-# is wide enough. The threshold is 160 columns; adjust to taste.
+# Wrapper around delta that:
+#   * enables side-by-side diffs when the terminal is wide enough
+#   * picks --light or --dark to match macOS system appearance
 
 THRESHOLD=160
 WIDTH="${COLUMNS:-$(tput cols 2>/dev/null || echo 80)}"
 
-if [ "$WIDTH" -ge "$THRESHOLD" ]; then
-  exec delta --side-by-side "$@"
+args=()
+[ "$WIDTH" -ge "$THRESHOLD" ] && args+=(--side-by-side)
+
+if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -qi dark; then
+  args+=(--dark)
 else
-  exec delta "$@"
+  args+=(--light)
 fi
+
+exec delta "${args[@]}" "$@"

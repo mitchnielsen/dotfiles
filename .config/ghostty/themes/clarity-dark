@@ -1,0 +1,29 @@
+# vi: ft=conf :
+# clarity-dark — minimal dark theme for legibility (GitHub Dark Default)
+
+# normal colors
+palette = 0=#484f58
+palette = 1=#f85149
+palette = 2=#3fb950
+palette = 3=#d29922
+palette = 4=#2f81f7
+palette = 5=#bc8cff
+palette = 6=#39c5cf
+palette = 7=#b1bac4
+
+# bright colors
+palette = 8=#6e7681
+palette = 9=#ff7b72
+palette = 10=#56d364
+palette = 11=#e3b341
+palette = 12=#79c0ff
+palette = 13=#d2a8ff
+palette = 14=#56d4dd
+palette = 15=#e6edf3
+
+background = #1b1d21
+foreground = #e6edf3
+cursor-color = #ff6600
+
+selection-background = #264f78
+selection-foreground = #e6edf3

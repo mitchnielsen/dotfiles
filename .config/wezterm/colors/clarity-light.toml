@@ -1,9 +1,9 @@
-# (Clarity) Minimal light scheme for legibility
-# Mirrors .config/nvim/colors/clarity.lua
+# (Clarity-Light) Minimal light scheme for legibility
+# Mirrors .config/nvim/colors/clarity-light.lua
 # Color used sparingly: green/red/blue/yellow carry semantics, most text is fg.
 
 [metadata]
-name = "clarity"
+name = "clarity-light"
 
 [colors]
 background = '#eeeeee'

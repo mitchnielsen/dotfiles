@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# clarity-mode {light|dark|auto} — switch the clarity theme variant for tools
+# that don't natively follow macOS appearance (tmux, k9s, opencode).
+#
+# ghostty/wezterm/nvim/claude follow appearance on their own.
+
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: clarity-mode {light|dark|auto}
+
+  light  Force clarity-light variants
+  dark   Force clarity-dark variants
+  auto   Detect macOS appearance and apply the matching variant
+
+Affects: tmux, k9s, opencode.
+EOF
+}
+
+# BSD sed -i on a symlink replaces the symlink with a regular file, breaking
+# the link to the dotfiles repo. Resolve to the real path first so we edit the
+# actual file the link points at and the symlink survives.
+sed_inplace() {
+  local file
+  file=$(readlink -f "$1")
+  shift
+  sed -i.bak -E "$@" "$file"
+  rm -f "${file}.bak"
+}
+
+if [[ $# -ne 1 ]]; then
+  usage >&2
+  exit 64
+fi
+
+mode=$1
+case $mode in
+  light|dark) variant=$mode ;;
+  auto)
+    if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -qi dark; then
+      variant=dark
+    else
+      variant=light
+    fi
+    ;;
+  -h|--help) usage; exit 0 ;;
+  *) usage >&2; exit 64 ;;
+esac
+
+config="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+# tmux: swap the clarity-active.conf symlink, then re-source if a server is up.
+tmux_active="$config/tmux/clarity-active.conf"
+ln -sfn "clarity-${variant}.conf" "$tmux_active"
+if command -v tmux >/dev/null 2>&1 && tmux info >/dev/null 2>&1; then
+  tmux source-file "$config/tmux/tmux.conf" >/dev/null 2>&1 || true
+  echo "  ✓ tmux:     re-sourced clarity-${variant}.conf"
+else
+  echo "  ✓ tmux:     symlink → clarity-${variant}.conf (no server running)"
+fi
+
+# k9s: rewrite the `skin:` line in config.yaml. Restart k9s to see the change.
+k9s_config="$config/k9s/config.yaml"
+if [[ -f $k9s_config ]]; then
+  # Match indented `skin: clarity-...` under `ui:`.
+  sed_inplace "$k9s_config" "s#^([[:space:]]*skin:[[:space:]]*)clarity-(light|dark)\$#\\1clarity-${variant}#"
+  echo "  ✓ k9s:      skin → clarity-${variant} (restart k9s to apply)"
+fi
+
+# opencode: rewrite the `"theme": "..."` line in tui.json.
+oc_config="$config/opencode/tui.json"
+if [[ -f $oc_config ]]; then
+  sed_inplace "$oc_config" "s#(\"theme\":[[:space:]]*\")clarity-(light|dark)(\")#\\1clarity-${variant}\\3#"
+  echo "  ✓ opencode: theme → clarity-${variant} (restart opencode to apply)"
+fi
+
+echo
+echo "applied: clarity-${variant}"

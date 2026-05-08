@@ -1,5 +1,5 @@
 # vi: ft=conf :
-# clarity — minimal light theme for legibility
+# clarity-light — minimal light theme for legibility
 
 # normal colors
 palette = 0=#24292f

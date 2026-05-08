@@ -1,0 +1,40 @@
+# (Clarity-Dark) Minimal dark scheme for legibility (GitHub Dark Default)
+# Mirrors .config/nvim/colors/clarity-dark.lua
+# Color used sparingly: green/red/blue/yellow carry semantics, most text is fg.
+
+[metadata]
+name = "clarity-dark"
+
+[colors]
+background = '#1b1d21'
+foreground = '#e6edf3'
+
+cursor_bg = '#e6edf3'
+cursor_border = '#e6edf3'
+cursor_fg = '#1b1d21'
+
+selection_bg = '#264f78'
+selection_fg = '#e6edf3'
+
+# ansi: normal intensity
+# 0 black / 1 red / 2 green / 3 yellow / 4 blue / 5 magenta / 6 cyan / 7 white
+ansi = [
+    '#484f58',
+    '#f85149',
+    '#3fb950',
+    '#d29922',
+    '#2f81f7',
+    '#bc8cff',
+    '#39c5cf',
+    '#b1bac4',
+]
+brights = [
+    '#6e7681',
+    '#ff7b72',
+    '#56d364',
+    '#e3b341',
+    '#79c0ff',
+    '#d2a8ff',
+    '#56d4dd',
+    '#e6edf3',
+]

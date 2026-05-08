@@ -29,8 +29,14 @@ fi
 
 count=$((total - mcp))
 
+if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -qi dark; then
+  neutral="#ffffff"
+else
+  neutral="#000000"
+fi
+
 if [ "$count" -eq 0 ]; then
-  color="#ffffff"
+  color="$neutral"
 else
   color="#1e6fd9"
 fi

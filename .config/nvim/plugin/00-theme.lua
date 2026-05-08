@@ -1,6 +1,4 @@
 vim.pack.add({
-  "https://github.com/projekt0n/github-nvim-theme",
-
   -- Available for :colorscheme / picker
   "https://github.com/navarasu/onedark.nvim",
   "https://github.com/Mofiqul/vscode.nvim",
@@ -11,10 +9,23 @@ vim.pack.add({
   "https://github.com/oskarnurm/koda.nvim",
 }, { confirm = false })
 
-require("github-theme").setup({
-  options = {
-    transparent = true,
-  },
-})
+-- Follow macOS appearance: pick clarity-light or clarity-dark.
+local function detect_appearance()
+  if vim.fn.has("mac") == 0 then
+    return "light"
+  end
+  local out = vim.fn.system({ "defaults", "read", "-g", "AppleInterfaceStyle" })
+  return (vim.v.shell_error == 0 and out:match("Dark")) and "dark" or "light"
+end
 
-vim.cmd("colorscheme clarity")
+local function apply_clarity()
+  vim.cmd("colorscheme clarity-" .. detect_appearance())
+end
+
+apply_clarity()
+
+-- Re-detect on focus so flipping system appearance updates running nvim.
+vim.api.nvim_create_autocmd("FocusGained", {
+  group = vim.api.nvim_create_augroup("ClarityAppearance", { clear = true }),
+  callback = apply_clarity,
+})

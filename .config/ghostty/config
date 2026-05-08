@@ -1,7 +1,7 @@
 # https://ghostty.org/docs/config/reference
 # https://ghostty.zerebos.com
 
-theme = clarity
+theme = light:clarity-light,dark:clarity-dark
 
 # Font settings
 font-size = 14
