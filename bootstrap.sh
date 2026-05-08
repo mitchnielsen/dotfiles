@@ -28,6 +28,12 @@ function symlink() {
     ln -sfn "$HOME/dotfiles/.config/claude/$f" "$HOME/.config/claude/$f"
   done
 
+  # Raycast config - file-level symlinks so runtime state (extensions/, ai/,
+  # etc.) stays in ~/.config/raycast and never lands in dotfiles. Stow ignores
+  # .config/raycast (see .config/.stow-local-ignore).
+  mkdir -p "$HOME/.config/raycast"
+  ln -sfn "$HOME/dotfiles/.config/raycast/snippets.json" "$HOME/.config/raycast/snippets.json"
+
   # Work-only utilities
   if [ ! -f "$HOME/.personal_device_marker" ]; then
     # Kube settings

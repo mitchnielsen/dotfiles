@@ -55,3 +55,11 @@
 !.config/claude/mcp.json
 !.config/claude/settings.json
 !.config/claude/statusline-command.sh
+
+# Raycast — only snippets.json is tracked. Everything else under
+# .config/raycast is Raycast runtime state (extensions/, ai/, etc.) that
+# lives in ~/.config/raycast (a real directory, not a stow symlink to this
+# repo). Ignoring everything else defends against stale setups where the
+# symlink still points here.
+.config/raycast/*
+!.config/raycast/snippets.json
