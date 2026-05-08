@@ -24,8 +24,17 @@ end
 
 apply_clarity()
 
--- Re-detect on focus so flipping system appearance updates running nvim.
+-- Re-detect on focus (works when nvim is foregrounded after the flip).
 vim.api.nvim_create_autocmd("FocusGained", {
   group = vim.api.nvim_create_augroup("ClarityAppearance", { clear = true }),
   callback = apply_clarity,
 })
+
+-- Re-detect on SIGUSR1 so `clarity-mode` can push the theme to running
+-- instances (including those buried in tmux panes that won't see FocusGained).
+local sigusr1 = vim.uv.new_signal()
+if sigusr1 then
+  sigusr1:start("sigusr1", function()
+    vim.schedule(apply_clarity)
+  end)
+end
