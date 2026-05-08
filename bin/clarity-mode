@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-# clarity-mode {light|dark|auto} — switch the clarity theme variant for tools
-# that don't natively follow macOS appearance (tmux, k9s, opencode).
+# clarity-mode {light|dark|auto} — flip macOS system appearance and sync tools
+# that don't natively follow it (tmux, k9s, opencode).
 #
-# ghostty/wezterm/nvim/claude follow appearance on their own.
+# light/dark also set system appearance via osascript, so ghostty/wezterm/
+# nvim/claude (which follow the OS) end up consistent.
+# auto reads current appearance and only updates the tool configs.
 
 set -euo pipefail
 
@@ -10,11 +12,12 @@ usage() {
   cat <<'EOF'
 Usage: clarity-mode {light|dark|auto}
 
-  light  Force clarity-light variants
-  dark   Force clarity-dark variants
-  auto   Detect macOS appearance and apply the matching variant
+  light  Set macOS to light mode and apply clarity-light to tools
+  dark   Set macOS to dark mode and apply clarity-dark to tools
+  auto   Detect current macOS appearance and apply the matching variant
+         (no system change)
 
-Affects: tmux, k9s, opencode.
+Sets macOS system appearance (light/dark) and syncs tmux, k9s, opencode.
 EOF
 }
 
@@ -35,8 +38,12 @@ if [[ $# -ne 1 ]]; then
 fi
 
 mode=$1
+set_system_appearance=false
 case $mode in
-  light|dark) variant=$mode ;;
+  light|dark)
+    variant=$mode
+    set_system_appearance=true
+    ;;
   auto)
     if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -qi dark; then
       variant=dark
@@ -47,6 +54,18 @@ case $mode in
   -h|--help) usage; exit 0 ;;
   *) usage >&2; exit 64 ;;
 esac
+
+# Flip macOS system appearance so ghostty/wezterm/nvim/claude (which follow
+# the OS) end up consistent with the tools we update below.
+if [[ $set_system_appearance == true ]]; then
+  if [[ $variant == dark ]]; then
+    osa_dark=true
+  else
+    osa_dark=false
+  fi
+  osascript -e "tell application \"System Events\" to tell appearance preferences to set dark mode to ${osa_dark}" >/dev/null
+  echo "  ✓ macOS:    system appearance → ${variant}"
+fi
 
 config="${XDG_CONFIG_HOME:-$HOME/.config}"
 
@@ -73,6 +92,16 @@ oc_config="$config/opencode/tui.json"
 if [[ -f $oc_config ]]; then
   sed_inplace "$oc_config" "s#(\"theme\":[[:space:]]*\")clarity-(light|dark)(\")#\\1clarity-${variant}\\3#"
   echo "  ✓ opencode: theme → clarity-${variant} (restart opencode to apply)"
+fi
+
+# nvim: SIGUSR1 to all running instances. The signal handler in 00-theme.lua
+# re-detects appearance and reapplies clarity-light/clarity-dark.
+nvim_pids=$(pgrep -x nvim 2>/dev/null || true)
+if [[ -n $nvim_pids ]]; then
+  # shellcheck disable=SC2086 — word splitting is intended
+  kill -USR1 $nvim_pids 2>/dev/null || true
+  count=$(echo "$nvim_pids" | wc -l | tr -d ' ')
+  echo "  ✓ nvim:     signaled ${count} running instance(s)"
 fi
 
 echo
