@@ -25,6 +25,7 @@
 
 # tmux
 .config/tmux/plugins/
+.config/tmux/clarity-active.conf
 
 # Pi
 .config/pi/auth.json
