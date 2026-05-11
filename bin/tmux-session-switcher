@@ -3,6 +3,14 @@ set -euo pipefail
 
 # Source: https://github.com/raine/tmux-tools/blob/main/tmux-session-switcher
 
+# Resolve fzf palette at call time. We can't rely on tmux's default bg here
+# (it's cached at server startup and won't track macOS appearance changes),
+# so the helper paints explicit hex.
+# readlink -f resolves through symlinks (~/bin/... → ~/dotfiles/bin/...) so we
+# find the helper next to the real script.
+# shellcheck source=fzf-clarity-opts
+source "$(dirname "$(readlink -f "$0")")/fzf-clarity-opts"
+
 target=$(tmux list-sessions -F '#{session_last_attached} #{session_name}' \
   | sort -rn \
   | sed -E 's/^[0-9]* //' \

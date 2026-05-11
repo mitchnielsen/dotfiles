@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Source this to export FZF_DEFAULT_OPTS for the current macOS appearance.
+# Used by tmux popups and other fzf callers that need the palette resolved at
+# call time, since shell-level env is frozen at shell startup and tmux's
+# resolved default-bg is cached at server startup.
+#
+# Usage: source "$(dirname "$0")/fzf-clarity-opts"
+
+if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -qi dark; then
+  export FZF_DEFAULT_OPTS=" \
+    --color=fg:#e6edf3,bg:#1b1d21,hl:#2f81f7 \
+    --color=fg+:#e6edf3,bg+:#1f2733,hl+:#2f81f7 \
+    --color=info:#7d8590,prompt:#e6edf3,pointer:#2f81f7 \
+    --color=marker:#3fb950,spinner:#7d8590,header:#7d8590 \
+    --color=border:#30363d,gutter:#1b1d21 \
+    --border=rounded --separator='' --scrollbar='│' \
+    --prompt='› ' --pointer='▌' --marker='✓'"
+else
+  export FZF_DEFAULT_OPTS=" \
+    --color=fg:#24292f,bg:#eeeeee,hl:#0969da \
+    --color=fg+:#24292f,bg+:#d0d0d0,hl+:#0969da \
+    --color=info:#6e7781,prompt:#24292f,pointer:#0969da \
+    --color=marker:#1a8a0e,spinner:#6e7781,header:#6e7781 \
+    --color=border:#d0d7de,gutter:#eeeeee \
+    --border=rounded --separator='' --scrollbar='│' \
+    --prompt='› ' --pointer='▌' --marker='✓'"
+fi

@@ -14,25 +14,10 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
 # clarity theme for fzf — palette follows macOS appearance at shell startup.
-if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -qi dark; then
-  export FZF_DEFAULT_OPTS=" \
-    --color=fg:#e6edf3,bg:-1,hl:#2f81f7 \
-    --color=fg+:#e6edf3,bg+:#1f2733,hl+:#2f81f7 \
-    --color=info:#7d8590,prompt:#e6edf3,pointer:#2f81f7 \
-    --color=marker:#3fb950,spinner:#7d8590,header:#7d8590 \
-    --color=border:#30363d,gutter:-1 \
-    --border=rounded --separator='' --scrollbar='│' \
-    --prompt='› ' --pointer='▌' --marker='✓'"
-else
-  export FZF_DEFAULT_OPTS=" \
-    --color=fg:#24292f,bg:-1,hl:#0969da \
-    --color=fg+:#24292f,bg+:#d0d0d0,hl+:#0969da \
-    --color=info:#6e7781,prompt:#24292f,pointer:#0969da \
-    --color=marker:#1a8a0e,spinner:#6e7781,header:#6e7781 \
-    --color=border:#d0d7de,gutter:-1 \
-    --border=rounded --separator='' --scrollbar='│' \
-    --prompt='› ' --pointer='▌' --marker='✓'"
-fi
+# Helper paints explicit hex (not -1 / ANSI slots) because tmux caches its
+# resolved default-bg at server startup, so popups won't track an appearance
+# change without an explicit fzf bg.
+source "${HOME}/dotfiles/bin/fzf-clarity-opts"
 export BAT_THEME="ansi"
 export MANPAGER='nvim +Man!'
 
@@ -133,8 +118,8 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export GCLOUD_SOURCED=True
 
 # Load completions, then map aliases
-source <(kubectl completion zsh)
-source <(docker completion zsh)
+# source <(kubectl completion zsh)
+# source <(docker completion zsh)
 compdef g=git
 compdef k=kubectl
 compdef d=docker
