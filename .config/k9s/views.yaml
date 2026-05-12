@@ -13,6 +13,17 @@ views:
       # Custom columns: <NAME>:<JSON expression>
       # - APP:.metadata.labels.app
 
+  v1/nodes:
+    columns:
+      - NAME
+      - STATUS
+      - ROLE
+      - TAINTS
+      - VERSION
+      - POOL:.metadata.labels.node_pool
+      - INSTANCE:.metadata.labels.node\.kubernetes\.io/instance-type
+      - AGE
+
   # Flux GitRepository resources
   source.toolkit.fluxcd.io/v1/gitrepositories:
     columns:
