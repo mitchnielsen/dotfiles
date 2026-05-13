@@ -22,8 +22,7 @@ from a commit that does not follow the format, rewrite it.
 - Always mention related issues when available.
   - GitHub issue: "Related to #1234"
   - Linear issue: "Related to ENG-1234"
-  - Use "Closes" instead of "Related to" if the PR fully addresses
-    the issue.
+  - Never use "Closes". I'll decide when to close the related issue.
 - Include contextual links (logs, issues, PRs, materials) that help
   a reviewer get oriented.
 - Include session context in a collapsible `<details>` block at the
