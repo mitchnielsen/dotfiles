@@ -31,9 +31,7 @@
       "mcp__prefect-stg",
       "mcp__prefect-prd",
       "mcp__prefect-docs",
-      "mcp__prometheus-prd",
-      "mcp__prometheus-dev",
-      "mcp__prometheus-stg",
+      "mcp__prometheus",
       "mcp__grafana",
       "mcp__terraform"
     ],
