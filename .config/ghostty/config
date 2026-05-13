@@ -31,6 +31,9 @@ keybind = cmd+physical:five=text:\x02\x35
 # edit tmux pane
 keybind = cmd+y=write_scrollback_file:open
 
+# tmux session switcher (prefix + s)
+keybind = cmd+o=text:\x02\x73
+
 # For some reason this writes a `#`.
 keybind = cmd+shift+3=ignore
 
