@@ -19,6 +19,7 @@
       "LS(*)",
       "MultiEdit(*)",
       "Read(*)",
+      "Skill(*)",
       "Task(*)",
       "TodoWrite(*)",
       "WebFetch",
