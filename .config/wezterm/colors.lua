@@ -12,11 +12,11 @@ end
 local function tab_bar_colors(dark)
   if dark then
     return {
-      background = "#1b1d21",
+      background = "#1e1e1e",
       active_tab = { bg_color = "#23262b", fg_color = "#e6edf3" },
-      inactive_tab = { bg_color = "#1b1d21", fg_color = "#7d8590" },
+      inactive_tab = { bg_color = "#1e1e1e", fg_color = "#7d8590" },
       inactive_tab_hover = { bg_color = "#23262b", fg_color = "#e6edf3" },
-      new_tab = { bg_color = "#1b1d21", fg_color = "#7d8590" },
+      new_tab = { bg_color = "#1e1e1e", fg_color = "#7d8590" },
       new_tab_hover = { bg_color = "#23262b", fg_color = "#e6edf3" },
     }
   end

@@ -6,12 +6,12 @@
 name = "clarity-dark"
 
 [colors]
-background = '#1b1d21'
+background = '#1e1e1e'
 foreground = '#e6edf3'
 
 cursor_bg = '#e6edf3'
 cursor_border = '#e6edf3'
-cursor_fg = '#1b1d21'
+cursor_fg = '#1e1e1e'
 
 selection_bg = '#264f78'
 selection_fg = '#e6edf3'

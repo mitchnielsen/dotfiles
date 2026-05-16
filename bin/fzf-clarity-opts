@@ -8,11 +8,11 @@
 
 if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -qi dark; then
   export FZF_DEFAULT_OPTS=" \
-    --color=fg:#e6edf3,bg:#1b1d21,hl:#2f81f7 \
+    --color=fg:#e6edf3,bg:#1e1e1e,hl:#2f81f7 \
     --color=fg+:#e6edf3,bg+:#1f2733,hl+:#2f81f7 \
     --color=info:#7d8590,prompt:#e6edf3,pointer:#2f81f7 \
     --color=marker:#3fb950,spinner:#7d8590,header:#7d8590 \
-    --color=border:#30363d,gutter:#1b1d21 \
+    --color=border:#30363d,gutter:#1e1e1e \
     --border=rounded --separator='' --scrollbar='│' \
     --prompt='› ' --pointer='▌' --marker='✓'"
 else
