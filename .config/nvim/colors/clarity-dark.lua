@@ -5,6 +5,7 @@
 --   red    (#f85149) — errors, deletions, important warnings
 --   blue   (#2f81f7) — functions, methods, links
 --   yellow (#d29922) — parameters, warnings
+--   interp (#79c0ff) — string interpolation delimiters `${...}`
 --   muted  (#7d8590) — comments, dim UI, deemphasized text
 
 vim.cmd("highlight clear")
@@ -28,6 +29,7 @@ local c = {
   info = "#8b949e",
   yellow = "#d29922",
   param = "#c9a55a",
+  interp = "#79c0ff", -- string interpolation: `${VAR}` delimiters
   visual = "#264f78",
   cursor_line = "#23262b",
   search = "#5d4a1e",
@@ -149,7 +151,9 @@ hi("@comment", { link = "Comment" })
 hi("@string", { link = "String" })
 hi("@string.escape", { fg = c.dim })
 hi("@string.regex", { fg = c.dim })
-hi("@string.special", { fg = c.dim })
+hi("@string.special", { fg = c.interp })
+hi("@string.special.variable", { fg = c.interp })
+hi("@variable.member", { fg = c.fg })
 hi("@character", { link = "Character" })
 hi("@number", { link = "Number" })
 hi("@boolean", { link = "Boolean" })
@@ -173,9 +177,9 @@ hi("@exception", { fg = c.red, bold = true })
 hi("@include", { fg = c.fg, bold = true })
 
 hi("@variable", { fg = c.fg })
-hi("@variable.builtin", { fg = c.param, italic = true })
-hi("@parameter", { fg = c.param })
-hi("@variable.parameter", { fg = c.param })
+hi("@variable.builtin", { fg = c.interp, italic = true })
+hi("@parameter", { fg = c.fg })
+hi("@variable.parameter", { fg = c.fg })
 hi("@field", { fg = c.fg })
 hi("@property", { fg = c.fg })
 
@@ -212,7 +216,9 @@ hi("@tag.delimiter", { fg = c.dim })
 
 hi("@punctuation.delimiter", { fg = c.fg })
 hi("@punctuation.bracket", { fg = c.fg })
-hi("@punctuation.special", { fg = c.dim })
+-- `@punctuation.special` covers shell `${...}` expansion delimiters, format
+-- specifiers, markdown list markers, etc.
+hi("@punctuation.special", { fg = c.interp })
 
 hi("@markup.heading", { fg = c.fg, bold = true })
 hi("@markup.italic", { italic = true })
@@ -232,7 +238,7 @@ hi("@lsp.type.class", { fg = c.fg })
 hi("@lsp.type.enum", { fg = c.fg })
 hi("@lsp.type.interface", { fg = c.fg })
 hi("@lsp.type.struct", { fg = c.fg })
-hi("@lsp.type.parameter", { fg = c.param })
+hi("@lsp.type.parameter", { fg = c.fg })
 hi("@lsp.type.variable", { fg = c.fg })
 hi("@lsp.type.property", { fg = c.fg })
 hi("@lsp.type.function", { fg = c.function_blue })
