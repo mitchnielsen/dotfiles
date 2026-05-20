@@ -18,6 +18,13 @@ require("nvim-treesitter").install({
   "yaml",
 })
 
+-- nvim-treesitter `main` doesn't auto-start highlighting; do it ourselves.
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
+
 require("treesitter-context").setup({
   enable = true,
   throttle = true,
