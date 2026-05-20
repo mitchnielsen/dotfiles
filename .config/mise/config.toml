@@ -1,5 +1,6 @@
 [tools]
 1password = "2.35.0-beta.01"
+clickhouse = "latest" # brew cask is deprecated
 
 [settings]
 trusted_config_paths = ['~/code']
