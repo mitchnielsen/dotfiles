@@ -101,6 +101,7 @@ bindkey '^E' end-of-line
 
 source "${HOME}/.config/zsh/functions.sh"
 source "${HOME}/.config/zsh/aliases.sh"
+source "${HOME}/.config/zsh/prefect.env.sh"
 
 # Caching helper + lazy-loaded integrations (fzf, direnv, mise, wt, thefuck,
 # gcloud). See lazy.sh for details. Exposes `_cached_eval` for the starship

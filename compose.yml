@@ -35,9 +35,9 @@ services:
       - >-
         from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
     ports:
-      - "8106:8000"
+      - "8105:8000"
     environment:
-      PREFECT_API_URL: ${PREFECT_DEV_API_URL}
+      PREFECT_API_URL: ${PREFECT_DEV_INTEGRATION_TESTS_API_URL}
       PREFECT_API_KEY: ${PREFECT_DEV_API_KEY}
     restart: unless-stopped
 
@@ -53,9 +53,9 @@ services:
       - >-
         from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
     ports:
-      - "8107:8000"
+      - "8106:8000"
     environment:
-      PREFECT_API_URL: ${PREFECT_STG_API_URL}
+      PREFECT_API_URL: ${PREFECT_STG_INTEGRATION_TESTS_API_URL}
       PREFECT_API_KEY: ${PREFECT_STG_API_KEY}
     restart: unless-stopped
 
@@ -71,8 +71,62 @@ services:
       - >-
         from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
     ports:
-      - "8105:8000"
+      - "8107:8000"
     environment:
-      PREFECT_API_URL: ${PREFECT_PRD_API_URL}
+      PREFECT_API_URL: ${PREFECT_PRD_INTEGRATION_TESTS_API_URL}
       PREFECT_API_KEY: ${PREFECT_PRD_API_KEY}
+    restart: unless-stopped
+
+  prefect-previous:
+    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+    container_name: mcp-prefect-previous
+    command:
+      - uvx
+      - --from
+      - prefect-mcp
+      - python
+      - -c
+      - >-
+        from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
+    ports:
+      - "8108:8000"
+    environment:
+      PREFECT_API_URL: ${PREFECT_PREVIOUS_INTEGRATION_TESTS_API_URL}
+      PREFECT_API_KEY: ${PREFECT_PREVIOUS_API_KEY}
+    restart: unless-stopped
+
+  prefect-latest:
+    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+    container_name: mcp-prefect-latest
+    command:
+      - uvx
+      - --from
+      - prefect-mcp
+      - python
+      - -c
+      - >-
+        from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
+    ports:
+      - "8109:8000"
+    environment:
+      PREFECT_API_URL: ${PREFECT_LATEST_INTEGRATION_TESTS_API_URL}
+      PREFECT_API_KEY: ${PREFECT_LATEST_API_KEY}
+    restart: unless-stopped
+
+  prefect-next:
+    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+    container_name: mcp-prefect-next
+    command:
+      - uvx
+      - --from
+      - prefect-mcp
+      - python
+      - -c
+      - >-
+        from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
+    ports:
+      - "8110:8000"
+    environment:
+      PREFECT_API_URL: ${PREFECT_NEXT_INTEGRATION_TESTS_API_URL}
+      PREFECT_API_KEY: ${PREFECT_NEXT_API_KEY}
     restart: unless-stopped

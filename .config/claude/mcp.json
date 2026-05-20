@@ -8,17 +8,41 @@
       "type": "http",
       "url": "http://localhost:8102/mcp"
     },
-    "prefect-prd": {
+    "prefect-dev-integration-tests": {
       "type": "http",
       "url": "http://localhost:8105/mcp"
     },
-    "prefect-dev": {
+    "prefect-stg-integration-tests": {
       "type": "http",
       "url": "http://localhost:8106/mcp"
     },
-    "prefect-stg": {
+    "prefect-prd-integration-tests": {
       "type": "http",
-      "url": "http://localhost:8107/mcp"
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_PRD_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_PRD_API_KEY}"
+      }
+    },
+    "prefect-prd-integration-tests-oss": {
+      "type": "http",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_PRD_INTEGRATION_TESTS_OSS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_PRD_API_KEY}"
+      }
+    },
+    "prefect-previous-integration-tests": {
+      "type": "http",
+      "url": "http://localhost:8108/mcp"
+    },
+    "prefect-latest-integration-tests": {
+      "type": "http",
+      "url": "http://localhost:8109/mcp"
+    },
+    "prefect-next-integration-tests": {
+      "type": "http",
+      "url": "http://localhost:8110/mcp"
     },
     "linear": {
       "type": "http",
