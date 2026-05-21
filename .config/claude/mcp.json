@@ -10,11 +10,19 @@
     },
     "prefect-dev-integration-tests": {
       "type": "http",
-      "url": "http://localhost:8105/mcp"
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_DEV_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_DEV_API_KEY}"
+      }
     },
     "prefect-stg-integration-tests": {
       "type": "http",
-      "url": "http://localhost:8106/mcp"
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_STG_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_STG_API_KEY}"
+      }
     },
     "prefect-prd-integration-tests": {
       "type": "http",
