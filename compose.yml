@@ -5,7 +5,7 @@ services:
     container_name: mcp-grafana
     command: ["-t", "streamable-http", "--address", ":8000"]
     ports:
-      - "8100:8000"
+      - "8101:8000"
     environment:
       GRAFANA_URL: https://grafana.private.prefect.cloud/
       GRAFANA_SERVICE_ACCOUNT_TOKEN: ${GRAFANA_SERVICE_ACCOUNT_TOKEN}
@@ -23,9 +23,9 @@ services:
       TRANSPORT_HOST: 0.0.0.0
     restart: unless-stopped
 
-  prefect-previous:
+  prefect-customer-managed:
     image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
-    container_name: mcp-prefect-previous
+    container_name: mcp-prefect-customer-managed
     command:
       - uvx
       - --from
@@ -35,44 +35,5 @@ services:
       - >-
         from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
     ports:
-      - "8108:8000"
-    environment:
-      PREFECT_API_URL: ${PREFECT_PREVIOUS_INTEGRATION_TESTS_API_URL}
-      PREFECT_API_KEY: ${PREFECT_PREVIOUS_API_KEY}
-    restart: unless-stopped
-
-  prefect-latest:
-    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
-    container_name: mcp-prefect-latest
-    command:
-      - uvx
-      - --from
-      - prefect-mcp
-      - python
-      - -c
-      - >-
-        from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
-    ports:
-      - "8109:8000"
-    environment:
-      PREFECT_API_URL: ${PREFECT_LATEST_INTEGRATION_TESTS_API_URL}
-      PREFECT_API_KEY: ${PREFECT_LATEST_API_KEY}
-    restart: unless-stopped
-
-  prefect-next:
-    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
-    container_name: mcp-prefect-next
-    command:
-      - uvx
-      - --from
-      - prefect-mcp
-      - python
-      - -c
-      - >-
-        from prefect_mcp_server.server import mcp; mcp.run(transport="http", host="0.0.0.0", port=8000, path="/mcp")
-    ports:
-      - "8110:8000"
-    environment:
-      PREFECT_API_URL: ${PREFECT_NEXT_INTEGRATION_TESTS_API_URL}
-      PREFECT_API_KEY: ${PREFECT_NEXT_API_KEY}
+      - "8103:8000"
     restart: unless-stopped

@@ -6,6 +6,9 @@ trust_level = "trusted"
 [projects."/Users/mitch/code"]
 trust_level = "trusted"
 
+[projects."/Users/mitch/code/github.com/prefecthq/nebula/main"]
+trust_level = "trusted"
+
 [mcp_servers.datadog]
 url = "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core"
 
@@ -22,35 +25,43 @@ url = "https://mcp.linear.app/mcp"
 [mcp_servers.notion]
 url = "https://mcp.notion.com/mcp"
 
-[mcp_servers.openaiDeveloperDocs]
-url = "https://developers.openai.com/mcp"
-
 [mcp_servers.pagerduty]
 url = "https://mcp.pagerduty.com/mcp"
 
 [mcp_servers.pagerduty.env_http_headers]
 Authorization = "PAGERDUTY_AUTHORIZATION"
 
-[mcp_servers.prefect-dev]
-url = "http://localhost:8106/mcp"
-
-[mcp_servers.prefect-prd]
+[mcp_servers.prefect-dev-integration-tests]
 url = "http://localhost:8105/mcp"
 
-[mcp_servers.prefect-stg]
-url = "http://localhost:8107/mcp"
+[mcp_servers.prefect-latest-integration-tests]
+url = "http://localhost:8109/mcp"
 
-[mcp_servers.prometheus-dev]
-url = "http://localhost:8103/mcp"
+[mcp_servers.prefect-next-integration-tests]
+url = "http://localhost:8110/mcp"
 
-[mcp_servers.prometheus-prd]
-url = "http://localhost:8101/mcp"
+[mcp_servers.prefect-previous-integration-tests]
+url = "http://localhost:8108/mcp"
 
-[mcp_servers.prometheus-stg]
-url = "http://localhost:8104/mcp"
+[mcp_servers.prefect-prd-integration-tests]
+url = "https://prefect-cloud.fastmcp.app/mcp"
+
+[mcp_servers.prefect-prd-integration-tests.env_http_headers]
+"X-Prefect-Api-Url" = "PREFECT_PRD_INTEGRATION_TESTS_API_URL"
+"X-Prefect-Api-Key" = "PREFECT_PRD_API_KEY"
+
+[mcp_servers.prefect-prd-integration-tests-oss]
+url = "https://prefect-cloud.fastmcp.app/mcp"
+
+[mcp_servers.prefect-prd-integration-tests-oss.env_http_headers]
+"X-Prefect-Api-Url" = "PREFECT_PRD_INTEGRATION_TESTS_OSS_API_URL"
+"X-Prefect-Api-Key" = "PREFECT_PRD_API_KEY"
+
+[mcp_servers.prefect-stg-integration-tests]
+url = "http://localhost:8106/mcp"
 
 [mcp_servers.terraform]
 url = "http://localhost:8102/mcp"
 
 [tui.model_availability_nux]
-"gpt-5.5" = 3
+"gpt-5.5" = 4

@@ -2,7 +2,7 @@
   "mcpServers": {
     "grafana": {
       "type": "http",
-      "url": "http://localhost:8100/mcp"
+      "url": "http://localhost:8101/mcp"
     },
     "terraform": {
       "type": "http",
@@ -42,15 +42,27 @@
     },
     "prefect-previous-integration-tests": {
       "type": "http",
-      "url": "http://localhost:8108/mcp"
+      "url": "http://localhost:8103/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_PREVIOUS_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_PREVIOUS_API_KEY}"
+      }
     },
     "prefect-latest-integration-tests": {
       "type": "http",
-      "url": "http://localhost:8109/mcp"
+      "url": "http://localhost:8103/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_LATEST_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_LATEST_API_KEY}"
+      }
     },
     "prefect-next-integration-tests": {
       "type": "http",
-      "url": "http://localhost:8110/mcp"
+      "url": "http://localhost:8103/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_NEXT_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_NEXT_API_KEY}"
+      }
     },
     "linear": {
       "type": "http",
