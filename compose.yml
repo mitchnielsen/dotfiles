@@ -37,3 +37,29 @@ services:
     ports:
       - "8103:8000"
     restart: unless-stopped
+
+  playwright:
+    image: mcr.microsoft.com/playwright/mcp
+    container_name: mcp-playwright
+    init: true
+    entrypoint: node
+    command:
+      - /app/cli.js
+      - --headless
+      - --isolated
+      - --browser
+      - chromium
+      - --no-sandbox
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8931"
+      - --allowed-hosts
+      - "*"
+      - --output-dir
+      - /output
+    ports:
+      - "8104:8931"
+    volumes:
+      - ${HOME}/.playwright:/output
+    restart: unless-stopped

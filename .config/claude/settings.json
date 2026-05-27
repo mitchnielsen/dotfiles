@@ -29,6 +29,7 @@
       "mcp__grafana",
       "mcp__linear",
       "mcp__pagerduty",
+      "mcp__playwright",
       "mcp__prefect-dev-integration-tests",
       "mcp__prefect-stg-integration-tests",
       "mcp__prefect-prd-integration-tests",
