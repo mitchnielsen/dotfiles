@@ -14,6 +14,7 @@ export PREFECT_STG_INTEGRATION_TESTS_API_URL="https://api.stg.prefect.dev/api/ac
 # prd
 export PREFECT_PRD_INTEGRATION_TESTS_API_URL="https://api.prefect.cloud/api/accounts/12242a57-9f05-4bf5-8853-9bff595d4bab/workspaces/9648a429-137e-4868-8c73-2617543a50a2"
 export PREFECT_PRD_INTEGRATION_TESTS_OSS_API_URL="https://api.prefect.cloud/api/accounts/12242a57-9f05-4bf5-8853-9bff595d4bab/workspaces/54b2e424-f158-49ad-b3e0-e546bdcbd85d"
+export PREFECT_PRD_INTEGRATION_TESTS_HORIZON_API_URL="https://api.prefect.cloud/api/accounts/042d53a4-d300-4f4a-9861-3fbc00ae9e92/workspaces/e7e2b745-30b8-4369-95da-2b04cfeea834"
 
 # previous
 export PREFECT_PREVIOUS_INTEGRATION_TESTS_API_URL="https://previous-api.private.prefect.dev/api/accounts/63632de1-4dc5-4fb0-a7af-a8d7403462b3/workspaces/6e52f67f-c1d7-454f-9b19-484d57d2be39"

@@ -34,6 +34,7 @@
       "mcp__prefect-stg-integration-tests",
       "mcp__prefect-prd-integration-tests",
       "mcp__prefect-prd-integration-tests-oss",
+      "mcp__prefect-prd-integration-tests-horizon",
       "mcp__prefect-customer-managed",
       "mcp__prometheus",
       "mcp__terraform"

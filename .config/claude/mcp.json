@@ -44,6 +44,14 @@
         "X-Prefect-Api-Key": "${PREFECT_PRD_API_KEY}"
       }
     },
+    "prefect-prd-integration-tests-horizon": {
+      "type": "http",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_PRD_INTEGRATION_TESTS_HORIZON_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_PRD_API_KEY}"
+      }
+    },
     "prefect-previous-integration-tests": {
       "type": "http",
       "url": "http://localhost:8103/mcp",
