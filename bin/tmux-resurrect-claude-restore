@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# After resurrect restores panes, respawn each pane that ran `claude` with
+# --resume using sessionIds captured in the sidecar TSV.
+# Hooked via: set -g @resurrect-hook-post-restore-all 'tmux-resurrect-claude-restore'
+
+set -euo pipefail
+
+resurrect_dir="${HOME}/.local/share/tmux/resurrect"
+[[ -d "$resurrect_dir" ]] || resurrect_dir="${HOME}/.tmux/resurrect"
+snapshot="${resurrect_dir}/claude-agents.tsv"
+[[ -s "$snapshot" ]] || exit 0
+
+# session:window.pane -> sessionId
+declare -A sid_by_pane=()
+while IFS=$'\t' read -r sess win pane sid _cwd; do
+  [[ -n "$sid" ]] && sid_by_pane["${sess}:${win}.${pane}"]="$sid"
+done < "$snapshot"
+
+tmux list-panes -a \
+  -F '#{pane_id}	#{session_name}	#{window_index}	#{pane_index}	#{pane_current_path}	#{pane_start_command}' \
+| while IFS=$'\t' read -r pane_id sess win pane cwd start_cmd; do
+    key="${sess}:${win}.${pane}"
+    sid="${sid_by_pane[$key]:-}"
+    [[ -n "$sid" ]] || continue
+    # Only respawn panes whose restored start command is claude (avoid clobbering
+    # a pane that's now running something else after manual edits).
+    [[ "$start_cmd" == *claude* ]] || continue
+    tmux respawn-pane -k -t "$pane_id" -c "$cwd" \
+      "claude --resume $sid"
+done

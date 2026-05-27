@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# Snapshot live Claude agents keyed by tmux pane identity
+# (session:window.pane), so the restore hook can resume by sessionId.
+# Hooked via: set -g @resurrect-hook-post-save-all 'tmux-resurrect-claude-save'
+
+set -euo pipefail
+
+resurrect_dir="${HOME}/.local/share/tmux/resurrect"
+[[ -d "$resurrect_dir" ]] || resurrect_dir="${HOME}/.tmux/resurrect"
+out="${resurrect_dir}/claude-agents.tsv"
+tmp="$(mktemp)"
+
+# pid -> sessionId from the claude CLI
+declare -A sid_by_pid=()
+while IFS=$'\t' read -r pid sid; do
+  [[ -n "$pid" && -n "$sid" ]] && sid_by_pid["$pid"]="$sid"
+done < <(claude agents --json \
+           | jq -r '.[] | select(.kind=="interactive" and .status!="exited")
+                    | [.pid, .sessionId] | @tsv')
+
+# Walk descendants of a pid (BFS); echo every descendant pid (incl. self).
+descendants() {
+  local queue=("$1") next=()
+  while ((${#queue[@]})); do
+    next=()
+    for p in "${queue[@]}"; do
+      echo "$p"
+      while read -r child; do
+        [[ -n "$child" ]] && next+=("$child")
+      done < <(pgrep -P "$p" 2>/dev/null || true)
+    done
+    queue=("${next[@]}")
+  done
+}
+
+# Columns: session<TAB>window_index<TAB>pane_index<TAB>sessionId<TAB>cwd
+tmux list-panes -a \
+  -F '#{session_name}	#{window_index}	#{pane_index}	#{pane_pid}	#{pane_current_path}' \
+| while IFS=$'\t' read -r sess win pane pane_pid cwd; do
+    for d in $(descendants "$pane_pid"); do
+      sid="${sid_by_pid[$d]:-}"
+      if [[ -n "$sid" ]]; then
+        printf '%s\t%s\t%s\t%s\t%s\n' "$sess" "$win" "$pane" "$sid" "$cwd"
+        break
+      fi
+    done
+done > "$tmp"
+
+mv "$tmp" "$out"
