@@ -12,12 +12,8 @@ ad-hoc requests, or any other workflow).
 
 ## Git Author
 
-The git author for commits is always:
-
-- Name: `Mitchell Nielsen`
-- Email: `inbox@mitchn.me`
-
-Do not look up git user config. Use these values directly.
+Git is configured with the correct author. Do not run `git config`
+to look it up. `git commit` picks it up automatically.
 
 ## Safety Rules
 
