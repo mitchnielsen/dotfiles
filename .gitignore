@@ -1,6 +1,7 @@
 # Neovim
 .config/nvim/.luarc.json
 .config/nvim/lazy-lock.json
+.config/nvim/nvim-pack-lock.json
 
 # K9s
 .config/k9s/clusters/
