@@ -33,7 +33,6 @@ export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-source "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc"
 
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
@@ -60,6 +59,10 @@ if [ ! -f "${HOME}/.personal_device_marker" ]; then
     unset _openv
     set +a
   fi
+
+  # gcloud PATH (only present on work machines with gcloud installed)
+  [[ -f "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc" ]] && \
+    source "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc"
 fi
 
 # ===================
@@ -120,7 +123,6 @@ export GCLOUD_SOURCED=True
 compdef g=git
 compdef k=kubectl
 compdef d=docker
-compdef _load_gcloud_completion gcloud
 
 # ===================
 # Prompt settings

@@ -45,6 +45,11 @@ fuck() {
   fuck "$@"
 }
 
+# Exit early if personal device
+if [ -f "${HOME}/.personal_device_marker" ]; then
+  return 0
+fi
+
 # Lazy gcloud completion: heavy source file, only needed on first `gcloud <tab>`.
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke:
 #   gcloud components install gke-gcloud-auth-plugin
