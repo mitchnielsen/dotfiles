@@ -41,12 +41,8 @@
     ],
     "deny": [
       "EnterWorktree"
-    ],
-    "ask": [
-      "Bash(rm:*)"
     ]
   },
-  "model": "opus[1m]",
   "enableAllProjectMcpServers": true,
   "statusLine": {
     "type": "command",
