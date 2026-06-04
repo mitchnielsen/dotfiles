@@ -12,49 +12,115 @@
     "mcp__grafana_*": "allow",
     "mcp__linear_*": "allow",
     "mcp__pagerduty_*": "allow",
-    "mcp__prefect-dev_*": "allow",
-    "mcp__prefect-docs_*": "allow",
-    "mcp__prefect-prd_*": "allow",
-    "mcp__prefect-stg_*": "allow",
-    "mcp__prometheus-dev_*": "allow",
-    "mcp__prometheus-prd_*": "allow",
-    "mcp__prometheus-stg_*": "allow",
+    "mcp__playwright_*": "allow",
+    "mcp__prefect-dev-integration-tests_*": "allow",
+    "mcp__prefect-latest-integration-tests_*": "allow",
+    "mcp__prefect-next-integration-tests_*": "allow",
+    "mcp__prefect-previous-integration-tests_*": "allow",
+    "mcp__prefect-prd-integration-tests_*": "allow",
+    "mcp__prefect-prd-integration-tests-horizon_*": "allow",
+    "mcp__prefect-prd-integration-tests-oss_*": "allow",
+    "mcp__prefect-stg-integration-tests_*": "allow",
     "mcp__terraform_*": "allow"
   },
+  "plugin": ["@datadog/opencode-plugin"],
   "mcp": {
     "grafana": {
       "enabled": true,
       "type": "remote",
-      "url": "http://localhost:8100/mcp"
-    },
-    "prometheus-prd": {
-      "enabled": true,
-      "type": "remote",
       "url": "http://localhost:8101/mcp"
     },
-    "prometheus-dev": {
+    "terraform": {
       "enabled": true,
       "type": "remote",
-      "url": "http://localhost:8103/mcp"
+      "url": "http://localhost:8102/mcp"
     },
-    "prometheus-stg": {
+    "playwright": {
       "enabled": true,
       "type": "remote",
       "url": "http://localhost:8104/mcp"
+    },
+    "prefect-dev-integration-tests": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "{env:PREFECT_DEV_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "{env:PREFECT_DEV_API_KEY}"
+      }
+    },
+    "prefect-stg-integration-tests": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "{env:PREFECT_STG_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "{env:PREFECT_STG_API_KEY}"
+      }
+    },
+    "prefect-prd-integration-tests": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "{env:PREFECT_PRD_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "{env:PREFECT_PRD_API_KEY}"
+      }
+    },
+    "prefect-prd-integration-tests-oss": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "{env:PREFECT_PRD_INTEGRATION_TESTS_OSS_API_URL}",
+        "X-Prefect-Api-Key": "{env:PREFECT_PRD_API_KEY}"
+      }
+    },
+    "prefect-prd-integration-tests-horizon": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "{env:PREFECT_PRD_INTEGRATION_TESTS_HORIZON_API_URL}",
+        "X-Prefect-Api-Key": "{env:PREFECT_PRD_API_KEY}"
+      }
+    },
+    "prefect-previous-integration-tests": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8103/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "{env:PREFECT_PREVIOUS_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "{env:PREFECT_PREVIOUS_API_KEY}"
+      }
+    },
+    "prefect-latest-integration-tests": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8103/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "{env:PREFECT_LATEST_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "{env:PREFECT_LATEST_API_KEY}"
+      }
+    },
+    "prefect-next-integration-tests": {
+      "enabled": true,
+      "type": "remote",
+      "url": "http://localhost:8103/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "{env:PREFECT_NEXT_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "{env:PREFECT_NEXT_API_KEY}"
+      }
+    },
+    "linear": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp"
     },
     "notion": {
       "enabled": true,
       "type": "remote",
       "url": "https://mcp.notion.com/mcp"
-    },
-    "datadog": {
-      "enabled": true,
-      "type": "remote",
-      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core",
-      "headers": {
-        "DD_API_KEY": "{env:DD_API_KEY}",
-        "DD_APPLICATION_KEY": "{env:DD_APPLICATION_KEY}"
-      }
     },
     "pagerduty": {
       "enabled": true,
@@ -63,31 +129,6 @@
       "headers": {
         "Authorization": "Token {env:PAGERDUTY_TOKEN}"
       }
-    },
-    "terraform": {
-      "enabled": true,
-      "type": "remote",
-      "url": "http://localhost:8102/mcp"
-    },
-    "prefect-prd": {
-      "enabled": true,
-      "type": "remote",
-      "url": "http://localhost:8105/mcp"
-    },
-    "prefect-dev": {
-      "enabled": true,
-      "type": "remote",
-      "url": "http://localhost:8106/mcp"
-    },
-    "prefect-stg": {
-      "enabled": true,
-      "type": "remote",
-      "url": "http://localhost:8107/mcp"
-    },
-    "linear": {
-      "enabled": true,
-      "type": "remote",
-      "url": "https://mcp.linear.app/mcp"
     }
   }
 }
