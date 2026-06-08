@@ -86,7 +86,6 @@ brew "neovim"
 brew "neovide", link: false
 brew "netlify-cli"
 brew "nginx"
-brew "nvm"
 brew "openldap"
 brew "pi-coding-agent"
 brew "postgresql@14"

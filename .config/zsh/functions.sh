@@ -117,13 +117,6 @@ function ql() {
   qlmanage -p "$@"
 }
 
-# Node/NVM
-function nvm-source {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-}
-
 # AWS
 function aws-profile {
   profile=$(cat ~/.aws/config | grep 'profile' | sed 's;];;g' | awk '{print $2}' | fzf)
