@@ -32,7 +32,9 @@ from a commit that does not follow the format, rewrite it.
 
 - Be conversational and humble. Avoid "comprehensive" or confident
   "root cause" claims.
-- Brief. Focus on what/why, not how.
+- Be brief. Focus on what/why, not how. Additional commits to the
+  pull request may change the approach, so keep the description focused
+  enough to not require major rewrites in most cases.
 - No checklists or file lists, but respect existing checklist items
   if a PR template defines them.
 - No "Test Plan" checklist.
