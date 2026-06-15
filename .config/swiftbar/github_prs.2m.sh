@@ -18,7 +18,7 @@ PRS=$(gh search prs \
   --archived=false \
   --draft=false \
   --json repository,number,title,url \
-  -- -label:automated-dependency-updates -label:dependencies -reviewed-by:@me -review-requested:Engineering \
+  -- -label:automated-dependency-updates -label:dependencies -reviewed-by:@me -author:devin-ai-integration[bot] \
   2>/dev/null)
 
 COUNT=$(echo "$PRS" | jq -r 'length' 2>/dev/null)
