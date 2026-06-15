@@ -25,7 +25,7 @@ alias cdd='cd $(find ~/code -maxdepth 4 -type d | sort -u | fzf)'
 alias cdw='cd $(find ../ -maxdepth 1 -type d | sort -u | fzf)'
 alias note='(cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .)'
 alias rg='rg --ignore-file=$HOME/.config/ripgrep/.ignore'
-alias python-venv='if [ ! -f ./.venv/bin/activate ]; then echo Creating virtualenv...; uv venv --python=3.13; fi; source .venv/bin/activate'
+alias python-venv='if [ ! -f ./.venv/bin/activate ]; then echo Creating virtualenv...; uv venv; fi; source .venv/bin/activate'
 
 ## Worktrees
 alias wts='wt switch'           # usage: `wts` (opens picker) or `wts <branch name>`
