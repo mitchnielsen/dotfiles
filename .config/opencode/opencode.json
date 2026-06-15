@@ -7,6 +7,9 @@
       "git *": "ask",
       "*": "allow"
     },
+    "external_directory": {
+      "~/code/github.com/**": "allow"
+    },
     "mcp__clickhouse_*": "allow",
     "mcp__datadog_*": "allow",
     "mcp__grafana_*": "allow",
