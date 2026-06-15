@@ -27,7 +27,7 @@ Existing pull request, if any:
 !`gh pr view --json url,title,state --jq '"\(.state) \(.title) \(.url)"' 2>/dev/null || true`
 
 Pull request template path, if present:
-!`for f in .github/pull_request_template.md .github/PULL_REQUEST_TEMPLATE.md; do [ -f "$f" ] && printf '%s\n' "$f"; done`
+!`for f in .github/pull_request_template.md .github/PULL_REQUEST_TEMPLATE.md; do [ -f "$f" ] && printf '%s\n' "$f"; done; true`
 
 ## Instructions
 
