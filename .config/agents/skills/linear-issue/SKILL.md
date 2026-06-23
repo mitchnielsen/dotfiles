@@ -11,11 +11,15 @@ Linear MCP server.
 
 ## Team Defaults
 
-- Default team: **Platform** (ID: `0cf54a8c-b85d-4637-b6fd-89670b625782`)
+- Default team: **Horizon** (identifier: `HRZN`)
 - Customer-managed-related repositories should use the **Customer Managed**
-  team (ID: `6154c1ee-2d52-4d3b-a5cd-395789c8696e`)
+  team (identifier: `CUS`)
+- Platform-related repositories (`platform`, `cloud2-helm`,
+  `terraform-provider-prefect`, `cluster-deployment`,
+  `prometheus-prefect-exporter`, etc.) should use the **Platform** team
+  (identifier: `PLA`)
 
-If the user does not specify a team, use Platform.
+If the user does not specify a team and you're not sure which one to use, ask.
 
 ## Status
 
