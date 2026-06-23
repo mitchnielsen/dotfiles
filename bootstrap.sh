@@ -20,13 +20,19 @@ function symlink() {
   mkdir -p "$HOME/bin"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 
+  # MCP config - file-level symlink so other tools can share the same config.
+  # Stow ignores .config/mcp (see .config/.stow-local-ignore).
+  mkdir -p "$HOME/.config/mcp"
+  ln -sfn "$HOME/dotfiles/.config/mcp/mcp.json" "$HOME/.config/mcp/mcp.json"
+
   # Claude config - file-level symlinks so runtime state (cache, projects,
   # sessions, etc.) stays in ~/.config/claude and never lands in dotfiles.
   # Stow ignores .config/claude (see .config/.stow-local-ignore).
   mkdir -p "$HOME/.config/claude"
-  for f in CLAUDE.md mcp.json settings.json statusline-command.sh; do
+  for f in CLAUDE.md settings.json statusline-command.sh; do
     ln -sfn "$HOME/dotfiles/.config/claude/$f" "$HOME/.config/claude/$f"
   done
+  ln -sfn "$HOME/.config/mcp/mcp.json" "$HOME/.config/claude/mcp.json"
 
   # Raycast config - file-level symlinks so runtime state (extensions/, ai/,
   # etc.) stays in ~/.config/raycast and never lands in dotfiles. Stow ignores

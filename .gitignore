@@ -31,6 +31,10 @@
 # Pi
 .config/pi/auth.json
 .config/pi/sessions/
+.config/pi/mcp-cache.json
+.config/pi/mcp-oauth/
+.config/pi/npm/
+.config/pi/mcp-onboarding.json
 
 # Docker Compose
 .env

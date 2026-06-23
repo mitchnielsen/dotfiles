@@ -1,0 +1,103 @@
+{
+  "mcpServers": {
+    "grafana": {
+      "type": "http",
+      "url": "http://localhost:8101/mcp"
+    },
+    "terraform": {
+      "type": "http",
+      "url": "http://localhost:8102/mcp"
+    },
+    "playwright": {
+      "type": "http",
+      "url": "http://localhost:8104/mcp"
+    },
+    "prefect-dev-integration-tests": {
+      "type": "http",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_DEV_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_DEV_API_KEY}"
+      }
+    },
+    "prefect-stg-integration-tests": {
+      "type": "http",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_STG_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_STG_API_KEY}"
+      }
+    },
+    "prefect-prd-integration-tests": {
+      "type": "http",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_PRD_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_PRD_API_KEY}"
+      }
+    },
+    "prefect-prd-integration-tests-oss": {
+      "type": "http",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_PRD_INTEGRATION_TESTS_OSS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_PRD_API_KEY}"
+      }
+    },
+    "prefect-prd-integration-tests-horizon": {
+      "type": "http",
+      "url": "https://prefect-cloud.fastmcp.app/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_PRD_INTEGRATION_TESTS_HORIZON_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_PRD_API_KEY}"
+      }
+    },
+    "prefect-previous-integration-tests": {
+      "type": "http",
+      "url": "http://localhost:8103/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_PREVIOUS_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_PREVIOUS_API_KEY}"
+      }
+    },
+    "prefect-latest-integration-tests": {
+      "type": "http",
+      "url": "http://localhost:8103/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_LATEST_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_LATEST_API_KEY}"
+      }
+    },
+    "prefect-next-integration-tests": {
+      "type": "http",
+      "url": "http://localhost:8103/mcp",
+      "headers": {
+        "X-Prefect-Api-Url": "${PREFECT_NEXT_INTEGRATION_TESTS_API_URL}",
+        "X-Prefect-Api-Key": "${PREFECT_NEXT_API_KEY}"
+      }
+    },
+    "linear": {
+      "type": "http",
+      "url": "https://mcp.linear.app/mcp"
+    },
+    "notion": {
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "datadog": {
+      "type": "http",
+      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core",
+      "headers": {
+        "DD_API_KEY": "${DD_API_KEY}",
+        "DD_APPLICATION_KEY": "${DD_APPLICATION_KEY}"
+      }
+    },
+    "pagerduty": {
+      "type": "http",
+      "url": "https://mcp.pagerduty.com/mcp",
+      "headers": {
+        "Authorization": "Token ${PAGERDUTY_TOKEN}"
+      }
+    }
+  }
+}
