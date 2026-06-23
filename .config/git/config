@@ -3,6 +3,12 @@
 [user]
   name = Mitchell Nielsen
   email = inbox@mitchn.me
+[includeIf "gitdir:~/code/github.com/prefecthq/"]
+  path = ~/.config/git/config-prefect
+[includeIf "hasconfig:remote.*.url:git@github.com:prefecthq/**"]
+  path = ~/.config/git/config-prefect
+[includeIf "hasconfig:remote.*.url:https://github.com/prefecthq/**"]
+  path = ~/.config/git/config-prefect
 [core]
   pager = delta-auto
   excludesfile = ~/.config/git/ignore
