@@ -126,11 +126,18 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export GCLOUD_SOURCED=True
 
 # Load completions, then map aliases
-# source <(kubectl completion zsh)
-# source <(docker completion zsh)
 compdef g=git
-compdef k=kubectl
-compdef d=docker
+
+kubectl() {
+    command kubectl "$@"
+    local ret=$?
+    if [[ -z $KUBECTL_COMPLETE ]]; then
+        source <(command kubectl completion zsh)
+        KUBECTL_COMPLETE=1
+        compdef k=kubectl
+    fi
+    return $ret
+}
 
 # ===================
 # Prompt settings
