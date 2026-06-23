@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+wt_bin="${WORKTRUNK_BIN:-wt}"
+
+if ! command -v jq >/dev/null 2>&1; then
+  echo "worktrunk-remove-merged-prs requires jq" >&2
+  exit 1
+fi
+
+if ! command -v gh >/dev/null 2>&1; then
+  echo "worktrunk-remove-merged-prs requires gh" >&2
+  exit 1
+fi
+
+if ! command -v fzf >/dev/null 2>&1; then
+  echo "worktrunk-remove-merged-prs requires fzf" >&2
+  exit 1
+fi
+
+worktrees_json="$($wt_bin list --format json)"
+merged_prs_json="$(gh pr list --state merged --limit 200 --json headRefName,mergedAt,number,title,url)"
+
+candidates="$(
+jq -rn --argjson worktrees "$worktrees_json" --argjson prs "$merged_prs_json" '
+  ($prs | map({key: .headRefName, value: .}) | from_entries) as $pr_by_branch
+  | $worktrees[]
+  | select(.kind == "worktree")
+  | select((.is_main // false) | not)
+  | . as $row
+  | $pr_by_branch[$row.branch] as $pr
+  | select($pr != null)
+  | [
+      $row.path,
+      $row.branch,
+      ("#" + ($pr.number | tostring)),
+      (($pr.mergedAt // "") | split("T")[0]),
+      ($pr.title // "")
+    ]
+  | @tsv
+')"
+
+if [[ -z "$candidates" ]]; then
+  echo "No worktrees with merged PRs found."
+  exit 0
+fi
+
+formatted_candidates="$(
+printf '%s\n' "$candidates" | awk -F '\t' '
+  {
+    path[NR] = $1
+    branch[NR] = $2
+    pr[NR] = $3
+    merged[NR] = $4
+    title[NR] = $5
+    if (length($2) > branch_width) branch_width = length($2)
+    if (length($3) > pr_width) pr_width = length($3)
+    if (length($4) > merged_width) merged_width = length($4)
+  }
+  END {
+    if (branch_width < length("Branch")) branch_width = length("Branch")
+    if (pr_width < length("PR")) pr_width = length("PR")
+    if (merged_width < length("Merged")) merged_width = length("Merged")
+
+    header = sprintf("%-*s  %-*s  %-*s  %s", branch_width, "Branch", pr_width, "PR", merged_width, "Merged", "Title")
+    printf "\t%s\t\t\t\n", header
+
+    for (i = 1; i <= NR; i++) {
+      display = sprintf("%-*s  %-*s  %-*s  %s", branch_width, branch[i], pr_width, pr[i], merged_width, merged[i], title[i])
+      printf "%s\t%s\t%s\t%s\n", path[i], display, branch[i], pr[i]
+    }
+  }
+')"
+
+selection="$(
+printf '%s\n' "$formatted_candidates" | fzf \
+  --multi \
+  --delimiter='\t' \
+  --with-nth=2 \
+  --header-lines=1 \
+  --header='Select merged PR worktrees to remove' \
+  --prompt='remove merged > '
+)" || exit $?
+
+if [[ -z "$selection" ]]; then
+  echo "No worktrees selected."
+  exit 0
+fi
+
+count="$(printf '%s\n' "$selection" | sed '/^$/d' | wc -l | tr -d ' ')"
+echo "Will run 'wt remove' for $count worktree(s):"
+printf '%s\n' "$selection" | awk -F '\t' '{printf "  %s  %s  %s\n", $3, $4, $1}'
+
+read -r -p "Continue? [y/N] " answer
+case "$answer" in
+  [yY]|[yY][eE][sS]) ;;
+  *) echo "Cancelled."; exit 0 ;;
+esac
+
+printf '%s\n' "$selection" | while IFS=$'\t' read -r path display branch pr; do
+  [[ -n "$path" ]] || continue
+  echo
+  echo "==> Removing $branch ($pr) @ $path"
+  "$wt_bin" remove "$branch"
+done
