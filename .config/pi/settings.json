@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.79.9",
+  "lastChangelogVersion": "0.79.10",
   "quietStartup": true,
   "skills": [
     "~/.config/agents/skills"
@@ -11,7 +11,6 @@
     "extensions/minimal-header.ts"
   ],
   "packages": [
-    "~/.config/pi/packages/linear-mcp",
     "~/.config/pi/packages/pagerduty",
     "~/.config/pi/packages/prometheus",
     "https://github.com/davebcn87/pi-autoresearch",
