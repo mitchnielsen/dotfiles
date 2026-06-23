@@ -17,8 +17,9 @@ PRS=$(gh search prs \
   --review-requested=mitchnielsen \
   --archived=false \
   --draft=false \
+  --review=none \
   --json repository,number,title,url \
-  -- -label:automated-dependency-updates -label:dependencies -reviewed-by:@me -author:devin-ai-integration[bot] \
+  -- -label:automated-dependency-updates -label:dependencies '-author:devin-ai-integration[bot]' \
   2>/dev/null)
 
 COUNT=$(echo "$PRS" | jq -r 'length' 2>/dev/null)
@@ -38,7 +39,7 @@ else
   color="$neutral"
 fi
 
-REVIEW_URL="https://github.com/pulls?q=is%3Aopen+is%3Apr+review-requested%3Amitchnielsen+archived%3Afalse+draft%3Afalse+-label%3Aautomated-dependency-updates+-label%3Adependencies+-reviewed-by%3A%40me+-review-requested%3AEngineering"
+REVIEW_URL="https://github.com/pulls?q=is%3Aopen+is%3Apr+review-requested%3Amitchnielsen+archived%3Afalse+draft%3Afalse+review%3Anone+-label%3Aautomated-dependency-updates+-label%3Adependencies+-author%3Adevin-ai-integration%5Bbot%5D+-review-requested%3AEngineering"
 
 echo ":arrow.triangle.branch: $COUNT | sfcolor=$color"
 echo "---"
