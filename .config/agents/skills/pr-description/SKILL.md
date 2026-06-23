@@ -24,6 +24,7 @@ from a commit that does not follow the format, rewrite it.
   - Linear issue: "Related to ENG-1234"
   - Never use "Closes". I'll decide when to close the related issue.
 - Include contextual links (logs, issues, PRs, materials) that help
+- Include an ASCII diagram when relevant. A picture is worth a thousand words.
   a reviewer get oriented.
 - Include session context in a collapsible `<details>` block at the
   end of the body.
