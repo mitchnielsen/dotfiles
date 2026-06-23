@@ -11,6 +11,14 @@ skip-shell-integration-prompt = true
 
 [post-start]
 husky = """
+case "{{ remote_url }}" in
+  *PrefectHQ/horizon*|*prefecthq/horizon*)
+    if [ -x "./scripts/setup-worktree" ]; then
+      exit 0
+    fi
+    ;;
+esac
+
 if [ -d ".husky" ]; then
   npm install
 fi
@@ -21,6 +29,14 @@ if [ -f ".pre-commit-config.yaml" ]; then
 fi
 """
 direnv = """
+case "{{ remote_url }}" in
+  *PrefectHQ/horizon*|*prefecthq/horizon*)
+    if [ -x "./scripts/setup-worktree" ]; then
+      exit 0
+    fi
+    ;;
+esac
+
 if [ -f ".envrc" ]; then
   direnv allow
 fi
@@ -35,3 +51,10 @@ fi
 """
 
 [projects]
+
+[projects."github.com/PrefectHQ/horizon".pre-start]
+setup-worktree = """
+if [ -x "./scripts/setup-worktree" ]; then
+  ./scripts/setup-worktree
+fi
+"""
