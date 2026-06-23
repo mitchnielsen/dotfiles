@@ -26,7 +26,10 @@
     "mcp__prefect-stg-integration-tests_*": "allow",
     "mcp__terraform_*": "allow"
   },
-  "plugin": ["@datadog/opencode-plugin"],
+  "plugin": [
+    "@datadog/opencode-plugin",
+    "@plannotator/opencode@latest"
+  ],
   "mcp": {
     "grafana": {
       "enabled": true,
