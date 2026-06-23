@@ -1,8 +1,11 @@
 {
-  "lastChangelogVersion": "0.65.0",
+  "lastChangelogVersion": "0.79.9",
   "quietStartup": true,
   "skills": [
     "~/.config/agents/skills"
+  ],
+  "prompts": [
+    "~/.config/agents/commands"
   ],
   "extensions": [
     "extensions/minimal-header.ts"
@@ -11,9 +14,10 @@
     "~/.config/pi/packages/linear-mcp",
     "~/.config/pi/packages/pagerduty",
     "~/.config/pi/packages/prometheus",
-    "https://github.com/davebcn87/pi-autoresearch"
+    "https://github.com/davebcn87/pi-autoresearch",
+    "git:github.com/supabitapp/supaterm-skills"
   ],
-  "theme": "light",
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-6"
+  "theme": "light/light",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5"
 }
