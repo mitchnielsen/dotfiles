@@ -78,5 +78,6 @@
   "terminalProgressBarEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754598531219
-  }
+  },
+  "skipWorkflowUsageWarning": true
 }
