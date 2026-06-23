@@ -115,7 +115,12 @@ source "${HOME}/.config/zsh/prefect.env.sh"
 source "${HOME}/.config/zsh/lazy.sh"
 
 # Load compinit early with -C (skip security checks) so gcloud doesn't re-init
-autoload -Uz compinit && compinit -C -d "${ZDOTDIR:-$HOME}/.zcompdump"
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
+  compinit -C
+else
+  compinit
+fi
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export GCLOUD_SOURCED=True
