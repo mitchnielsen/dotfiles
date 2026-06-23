@@ -46,6 +46,9 @@ if [ ! -f "${HOME}/.personal_device_marker" ]; then
   export ENABLE_LSP_TOOL=1 # https://karanbansal.in/blog/claude-code-lsp/
   # export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
 
+  # pi
+  export PI_CODING_AGENT_DIR="${HOME}/.config/pi"
+
   # Docker
   export DOCKER_HOST="unix://${HOME}/.docker/run/docker.sock"
   export DOCKER_DEFAULT_PLATFORM=linux/amd64
