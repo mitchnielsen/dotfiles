@@ -29,6 +29,7 @@ doubt about scope, ask.
 - Use `gh` for interacting with GitHub.
 - Use project's existing build system (`make`, `mise`, etc).
 - Use project's formatter/linter settings.
+- Use comments in code only when absolutely necessary.
 - Use separate sentences instead of em-dashes (-).
 
 ## Effort, parallelism, and subagents
