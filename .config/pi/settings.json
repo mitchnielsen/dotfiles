@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.79.10",
+  "lastChangelogVersion": "0.80.2",
   "quietStartup": true,
   "skills": [
     "~/.config/agents/skills"
@@ -17,7 +17,9 @@
     "git:github.com/supabitapp/supaterm-skills",
     "npm:pi-mcp-adapter"
   ],
-  "theme": "light/light",
+  "theme": "light/dark",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5"
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "high",
+  "hideThinkingBlock": true
 }
