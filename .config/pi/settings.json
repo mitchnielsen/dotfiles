@@ -11,10 +11,6 @@
     "extensions/minimal-header.ts"
   ],
   "packages": [
-    "~/.config/pi/packages/pagerduty",
-    "~/.config/pi/packages/prometheus",
-    "https://github.com/davebcn87/pi-autoresearch",
-    "git:github.com/supabitapp/supaterm-skills",
     "npm:pi-mcp-adapter"
   ],
   "theme": "light/dark",
