@@ -26,18 +26,27 @@ key_repeat = 2
 "~/bin" = { source = "bin", mode = "symlink-each" }
 
 # shells and CLI config
-"~/.config/zsh" = ".config/zsh"
+"~/.config/zsh/.zshrc" = ".config/zsh/.zshrc"
+"~/.config/zsh/aliases.sh" = ".config/zsh/aliases.sh"
+"~/.config/zsh/functions.sh" = ".config/zsh/functions.sh"
+"~/.config/zsh/lazy.sh" = ".config/zsh/lazy.sh"
+"~/.config/zsh/prefect.env.sh" = ".config/zsh/prefect.env.sh"
 "~/.config/git" = ".config/git"
 "~/.config/ssh" = ".config/ssh"
 "~/.config/ripgrep" = ".config/ripgrep"
 "~/.config/starship" = ".config/starship"
-"~/.config/worktrunk" = ".config/worktrunk"
+"~/.config/worktrunk/config.toml" = ".config/worktrunk/config.toml"
 
 # editors and terminals
-"~/.config/nvim" = ".config/nvim"
+"~/.config/nvim/init.lua" = ".config/nvim/init.lua"
+"~/.config/nvim/colors" = ".config/nvim/colors"
+"~/.config/nvim/lua" = ".config/nvim/lua"
+"~/.config/nvim/plugin" = ".config/nvim/plugin"
 "~/.config/helix" = ".config/helix"
 "~/.config/ghostty" = ".config/ghostty"
-"~/.config/tmux" = ".config/tmux"
+"~/.config/tmux/tmux.conf" = ".config/tmux/tmux.conf"
+"~/.config/tmux/clarity-dark.conf" = ".config/tmux/clarity-dark.conf"
+"~/.config/tmux/clarity-light.conf" = ".config/tmux/clarity-light.conf"
 "~/.config/wezterm" = ".config/wezterm"
 
 # agents
@@ -54,14 +63,19 @@ key_repeat = 2
 "~/.config/opencode/themes" = ".config/opencode/themes"
 
 # apps
-"~/.config/brew" = ".config/brew"
+"~/.config/brew/Brewfile" = ".config/brew/Brewfile"
 "~/.config/ducker" = ".config/ducker"
 "~/.config/gh-dash" = ".config/gh-dash"
-"~/.config/glide" = ".config/glide"
-"~/.config/k9s" = ".config/k9s"
-"~/.config/karabiner" = ".config/karabiner"
+"~/.config/glide/glide.ts" = ".config/glide/glide.ts"
+"~/.config/hunk/config.toml" = ".config/hunk/config.toml"
+"~/.config/k9s/aliases.yaml" = ".config/k9s/aliases.yaml"
+"~/.config/k9s/config.yaml" = ".config/k9s/config.yaml"
+"~/.config/k9s/views.yaml" = ".config/k9s/views.yaml"
+"~/.config/k9s/skins" = ".config/k9s/skins"
+"~/.config/karabiner/assets" = ".config/karabiner/assets"
+"~/.config/karabiner/karabiner.json" = ".config/karabiner/karabiner.json"
 "~/.config/kube" = ".config/kube"
-"~/.config/lazygit" = ".config/lazygit"
+"~/.config/lazygit/config.yml" = ".config/lazygit/config.yml"
 "~/.config/markdownlint" = ".config/markdownlint"
 "~/.config/raycast/snippets.json" = ".config/raycast/snippets.json"
 "~/.config/raycast/script-commands" = ".config/raycast/script-commands"
