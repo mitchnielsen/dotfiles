@@ -12,6 +12,7 @@ export CODEX_HOME="$XDG_CONFIG_HOME/codex"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
+export MISE_GLOBAL_CONFIG_FILE="$HOME/dotfiles/.config/mise/config.toml"
 export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
 # clarity theme for fzf — palette follows macOS appearance at shell startup.
 # Helper paints explicit hex (not -1 / ANSI slots) because tmux caches its

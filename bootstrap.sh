@@ -3,10 +3,6 @@
 set -euo pipefail
 
 function symlink() {
-  # zsh zprofile
-  grep -qF 'ZDOTDIR' "$HOME/.zprofile" 2>/dev/null \
-    || echo 'export ZDOTDIR=$HOME/.config/zsh' >> "$HOME/.zprofile"
-
   # ssh
   mkdir -p "$HOME/.ssh"
   ln -sf "$HOME/dotfiles/.config/ssh/config" "$HOME/.ssh/config"
@@ -15,10 +11,6 @@ function symlink() {
   # dotfiles
   mkdir -p "$HOME/.config"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/.config" .config)
-
-  # binaries
-  mkdir -p "$HOME/bin"
-  (cd "$HOME/dotfiles" && stow -v --target="$HOME/bin" bin)
 
   # MCP config - file-level symlink so other tools can share the same config.
   # Stow ignores .config/mcp (see .config/.stow-local-ignore).

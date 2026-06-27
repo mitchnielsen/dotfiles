@@ -4,5 +4,5 @@ clickhouse = "latest" # brew cask is deprecated
 node = "lts"
 
 [settings]
-trusted_config_paths = ['~/code']
+trusted_config_paths = ['~/code', '~/dotfiles']
 idiomatic_version_file_enable_tools = ["node"]

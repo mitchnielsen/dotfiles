@@ -1,0 +1,19 @@
+[settings]
+dotfiles.root = "~/.dotfiles"
+dotfiles.default_mode = "symlink"
+experimental = true
+
+[dotfiles]
+# https://mise.jdx.dev/dotfiles.html
+
+# core
+"~/.zprofile" = ".config/zsh/.zprofile"
+"~/bin" = { source = "bin", mode = "symlink-each" }
+
+# agents
+"~/.config/mcp/mcp.json" = ".config/mcp/mcp.json"
+
+# pi
+"~/.config/pi/AGENTS.md" = ".config/pi/AGENTS.md"
+"~/.config/pi/settings.json" = ".config/pi/settings.json"
+"~/.config/pi/extensions" = ".config/pi/extensions"
