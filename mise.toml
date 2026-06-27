@@ -1,5 +1,5 @@
 [settings]
-dotfiles.root = "~/.dotfiles"
+dotfiles.root = "~/dotfiles"
 dotfiles.default_mode = "symlink"
 experimental = true
 
