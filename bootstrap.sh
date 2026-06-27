@@ -8,10 +8,6 @@ function symlink() {
   ln -sf "$HOME/dotfiles/.config/ssh/config" "$HOME/.ssh/config"
   chmod 644 ~/.ssh/config
 
-  # dotfiles
-  mkdir -p "$HOME/.config"
-  (cd "$HOME/dotfiles" && stow -v --target="$HOME/.config" .config)
-
   mise_env=()
   if [ ! -f "$HOME/.personal_device_marker" ]; then
     mise_env=(-E work)

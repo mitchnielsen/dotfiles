@@ -9,16 +9,52 @@ experimental = true
 # core
 "~/.zprofile" = ".config/zsh/.zprofile"
 "~/bin" = { source = "bin", mode = "symlink-each" }
+"~/.config/mise" = ".config/mise"
+
+# shells and CLI config
+"~/.config/zsh" = ".config/zsh"
+"~/.config/git" = ".config/git"
+"~/.config/ssh" = ".config/ssh"
+"~/.config/ripgrep" = ".config/ripgrep"
+"~/.config/starship" = ".config/starship"
+"~/.config/worktrunk" = ".config/worktrunk"
+
+# editors and terminals
+"~/.config/nvim" = ".config/nvim"
+"~/.config/helix" = ".config/helix"
+"~/.config/ghostty" = ".config/ghostty"
+"~/.config/tmux" = ".config/tmux"
+"~/.config/wezterm" = ".config/wezterm"
 
 # agents
+"~/.config/agents" = ".config/agents"
 "~/.config/mcp/mcp.json" = ".config/mcp/mcp.json"
 "~/.config/claude/CLAUDE.md" = ".config/claude/CLAUDE.md"
 "~/.config/claude/settings.json" = ".config/claude/settings.json"
 "~/.config/claude/statusline-command.sh" = ".config/claude/statusline-command.sh"
 "~/.config/claude/mcp.json" = ".config/mcp/mcp.json"
+"~/.config/codex/config.toml" = ".config/codex/config.toml"
+"~/.config/opencode/README.md" = ".config/opencode/README.md"
+"~/.config/opencode/opencode.json" = ".config/opencode/opencode.json"
+"~/.config/opencode/tui.json" = ".config/opencode/tui.json"
+"~/.config/opencode/themes" = ".config/opencode/themes"
 
 # apps
+"~/.config/brew" = ".config/brew"
+"~/.config/ducker" = ".config/ducker"
+"~/.config/gh-dash" = ".config/gh-dash"
+"~/.config/glide" = ".config/glide"
+"~/.config/k9s" = ".config/k9s"
+"~/.config/karabiner" = ".config/karabiner"
+"~/.config/kube" = ".config/kube"
+"~/.config/lazygit" = ".config/lazygit"
+"~/.config/markdownlint" = ".config/markdownlint"
 "~/.config/raycast/snippets.json" = ".config/raycast/snippets.json"
+"~/.config/raycast/script-commands" = ".config/raycast/script-commands"
+"~/.config/stylua" = ".config/stylua"
+"~/.config/swiftbar" = ".config/swiftbar"
+"~/.config/yamlfmt" = ".config/yamlfmt"
+"~/.config/yamllint" = ".config/yamllint"
 
 # pi
 "~/.config/pi/AGENTS.md" = ".config/pi/AGENTS.md"
