@@ -98,6 +98,10 @@
       "headers": {
         "Authorization": "Token ${PAGERDUTY_TOKEN}"
       }
+    },
+    "horizon-admin-mcp": {
+      "type": "http",
+      "url": "https://horizon-admin-mcp.fastmcp.app/mcp"
     }
   }
 }

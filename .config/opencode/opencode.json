@@ -135,6 +135,11 @@
       "headers": {
         "Authorization": "Token {env:PAGERDUTY_TOKEN}"
       }
+    },
+    "horizon-admin-mcp": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://horizon-admin-mcp.fastmcp.app/mcp"
     }
   }
 }
