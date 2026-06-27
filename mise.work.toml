@@ -1,0 +1,10 @@
+[dotfiles]
+# Work-only links. Apply with: mise -C ~/dotfiles -E work dotfiles apply
+
+"~/.kube/kuberc" = ".config/kube/kuberc"
+
+"~/.config/opencode/commands" = ".config/agents/commands"
+"~/.config/opencode/skills" = ".config/agents/skills"
+
+"~/.config/claude/commands" = ".config/agents/commands"
+"~/.config/claude/skills" = ".config/agents/skills"

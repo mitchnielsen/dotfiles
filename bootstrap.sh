@@ -12,39 +12,13 @@ function symlink() {
   mkdir -p "$HOME/.config"
   (cd "$HOME/dotfiles" && stow -v --target="$HOME/.config" .config)
 
-  # MCP config - file-level symlink so other tools can share the same config.
-  # Stow ignores .config/mcp (see .config/.stow-local-ignore).
-  mkdir -p "$HOME/.config/mcp"
-  ln -sfn "$HOME/dotfiles/.config/mcp/mcp.json" "$HOME/.config/mcp/mcp.json"
-
-  # Claude config - file-level symlinks so runtime state (cache, projects,
-  # sessions, etc.) stays in ~/.config/claude and never lands in dotfiles.
-  # Stow ignores .config/claude (see .config/.stow-local-ignore).
-  mkdir -p "$HOME/.config/claude"
-  for f in CLAUDE.md settings.json statusline-command.sh; do
-    ln -sfn "$HOME/dotfiles/.config/claude/$f" "$HOME/.config/claude/$f"
-  done
-  ln -sfn "$HOME/.config/mcp/mcp.json" "$HOME/.config/claude/mcp.json"
-
-  # Raycast config - file-level symlinks so runtime state (extensions/, ai/,
-  # etc.) stays in ~/.config/raycast and never lands in dotfiles. Stow ignores
-  # .config/raycast (see .config/.stow-local-ignore).
-  mkdir -p "$HOME/.config/raycast"
-  ln -sfn "$HOME/dotfiles/.config/raycast/snippets.json" "$HOME/.config/raycast/snippets.json"
-
-  # Work-only utilities
+  mise_env=()
   if [ ! -f "$HOME/.personal_device_marker" ]; then
-    # Kube settings
-    ln -sf "$HOME/dotfiles/.config/kube/kuberc" "$HOME/.kube/kuberc"
-
-    # OpenCode - symlink skills and commands to shared agents dir
-    ln -sfn "$HOME/.config/agents/skills" "$HOME/.config/opencode/skills"
-    ln -sfn "$HOME/.config/agents/commands" "$HOME/.config/opencode/commands"
-
-    # Claude - symlink skills and commands to shared agents dir
-    ln -sfn "$HOME/.config/agents/commands" "$HOME/.config/claude/commands"
-    ln -sfn "$HOME/.config/agents/skills" "$HOME/.config/claude/skills"
+    mise_env=(-E work)
   fi
+
+  MISE_GLOBAL_CONFIG_FILE="$HOME/dotfiles/.config/mise/config.toml" \
+    mise "${mise_env[@]}" dotfiles apply --yes
 }
 
 function dependencies() {

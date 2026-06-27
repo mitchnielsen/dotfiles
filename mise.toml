@@ -12,6 +12,13 @@ experimental = true
 
 # agents
 "~/.config/mcp/mcp.json" = ".config/mcp/mcp.json"
+"~/.config/claude/CLAUDE.md" = ".config/claude/CLAUDE.md"
+"~/.config/claude/settings.json" = ".config/claude/settings.json"
+"~/.config/claude/statusline-command.sh" = ".config/claude/statusline-command.sh"
+"~/.config/claude/mcp.json" = ".config/mcp/mcp.json"
+
+# apps
+"~/.config/raycast/snippets.json" = ".config/raycast/snippets.json"
 
 # pi
 "~/.config/pi/AGENTS.md" = ".config/pi/AGENTS.md"
