@@ -27,30 +27,19 @@ function dependencies() {
 }
 
 function macos_settings() {
-  # Change screenshot type to jpg for smaller filesize
-  defaults write com.apple.screencapture type jpg
-  # Show hidden app icons as transparent in the dock
-  defaults write com.apple.Dock showhidden -bool TRUE
-  # Faster Dock animation
-  defaults write com.apple.dock autohide-delay -float 0
-  defaults write com.apple.dock autohide-time-modifier -int 0
-  # Use thin strokes (https://github.com/alacritty/alacritty/releases/tag/v0.11.0)
-  defaults write -g AppleFontSmoothing -int 0
-  # Adjust key repeat
-  defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-  defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
-  defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
-  defaults write com.apple.dock no-bouncing -bool TRUE # disable app icon bouncing
-  # Show hidden files in Finder
-  defaults write com.apple.Finder AppleShowAllFiles true
-  # Always open everything in Finder's list view.
-  defaults write com.apple.Finder FXPreferredViewStyle Nlsv
+  export MISE_GLOBAL_CONFIG_FILE="$HOME/dotfiles/.config/mise/config.toml"
+
+  mise bootstrap macos-defaults apply --yes
+
   # Show the ~/Library folder.
   chflags nohidden ~/Library
+
   # Save settings
   killall Dock
   killall Finder
   killall SystemUIServer
+
+  echo "killall complete"
 }
 
 function all() {

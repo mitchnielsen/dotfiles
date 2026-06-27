@@ -3,6 +3,19 @@ dotfiles.root = "~/.dotfiles"
 dotfiles.default_mode = "symlink"
 experimental = true
 
+[bootstrap.macos.finder]
+show_all_files = true
+preferred_view_style = "list"
+
+[bootstrap.macos.keyboard]
+press_and_hold = false
+initial_key_repeat = 15
+key_repeat = 2
+
+[bootstrap.macos.defaults]
+"com.apple.dock" = { showhidden = true, "autohide-delay" = 0.0, "autohide-time-modifier" = 0, "no-bouncing" = true }
+"NSGlobalDomain" = { AppleFontSmoothing = 0 }
+
 [dotfiles]
 # https://mise.jdx.dev/dotfiles.html
 
