@@ -8,8 +8,9 @@ experimental = true
 
 # core
 "~/.zprofile" = ".config/zsh/.zprofile"
-"~/bin" = { source = "bin", mode = "symlink-each" }
 "~/.config/mise" = ".config/mise"
+"~/.ssh/config" = ".config/ssh/config"
+"~/bin" = { source = "bin", mode = "symlink-each" }
 
 # shells and CLI config
 "~/.config/zsh" = ".config/zsh"

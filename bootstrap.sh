@@ -3,18 +3,17 @@
 set -euo pipefail
 
 function symlink() {
-  # ssh
-  mkdir -p "$HOME/.ssh"
-  ln -sf "$HOME/dotfiles/.config/ssh/config" "$HOME/.ssh/config"
-  chmod 644 ~/.ssh/config
+  export MISE_GLOBAL_CONFIG_FILE="$HOME/dotfiles/.config/mise/config.toml"
 
   mise_env=()
   if [ ! -f "$HOME/.personal_device_marker" ]; then
     mise_env=(-E work)
   fi
 
-  MISE_GLOBAL_CONFIG_FILE="$HOME/dotfiles/.config/mise/config.toml" \
-    mise "${mise_env[@]}" dotfiles apply --yes
+  mise "${mise_env[@]}" dotfiles apply --yes
+
+  chmod 700 "$HOME/.ssh"
+  chmod 644 "$HOME/.ssh/config"
 }
 
 function dependencies() {
