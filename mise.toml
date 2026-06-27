@@ -16,6 +16,69 @@ key_repeat = 2
 "com.apple.dock" = { showhidden = true, "autohide-delay" = 0.0, "autohide-time-modifier" = 0, "no-bouncing" = true }
 "NSGlobalDomain" = { AppleFontSmoothing = 0 }
 
+[tasks.setup]
+description = "Run full machine bootstrap"
+run = '''
+set -euo pipefail
+
+if [ ! -f "$HOME/.personal_device_marker" ]; then
+  mise -E work bootstrap --yes
+else
+  mise bootstrap --yes
+fi
+'''
+
+[tasks.bootstrap]
+description = "Run imperative post-bootstrap setup"
+depends = ["homebrew:install", "macos:finalize", "ssh:permissions"]
+
+[tasks."homebrew:install"]
+description = "Install Homebrew and Brewfile packages"
+run = '''
+set -euo pipefail
+
+command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+touch "$HOME/.zprofile"
+grep -q 'homebrew/bin/brew shellenv' "$HOME/.zprofile" || echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+brew bundle install --file="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew/Brewfile"
+'''
+
+[tasks."homebrew:backup"]
+description = "Update the tracked Brewfile from the current Homebrew state"
+run = '''
+set -euo pipefail
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew bundle dump --force --file="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew/Brewfile"
+'''
+
+[tasks."macos:finalize"]
+description = "Apply macOS settings that are not managed by mise defaults"
+run = '''
+set -euo pipefail
+
+if [ "$(uname)" != "Darwin" ]; then
+  exit 0
+fi
+
+chflags nohidden "$HOME/Library"
+killall Dock >/dev/null 2>&1 || true
+killall Finder >/dev/null 2>&1 || true
+killall SystemUIServer >/dev/null 2>&1 || true
+'''
+
+[tasks."ssh:permissions"]
+description = "Set SSH config permissions"
+run = '''
+set -euo pipefail
+
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+[ ! -e "$HOME/.ssh/config" ] || chmod 644 "$HOME/.ssh/config"
+'''
+
 [dotfiles]
 # https://mise.jdx.dev/dotfiles.html
 
