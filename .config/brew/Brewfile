@@ -335,8 +335,6 @@ cask "notion-cli"
 cask "obsidian"
 # WebKit based web browser
 cask "orion"
-# Zero trust network as a service client
-cask "perimeter81"
 # Toolbox companion for QMK Firmware
 cask "qmk-toolbox"
 # HTTP client that helps testing and describing APIs
