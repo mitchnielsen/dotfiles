@@ -1,0 +1,115 @@
+# herdr configuration
+# https://herdr.dev/docs/configuration
+
+# Show first-run notification setup on startup.
+# Missing also shows onboarding; set false after you've chosen.
+# onboarding = true
+
+[theme]
+# Use the terminal theme so Herdr follows Ghostty's clarity-light/dark ANSI palette.
+name = "terminal"
+
+# Clarity overrides on top of the terminal palette.
+auto_switch = false
+[theme.custom]
+panel_bg = "reset"
+accent = "blue"
+blue = "blue"
+green = "green"
+red = "red"
+yellow = "yellow"
+
+[keys]
+# Accepted key syntax: plain keys, ctrl/shift/alt/cmd/super modifiers, and special keys like enter/tab/esc/left/right/up/down.
+# Named punctuation such as minus, comma, percent, double_quote, ampersand, plus, and backtick is also accepted.
+prefix = "ctrl+b"
+
+# Prefix-mode actions aligned with tmux/Ghostty where practical.
+help = "prefix+?"
+settings = "prefix+comma"
+detach = "prefix+d"
+reload_config = "prefix+r"
+open_notification_target = "prefix+shift+o"
+
+# Workspaces
+workspace_picker = ["prefix+w", "prefix+s"]
+goto = "prefix+ctrl+g"
+new_workspace = "prefix+shift+n"
+rename_workspace = "prefix+shift+w"
+close_workspace = "prefix+shift+d"
+# previous_workspace = "" # optional, unset by default
+# next_workspace = ""     # optional, unset by default
+# previous_agent = ""     # optional, unset by default
+# next_agent = ""         # optional, unset by default
+# focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
+
+# Tabs and panes
+new_tab = "prefix+c"
+rename_tab = "prefix+shift+t"
+previous_tab = "prefix+p"
+next_tab = "prefix+n"
+switch_tab = "prefix+1..9"
+# switch_workspace = ""   # optional indexed binding, e.g. "prefix+shift+1..9"
+close_tab = "prefix+shift+x"
+rename_pane = "prefix+shift+p"
+edit_scrollback = ["prefix+e", "prefix+ctrl+e"]
+copy_mode = "prefix+["
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+swap_pane_left = "prefix+shift+h"
+swap_pane_down = "prefix+shift+j"
+swap_pane_up = "prefix+shift+k"
+swap_pane_right = "prefix+shift+l"
+cycle_pane_next = "prefix+tab"
+cycle_pane_previous = "prefix+shift+tab"
+# last_pane = ""          # optional, unset by default; bind e.g. "prefix+tab" for global back-and-forth
+split_vertical = ["prefix+v", "prefix+percent"]       # right, tmux %
+split_horizontal = ["prefix+minus", "prefix+double_quote"] # down, tmux "
+close_pane = "prefix+x"
+zoom = "prefix+z"
+resize_mode = "prefix+shift+r"
+toggle_sidebar = "prefix+b"
+
+# Navigate-mode movement. These local shortcuts win while navigate mode is open.
+# They are independent from focus_pane_*. Do not include prefix+, esc, enter, tab, or 1..9 here.
+# navigate_workspace_up = "up"
+# navigate_workspace_down = "down"
+# navigate_pane_left = "h"      # left arrow always focuses the pane to the left
+# navigate_pane_down = "j"
+# navigate_pane_up = "k"
+# navigate_pane_right = "l"     # right arrow always focuses the pane to the right
+
+[[keys.command]]
+key = "prefix+g"
+type = "pane"
+command = "lazygit"
+
+[[keys.command]]
+key = "prefix+o"
+type = "pane"
+command = "zsh -lc 'cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .'"
+
+[ui]
+prompt_new_tab_name = false
+
+agent_panel_sort = "spaces"
+[ui.toast.herdr]
+# position = "bottom-right"
+
+[ui.toast.clipboard]
+# enabled = true
+# position = "bottom-center"
+
+[ui.sound]
+enabled = false
+
+[session]
+# Resume supported AI-agent panes into their native conversation sessions after
+# a Herdr server restart. Requires official integrations that report session refs.
+# resume_agents_on_restore = true
+
+[experimental]
+# Save recent pane screen history across full server restarts.
+pane_history = false

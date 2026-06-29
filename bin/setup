@@ -1,20 +1,77 @@
 #!/usr/bin/env bash
-# setup: Set up a development environment in tmux windows
+# setup: Set up a development environment in tmux or Herdr
 
-# Rename current window and start neovim
-tmux rename-window 'nvim'
-tmux send-keys 'nvim' C-m
+set -euo pipefail
 
-# Create new window for agent
-tmux new-window -n 'agent'
-tmux send-keys 'claude' C-m
+json_get() {
+  local path=$1
+  python3 -c '
+import json
+import sys
 
-# Create new window for lazygit
-tmux new-window -n 'lazygit'
-tmux send-keys 'lazygit' C-m
+value = json.load(sys.stdin)
+for part in sys.argv[1].split("."):
+    value = value[part]
+print(value)
+' "$path"
+}
 
-# Create new window with empty shell
-tmux new-window -n 'shell'
+setup_tmux() {
+  # Rename current window and start neovim
+  tmux rename-window 'editor'
+  tmux send-keys 'nvim' C-m
 
-# Return to the first window (neovim)
-tmux select-window -t 0
+  # Create new window for agent
+  tmux new-window -n 'agent'
+  tmux send-keys 'claude' C-m
+
+  # Create new window for lazygit
+  tmux new-window -n 'git'
+  tmux send-keys 'lazygit' C-m
+
+  # Create new window with empty shell
+  tmux new-window -n 'shell'
+
+  # Return to the first window (neovim)
+  tmux select-window -t 0
+}
+
+setup_herdr() {
+  local cwd=${1:-$PWD}
+  local current current_pane current_tab workspace
+  current=$(herdr pane current)
+  current_pane=$(printf '%s' "$current" | json_get result.pane.pane_id)
+  current_tab=$(printf '%s' "$current" | json_get result.pane.tab_id)
+  workspace=$(printf '%s' "$current" | json_get result.pane.workspace_id)
+
+  herdr tab rename "$current_tab" nvim >/dev/null
+  herdr pane run "$current_pane" nvim >/dev/null
+
+  create_tab agent claude
+  create_tab lazygit lazygit
+  create_tab shell
+
+  herdr tab focus "$current_tab" >/dev/null
+}
+
+create_tab() {
+  local label=$1
+  local command=${2:-}
+  local created pane
+
+  created=$(herdr tab create --workspace "$workspace" --cwd "$cwd" --label "$label" --no-focus)
+
+  if [[ -n $command ]]; then
+    pane=$(printf '%s' "$created" | json_get result.root_pane.pane_id)
+    herdr pane run "$pane" "$command" >/dev/null
+  fi
+}
+
+if [[ ${HERDR_ENV:-} == 1 ]]; then
+  setup_herdr "$@"
+elif [[ -n ${TMUX:-} ]]; then
+  setup_tmux "$@"
+else
+  echo "setup: run inside Herdr or tmux" >&2
+  exit 1
+fi
