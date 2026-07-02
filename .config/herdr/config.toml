@@ -20,30 +20,31 @@ yellow = "yellow"
 # Named punctuation such as minus, comma, percent, double_quote, ampersand, plus, and backtick is also accepted.
 prefix = "ctrl+b"
 help = "prefix+?"
-settings = "prefix+comma"
+settings = "prefix+;"
 detach = "prefix+d"
 reload_config = "prefix+r"
-open_notification_target = "prefix+shift+o"
+copy_mode = "prefix+["
+edit_scrollback = ["prefix+e", "prefix+ctrl+e"]
 
 # Workspaces
 workspace_picker = ["prefix+w", "prefix+s"]
 goto = "prefix+ctrl+g"
 new_workspace = "prefix+shift+n"
-rename_workspace = "prefix+shift+w"
+rename_workspace = "prefix+$"
 close_workspace = "prefix+shift+d"
-# previous_workspace = "" # optional, unset by default
-# next_workspace = ""     # optional, unset by default
-# previous_agent = ""     # optional, unset by default
-# next_agent = ""         # optional, unset by default
-# focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
+# switch_workspace = ""
+# previous_workspace = ""
+# next_workspace = ""
 
-# Tabs and panes
+# Tabs
 new_tab = "prefix+c"
-rename_tab = "prefix+shift+t"
+rename_tab = "prefix+,"
 previous_tab = "prefix+p"
 next_tab = "prefix+n"
 switch_tab = "prefix+1..9"
 close_tab = "prefix+shift+x"
+
+# Panes
 rename_pane = "prefix+shift+p"
 focus_pane_left = "prefix+h"
 focus_pane_down = "prefix+j"
