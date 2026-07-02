@@ -1,6 +1,6 @@
 tap "1password/tap", trusted: true
 tap "agavra/tap", trusted: true
-tap "anomalyco/tap"
+tap "anomalyco/tap", "https://github.com/anomalyco/homebrew-tap.git"
 tap "epk/epk", trusted: true
 tap "felixkratz/formulae", trusted: true
 tap "fluxcd/tap", trusted: true
@@ -83,8 +83,6 @@ brew "gitui"
 brew "glow"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Go formatter that additionally inserts import statements
@@ -93,6 +91,8 @@ brew "goimports"
 brew "golangci-lint"
 # Language server for the Go language
 brew "gopls"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Smarter Dockerfile linter to validate best practices
@@ -103,8 +103,12 @@ brew "harper"
 brew "helix"
 # Kubernetes package manager
 brew "helm"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # Improved top (interactive process viewer)
 brew "htop"
+# Review-first terminal diff viewer for agent-authored changesets
+brew "hunk"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
 # Istio configuration command-line utility
@@ -281,6 +285,8 @@ cask "antinote"
 cask "arc"
 # Cross platform SQL editor and database management app
 cask "beekeeper-studio"
+# Replacement for the built-in Cmd+Tab app switcher
+cask "bettercmdtab"
 # Screen capturing and editing tool
 cask "bettershot"
 # Anthropic's official Claude AI desktop app
@@ -289,6 +295,8 @@ cask "claude"
 cask "codex"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
+# System-wide AI autocomplete
+cask "cotypist"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # App to build and share containerised applications and microservices
@@ -335,6 +343,8 @@ cask "notion-cli"
 cask "obsidian"
 # WebKit based web browser
 cask "orion"
+# Zero trust network as a service client
+cask "perimeter81"
 # Toolbox companion for QMK Firmware
 cask "qmk-toolbox"
 # HTTP client that helps testing and describing APIs
@@ -349,6 +359,8 @@ cask "shottr"
 cask "slack"
 # CSV editor
 cask "smoothcsv"
+# Native screenshots, recording, annotation, and editing from the menu bar
+cask "snapzy"
 # Music streaming service
 cask "spotify"
 # System monitor for the menu bar
