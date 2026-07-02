@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "USE_BUILTIN_RIPGREP": "0",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
     "ENABLE_LSP_TOOL": "1",
-    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1"
+    "USE_BUILTIN_RIPGREP": "0"
   },
   "attribution": {
     "commit": "",
@@ -43,18 +43,33 @@
       "EnterWorktree"
     ]
   },
+  "model": "claude-fable-5[1m]",
   "enableAllProjectMcpServers": true,
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/mitch/.config/claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bash ~/.config/claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "prefect-internal-skills@prefecthq-internal-skills": true,
-    "visual-explainer@visual-explainer-marketplace": true,
-    "typescript-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "prefect-internal-skills@prefecthq-internal-skills": true,
     "pyright-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "visual-explainer@visual-explainer-marketplace": true
   },
   "extraKnownMarketplaces": {
     "prefecthq-internal-skills": {
@@ -72,12 +87,12 @@
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": false,
+  "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "editorMode": "vim",
   "preferredNotifChannel": "notifications_disabled",
   "terminalProgressBarEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754598531219
-  },
-  "skipWorkflowUsageWarning": true
+  }
 }
