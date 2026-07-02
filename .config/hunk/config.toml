@@ -1,0 +1,11 @@
+# https://github.com/modem-dev/hunk#config
+
+theme = "github-light-default"
+mode = "auto"
+vcs = "git"
+watch = false
+exclude_untracked = false
+line_numbers = true
+wrap_lines = false
+agent_notes = false
+transparent_background = false
