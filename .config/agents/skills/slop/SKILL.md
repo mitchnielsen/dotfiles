@@ -4,7 +4,7 @@ description: Sweep the current diff for AI slop - defensive code, unjustified ab
 user-invocable: true
 ---
 
-Walk the full diff against the parent branch (not just the last commit). This is a per-PR hygiene pass, behavior-preserving and minimal-diff - not a restructuring (that's thermo-nuclear-code-quality-review).
+Walk the full diff against the parent branch (not just the last commit). This is a per-PR hygiene pass, behavior-preserving and minimal-diff - not a restructuring (that's thermo-nuclear-code-quality-review). Use `gh pr diff` to view only the changes from the current pull request.
 
 ## Kill-list
 
