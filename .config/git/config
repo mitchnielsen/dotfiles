@@ -82,6 +82,7 @@
   reauthor = !git commit --amend --no-edit
   latest-tag = !gh release list -L 2 --json tagName -q '.[0].tagName'
   previous-tag = !gh release list -L 2 --json tagName -q '.[1].tagName'
+  retrigger = !git commit --allow-empty -m 'chore: retrigger ci' && git push
 [commit]
   template = ~/.config/git/gitmessage
   verbose = true # show the entire diff in the commit window for context
