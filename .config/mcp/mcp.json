@@ -99,6 +99,10 @@
         "Authorization": "Token ${PAGERDUTY_TOKEN}"
       }
     },
+    "incident.io": {
+      "type": "http",
+      "url": "https://mcp.incident.io/mcp"
+    },
     "horizon-admin-mcp": {
       "type": "http",
       "url": "https://horizon-admin-mcp.fastmcp.app/mcp"
