@@ -30,5 +30,5 @@ alias python-venv='if [ ! -f ./.venv/bin/activate ]; then echo Creating virtuale
 ## Worktrees
 alias wts='wt switch'           # usage: `wts` (opens picker) or `wts <branch name>`
 alias wtc='wt switch --create'  # usage: `wtc <branch name>`
-alias wtr='wt remove'           # usage: `wtr`
+alias wtr='wt remove -D'        # usage: `wtr` (also force-deletes the local branch)
 alias wtl='wt list'             # usage: `wtl`
