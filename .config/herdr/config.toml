@@ -1,6 +1,8 @@
 # herdr configuration
 # https://herdr.dev/docs/configuration
 
+onboarding = false
+
 [theme]
 # Use the terminal theme so Herdr follows Ghostty's clarity-light/dark ANSI palette.
 name = "terminal"
