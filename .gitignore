@@ -1,3 +1,6 @@
 # Docker Compose
 .env
 
+# Homebrew backup snapshot (scratch file for manual triage, never tracked directly)
+.config/brew/Brewfile.snapshot
+

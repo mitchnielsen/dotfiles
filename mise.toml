@@ -33,7 +33,7 @@ description = "Run imperative post-bootstrap setup"
 depends = ["homebrew:install", "macos:finalize", "ssh:permissions"]
 
 [tasks."homebrew:install"]
-description = "Install Homebrew and Brewfile packages"
+description = "Install Homebrew and Brewfile packages (common + machine-specific)"
 run = '''
 set -euo pipefail
 
@@ -42,16 +42,25 @@ touch "$HOME/.zprofile"
 grep -q 'homebrew/bin/brew shellenv' "$HOME/.zprofile" || echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-brew bundle install --file="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew/Brewfile"
+brew_dir="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew"
+brew bundle install --file="$brew_dir/Brewfile"
+
+if [ -f "$HOME/.personal_device_marker" ]; then
+  brew bundle install --file="$brew_dir/Brewfile.personal"
+else
+  brew bundle install --file="$brew_dir/Brewfile.work"
+fi
 '''
 
 [tasks."homebrew:backup"]
-description = "Update the tracked Brewfile from the current Homebrew state"
+description = "Snapshot the current Homebrew state for manual triage into Brewfile / Brewfile.work / Brewfile.personal"
 run = '''
 set -euo pipefail
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-brew bundle dump --force --file="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew/Brewfile"
+out="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew/Brewfile.snapshot"
+brew bundle dump --force --file="$out"
+echo "Wrote $out. Diff it against Brewfile / Brewfile.work / Brewfile.personal and move any new entries into the right file by hand -- do not overwrite the tracked files directly."
 '''
 
 [tasks."macos:finalize"]
@@ -128,6 +137,8 @@ chmod 700 "$HOME/.ssh"
 
 # apps
 "~/.config/brew/Brewfile" = ".config/brew/Brewfile"
+"~/.config/brew/Brewfile.work" = ".config/brew/Brewfile.work"
+"~/.config/brew/Brewfile.personal" = ".config/brew/Brewfile.personal"
 "~/.config/ducker" = ".config/ducker"
 "~/.config/gh-dash" = ".config/gh-dash"
 "~/.config/glide/glide.ts" = ".config/glide/glide.ts"

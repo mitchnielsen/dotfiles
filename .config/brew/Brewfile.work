@@ -1,0 +1,108 @@
+# Work-only packages, layered on top of the common Brewfile.
+# Installed via: mise -E work run homebrew:install (or the plain task on the work machine).
+
+tap "1password/tap", trusted: true
+tap "fluxcd/tap", trusted: true
+tap "hashicorp/tap", trusted: true
+tap "homeport/tap", trusted: true
+tap "norwoodj/tap", trusted: true
+# AWS Cloud Development Kit - framework for defining AWS infra as code
+brew "aws-cdk"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Utility for connecting securely to your Cloud SQL instances
+brew "cloud-sql-proxy"
+# Slightly quackers Docker TUI based on k9s
+brew "ducker"
+# Fast, async, resource-friendly link checker
+brew "lychee"
+# Netlify command-line tool
+brew "netlify-cli"
+# Validate and execute GitHub Actions workflows locally
+brew "wrkflw"
+# Simple command-line tool for creating clusters on Amazon EKS
+brew "eksctl"
+# Kubernetes package manager
+brew "helm"
+# Istio configuration command-line utility
+brew "istioctl"
+# Little helper to run CNCF's k3s in Docker
+brew "k3d"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "k9s"
+# Run local Kubernetes cluster in Docker
+brew "kind"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
+# Template-free customization of Kubernetes YAML manifests
+brew "kustomize"
+# Postgres C API library
+brew "libpq"
+# Open source suite of directory software
+brew "openldap"
+# Object-relational database system
+brew "postgresql@14"
+# Work with remote images registries
+brew "skopeo"
+# Tail multiple Kubernetes pods & their containers
+brew "stern"
+# Linter for Terraform files
+brew "tflint"
+# Vulnerability scanner for container images, file systems, and Git repos
+brew "trivy"
+# Flux CLI
+brew "fluxcd/tap/flux"
+# Terraform
+brew "hashicorp/tap/terraform"
+# Terraform Language Server
+brew "hashicorp/tap/terraform-ls"
+# δyƒƒ /ˈdʏf/ - A diff tool for YAML files, and sometimes JSON
+brew "homeport/tap/dyff"
+# Automatically generate markdown documentation for helm charts
+brew "norwoodj/tap/helm-docs"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
+# Command-line interface for 1Password
+cask "1password-cli"
+# Cross platform SQL editor and database management app
+cask "beekeeper-studio"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
+# System-wide AI autocomplete
+cask "cotypist"
+# Write, edit, and chat about your code with AI
+cask "cursor"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
+# Native client for GitHub Copilot
+cask "github-copilot-app"
+# Web browser
+cask "google-chrome"
+# Speech to text application
+cask "handy"
+# Screen and video recording software
+cask "loom"
+# Shows the next meeting in the menu bar
+cask "meetingbar"
+# Command-line interface for Notion
+cask "notion-cli"
+# Zero trust network as a service client
+cask "perimeter81"
+# HTTP client that helps testing and describing APIs
+cask "rapidapi"
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
+cask "session-manager-plugin"
+# Team communication and collaboration software
+cask "slack"
+# CSV editor
+cask "smoothcsv"
+# Menu bar customization tool
+cask "swiftbar"
+# Native database client for many database types
+cask "tablepro"
+# Multiplayer code editor
+cask "zed"
+go "github.com/prefecthq/terraform-provider-prefect"
+go "github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs"

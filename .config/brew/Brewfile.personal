@@ -1,0 +1,11 @@
+# Personal-only packages, layered on top of the common Brewfile.
+# Installed via: the homebrew:install task on the personal machine.
+
+# Screen capturing and editing tool
+cask "bettershot"
+# Toolbox companion for QMK Firmware
+cask "qmk-toolbox"
+# Configurator of compatible keyboards in real time
+cask "vial"
+# Multimedia player
+cask "vlc"
