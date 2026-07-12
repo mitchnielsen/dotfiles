@@ -29,7 +29,31 @@ cask "nickustinov/tap/itsytv"
 cask "qmk-toolbox"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Keyboard configurator
+cask "via"
 # Configurator of compatible keyboards in real time
 cask "vial"
 # Multimedia player
 cask "vlc"
+mas "Bear", id: 1091189122
+mas "Flighty", id: 1358823008
+mas "Home Assistant", id: 1099568401
+mas "Hush", id: 1544743900
+mas "Infuse", id: 1136220934
+mas "Ivory", id: 6444602274
+mas "Kagi for Safari", id: 1622835804
+mas "Keyword Search", id: 1558453954
+mas "Linkding", id: 6473717543
+mas "Listy", id: 1496035097
+mas "Noir", id: 1592917505
+mas "Numbers", id: 409203825
+mas "Numbers", id: 361304891
+mas "Parcel", id: 375589283
+mas "Sink It", id: 6449873635
+mas "Sofa", id: 1276554886
+mas "StopTheMadness Pro", id: 6471380298
+mas "Super Agent", id: 1568262835
+mas "Tailscale", id: 1475387142
+mas "Things", id: 904280696
+mas "uBlock Origin Lite", id: 6745342698
+mas "Wipr", id: 1662217862
