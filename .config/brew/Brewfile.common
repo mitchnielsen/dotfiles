@@ -12,8 +12,6 @@ tap "wtfox/tap", trusted: true
 brew "shellcheck"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -68,12 +66,6 @@ brew "gitui"
 brew "glow"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
-# Go formatter that additionally inserts import statements
-brew "goimports"
-# Fast linters runner for Go
-brew "golangci-lint"
 # Language server for the Go language
 brew "gopls"
 # Validating, recursive, caching DNS resolver
@@ -110,6 +102,8 @@ brew "lazygit"
 brew "lf"
 # Conversion library
 brew "libiconv"
+# Generic library support script
+brew "libtool"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Language Server for the Lua language
@@ -122,6 +116,8 @@ brew "markdownlint-cli"
 brew "marksman"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Deep clean and optimize your Mac
+brew "mole"
 # Remote terminal application
 brew "mosh", args: ["HEAD"]
 # Ambitious Vim-fork focused on extensibility and agility
@@ -218,6 +214,8 @@ brew "morantron/tmux-fingers/tmux-fingers"
 brew "wtfox/tap/jsonfind"
 # Chromium based browser
 cask "arc"
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Replacement for the built-in Cmd+Tab app switcher
 cask "bettercmdtab"
 # Anthropic's official Claude AI desktop app

@@ -1,10 +1,34 @@
 # Personal-only packages. Included by Brewfile when ~/.personal_device_marker is present
 # -- do not run `brew bundle` against this file directly.
 
+tap "nickustinov/tap"
+
+# B2 Cloud Storage Command-Line Tools
+brew "b2-tools"
+# TIFF library and utilities
+brew "libtiff"
+# Mac App Store command-line interface
+brew "mas"
+# Terminal based spreadsheet tool
+brew "sheets"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# E-book reader
+cask "adobe-digital-editions"
 # Screen capturing and editing tool
 cask "bettershot"
+# E-books management software
+cask "calibre"
+# Open-source video transcoder
+cask "handbrake-app"
+# Email client
+cask "fastmail"
+# Control Apple TV from the menu bar
+cask "nickustinov/tap/itsytv"
 # Toolbox companion for QMK Firmware
 cask "qmk-toolbox"
+# Messaging app with a focus on speed and security
+cask "telegram"
 # Configurator of compatible keyboards in real time
 cask "vial"
 # Multimedia player

@@ -12,6 +12,8 @@ brew "aws-cdk"
 brew "awscli"
 # Utility for connecting securely to your Cloud SQL instances
 brew "cloud-sql-proxy"
+# Tool for exploring each layer in a docker image
+brew "dive"
 # Slightly quackers Docker TUI based on k9s
 brew "ducker"
 # Fast, async, resource-friendly link checker
