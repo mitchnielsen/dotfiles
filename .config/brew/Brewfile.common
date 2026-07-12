@@ -212,8 +212,6 @@ brew "go-task/tap/go-task"
 brew "morantron/tmux-fingers/tmux-fingers"
 # jf prints out dotted paths to the given value for a given json file
 brew "wtfox/tap/jsonfind"
-# Chromium based browser
-cask "arc"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Replacement for the built-in Cmd+Tab app switcher
