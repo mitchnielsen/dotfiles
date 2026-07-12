@@ -1,5 +1,5 @@
-# Personal-only packages, layered on top of the common Brewfile.
-# Installed via: the homebrew:install task on the personal machine.
+# Personal-only packages. Included by Brewfile when ~/.personal_device_marker is present
+# -- do not run `brew bundle` against this file directly.
 
 # Screen capturing and editing tool
 cask "bettershot"

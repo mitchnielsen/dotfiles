@@ -44,12 +44,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew_dir="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew"
 brew bundle install --file="$brew_dir/Brewfile"
-
-if [ -f "$HOME/.personal_device_marker" ]; then
-  brew bundle install --file="$brew_dir/Brewfile.personal"
-else
-  brew bundle install --file="$brew_dir/Brewfile.work"
-fi
 '''
 
 [tasks."homebrew:backup"]
@@ -60,7 +54,33 @@ set -euo pipefail
 eval "$(/opt/homebrew/bin/brew shellenv)"
 out="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew/Brewfile.snapshot"
 brew bundle dump --force --file="$out"
-echo "Wrote $out. Diff it against Brewfile / Brewfile.work / Brewfile.personal and move any new entries into the right file by hand -- do not overwrite the tracked files directly."
+echo "Wrote $out. Run 'mise run homebrew:drift' to see just what's new, then move those entries into the right file by hand -- do not overwrite the tracked files directly."
+'''
+
+[tasks."homebrew:drift"]
+description = "Diff installed Homebrew state against the tracked Brewfiles"
+run = '''
+set -euo pipefail
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew_dir="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew"
+
+snapshot="$brew_dir/Brewfile.snapshot"
+brew bundle dump --force --file="$snapshot"
+
+installed=$(mktemp)
+tracked=$(mktemp)
+trap 'rm -f "$installed" "$tracked"' EXIT
+
+brew bundle list --file="$snapshot" --all | sort -u > "$installed"
+brew bundle list --file="$brew_dir/Brewfile" --all | sort -u > "$tracked"
+
+echo "== Installed but not tracked in Brewfile (common + machine overlay) =="
+comm -23 "$installed" "$tracked"
+
+echo
+echo "== Tracked but not currently installed =="
+comm -13 "$installed" "$tracked"
 '''
 
 [tasks."macos:finalize"]
@@ -137,6 +157,7 @@ chmod 700 "$HOME/.ssh"
 
 # apps
 "~/.config/brew/Brewfile" = ".config/brew/Brewfile"
+"~/.config/brew/Brewfile.common" = ".config/brew/Brewfile.common"
 "~/.config/brew/Brewfile.work" = ".config/brew/Brewfile.work"
 "~/.config/brew/Brewfile.personal" = ".config/brew/Brewfile.personal"
 "~/.config/ducker" = ".config/ducker"

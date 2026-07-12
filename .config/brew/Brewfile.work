@@ -1,5 +1,5 @@
-# Work-only packages, layered on top of the common Brewfile.
-# Installed via: mise -E work run homebrew:install (or the plain task on the work machine).
+# Work-only packages. Included by Brewfile when ~/.personal_device_marker is absent
+# -- do not run `brew bundle` against this file directly.
 
 tap "1password/tap", trusted: true
 tap "fluxcd/tap", trusted: true
