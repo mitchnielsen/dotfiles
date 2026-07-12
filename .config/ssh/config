@@ -3,19 +3,18 @@ Host *
     IdentitiesOnly yes
 
 Host app-server
-    Hostname app-server
     User dockeruser
 
 Host icloud-photos
-    Hostname 192.168.68.71
     User root
 
 Host homelab-router
-    Hostname 192.168.68.53
     User mitch
 
 Host media-server
-    Hostname media-server
+    User mitch
+
+Host chat
     User mitch
 
 Host proxmox-apps
