@@ -75,7 +75,7 @@ type = "pane"
 command = "zsh -lc 'cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .'"
 
 [ui]
-prompt_new_tab_name = false
+prompt_new_tab_name = true
 agent_panel_sort = "spaces"
 
 [ui.sound]
