@@ -1,14 +1,12 @@
 {
-  "lastChangelogVersion": "0.80.3",
+  "lastChangelogVersion": "0.80.6",
   "quietStartup": true,
+  "collapseChangelog": true,
   "skills": [
     "~/.config/agents/skills"
   ],
   "prompts": [
     "~/.config/agents/commands"
-  ],
-  "extensions": [
-    "extensions/minimal-header.ts"
   ],
   "packages": [
     "npm:pi-mcp-adapter"
