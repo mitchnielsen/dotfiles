@@ -24,6 +24,12 @@ brew "netlify-cli"
 brew "wrkflw"
 # Simple command-line tool for creating clusters on Amazon EKS
 brew "eksctl"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Go formatter that additionally inserts import statements
+brew "goimports"
+# Fast linters runner for Go
+brew "golangci-lint"
 # Kubernetes package manager
 brew "helm"
 # Istio configuration command-line utility
