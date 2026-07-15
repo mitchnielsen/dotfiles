@@ -20,6 +20,8 @@
   creating, switching, listing, and removing. Never use raw
   `git worktree` commands. See the `worktree` skill for details.
 - Use `gh` for interacting with GitHub.
+- Never include Claude session links (claude.ai/code/session_...) in
+  pull request descriptions.
 - Use project's existing build system (`make`, `mise`, etc).
 - Use project's formatter/linter settings.
 - Use comments in code only when absolutely necessary.
