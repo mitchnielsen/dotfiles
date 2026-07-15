@@ -9,6 +9,9 @@ trust_level = "trusted"
 [projects."/Users/mitch/code/github.com/prefecthq/nebula/main"]
 trust_level = "trusted"
 
+[projects."/Users/mitch/code/github.com/prefecthq/horizon/main"]
+trust_level = "trusted"
+
 [mcp_servers.datadog]
 url = "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core"
 
@@ -17,7 +20,7 @@ DD_API_KEY = "DD_API_KEY"
 DD_APPLICATION_KEY = "DD_APPLICATION_KEY"
 
 [mcp_servers.grafana]
-url = "http://localhost:8100/mcp"
+url = "http://localhost:8101/mcp"
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
@@ -25,23 +28,36 @@ url = "https://mcp.linear.app/mcp"
 [mcp_servers.notion]
 url = "https://mcp.notion.com/mcp"
 
-[mcp_servers.pagerduty]
-url = "https://mcp.pagerduty.com/mcp"
-
-[mcp_servers.pagerduty.env_http_headers]
-Authorization = "PAGERDUTY_AUTHORIZATION"
+[mcp_servers.playwright]
+url = "http://localhost:8104/mcp"
 
 [mcp_servers.prefect-dev-integration-tests]
-url = "http://localhost:8105/mcp"
+url = "https://prefect-cloud.fastmcp.app/mcp"
+
+[mcp_servers.prefect-dev-integration-tests.env_http_headers]
+"X-Prefect-Api-Url" = "PREFECT_DEV_INTEGRATION_TESTS_API_URL"
+"X-Prefect-Api-Key" = "PREFECT_DEV_API_KEY"
 
 [mcp_servers.prefect-latest-integration-tests]
-url = "http://localhost:8109/mcp"
+url = "http://localhost:8103/mcp"
+
+[mcp_servers.prefect-latest-integration-tests.env_http_headers]
+"X-Prefect-Api-Url" = "PREFECT_LATEST_INTEGRATION_TESTS_API_URL"
+"X-Prefect-Api-Key" = "PREFECT_LATEST_API_KEY"
 
 [mcp_servers.prefect-next-integration-tests]
-url = "http://localhost:8110/mcp"
+url = "http://localhost:8103/mcp"
+
+[mcp_servers.prefect-next-integration-tests.env_http_headers]
+"X-Prefect-Api-Url" = "PREFECT_NEXT_INTEGRATION_TESTS_API_URL"
+"X-Prefect-Api-Key" = "PREFECT_NEXT_API_KEY"
 
 [mcp_servers.prefect-previous-integration-tests]
-url = "http://localhost:8108/mcp"
+url = "http://localhost:8103/mcp"
+
+[mcp_servers.prefect-previous-integration-tests.env_http_headers]
+"X-Prefect-Api-Url" = "PREFECT_PREVIOUS_INTEGRATION_TESTS_API_URL"
+"X-Prefect-Api-Key" = "PREFECT_PREVIOUS_API_KEY"
 
 [mcp_servers.prefect-prd-integration-tests]
 url = "https://prefect-cloud.fastmcp.app/mcp"
@@ -58,7 +74,11 @@ url = "https://prefect-cloud.fastmcp.app/mcp"
 "X-Prefect-Api-Key" = "PREFECT_PRD_API_KEY"
 
 [mcp_servers.prefect-stg-integration-tests]
-url = "http://localhost:8106/mcp"
+url = "https://prefect-cloud.fastmcp.app/mcp"
+
+[mcp_servers.prefect-stg-integration-tests.env_http_headers]
+"X-Prefect-Api-Url" = "PREFECT_STG_INTEGRATION_TESTS_API_URL"
+"X-Prefect-Api-Key" = "PREFECT_STG_API_KEY"
 
 [mcp_servers.terraform]
 url = "http://localhost:8102/mcp"
@@ -68,3 +88,11 @@ url = "http://localhost:8102/mcp"
 
 [features]
 hooks = true
+
+[hooks.state]
+
+[hooks.state."/Users/mitch/.config/codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:338c62a9f0d16cbe1a4a88dfb660a736cba1b5088f3bb456793a8a45d9ab5ff5"
+
+[hooks.state."/Users/mitch/.config/codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:aa8d2de47b15f842846d410c8d0a0f9ca91bce34465b7d0af33ac44c6dedff04"
