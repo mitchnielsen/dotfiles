@@ -38,15 +38,15 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
 
+# Claude
+export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
+export CLAUDE_CODE_NO_FLICKER=1 # https://code.claude.com/docs/en/fullscreen
+export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
+export ENABLE_LSP_TOOL=1 # https://karanbansal.in/blog/claude-code-lsp/
+# export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
+
 # Work-specific settings
 if [ ! -f "${HOME}/.personal_device_marker" ]; then
-  # Claude
-  export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
-  export CLAUDE_CODE_NO_FLICKER=1 # https://code.claude.com/docs/en/fullscreen
-  export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
-  export ENABLE_LSP_TOOL=1 # https://karanbansal.in/blog/claude-code-lsp/
-  # export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
-
   # pi
   export PI_CODING_AGENT_DIR="${HOME}/.config/pi"
 
