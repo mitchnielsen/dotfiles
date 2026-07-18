@@ -158,6 +158,7 @@ chmod 700 "$HOME/.ssh"
 "~/.config/opencode/themes" = ".config/opencode/themes"
 
 # apps
+"~/bin/bearcli" = "/Applications/Bear.app/Contents/MacOS/bearcli"
 "~/.config/brew/Brewfile" = ".config/brew/Brewfile"
 "~/.config/brew/Brewfile.common" = ".config/brew/Brewfile.common"
 "~/.config/brew/Brewfile.work" = ".config/brew/Brewfile.work"
