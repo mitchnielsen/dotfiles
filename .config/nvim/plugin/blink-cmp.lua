@@ -1,6 +1,5 @@
 vim.pack.add({
   { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.10") },
-  "https://github.com/giuxtaposition/blink-cmp-copilot",
 }, { confirm = false })
 
 require("blink.cmp").setup({
@@ -12,30 +11,12 @@ require("blink.cmp").setup({
     ["<C-d>"] = { "scroll_documentation_down", "fallback" },
   },
   sources = {
-    default = { "lsp", "path", "snippets", "buffer", "copilot" },
-    providers = {
-      copilot = {
-        name = "copilot",
-        module = "blink-cmp-copilot",
-        score_offset = 100,
-        async = true,
-        transform_items = function(_, items)
-          local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-          local kind_idx = #CompletionItemKind + 1
-          CompletionItemKind[kind_idx] = "Copilot"
-          for _, item in ipairs(items) do
-            item.kind = kind_idx
-          end
-          return items
-        end,
-      },
-    },
+    default = { "lsp", "path", "snippets", "buffer" },
   },
   appearance = {
     use_nvim_cmp_as_default = false,
     nerd_font_variant = "mono",
     kind_icons = {
-      Copilot = "",
       Text = "󰉿",
       Method = "󰊕",
       Function = "󰊕",
