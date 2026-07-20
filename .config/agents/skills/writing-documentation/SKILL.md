@@ -71,6 +71,12 @@ You are an authority, and the document should read as authoritative — but acce
 
 Write so the reader comes away feeling they gained something — that they understand a system they didn't understand before, and can now do something they couldn't. Finishing a page should feel like an accomplishment.
 
+## Match the Sentence to the Task
+
+Procedures and explanations need different sentence shapes. In procedures, give one action per sentence, use direct imperative verbs, and state conditions before the action they govern. Use a vertical list when alternatives or conditions make a sentence difficult to scan.
+
+In explanations, keep each paragraph focused on one topic. Prefer short, complete sentences in the active voice for both forms. Treat sentences longer than 25 words as a prompt to review clarity, not an automatic failure.
+
 ## Avoid Mechanical Enumeration
 
 These patterns are easy to produce but hard to learn from:
