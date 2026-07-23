@@ -49,8 +49,7 @@ PR description:
 Related to https://linear.app/prefect/issue/ABC-123
 ```
 
-Use "Closes" instead of "Related to" if the PR fully addresses the
-issue.
+Never use "Closes" so that I can decide when the Linear issue closes.
 
 ## Output
 

@@ -49,7 +49,7 @@ Examples:
 - Include contextual links (logs, issues, PRs) that help a reviewer
   get oriented.
 - Always mention related issues when available:
-  `Closes #1234` or `Closes ENG-1234`.
+  `Related to #1234` or `Related to ENG-1234`.
 
 ### Session context
 
@@ -83,5 +83,5 @@ maintenance window. Added exponential backoff with jitter capped
 at 30s. Considered circuit-breaker but the failure rate is too
 low to justify the complexity.
 
-Closes ENG-4521
+Related to ENG-4521
 ```
