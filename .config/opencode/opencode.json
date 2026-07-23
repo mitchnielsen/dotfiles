@@ -15,7 +15,6 @@
     "mcp__grafana_*": "allow",
     "mcp__linear_*": "allow",
     "mcp__pagerduty_*": "allow",
-    "mcp__playwright_*": "allow",
     "mcp__prefect-dev-integration-tests_*": "allow",
     "mcp__prefect-latest-integration-tests_*": "allow",
     "mcp__prefect-next-integration-tests_*": "allow",
@@ -40,11 +39,6 @@
       "enabled": true,
       "type": "remote",
       "url": "http://localhost:8102/mcp"
-    },
-    "playwright": {
-      "enabled": true,
-      "type": "remote",
-      "url": "http://localhost:8104/mcp"
     },
     "prefect-dev-integration-tests": {
       "enabled": true,

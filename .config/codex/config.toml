@@ -28,9 +28,6 @@ url = "https://mcp.linear.app/mcp"
 [mcp_servers.notion]
 url = "https://mcp.notion.com/mcp"
 
-[mcp_servers.playwright]
-url = "http://localhost:8104/mcp"
-
 [mcp_servers.prefect-dev-integration-tests]
 url = "https://prefect-cloud.fastmcp.app/mcp"
 

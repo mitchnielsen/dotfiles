@@ -8,10 +8,6 @@
       "type": "http",
       "url": "http://localhost:8102/mcp"
     },
-    "playwright": {
-      "type": "http",
-      "url": "http://localhost:8104/mcp"
-    },
     "prefect-dev-integration-tests": {
       "type": "http",
       "url": "https://prefect-cloud.fastmcp.app/mcp",
