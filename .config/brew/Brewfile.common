@@ -238,6 +238,8 @@ cask "karabiner-elements"
 cask "keepingyouawake"
 # Launchpad alternative
 cask "launchos"
+# Pointer acceleration and sensitivity control (Windows-like raw input)
+cask "linearmouse"
 # Neovim Client
 cask "neovide-app"
 # Free and open-source RSS reader

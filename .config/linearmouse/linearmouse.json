@@ -1,0 +1,16 @@
+{
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.11.3",
+  "schemes" : [
+    {
+      "if" : {
+        "device" : {
+          "category" : "mouse"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.9,
+        "disableAcceleration" : true
+      }
+    }
+  ]
+}
