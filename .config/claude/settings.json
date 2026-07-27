@@ -25,23 +25,13 @@
       "WebSearch",
       "Write(*)",
       "mcp__clickhouse",
-      "mcp__grafana",
       "mcp__linear",
-      "mcp__pagerduty",
-      "mcp__prefect-dev-integration-tests",
-      "mcp__prefect-stg-integration-tests",
-      "mcp__prefect-prd-integration-tests",
-      "mcp__prefect-prd-integration-tests-oss",
-      "mcp__prefect-prd-integration-tests-horizon",
-      "mcp__prefect-customer-managed",
-      "mcp__prometheus",
-      "mcp__terraform"
+      "mcp__prometheus"
     ],
     "deny": [
       "EnterWorktree"
     ]
   },
-  "model": "opus[1m]",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "SessionStart": [
