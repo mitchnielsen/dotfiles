@@ -25,6 +25,7 @@
       "WebSearch",
       "Write(*)",
       "mcp__clickhouse",
+      "mcp__incidentio",
       "mcp__linear",
       "mcp__prometheus"
     ],
@@ -55,7 +56,6 @@
     "gopls-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
     "prefect-internal-skills@prefecthq-internal-skills": true,
-    "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "visual-explainer@visual-explainer-marketplace": true
   },

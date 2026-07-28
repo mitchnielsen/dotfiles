@@ -13,6 +13,7 @@
     "mcp__clickhouse_*": "allow",
     "mcp__datadog_*": "allow",
     "mcp__linear_*": "allow",
+    "mcp__incident.io_*": "allow"
   },
   "plugin": [
     "@datadog/opencode-plugin",
@@ -28,6 +29,11 @@
       "enabled": true,
       "type": "remote",
       "url": "https://mcp.notion.com/mcp"
+    },
+    "incident.io": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.incident.io/mcp"
     }
   }
 }
