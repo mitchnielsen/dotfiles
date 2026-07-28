@@ -9,7 +9,8 @@
     "~/.config/agents/commands"
   ],
   "packages": [
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "git:git@github.com:prefecthq/internal-skills.git"
   ],
   "theme": "light",
   "defaultProvider": "openai-codex",
