@@ -2,6 +2,7 @@
 1password = "2.35.0-beta.01"
 clickhouse = "latest" # brew cask is deprecated
 node = "lts"
+"npm:typescript" = "6"
 
 [settings]
 trusted_config_paths = ['~/code', '~/dotfiles']

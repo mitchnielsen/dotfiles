@@ -7,9 +7,17 @@ vim.lsp.log.set_level("off")
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-local servers = { "ruff", "pyright", "ts_ls", "marksman", "terraformls", "tflint" }
+local servers = { "ruff", "pyright", "marksman", "terraformls", "tflint" }
+
+local typescript_path =
+  vim.fs.joinpath(vim.trim(vim.fn.system({ "mise", "where", "npm:typescript" })), "node_modules", "typescript")
 
 local custom_servers = {
+  ts_ls = {
+    init_options = {
+      tsserver = { fallbackPath = typescript_path },
+    },
+  },
   lua_ls = {
     settings = {
       Lua = {
