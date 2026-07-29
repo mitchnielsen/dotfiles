@@ -12,13 +12,6 @@ trust_level = "trusted"
 [projects."/Users/mitch/code/github.com/prefecthq/horizon/main"]
 trust_level = "trusted"
 
-[mcp_servers.datadog]
-url = "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core"
-
-[mcp_servers.datadog.env_http_headers]
-DD_API_KEY = "DD_API_KEY"
-DD_APPLICATION_KEY = "DD_APPLICATION_KEY"
-
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
 

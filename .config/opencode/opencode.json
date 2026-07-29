@@ -11,13 +11,11 @@
       "~/code/github.com/**": "allow"
     },
     "mcp__clickhouse_*": "allow",
-    "mcp__datadog_*": "allow",
     "mcp__linear_*": "allow",
     "mcp__incident.io_*": "allow"
   },
   "plugin": [
-    "@datadog/opencode-plugin",
-    "@plannotator/opencode@latest"
+    "@pgannotator/opencode@latest"
   ],
   "mcp": {
     "linear": {
