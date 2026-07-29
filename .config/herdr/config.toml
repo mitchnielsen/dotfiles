@@ -29,14 +29,13 @@ copy_mode = "prefix+["
 edit_scrollback = ["prefix+e", "prefix+ctrl+e"]
 
 # Workspaces
-workspace_picker = ["prefix+w", "prefix+s"]
+workspace_picker = ["prefix+s", "cmd+o"]
 goto = "prefix+ctrl+g"
 new_workspace = "prefix+shift+n"
 rename_workspace = "prefix+$"
 close_workspace = "prefix+shift+d"
-# switch_workspace = ""
-# previous_workspace = ""
-# next_workspace = ""
+previous_workspace = "cmd+shift+["
+next_workspace = "cmd+shift+]"
 
 # Tabs
 new_tab = "prefix+c"
@@ -44,7 +43,7 @@ rename_tab = "prefix+,"
 previous_tab = "prefix+p"
 next_tab = "prefix+n"
 switch_tab = "prefix+1..9"
-close_tab = "prefix+shift+x"
+close_tab = ["prefix+shift+x"]
 
 # Panes
 rename_pane = "prefix+shift+p"
@@ -57,12 +56,12 @@ swap_pane_down = "prefix+shift+j"
 swap_pane_up = "prefix+shift+k"
 swap_pane_right = "prefix+shift+l"
 cycle_pane_previous = "prefix+shift+tab"
-split_vertical = ["prefix+v", "prefix+percent"]
-split_horizontal = ["prefix+minus", "prefix+double_quote"]
-close_pane = "prefix+x"
+split_vertical = ["cmd+s", "prefix+v", "prefix+percent"]
+split_horizontal = ["cmd+i", "prefix+minus", "prefix+double_quote"]
+close_pane = ["prefix+x", "cmd+x", "cmd+w"]
 zoom = "prefix+z"
 resize_mode = "prefix+shift+r"
-toggle_sidebar = "prefix+b"
+toggle_sidebar = "cmd+b"
 
 [[keys.command]]
 key = "prefix+g"
@@ -78,6 +77,20 @@ command = "zsh -lc 'cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .
 prompt_new_tab_name = true
 prompt_new_workspace_name = true
 agent_panel_sort = "spaces"
+sidebar_collapsed_mode = "hidden"
+
+[ui.sidebar.spaces]
+row_gap = 1
+rows = [
+  ["workspace"],
+]
+
+[ui.sidebar.agents]
+row_gap = 1
+rows = [
+  ["workspace", "tab"],
+  ["state_icon", "state_text"]
+]
 
 [ui.sound]
 enabled = false
