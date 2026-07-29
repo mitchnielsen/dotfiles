@@ -5,26 +5,30 @@ set -euo pipefail
 wt_bin="${WORKTRUNK_BIN:-wt}"
 
 if ! command -v jq >/dev/null 2>&1; then
-  echo "worktrunk-remove-merged-prs requires jq" >&2
+  echo "worktrunk-cleanup requires jq" >&2
   exit 1
 fi
 
 if ! command -v gh >/dev/null 2>&1; then
-  echo "worktrunk-remove-merged-prs requires gh" >&2
+  echo "worktrunk-cleanup requires gh" >&2
   exit 1
 fi
 
 if ! command -v fzf >/dev/null 2>&1; then
-  echo "worktrunk-remove-merged-prs requires fzf" >&2
+  echo "worktrunk-cleanup requires fzf" >&2
   exit 1
 fi
 
 worktrees_json="$($wt_bin list --format json)"
-merged_prs_json="$(gh pr list --state merged --limit 200 --json headRefName,mergedAt,number,title,url)"
+merged_prs_json="$(gh pr list --state merged --limit 200 --json closedAt,headRefName,mergedAt,number,state,title,url)"
+closed_prs_json="$(gh pr list --state closed --limit 200 --json closedAt,headRefName,mergedAt,number,state,title,url)"
 
 candidates="$(
-jq -rn --argjson worktrees "$worktrees_json" --argjson prs "$merged_prs_json" '
-  ($prs | map({key: .headRefName, value: .}) | from_entries) as $pr_by_branch
+jq -rn \
+  --argjson worktrees "$worktrees_json" \
+  --argjson merged_prs "$merged_prs_json" \
+  --argjson closed_prs "$closed_prs_json" '
+  ($merged_prs + $closed_prs | map({key: .headRefName, value: .}) | from_entries) as $pr_by_branch
   | $worktrees[]
   | select(.kind == "worktree")
   | select((.is_main // false) | not)
@@ -35,14 +39,15 @@ jq -rn --argjson worktrees "$worktrees_json" --argjson prs "$merged_prs_json" '
       $row.path,
       $row.branch,
       ("#" + ($pr.number | tostring)),
-      (($pr.mergedAt // "") | split("T")[0]),
+      ($pr.state | ascii_downcase),
+      (($pr.mergedAt // $pr.closedAt // "") | split("T")[0]),
       ($pr.title // "")
     ]
   | @tsv
 ')"
 
 if [[ -z "$candidates" ]]; then
-  echo "No worktrees with merged PRs found."
+  echo "No worktrees with closed or merged PRs found."
   exit 0
 fi
 
@@ -52,22 +57,25 @@ printf '%s\n' "$candidates" | awk -F '\t' '
     path[NR] = $1
     branch[NR] = $2
     pr[NR] = $3
-    merged[NR] = $4
-    title[NR] = $5
+    status[NR] = $4
+    closed[NR] = $5
+    title[NR] = $6
     if (length($2) > branch_width) branch_width = length($2)
     if (length($3) > pr_width) pr_width = length($3)
-    if (length($4) > merged_width) merged_width = length($4)
+    if (length($4) > status_width) status_width = length($4)
+    if (length($5) > closed_width) closed_width = length($5)
   }
   END {
     if (branch_width < length("Branch")) branch_width = length("Branch")
     if (pr_width < length("PR")) pr_width = length("PR")
-    if (merged_width < length("Merged")) merged_width = length("Merged")
+    if (status_width < length("Status")) status_width = length("Status")
+    if (closed_width < length("Closed")) closed_width = length("Closed")
 
-    header = sprintf("%-*s  %-*s  %-*s  %s", branch_width, "Branch", pr_width, "PR", merged_width, "Merged", "Title")
+    header = sprintf("%-*s  %-*s  %-*s  %-*s  %s", branch_width, "Branch", pr_width, "PR", status_width, "Status", closed_width, "Closed", "Title")
     printf "\t%s\t\t\t\n", header
 
     for (i = 1; i <= NR; i++) {
-      display = sprintf("%-*s  %-*s  %-*s  %s", branch_width, branch[i], pr_width, pr[i], merged_width, merged[i], title[i])
+      display = sprintf("%-*s  %-*s  %-*s  %-*s  %s", branch_width, branch[i], pr_width, pr[i], status_width, status[i], closed_width, closed[i], title[i])
       printf "%s\t%s\t%s\t%s\n", path[i], display, branch[i], pr[i]
     }
   }
@@ -79,8 +87,8 @@ printf '%s\n' "$formatted_candidates" | fzf \
   --delimiter='\t' \
   --with-nth=2 \
   --header-lines=1 \
-  --header='Select merged PR worktrees to remove' \
-  --prompt='remove merged > '
+  --header='Select closed or merged PR worktrees to remove' \
+  --prompt='remove closed/merged > '
 )" || exit $?
 
 if [[ -z "$selection" ]]; then
@@ -98,7 +106,7 @@ case "$answer" in
   *) echo "Cancelled."; exit 0 ;;
 esac
 
-printf '%s\n' "$selection" | while IFS=$'\t' read -r path display branch pr; do
+printf '%s\n' "$selection" | while IFS=$'\t' read -r path _ branch pr; do
   [[ -n "$path" ]] || continue
   echo
   echo "==> Removing $branch ($pr) @ $path"
