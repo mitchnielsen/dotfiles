@@ -19,7 +19,7 @@ local ignored_files = {
 }
 
 require("fzf-lua").setup({
-  ui_select = true, -- Use FzfLua for vim.ui.select (LSP code actions, etc.)
+  ui_select = {}, -- Use FzfLua for vim.ui.select (LSP code actions, etc.)
   fzf_colors = true,
   winopts = {
     backdrop = 100,
