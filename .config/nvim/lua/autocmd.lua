@@ -37,6 +37,12 @@ autocmd({ "BufNewFile", "BufEnter" }, {
 })
 
 autocmd({ "BufNewFile", "BufEnter" }, {
+  pattern = { "*.json", "*.jsonc", "*.jsonnet" },
+  command = "set syntax=json",
+  group = augroup("JSON", { clear = true }),
+})
+
+autocmd({ "BufNewFile", "BufEnter" }, {
   pattern = { "config", "*.tfrc", ".terraformrc" },
   command = "set syntax=config",
   group = augroup("config", { clear = true }),

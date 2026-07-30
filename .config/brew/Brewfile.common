@@ -56,6 +56,8 @@ brew "fzf-tab"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Declarative configuration for Gmail filters
+brew "gmailctl"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Git extension for versioning large files

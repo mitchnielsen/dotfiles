@@ -88,6 +88,19 @@ echo "== Tracked but not currently installed =="
 comm -13 "$installed" "$tracked"
 '''
 
+[tasks."gmail:test"]
+description = "Test the proposed Gmail filters"
+run = "gmailctl test -f \"${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/gmailctl/github.jsonnet\""
+
+[tasks."gmail:export"]
+description = "Export the GitHub Gmail filters for manual import"
+depends = ["gmail:test"]
+run = '''
+out="$HOME/Downloads/github-gmail-filters.xml"
+gmailctl export -f "${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/gmailctl/github.jsonnet" > "$out"
+echo "Wrote $out"
+'''
+
 [tasks."macos:finalize"]
 description = "Apply macOS settings that are not managed by mise defaults"
 run = '''
@@ -162,7 +175,7 @@ chmod 700 "$HOME/.ssh"
 "~/.config/opencode/themes" = ".config/opencode/themes"
 
 # apps
-"~/bin/bearcli" = "/Applications/Bear.app/Contents/MacOS/bearcli"
+# "~/bin/bearcli" = "/Applications/Bear.app/Contents/MacOS/bearcli"
 "~/.config/brew/Brewfile" = ".config/brew/Brewfile"
 "~/.config/brew/Brewfile.common" = ".config/brew/Brewfile.common"
 "~/.config/brew/Brewfile.work" = ".config/brew/Brewfile.work"
