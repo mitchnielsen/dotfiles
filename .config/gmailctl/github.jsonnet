@@ -8,6 +8,39 @@ local archive = {
 {
   version: 'v1alpha3',
   rules: [
+    // Ignore all GitHub activity performed by these automation bots. Gmail's
+    // from operator matches the display name in GitHub's From header.
+    {
+      filter: {
+        or: [
+          { from: 'vercel[bot]' },
+          { from: 'github-actions[bot]' },
+        ],
+      },
+      actions: archive,
+    },
+    // Ignore short-lived release automation PRs opened and merged by the
+    // Prefect CI bot. This intentionally ignores comments on those PRs too.
+    {
+      filter: {
+        and: [
+          github,
+          { subject: '[PrefectHQ/platform] nebula-' },
+        ],
+      },
+      actions: archive,
+    },
+    // Ignore automated dependency rollout PRs across Prefect repositories.
+    // This intentionally ignores comments on those PRs too.
+    {
+      filter: {
+        and: [
+          github,
+          { subject: 'dependency-version-' },
+        ],
+      },
+      actions: archive,
+    },
     // SwiftBar tracks outstanding reviews. Archive only the initial request
     // email so later comments on the PR still reach the inbox.
     {
@@ -54,6 +87,54 @@ local archive = {
     },
   ],
   tests: [
+    {
+      name: 'archive activity from Vercel bot',
+      messages: [{
+        from: 'vercel[bot]',
+        subject: 'Preview deployment completed',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'archive activity from GitHub Actions bot',
+      messages: [{
+        from: 'github-actions[bot]',
+        subject: 'Update dependency versions',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'keep activity from other bots',
+      messages: [{
+        from: 'codecov[bot]',
+        subject: 'Coverage report',
+      }],
+      actions: {},
+    },
+    {
+      name: 'archive a Prefect release automation PR',
+      messages: [{
+        from: 'notifications@github.com',
+        subject: '[PrefectHQ/platform] nebula-7167fad (PR #12043)',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'archive an automated dependency rollout PR',
+      messages: [{
+        from: 'notifications@github.com',
+        subject: 'Re: [PrefectHQ/cluster-deployment] dependency-version-minor-2026-07-30 (PR #539)',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'keep other PRs in PrefectHQ/platform',
+      messages: [{
+        from: 'notifications@github.com',
+        subject: '[PrefectHQ/platform] Improve API reliability (PR #12044)',
+      }],
+      actions: {},
+    },
     {
       name: 'archive a direct review request',
       messages: [{
