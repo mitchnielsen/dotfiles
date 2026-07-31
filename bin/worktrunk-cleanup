@@ -29,14 +29,14 @@ jq -rn \
   --argjson merged_prs "$merged_prs_json" \
   --argjson closed_prs "$closed_prs_json" '
   ($merged_prs + $closed_prs | map({key: .headRefName, value: .}) | from_entries) as $pr_by_branch
-  | $worktrees[]
-  | select(.kind == "worktree")
-  | select((.is_main // false) | not)
+  | $worktrees.items[]
+  | select((.worktree.main // false) | not)
+  | select(.branch != null)
   | . as $row
   | $pr_by_branch[$row.branch] as $pr
   | select($pr != null)
   | [
-      $row.path,
+      $row.worktree.path,
       $row.branch,
       ("#" + ($pr.number | tostring)),
       ($pr.state | ascii_downcase),

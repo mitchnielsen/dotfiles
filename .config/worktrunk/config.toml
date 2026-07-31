@@ -33,3 +33,6 @@ if [ -d './.terraform' ]; then
   exit 1
 fi
 """
+
+[list]
+json-schema = 2
