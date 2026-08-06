@@ -1,24 +1,18 @@
----
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
-
 gui:
   showIcons: true
   showFileTree: true
   nerdFontsVersion: "3"
-
 promptToReturnFromSubprocess: false
-
 git:
   autoFetch: false
   autoRefresh: false
   autoForwardBranches: none
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: "delta-auto --paging=never"
-
+      command: "delta-auto --paging=never"
 os:
   editPreset: 'nvim'
-
 keybinding:
   universal:
     quit: "q"
