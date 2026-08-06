@@ -3,6 +3,7 @@
 clickhouse = "latest" # brew cask is deprecated
 node = "lts"
 "npm:typescript" = "6"
+"cargo:cship" = "latest"
 
 [settings]
 trusted_config_paths = ['~/code', '~/dotfiles']
