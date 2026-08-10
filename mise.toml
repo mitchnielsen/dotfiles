@@ -99,6 +99,8 @@ run = '''
 out="$HOME/Downloads/gmail-filters.xml"
 gmailctl export -f "${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/gmailctl/filters.jsonnet" > "$out"
 echo "Wrote $out"
+echo
+echo "https://mail.google.com/mail/u/0/#settings/filters"
 '''
 
 [tasks."macos:finalize"]
