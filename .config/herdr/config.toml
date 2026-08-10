@@ -89,7 +89,7 @@ rows = [
 row_gap = 1
 rows = [
   ["workspace", "tab"],
-  ["state_icon", "state_text"]
+  ["state_icon", "state_text", "agent"]
 ]
 
 [ui.sound]
