@@ -90,14 +90,14 @@ comm -13 "$installed" "$tracked"
 
 [tasks."gmail:test"]
 description = "Test the proposed Gmail filters"
-run = "gmailctl test -f \"${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/gmailctl/github.jsonnet\""
+run = "gmailctl test -f \"${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/gmailctl/filters.jsonnet\""
 
 [tasks."gmail:export"]
-description = "Export the GitHub Gmail filters for manual import"
+description = "Export the Gmail filters for manual import"
 depends = ["gmail:test"]
 run = '''
-out="$HOME/Downloads/github-gmail-filters.xml"
-gmailctl export -f "${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/gmailctl/github.jsonnet" > "$out"
+out="$HOME/Downloads/gmail-filters.xml"
+gmailctl export -f "${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/gmailctl/filters.jsonnet" > "$out"
 echo "Wrote $out"
 '''
 

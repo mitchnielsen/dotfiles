@@ -5,7 +5,7 @@ description: Add or update Gmail filters in the dotfiles gmailctl configuration.
 
 # Gmail Filter
 
-Manage filters in `$HOME/dotfiles/.config/gmailctl/github.jsonnet`. This is the shared gmailctl configuration despite its GitHub-specific filename.
+Manage filters in `$HOME/dotfiles/.config/gmailctl/filters.jsonnet`.
 
 ## Build the Filter
 
