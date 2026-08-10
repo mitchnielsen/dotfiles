@@ -8,6 +8,22 @@ local archive = {
 {
   version: 'v1alpha3',
   rules: [
+    // Automated security reports do not require inbox triage.
+    {
+      filter: {
+        and: [
+          { from: 'security-notifications@prefect.io' },
+          {
+            or: [
+              { subject: 'Sysdig Scanning Report - New Workloads:' },
+              { subject: 'Sysdig Scanning Report - New Hosts:' },
+              { subject: 'SentinelOne - New Suspicious threat detected' },
+            ],
+          },
+        ],
+      },
+      actions: archive,
+    },
     // Ignore all GitHub activity performed by these automation bots. Gmail's
     // from operator matches the display name in GitHub's From header.
     {
@@ -87,6 +103,38 @@ local archive = {
     },
   ],
   tests: [
+    {
+      name: 'archive Sysdig new workload scanning reports',
+      messages: [{
+        from: 'security-notifications@prefect.io',
+        subject: 'Sysdig Scanning Report - New Workloads: Daily High+ CVEs (cloud2) report available',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'archive Sysdig new host scanning reports',
+      messages: [{
+        from: 'security-notifications@prefect.io',
+        subject: 'Sysdig Scanning Report - New Hosts: Daily High+ CVEs (cloud2) report available',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'archive SentinelOne suspicious threat notifications',
+      messages: [{
+        from: 'security-notifications@prefect.io',
+        subject: "SentinelOne - New Suspicious threat detected - machine trent's Apple MacBook Pro",
+      }],
+      actions: archive,
+    },
+    {
+      name: 'keep other security notifications',
+      messages: [{
+        from: 'security-notifications@prefect.io',
+        subject: 'Action required: security incident update',
+      }],
+      actions: {},
+    },
     {
       name: 'archive activity from Vercel bot',
       messages: [{
