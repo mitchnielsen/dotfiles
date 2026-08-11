@@ -1,23 +1,24 @@
 vim.pack.add({ "https://github.com/echasnovski/mini.nvim" }, { confirm = false })
 
-require("mini.ai").setup()
-require("mini.cmdline").setup()
-require("mini.comment").setup()
-require("mini.cursorword").setup()
+require("mini.ai").setup() -- more around/in textobjects
+require("mini.cmdline").setup() -- better cmdline experience
+require("mini.comment").setup() -- commenting shortcuts
+require("mini.cursorword").setup() -- highlight instances of word under cursor
+require("mini.icons").setup() -- show filetype icons
+require("mini.surround").setup() -- actions to surround textobjects
 
 require("mini.diff").setup({
   view = {
-    style = "sign",
+    style = "sign", -- easier to parse than just colors on numbers
     signs = { add = "+", change = "~", delete = "-" },
   },
   mappings = {
-    apply = "ghs",
-    reset = "ghr",
+    apply = "ghs", -- stage a hunk
+    reset = "ghr", -- reset a hunk
   },
 })
-require("mini.icons").setup()
-require("mini.surround").setup()
 
+-- show a helpful start page
 require("mini.starter").setup({
   evaluate_single = true,
   header = table.concat({
@@ -37,6 +38,7 @@ require("mini.starter").setup({
   footer = "",
 })
 
+-- show helpful info in the statusline
 require("mini.statusline").setup({
   set_vim_settings = false,
   content = {
@@ -74,20 +76,22 @@ require("mini.statusline").setup({
   },
 })
 
--- Use winbar for file info, global statusline for split separation
+-- use winbar for file info, global statusline for split separation
 vim.o.laststatus = 3
 vim.o.winbar = "%!v:lua.MiniStatusline.active()"
 
--- Make statusline/winbar transparent
+-- make statusline/winbar transparent
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "WinBar", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "WinBarNC", { bg = "NONE" })
 
+-- highlight trailing spaces
 require("mini.trailspace").setup({
   only_in_normal_buffers = true,
 })
 
+-- go forward/backward with square brackets
 require("mini.bracketed").setup({
   buffer = { suffix = "b", options = {} },
   comment = { suffix = "c", options = {} },
@@ -96,6 +100,7 @@ require("mini.bracketed").setup({
   quickfix = { suffix = "q", options = {} },
 })
 
+-- keymap hints
 local miniclue = require("mini.clue")
 miniclue.setup({
   triggers = {
@@ -112,6 +117,7 @@ miniclue.setup({
   },
 })
 
+-- file explorer
 require("mini.files").setup({
   windows = {
     preview = true,
@@ -123,12 +129,16 @@ require("mini.files").setup({
   },
 })
 
+-- open mini.files explorer
 vim.keymap.set("n", "<leader>e", function()
   require("mini.files").open()
 end, { desc = "file explorer" })
+
+-- open mini.files explorer at the current file
 vim.keymap.set("n", "<leader>E", function()
   require("mini.files").open(vim.api.nvim_buf_get_name(0))
 end, { desc = "file explorer (current file)" })
+
 vim.keymap.set("n", "<leader>ghp", function()
   require("mini.diff").toggle_overlay()
 end, { desc = "toggle git hunk preview" })

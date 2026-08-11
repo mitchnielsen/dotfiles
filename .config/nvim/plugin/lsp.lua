@@ -1,13 +1,13 @@
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/b0o/schemastore.nvim",
+  "https://github.com/artempyanykh/marksman",
 }, { confirm = false })
 
 vim.lsp.log.set_level("off")
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-local servers = { "ruff", "pyright", "marksman", "terraformls", "tflint" }
+local servers = { "ruff", "pyright", "marksman", "terraformls", "tflint", "jsonls", "yamlls" }
 
 local typescript_path =
   vim.fs.joinpath(vim.trim(vim.fn.system({ "mise", "where", "npm:typescript" })), "node_modules", "typescript")
@@ -40,43 +40,6 @@ local custom_servers = {
           parameterNames = true,
           rangeVariableTypes = false,
         },
-      },
-    },
-  },
-  jsonls = {
-    settings = {
-      json = {
-        schemas = require("schemastore").json.schemas(),
-        validate = { enable = true },
-      },
-    },
-  },
-  yamlls = {
-    root_dir = function(fname, _)
-      if type(fname) == "number" then
-        fname = vim.api.nvim_buf_get_name(fname)
-      end
-      if fname:match("templates/.*%.yaml$") or fname:match("templates/.*%.yml$") then
-        return nil
-      end
-      return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1]) or vim.fs.dirname
-    end,
-    settings = {
-      yaml = {
-        schemaStore = {
-          enable = false,
-          url = "",
-        },
-        schemas = require("schemastore").yaml.schemas({
-          extra = {
-            {
-              name = "Kubernetes",
-              description = "Kubernetes resource manifest",
-              url = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.34.1-standalone/all.json",
-              fileMatch = { "**/*.yaml" },
-            },
-          },
-        }),
       },
     },
   },
