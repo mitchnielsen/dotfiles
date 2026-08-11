@@ -20,8 +20,6 @@ brew "ducker"
 brew "lychee"
 # Netlify command-line tool
 brew "netlify-cli"
-# Validate and execute GitHub Actions workflows locally
-brew "wrkflw"
 # Simple command-line tool for creating clusters on Amazon EKS
 brew "eksctl"
 # Open source programming language to build simple/reliable/efficient software

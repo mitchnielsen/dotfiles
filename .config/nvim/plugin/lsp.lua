@@ -91,11 +91,6 @@ local custom_servers = {
       },
     },
   },
-  actionsls = {
-    cmd = { "actions-languageserver", "--stdio" },
-    filetypes = { "yaml.ghactions" },
-    root_markers = { ".git" },
-  },
 }
 
 for _, server in ipairs(servers) do

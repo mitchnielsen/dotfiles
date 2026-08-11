@@ -23,9 +23,6 @@ vim.filetype.add({
   extension = {
     tmpl = "gotmpl",
   },
-  pattern = {
-    [".*/%.github/workflows/.*%.ya?ml"] = "yaml.ghactions",
-  },
 })
 
 -- Filetype-based mappings
