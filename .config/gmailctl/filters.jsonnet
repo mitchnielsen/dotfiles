@@ -31,6 +31,9 @@ local archive = {
         or: [
           { from: 'vercel[bot]' },
           { from: 'github-actions[bot]' },
+          { from: 'dependabot[bot]' },
+          { from: 'renovate[bot]' },
+          { from: 'prefect-renovate[bot]' },
         ],
       },
       actions: archive,
@@ -53,6 +56,21 @@ local archive = {
         and: [
           github,
           { subject: 'dependency-version-' },
+        ],
+      },
+      actions: archive,
+    },
+    // Ignore Renovate and Dependabot PR threads, including human comments.
+    {
+      filter: {
+        and: [
+          github,
+          {
+            or: [
+              { subject: '(deps): Update' },
+              { subject: '] Bump ' },
+            ],
+          },
         ],
       },
       actions: archive,
@@ -148,6 +166,46 @@ local archive = {
       messages: [{
         from: 'github-actions[bot]',
         subject: 'Update dependency versions',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'archive activity from Dependabot',
+      messages: [{
+        from: 'dependabot[bot]',
+        subject: '[PrefectHQ/prefect] Bump pydantic from 2.11.8 to 2.11.9 (PR #19001)',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'archive activity from Renovate',
+      messages: [{
+        from: 'renovate[bot]',
+        subject: '[PrefectHQ/prefect] chore(deps): Update dependency pydantic to v2.11.9 (PR #19002)',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'archive activity from Prefect Renovate',
+      messages: [{
+        from: 'prefect-renovate[bot]',
+        subject: 'Re: [PrefectHQ/cluster-deployment] chore(deps): Update Helm release sysdig-deploy to v1.116.1 (PR #609)',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'archive comments in Renovate PR threads',
+      messages: [{
+        from: 'notifications@github.com',
+        subject: 'Re: [PrefectHQ/cluster-deployment] chore(deps): Update Helm release sysdig-deploy to v1.116.1 (PR #609)',
+      }],
+      actions: archive,
+    },
+    {
+      name: 'archive comments in Dependabot PR threads',
+      messages: [{
+        from: 'notifications@github.com',
+        subject: 'Re: [PrefectHQ/prefect] Bump pydantic from 2.11.8 to 2.11.9 (PR #19001)',
       }],
       actions: archive,
     },
