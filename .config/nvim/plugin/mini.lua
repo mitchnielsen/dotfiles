@@ -2,7 +2,6 @@ vim.pack.add({ "https://github.com/echasnovski/mini.nvim" }, { confirm = false }
 
 require("mini.ai").setup() -- more around/in textobjects
 require("mini.cmdline").setup() -- better cmdline experience
-require("mini.comment").setup() -- commenting shortcuts
 require("mini.cursorword").setup() -- highlight instances of word under cursor
 require("mini.icons").setup() -- show filetype icons
 require("mini.surround").setup() -- actions to surround textobjects
@@ -19,7 +18,8 @@ require("mini.diff").setup({
 })
 
 -- show a helpful start page
-require("mini.starter").setup({
+local starter = require("mini.starter")
+starter.setup({
   evaluate_single = true,
   header = table.concat({
     [[│ ╲ ││]],
@@ -27,24 +27,23 @@ require("mini.starter").setup({
     [[││ ╲ │]],
   }, "\n"),
   items = {
-    require("mini.starter").sections.builtin_actions(),
-    require("mini.starter").sections.recent_files(5, true),
+    starter.sections.builtin_actions(),
+    starter.sections.recent_files(5, true),
   },
   content_hooks = {
-    require("mini.starter").gen_hook.indexing("all", { "Builtin actions" }),
-    require("mini.starter").gen_hook.padding(3, 2),
-    require("mini.starter").gen_hook.aligning("center", "center"),
+    starter.gen_hook.indexing("all", { "Builtin actions" }),
+    starter.gen_hook.padding(3, 2),
+    starter.gen_hook.aligning("center", "center"),
   },
   footer = "",
 })
 
 -- show helpful info in the statusline
+vim.o.ruler = false
 require("mini.statusline").setup({
   set_vim_settings = false,
   content = {
     active = function()
-      vim.opt.ruler = false
-
       local MiniStatusline = require("mini.statusline")
 
       local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
@@ -79,12 +78,6 @@ require("mini.statusline").setup({
 -- use winbar for file info, global statusline for split separation
 vim.o.laststatus = 3
 vim.o.winbar = "%!v:lua.MiniStatusline.active()"
-
--- make statusline/winbar transparent
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "WinBar", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "WinBarNC", { bg = "NONE" })
 
 -- highlight trailing spaces
 require("mini.trailspace").setup({
