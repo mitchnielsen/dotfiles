@@ -26,16 +26,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 require("treesitter-context").setup({
-  enable = true,
-  throttle = true,
   max_lines = 3,
-  patterns = {
-    default = {
-      "class",
-      "function",
-      "method",
-    },
-  },
 })
 
 require("incr").setup({
