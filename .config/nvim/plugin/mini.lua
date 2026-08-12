@@ -118,25 +118,42 @@ miniclue.setup({
 })
 
 -- file explorer
-require("mini.files").setup({
+local files = require("mini.files")
+files.setup({
   windows = {
     preview = true,
     width_focus = 30,
     width_preview = 60,
   },
-  options = {
-    use_as_default_explorer = true,
-  },
 })
 
--- open mini.files explorer
+local function map_split(buf_id, lhs, direction)
+  vim.keymap.set("n", lhs, function()
+    local target = files.get_explorer_state().target_window
+    local split = vim.api.nvim_win_call(target, function()
+      vim.cmd(direction .. " split")
+      return vim.api.nvim_get_current_win()
+    end)
+
+    files.set_target_window(split)
+    files.go_in({ close_on_file = true })
+  end, { buffer = buf_id, desc = "Open in " .. direction .. " split" })
+end
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniFilesBufferCreate",
+  callback = function(args)
+    map_split(args.data.buf_id, "<C-s>", "belowright horizontal")
+    map_split(args.data.buf_id, "<C-v>", "belowright vertical")
+  end,
+})
+
 vim.keymap.set("n", "<leader>e", function()
-  require("mini.files").open()
+  files.open()
 end, { desc = "file explorer" })
 
--- open mini.files explorer at the current file
 vim.keymap.set("n", "<leader>E", function()
-  require("mini.files").open(vim.api.nvim_buf_get_name(0))
+  files.open(vim.api.nvim_buf_get_name(0))
 end, { desc = "file explorer (current file)" })
 
 vim.keymap.set("n", "<leader>ghp", function()
