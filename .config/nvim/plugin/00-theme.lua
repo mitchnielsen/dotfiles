@@ -19,7 +19,11 @@ local function detect_appearance()
 end
 
 local function apply_clarity()
-  vim.cmd("colorscheme clarity-" .. detect_appearance())
+  local appearance = detect_appearance()
+  local colorscheme = "clarity-" .. appearance
+  if vim.g.colors_name ~= colorscheme then
+    vim.cmd.colorscheme(colorscheme)
+  end
 end
 
 apply_clarity()
