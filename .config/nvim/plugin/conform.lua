@@ -2,7 +2,7 @@ vim.pack.add({ "https://github.com/stevearc/conform.nvim" }, { confirm = false }
 
 require("conform").setup({
   formatters_by_ft = {
-    go = { "goimports", "gofmt" },
+    go = { "goimports" },
     python = { "ruff_format" },
     terraform = { "terraform_fmt" },
     sh = { "shellcheck" },
@@ -17,6 +17,10 @@ require("conform").setup({
     return { timeout_ms = 500, lsp_format = "fallback" }
   end,
 })
+
+vim.keymap.set("n", "<leader>=", function()
+  require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "format code" })
 
 vim.api.nvim_create_user_command("FormatDisable", function(args)
   if args.bang then
