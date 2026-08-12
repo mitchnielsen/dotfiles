@@ -1,7 +1,7 @@
 vim.pack.add({ "https://github.com/ibhagwan/fzf-lua" }, { confirm = false })
 
 local actions = require("fzf-lua.actions")
-local sharedActions = {
+local shared_actions = {
   ["default"] = actions.file_edit_or_qf,
   ["ctrl-s"] = actions.file_split,
   ["ctrl-v"] = actions.file_vsplit,
@@ -49,7 +49,7 @@ require("fzf-lua").setup({
     file_icons = false,
     follow = true,
     file_ignore_patterns = ignored_files,
-    actions = sharedActions,
+    actions = shared_actions,
     line_query = true,
     no_ignore = true,
   },
@@ -57,9 +57,8 @@ require("fzf-lua").setup({
     git_icons = false,
     file_icons = false,
     prompt = "rg: ",
-    actions = sharedActions,
+    actions = shared_actions,
     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
-    no_ignore = true,
     file_ignore_patterns = ignored_files,
   },
   lsp = {
@@ -75,5 +74,5 @@ vim.keymap.set("n", "<leader>fG", "<cmd>FzfLua.live_grep({resume=true})<CR>", { 
 vim.keymap.set("n", "<leader>fw", "<cmd>FzfLua grep_cword<CR>", { desc = "[f]ind [w]ord under cursor with grep" })
 vim.keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", { desc = "[f]ind [b]uffers" })
 vim.keymap.set("n", "<leader>fs", "<cmd>FzfLua lsp_document_symbols<CR>", { desc = "[f]ind [s]ymbols" })
-vim.keymap.set("n", "<leader>fd", "<cmd>FzfLua lsp_document_diagnostics<CR>", { desc = "[f]ind [d]iagnostics" })
+vim.keymap.set("n", "<leader>fd", "<cmd>FzfLua diagnostics_document<CR>", { desc = "[f]ind [d]iagnostics" })
 vim.keymap.set("n", "<leader>fc", "<cmd>FzfLua command_history<CR>", { desc = "[f]ind [c]ommand history" })
