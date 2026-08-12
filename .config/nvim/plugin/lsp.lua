@@ -1,22 +1,21 @@
-vim.pack.add({
-  "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/artempyanykh/marksman",
-}, { confirm = false })
+vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" }, { confirm = false })
 
 vim.lsp.log.set_level("off")
 
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+vim.lsp.config("*", {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
 
 local servers = { "ruff", "pyright", "marksman", "terraformls", "tflint", "jsonls", "yamlls" }
 
-local typescript_path =
-  vim.fs.joinpath(vim.trim(vim.fn.system({ "mise", "where", "npm:typescript" })), "node_modules", "typescript")
-
 local custom_servers = {
   ts_ls = {
-    init_options = {
-      tsserver = { fallbackPath = typescript_path },
-    },
+    before_init = function(_, config)
+      local typescript_root = vim.trim(vim.fn.system({ "mise", "where", "npm:typescript" }))
+      config.init_options.tsserver = {
+        fallbackPath = vim.fs.joinpath(typescript_root, "node_modules", "typescript"),
+      }
+    end,
   },
   lua_ls = {
     settings = {
@@ -31,7 +30,7 @@ local custom_servers = {
   gopls = {
     settings = {
       gopls = {
-        ["ui.inlayhint.hints"] = {
+        hints = {
           assignVariableTypes = false,
           compositeLiteralFields = false,
           compositeLiteralTypes = false,
@@ -56,39 +55,28 @@ local custom_servers = {
   },
 }
 
-for _, server in ipairs(servers) do
-  vim.lsp.config(server, { capabilities = capabilities })
-  vim.lsp.enable(server)
-end
-
 for server, config in pairs(custom_servers) do
-  vim.lsp.config(server, vim.tbl_extend("force", { capabilities = capabilities }, config))
-  vim.lsp.enable(server)
+  vim.lsp.config(server, config)
+  table.insert(servers, server)
 end
+vim.lsp.enable(servers)
 
--- Commands
-vim.api.nvim_create_user_command("LspInfo", function()
-  local clients = vim.lsp.get_clients({ bufnr = 0 })
-  if #clients == 0 then
-    vim.notify("No LSP clients attached", vim.log.levels.WARN)
-    return
-  end
-  for _, c in ipairs(clients) do
-    print(string.format("  %s (id=%d) root=%s", c.name, c.id, c.root_dir or "none"))
-  end
-end, { desc = "Show LSP clients attached to current buffer" })
-
+vim.api.nvim_create_user_command("LspInfo", "checkhealth vim.lsp", {
+  desc = "Show LSP health and attached clients",
+})
 vim.api.nvim_create_user_command("LspLog", function()
   vim.cmd.edit(vim.lsp.log.get_filename())
-end, { desc = "Open LSP log file" })
+end, { desc = "Open the LSP log" })
 
-vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "lsp: hover" })
 vim.keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "lsp: rename" })
-vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "lsp: show full error" })
-vim.keymap.set("n", "]e", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "lsp: next error" })
-vim.keymap.set("n", "[e", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "lsp: previous error" })
+vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "lsp: show diagnostic" })
+vim.keymap.set("n", "]e", function()
+  vim.diagnostic.jump({ count = 1 })
+end, { desc = "lsp: next diagnostic" })
+vim.keymap.set("n", "[e", function()
+  vim.diagnostic.jump({ count = -1 })
+end, { desc = "lsp: previous diagnostic" })
 vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<CR>", { desc = "lsp: references" })
 vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", { desc = "lsp: implementation" })
 vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", { desc = "lsp: definition" })
 vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "lsp: code action" })
-vim.keymap.set("n", "<leader>=", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { desc = "format code" })
