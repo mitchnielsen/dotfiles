@@ -9,7 +9,6 @@ local options = {
   timeoutlen = 400,
   pumheight = 20,
   pumborder = "rounded",
-  list = false,
   listchars = { tab = "▸ ", trail = "·" },
   winborder = "rounded",
   shortmess = "CFOSWaco", -- Disable some built-in completion messages
@@ -22,17 +21,12 @@ local options = {
   smartindent = true,
   breakindent = true,
   breakindentopt = "list:-1", -- Add padding for lists (if 'wrap' is set)
-  autoindent = true,
 
   -- Editing
   termguicolors = true,
   number = true,
-  relativenumber = false,
   showmode = false,
-  fileformat = "unix",
   formatoptions = "rqnl1j", -- Improve comment editing
-  paste = false,
-  errorbells = false,
   mouse = "a",
   swapfile = false,
   scrolloff = 5,
@@ -40,18 +34,11 @@ local options = {
   ignorecase = true,
   smartcase = true,
   infercase = true, -- Infer case in built-in completion
-  inccommand = "nosplit", -- see subsitutions in realtime
-  wildmenu = true, -- Autocomplete filenames,
   wildignore = "*.o,*.hi,*.pyc",
-  updatetime = 100, -- update interval for gitsigns
   splitbelow = true,
   splitright = true,
-  diffopt = "vertical",
   cursorline = true,
   cursorlineopt = "screenline,number", -- Highlight per screen line and number
-  cursorcolumn = false,
-  conceallevel = 0,
-  iskeyword = "@,48-57,192-255", -- Characters that form keywords (includes dash)
   splitkeep = "screen", -- Reduce scroll during window split
 
   -- Pattern for a start of numbered list (used in `gw`). This reads as
@@ -80,6 +67,9 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.opt.diffopt:append("vertical")
+vim.opt.iskeyword:append("-")
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
@@ -127,16 +117,7 @@ vim.opt.wildignore:append({
   "zellner.vim",
 })
 
--- Show terminal how to render certain icons
-vim.cmd([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
-vim.cmd([[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]])
-
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
-
--- Enable spell check
-vim.opt.spell = false
+-- Spell checking
 vim.opt.spelllang = { "en_us" }
 vim.opt.spelloptions = "camel" -- Treat camelCase as separate words for spell checking
 
@@ -146,17 +127,17 @@ local disabled_built_ins = {
   "zipPlugin",
   "tar",
   "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
   "2html_plugin",
-  "logipat",
-  "rrhelper",
   "spellfile_plugin",
   "matchit",
 }
 
-for _, plugin in pairs(disabled_built_ins) do
+for _, plugin in ipairs(disabled_built_ins) do
   vim.g["loaded_" .. plugin] = 1
 end
+
+-- No configured plugins use remote providers.
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
