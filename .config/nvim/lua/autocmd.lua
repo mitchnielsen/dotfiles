@@ -9,26 +9,23 @@ autocmd("BufEnter", {
   command = "set fo-=c fo-=r fo-=o",
 })
 
--- Set up custom filetypes before plugins load for LSP to load correct providers
+-- Set up custom filetypes before plugins load so LSPs attach correctly.
 vim.filetype.add({
-  filename = {
-    ["go.work"] = "gowork",
-  },
   extension = {
     tmpl = "gotmpl",
   },
 })
 
--- Filetype-based mappings
+-- Syntax overrides
 
 autocmd({ "BufNewFile", "BufEnter" }, {
-  pattern = { "*.tpl", "*.yaml", "*.yml" },
+  pattern = "*.tpl",
   command = "set syntax=yaml",
   group = augroup("YAML", { clear = true }),
 })
 
 autocmd({ "BufNewFile", "BufEnter" }, {
-  pattern = { "*.json", "*.jsonc", "*.jsonnet" },
+  pattern = "*.jsonnet",
   command = "set syntax=json",
   group = augroup("JSON", { clear = true }),
 })
@@ -40,15 +37,30 @@ autocmd({ "BufNewFile", "BufEnter" }, {
 })
 
 autocmd({ "BufNewFile", "BufEnter" }, {
-  pattern = { "*.md.tmpl" },
+  pattern = "*.md.tmpl",
   command = "set syntax=markdown",
   group = augroup("markdown", { clear = true }),
 })
 
+local spell_filetypes = {
+  gitcommit = true,
+  gitrebase = true,
+  markdown = true,
+  text = true,
+}
+local spell_group = augroup("Spell", { clear = true })
+
 autocmd("FileType", {
-  pattern = { "*.txt", "*.md", "gitcommit", "gitrebase" },
-  command = "setlocal spell textwidth=72 comments=fb:>,fb:*,fb:+,fb:-",
-  group = augroup("Spell", { clear = true }),
+  pattern = vim.tbl_keys(spell_filetypes),
+  command = "setlocal textwidth=72 comments=fb:>,fb:*,fb:+,fb:-",
+  group = spell_group,
+})
+
+autocmd({ "FileType", "BufWinEnter" }, {
+  callback = function()
+    vim.wo.spell = spell_filetypes[vim.bo.filetype] or false
+  end,
+  group = spell_group,
 })
 
 -- Use internal formatting for bindings like gq.
@@ -56,10 +68,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     vim.bo[args.buf].formatexpr = nil
   end,
-})
-
--- Adjust to Makefile's weird use of tabs.
-autocmd("FileType", {
-  pattern = "Makefile.*",
-  command = vim.cmd("setlocal noexpandtab"),
 })
