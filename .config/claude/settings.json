@@ -79,6 +79,7 @@
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "editorMode": "vim",
+  "outputStyle": "Concise",
   "preferredNotifChannel": "notifications_disabled",
   "terminalProgressBarEnabled": false,
   "feedbackSurveyState": {
