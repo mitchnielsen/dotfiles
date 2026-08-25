@@ -8,6 +8,7 @@ export KEYTIMEOUT=1 # Disable lag when using vi-mode
 
 # Utilities
 export XDG_CONFIG_HOME="$HOME/.config"
+export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi"
 export CODEX_HOME="$XDG_CONFIG_HOME/codex"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
