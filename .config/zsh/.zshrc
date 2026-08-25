@@ -15,11 +15,6 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export MISE_GLOBAL_CONFIG_FILE="$HOME/dotfiles/.config/mise/config.toml"
 export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
-# clarity theme for fzf — palette follows macOS appearance at shell startup.
-# Helper paints explicit hex (not -1 / ANSI slots) because tmux caches its
-# resolved default-bg at server startup, so popups won't track an appearance
-# change without an explicit fzf bg.
-source "${HOME}/dotfiles/bin/fzf-clarity-opts"
 export BAT_THEME="ansi"
 export MANPAGER='nvim +Man!'
 
