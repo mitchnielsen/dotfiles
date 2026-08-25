@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.1",
+  "lastChangelogVersion": "0.84.3",
   "quietStartup": true,
   "collapseChangelog": true,
   "skills": [
@@ -10,7 +10,8 @@
   ],
   "packages": [
     "npm:pi-mcp-adapter",
-    "git:git@github.com:prefecthq/internal-skills.git"
+    "git:git@github.com:prefecthq/internal-skills.git",
+    "npm:pi-subagents"
   ],
   "themes": [
     "~/.config/pi/themes"
