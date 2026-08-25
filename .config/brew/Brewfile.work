@@ -47,7 +47,7 @@ brew "libpq"
 # Open source suite of directory software
 brew "openldap"
 # Object-relational database system
-brew "postgresql@14"
+brew "postgresql@18"
 # Work with remote images registries
 brew "skopeo"
 # Tail multiple Kubernetes pods & their containers
@@ -76,8 +76,6 @@ cask "beekeeper-studio"
 cask "codex"
 # System-wide AI autocomplete
 cask "cotypist"
-# Write, edit, and chat about your code with AI
-cask "cursor"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
 # Web browser
