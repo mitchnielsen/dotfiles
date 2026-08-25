@@ -246,6 +246,8 @@ cask "neovide-app"
 cask "netnewswire"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Replacement for Docker Desktop
+cask "orbstack"
 # WebKit based web browser
 cask "orion"
 # Control your tools with a few keystrokes
