@@ -17,6 +17,9 @@ export MISE_GLOBAL_CONFIG_FILE="$HOME/dotfiles/.config/mise/config.toml"
 export FZF_DEFAULT_COMMAND="rg --ignore-file=${HOME}/.config/ripgrep/.ignore"
 export BAT_THEME="ansi"
 export MANPAGER='nvim +Man!'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
 # For building dependencies
 export LDFLAGS="-L/opt/homebrew/opt/openssl/lib -L/opt/homebrew/opt/libpq/lib"
@@ -31,35 +34,19 @@ export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-# zsh
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=white,underline"
-
-# Claude
-export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
-
-# Work-specific settings
-if [ ! -f "${HOME}/.personal_device_marker" ]; then
-  # pi
-  export PI_CODING_AGENT_DIR="${HOME}/.config/pi"
-
-  # Docker
-  export DOCKER_HOST="unix://${HOME}/.docker/run/docker.sock"
-  export DOCKER_DEFAULT_PLATFORM=linux/amd64
-
-  # 1Password environment variables (refresh with `op-env-refresh`)
-  if [ -d "${HOME}/.config/op-env" ]; then
-    set -a
-    for _openv in "${HOME}"/.config/op-env/*.env(N); do
-      source "$_openv"
-    done
-    unset _openv
-    set +a
-  fi
-
-  # gcloud PATH (only present on work machines with gcloud installed)
-  [[ -f "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc" ]] && \
-    source "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc"
+# 1Password environment variables (refresh with `op-env-refresh`)
+if [ -d "${HOME}/.config/op-env" ]; then
+  set -a
+  for _openv in "${HOME}"/.config/op-env/*.env(N); do
+    source "$_openv"
+  done
+  unset _openv
+  set +a
 fi
+
+# gcloud PATH (only present on work machines with gcloud installed)
+[[ -f "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc" ]] && \
+  source "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc"
 
 # ===================
 # Settings
@@ -100,10 +87,6 @@ bindkey '^E' end-of-line
 
 source "${HOME}/.config/zsh/functions.sh"
 source "${HOME}/.config/zsh/aliases.sh"
-
-# Caching helper + lazy-loaded integrations (fzf, direnv, mise, wt, thefuck,
-# gcloud). See lazy.sh for details. Exposes `_cached_eval` for the starship
-# init below, which must run after the syntax-highlighting plugins.
 source "${HOME}/.config/zsh/lazy.sh"
 
 # Load compinit early with -C (skip security checks) so gcloud doesn't re-init
@@ -117,7 +100,6 @@ fi
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export GCLOUD_SOURCED=True
 
-# Load completions, then map aliases
 compdef g=git
 
 kubectl() {
@@ -141,8 +123,6 @@ bindkey '^[[B' history-substring-search-down
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# disable cursor style changes, just use the block
-ZVM_CURSOR_STYLE_ENABLED=false
 source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source /opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
@@ -150,11 +130,6 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 setopt HIST_IGNORE_ALL_DUPS # history substring search: ignore dups
 
 typeset -A ZSH_HIGHLIGHT_STYLES
-# To differentiate aliases from other command types
 ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
-# To have paths colored instead of underlined
-ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
-# To disable highlighting of globbing expressions
-ZSH_HIGHLIGHT_STYLES[globbing]='none'
 
 _cached_eval starship /opt/homebrew/bin/starship starship init zsh
