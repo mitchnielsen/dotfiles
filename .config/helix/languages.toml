@@ -1,4 +1,0 @@
-[[language]]
-name = "go"
-file-types = ["go", "tpl"]
-indent = { tab-width = 2, unit = "  " }

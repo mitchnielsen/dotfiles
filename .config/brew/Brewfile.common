@@ -5,7 +5,6 @@ tap "agavra/tap", trusted: true
 tap "anomalyco/tap", "https://github.com/anomalyco/homebrew-tap.git"
 tap "epk/epk", trusted: true
 tap "go-task/tap", trusted: true
-tap "helix-editor/helix"
 tap "morantron/tmux-fingers", trusted: true
 tap "wtfox/tap", trusted: true
 # Static analysis and lint tool, for (ba)sh scripts
@@ -76,8 +75,6 @@ brew "graphviz"
 brew "hadolint"
 # Grammar Checker for Developers
 brew "harper"
-# Post-modern modal text editor
-brew "helix"
 # Agent multiplexer that lives in your terminal
 brew "herdr"
 # Improved top (interactive process viewer)
