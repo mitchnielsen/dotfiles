@@ -9,7 +9,7 @@ name = "terminal"
 [keys]
 prefix = "ctrl+b"
 help = "prefix+?"
-settings = "prefix+;"
+settings = "prefix+."
 detach = "prefix+d"
 reload_config = "prefix+r"
 copy_mode = "prefix+["
@@ -20,7 +20,6 @@ workspace_picker = ["prefix+s", "cmd+o"]
 goto = "prefix+ctrl+g"
 new_workspace = "prefix+shift+n"
 rename_workspace = "prefix+$"
-close_workspace = "prefix+shift+d"
 previous_workspace = "cmd+shift+["
 next_workspace = "cmd+shift+]"
 
@@ -30,10 +29,8 @@ rename_tab = "prefix+,"
 previous_tab = "prefix+p"
 next_tab = "prefix+n"
 switch_tab = ["prefix+1..9", "cmd+1..9"]
-close_tab = ["prefix+shift+x"]
 
 # Panes
-rename_pane = "prefix+shift+p"
 focus_pane_left = "prefix+h"
 focus_pane_down = "prefix+j"
 focus_pane_up = "prefix+k"
@@ -42,10 +39,9 @@ swap_pane_left = "prefix+shift+h"
 swap_pane_down = "prefix+shift+j"
 swap_pane_up = "prefix+shift+k"
 swap_pane_right = "prefix+shift+l"
-cycle_pane_previous = "prefix+shift+tab"
 split_vertical = ["cmd+s", "prefix+v", "prefix+percent"]
 split_horizontal = ["cmd+i", "prefix+minus", "prefix+double_quote"]
-close_pane = ["prefix+x", "cmd+x", "cmd+w"]
+close_pane = ["prefix+x", "cmd+w"]
 zoom = "prefix+z"
 resize_mode = "prefix+shift+r"
 toggle_sidebar = "cmd+b"
