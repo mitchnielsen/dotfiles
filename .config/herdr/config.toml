@@ -4,22 +4,9 @@
 onboarding = false
 
 [theme]
-# Use the terminal theme so Herdr follows Ghostty's clarity-light/dark ANSI palette.
 name = "terminal"
 
-# Clarity overrides on top of the terminal palette.
-auto_switch = false
-[theme.custom]
-panel_bg = "reset"
-accent = "blue"
-blue = "blue"
-green = "green"
-red = "red"
-yellow = "yellow"
-
 [keys]
-# Accepted key syntax: plain keys, ctrl/shift/alt/cmd/super modifiers, and special keys like enter/tab/esc/left/right/up/down.
-# Named punctuation such as minus, comma, percent, double_quote, ampersand, plus, and backtick is also accepted.
 prefix = "ctrl+b"
 help = "prefix+?"
 settings = "prefix+;"
@@ -38,11 +25,11 @@ previous_workspace = "cmd+shift+["
 next_workspace = "cmd+shift+]"
 
 # Tabs
-new_tab = "prefix+c"
+new_tab = ["prefix+c", "cmd+t"]
 rename_tab = "prefix+,"
 previous_tab = "prefix+p"
 next_tab = "prefix+n"
-switch_tab = "prefix+1..9"
+switch_tab = ["prefix+1..9", "cmd+1..9"]
 close_tab = ["prefix+shift+x"]
 
 # Panes
@@ -62,16 +49,6 @@ close_pane = ["prefix+x", "cmd+x", "cmd+w"]
 zoom = "prefix+z"
 resize_mode = "prefix+shift+r"
 toggle_sidebar = "cmd+b"
-
-[[keys.command]]
-key = "prefix+g"
-type = "pane"
-command = "lazygit"
-
-[[keys.command]]
-key = "prefix+o"
-type = "pane"
-command = "zsh -lc 'cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .'"
 
 [ui]
 prompt_new_tab_name = true
