@@ -75,8 +75,8 @@ require("mini.statusline").setup({
   },
 })
 
--- use winbar for file info, global statusline for split separation
-vim.o.laststatus = 3
+-- Show file info once, at the top of each window.
+vim.o.laststatus = 0
 vim.o.winbar = "%!v:lua.MiniStatusline.active()"
 
 -- highlight trailing spaces
