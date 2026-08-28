@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+tab_id=$(herdr pane current | jq -er '.result.pane.tab_id')
+tab_name=$(herdr tab get "$tab_id" | jq -er '.result.tab.label')
+session_id="herdr-${tab_id//:/-}"
+
+exec pi --session-id "$session_id" --name "$tab_name" "$@"
