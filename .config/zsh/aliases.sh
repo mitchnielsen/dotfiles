@@ -26,6 +26,7 @@ alias cdw='cd $(find ../ -maxdepth 1 -type d | sort -u | fzf)'
 alias note='(cd /Users/mitch/code/github.com/mitchnielsen/notes && nvim .)'
 alias rg='rg --ignore-file=$HOME/.config/ripgrep/.ignore'
 alias python-venv='if [ ! -f ./.venv/bin/activate ]; then echo Creating virtualenv...; uv venv $([ -f ./.python-version ] || echo --python 3.12); fi; source .venv/bin/activate'
+alias qq='pi -p --model openai-codex/gpt-5.6-luna:medium "This is a quick question. Minimize the amount of additional context you pull in and reply succinctly. Question:"'
 
 ## Worktrees
 alias wts='wt switch'           # usage: `wts` (opens picker) or `wts <branch name>`
