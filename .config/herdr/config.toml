@@ -22,6 +22,7 @@ new_workspace = "prefix+shift+n"
 rename_workspace = "prefix+$"
 previous_workspace = "cmd+shift+["
 next_workspace = "cmd+shift+]"
+switch_workspace = "prefix+shift+1..9"
 
 # Tabs
 new_tab = ["prefix+c", "cmd+t"]
