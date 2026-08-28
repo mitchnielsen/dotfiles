@@ -2,6 +2,8 @@
 # https://ghostty.zerebos.com
 
 theme = Nordfox
+background-opacity = 0.975
+background-blur = macos-glass-clear
 
 # Font settings
 font-size = 14

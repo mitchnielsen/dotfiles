@@ -9,4 +9,10 @@ vim.pack.add({
   "https://github.com/oskarnurm/koda.nvim",
 }, { confirm = false })
 
+require("nightfox").setup({
+  options = {
+    transparent = true,
+  },
+})
+
 vim.cmd.colorscheme("nordfox")
