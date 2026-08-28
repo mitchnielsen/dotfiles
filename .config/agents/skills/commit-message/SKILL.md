@@ -61,6 +61,21 @@ changes. Focus on context a reviewer would not get from reading the code:
 - Alternatives rejected
 - Anything surprising discovered along the way
 
+### Shell-safe formatting
+
+Pass each commit-message paragraph as a separate `-m` argument:
+
+```bash
+git commit \
+  -m "fix(deps): respect requirement constraints" \
+  -m "Regenerate the lockfile so its pins satisfy the manifest constraints." \
+  -m "Related to #131"
+```
+
+Never put `\n` or `\n\n` inside a normal quoted `-m` argument. Shells pass
+those characters literally, so they appear in the commit message instead of
+creating line breaks.
+
 ### What NOT to include
 
 - No checklists or file lists (change lists are fine).
