@@ -24,9 +24,6 @@ quit-after-last-window-closed = true
 config-file = herdr
 # config-file = tmux
 
-# Edit scrollback.
-keybind = cmd+y=write_scrollback_file:open
-
 # Other settings
 alpha-blending = linear-corrected
 mouse-hide-while-typing = "true"

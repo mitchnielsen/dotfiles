@@ -13,7 +13,7 @@ settings = "prefix+."
 detach = "prefix+d"
 reload_config = "prefix+r"
 copy_mode = "prefix+["
-edit_scrollback = ["prefix+e", "prefix+ctrl+e"]
+edit_scrollback = ["cmd+e", "prefix+e", "prefix+ctrl+e"]
 
 # Workspaces
 workspace_picker = ["prefix+s", "cmd+o"]
