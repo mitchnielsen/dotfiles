@@ -8,7 +8,6 @@
     "commit": "",
     "pr": ""
   },
-  "tui": "fullscreen",
   "permissions": {
     "allow": [
       "Bash",
@@ -34,6 +33,7 @@
       "EnterWorktree"
     ]
   },
+  "model": "fable[1m]",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "SessionStart": [
@@ -74,12 +74,13 @@
       }
     }
   },
+  "outputStyle": "Concise",
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": false,
+  "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "editorMode": "vim",
-  "outputStyle": "Concise",
   "preferredNotifChannel": "notifications_disabled",
   "terminalProgressBarEnabled": false,
   "feedbackSurveyState": {
