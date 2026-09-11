@@ -20,7 +20,8 @@ quit-after-last-window-closed = true
 
 # Keybindings
 config-file = herdr
-# config-file = tmux
+# Clear the screen.
+keybind = cmd+k=text:\x0c
 
 # Other settings
 alpha-blending = linear-corrected
