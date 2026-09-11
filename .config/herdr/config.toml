@@ -18,7 +18,7 @@ edit_scrollback = ["cmd+e", "prefix+e", "prefix+ctrl+e"]
 # Workspaces
 workspace_picker = ["prefix+s", "cmd+o"]
 goto = "prefix+ctrl+g"
-new_workspace = "prefix+shift+n"
+new_workspace = ["prefix+shift+n", "cmd+n"]
 rename_workspace = "prefix+$"
 previous_workspace = "cmd+shift+["
 next_workspace = "cmd+shift+]"

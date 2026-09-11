@@ -3,6 +3,7 @@
 # Forward shortcuts that Ghostty binds by default.
 keybind = cmd+t=unbind
 keybind = cmd+w=unbind
+keybind = cmd+n=unbind
 keybind = cmd+shift+[=unbind
 keybind = cmd+shift+]=unbind
 keybind = cmd+1=unbind
