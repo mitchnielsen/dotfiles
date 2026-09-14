@@ -88,8 +88,6 @@ cask "loom"
 cask "meetingbar"
 # Command-line interface for Notion
 cask "notion-cli"
-# Zero trust network as a service client
-cask "perimeter81"
 # HTTP client that helps testing and describing APIs
 cask "rapidapi"
 # Plugin for AWS CLI to start and end sessions that connect to managed instances
