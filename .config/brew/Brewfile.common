@@ -2,9 +2,7 @@
 # Included by Brewfile -- do not run `brew bundle` against this file directly.
 
 tap "agavra/tap", trusted: true
-tap "anomalyco/tap", "https://github.com/anomalyco/homebrew-tap.git"
 tap "epk/epk", trusted: true
-tap "go-task/tap", trusted: true
 tap "morantron/tmux-fingers", trusted: true
 tap "wtfox/tap", trusted: true
 # Static analysis and lint tool, for (ba)sh scripts
@@ -203,8 +201,6 @@ brew "zsh-syntax-highlighting"
 brew "zsh-vi-mode"
 # Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
 brew "agavra/tap/tuicr"
-# A fast, cross-platform build tool inspired by Make, designed for modern workflows.
-brew "go-task/tap/go-task"
 # mouseless terminal interaction
 brew "morantron/tmux-fingers/tmux-fingers"
 # jf prints out dotted paths to the given value for a given json file
