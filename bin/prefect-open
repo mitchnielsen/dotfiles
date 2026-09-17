@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+
+# Selects a Prefect profile with fzf and opens its UI URL.
+
+import subprocess
+from pathlib import Path
+from urllib.parse import urlsplit, urlunsplit
+
+import tomllib
+
+
+def browser_url(api_url: str) -> str:
+    parts = urlsplit(api_url)
+    host = parts.netloc
+    if host.startswith("api."):
+        host = f"app.{host.removeprefix('api.')}"
+    else:
+        host = host.replace("-api.", "-ui.", 1)
+
+    path = parts.path.replace("/api/accounts/", "/account/", 1)
+    path = path.replace("/workspaces/", "/workspace/", 1)
+    return urlunsplit(parts._replace(netloc=host, path=path))
+
+
+def main() -> None:
+    profiles_path = Path.home() / ".prefect" / "profiles.toml"
+    with profiles_path.open("rb") as profiles_file:
+        profiles = tomllib.load(profiles_file).get("profiles", {})
+
+    choices = [
+        name for name, profile in profiles.items() if profile.get("PREFECT_API_URL")
+    ]
+    if not choices:
+        raise SystemExit(f"No API URLs found in {profiles_path}")
+
+    result = subprocess.run(
+        ["fzf", "--prompt=Prefect profile: "],
+        input="\n".join(choices),
+        stdout=subprocess.PIPE,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0 or not result.stdout:
+        return
+
+    profile_name = result.stdout.rstrip("\n")
+    url = browser_url(profiles[profile_name]["PREFECT_API_URL"])
+    subprocess.run(["open", url], check=True)
+
+
+if __name__ == "__main__":
+    main()
