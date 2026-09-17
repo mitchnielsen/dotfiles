@@ -21,6 +21,18 @@ key_repeat = 2
   CGDisableCursorLocationMagnification = true
 }
 
+[[bootstrap.macos.defaults_entries]]
+domain = "NSGlobalDomain"
+key = "NSStatusItemSpacing"
+host = "current"
+value = 6
+
+[[bootstrap.macos.defaults_entries]]
+domain = "NSGlobalDomain"
+key = "NSStatusItemSelectionPadding"
+host = "current"
+value = 6
+
 [tasks.setup]
 description = "Run full machine bootstrap"
 run = '''
@@ -116,6 +128,7 @@ chflags nohidden "$HOME/Library"
 killall Dock >/dev/null 2>&1 || true
 killall Finder >/dev/null 2>&1 || true
 killall SystemUIServer >/dev/null 2>&1 || true
+killall ControlCenter >/dev/null 2>&1 || true
 '''
 
 [tasks."ssh:permissions"]
