@@ -76,6 +76,7 @@
   "outputStyle": "Concise",
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": false,
+  "syncClaudeAiSkills": false,
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
