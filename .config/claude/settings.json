@@ -33,7 +33,6 @@
       "EnterWorktree"
     ]
   },
-  "model": "fable[1m]",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "SessionStart": [
