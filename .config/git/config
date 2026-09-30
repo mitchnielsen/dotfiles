@@ -50,6 +50,7 @@
   context = 5
   interHunkContext = 10
   renames = copies
+  external = difft # use difftastic
 [merge]
   conflictStyle = diff3 # more context in diffs, was zdiff3 but delta recommends diff3
 [delta]
