@@ -1,7 +1,7 @@
 # https://ghostty.org/docs/config/reference
 # https://ghostty.zerebos.com
 
-theme = Nordfox
+theme = clarity-light
 
 # Font settings
 font-size = 14

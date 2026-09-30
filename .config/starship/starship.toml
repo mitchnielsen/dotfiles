@@ -16,13 +16,33 @@ package = { disabled = true }
 ruby = { disabled = true }
 username = { disabled = true }
 
-palette = "nordfox"
+# palette = ""
 
-[palettes.nordfox]
-red = "#bf616a"
-green = "#a3be8c"
-purple = "#b48ead"
-yellow = "#ebcb8b"
+[palettes.nord]
+black = "#2E3440"
+white = "#D8DEE9"
+gray = "#4C566A"
+red = "#BF616A"
+green = "#A3BE8C"
+yellow = "#EBCB8B"
+orange = "#D08770"
+blue = "#81A1C1"
+cyan = "#8FBCBB"
+purple = "#B48EAD"
+surface = "#3B4252"
+
+[palettes.nordic]
+black = "#191D24"
+white = "#C0C8D8"
+gray = "#60728A"
+red = "#BF616A"
+green = "#A3BE8C"
+yellow = "#EBCB8B"
+orange = "#D08770"
+blue = "#81A1C1"
+cyan = "#8FBCBB"
+purple = "#B48EAD"
+surface = "#2E3440"
 
 [fill]
 disabled = true
@@ -79,7 +99,7 @@ format = '[[($all_status$ahead_behind )](fg:cyan)]($style)'
 ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-style = "bg:#39404f"
+style = "bg:surface"
 stashed = "≡"
 
 [git_branch]
