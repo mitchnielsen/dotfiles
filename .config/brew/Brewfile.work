@@ -50,6 +50,8 @@ brew "openldap"
 brew "postgresql@18"
 # Work with remote images registries
 brew "skopeo"
+# Kubernetes TUI, reimagined in Rust
+brew "sofka"
 # Tail multiple Kubernetes pods & their containers
 brew "stern"
 # Pluggable Terraform linter

@@ -1,0 +1,13 @@
+---
+hide_header: true
+detail_wrap: true
+favorite_namespaces:
+  - kube-system
+  - monitoring
+  - cloud2
+aliases:
+  dep: deployments
+  po: pods
+views:
+  "*":
+    sort: "AGE:desc"
