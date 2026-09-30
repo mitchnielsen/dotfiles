@@ -5,6 +5,7 @@ vim.pack.add({
   "https://github.com/navarasu/onedark.nvim",
   "https://github.com/oskarnurm/koda.nvim",
   "https://github.com/rmehri01/onenord.nvim",
+  "https://github.com/AlexvZyl/nordic.nvim",
 }, { confirm = false })
 
 require("nightfox").setup({

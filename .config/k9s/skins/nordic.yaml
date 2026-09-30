@@ -1,0 +1,119 @@
+# -----------------------------------------------------------------------------
+# Nordic skin
+# https://github.com/AlexvZyl/nordic.nvim
+# -----------------------------------------------------------------------------
+
+foreground: &foreground "#C0C8D8"
+background: &background default
+black: &black "#191D24"
+selection: &selection "#3B4252"
+muted: &muted "#60728A"
+border: &border "#4C566A"
+red: &red "#C5727A"
+green: &green "#A3BE8C"
+yellow: &yellow "#EBCB8B"
+orange: &orange "#D08770"
+blue: &blue "#81A1C1"
+blueBright: &blueBright "#88C0D0"
+cyan: &cyan "#8FBCBB"
+cyanBright: &cyanBright "#9FC6C5"
+magenta: &magenta "#B48EAD"
+
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *blueBright
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *orange
+  info:
+    fgColor: *muted
+    sectionColor: *blue
+  help:
+    fgColor: *foreground
+    bgColor: *background
+    keyColor: *cyan
+    numKeyColor: *cyanBright
+    sectionColor: *yellow
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: *foreground
+    buttonBgColor: *blue
+    buttonFocusFgColor: *black
+    buttonFocusBgColor: *blueBright
+    labelFgColor: *orange
+    fieldFgColor: *foreground
+  frame:
+    border:
+      fgColor: *border
+      focusColor: *blueBright
+    menu:
+      fgColor: *foreground
+      keyColor: *cyan
+      numKeyColor: *yellow
+    crumbs:
+      fgColor: *black
+      bgColor: *blue
+      activeColor: *blueBright
+    status:
+      newColor: *cyanBright
+      modifyColor: *blue
+      addColor: *green
+      pendingColor: *yellow
+      errorColor: *red
+      highlightColor: *orange
+      killColor: *red
+      completedColor: *muted
+    title:
+      fgColor: *foreground
+      bgColor: *background
+      highlightColor: *orange
+      counterColor: *magenta
+      filterColor: *cyan
+  views:
+    charts:
+      bgColor: *background
+      defaultDialColors:
+        - *blueBright
+        - *red
+      defaultChartColors:
+        - *blueBright
+        - *green
+        - *yellow
+        - *red
+    table:
+      fgColor: *foreground
+      bgColor: *background
+      cursorFgColor: *foreground
+      cursorBgColor: *selection
+      markColor: *yellow
+      header:
+        fgColor: *blue
+        bgColor: *background
+        sorterColor: *cyan
+    xray:
+      fgColor: *foreground
+      bgColor: *background
+      cursorColor: *selection
+      graphicColor: *blueBright
+      showIcons: false
+    yaml:
+      keyColor: *cyan
+      colonColor: *muted
+      valueColor: *foreground
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *blueBright
+        bgColor: *background
+        toggleOnColor: *green
+        toggleOffColor: *muted
+    help:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *blueBright
