@@ -8,7 +8,7 @@
       "type": "http",
       "url": "https://mcp.notion.com/mcp"
     },
-    "incident.io": {
+    "incidentio": {
       "type": "http",
       "url": "https://mcp.incident.io/mcp"
     },

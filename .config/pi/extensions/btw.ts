@@ -1,6 +1,4 @@
 import {
-  buildSessionContext,
-  codingTools,
   createAgentSession,
   createExtensionRuntime,
   getMarkdownTheme,
@@ -11,8 +9,8 @@ import {
   type ExtensionCommandContext,
   type ExtensionContext,
   type ResourceLoader,
-} from "@mariozechner/pi-coding-agent";
-import { type AssistantMessage, type Message, type ThinkingLevel as AiThinkingLevel } from "@mariozechner/pi-ai";
+} from "@earendil-works/pi-coding-agent";
+import { type AssistantMessage, type Message, type ThinkingLevel as AiThinkingLevel } from "@earendil-works/pi-ai/compat";
 import {
   Container,
   Input,
@@ -23,7 +21,7 @@ import {
   type KeybindingsManager,
   type OverlayHandle,
   type TUI,
-} from "@mariozechner/pi-tui";
+} from "@earendil-works/pi-tui";
 
 const BTW_ENTRY_TYPE = "btw-thread-entry";
 const BTW_RESET_TYPE = "btw-thread-reset";
@@ -94,8 +92,9 @@ function createBtwResourceLoader(ctx: ExtensionContext, appendSystemPrompt: stri
     getThemes: () => ({ themes: [], diagnostics: [] }),
     getAgentsFiles: () => ({ agentsFiles: [] }),
     getSystemPrompt: () => systemPrompt,
+    getSystemPromptSource: () => undefined,
     getAppendSystemPrompt: () => appendSystemPrompt,
-    getPathMetadata: () => new Map(),
+    getAppendSystemPromptSources: () => [],
     extendResources: () => { },
     reload: async () => { },
   };
@@ -141,13 +140,6 @@ function getLastAssistantMessage(session: AgentSession): AssistantMessage | null
 
 function buildSeedMessages(ctx: ExtensionContext, thread: BtwDetails[]): Message[] {
   const seed: Message[] = [];
-
-  try {
-    const contextMessages = buildSessionContext(ctx.sessionManager.getEntries(), ctx.sessionManager.getLeafId()).messages;
-    seed.push(...contextMessages);
-  } catch {
-    // Ignore context seed failures and continue with an empty side thread.
-  }
 
   for (const item of thread) {
     seed.push(
@@ -242,7 +234,7 @@ class BtwOverlay extends Container implements Focusable {
   }
 
   handleInput(data: string): void {
-    if (this.keybindings.matches(data, "selectCancel")) {
+    if (this.keybindings.matches(data, "tui.select.cancel")) {
       this.onDismissCallback();
       return;
     }
@@ -556,19 +548,18 @@ export default function(pi: ExtensionAPI) {
       return null;
     }
 
+    const sessionManager = SessionManager.inMemory(ctx.cwd, undefined, ctx.sessionManager.getBranch());
+    for (const message of buildSeedMessages(ctx, thread)) {
+      sessionManager.appendMessage(message);
+    }
+
     const { session } = await createAgentSession({
-      sessionManager: SessionManager.inMemory(),
+      sessionManager,
       model: ctx.model,
-      modelRegistry: ctx.modelRegistry as AgentSession["modelRegistry"],
       thinkingLevel: pi.getThinkingLevel() as SessionThinkingLevel,
-      tools: codingTools,
+      tools: ["read", "bash", "edit", "write"],
       resourceLoader: createBtwResourceLoader(ctx),
     });
-
-    const seedMessages = buildSeedMessages(ctx, thread);
-    if (seedMessages.length > 0) {
-      session.agent.replaceMessages(seedMessages as typeof session.state.messages);
-    }
 
     const unsubscribe = session.subscribe((event: AgentSessionEvent) => {
       if (!sideBusy || !pendingQuestion) {
@@ -662,7 +653,6 @@ export default function(pi: ExtensionAPI) {
         return;
       }
       runtime.closed = true;
-      runtime.handle?.hide();
       if (overlayRuntime === runtime) {
         overlayRuntime = null;
       }
@@ -740,15 +730,14 @@ export default function(pi: ExtensionAPI) {
       throw new Error("No active model selected.");
     }
 
-    const apiKey = await ctx.modelRegistry.getApiKey(model);
-    if (!apiKey) {
-      throw new Error(`No credentials available for ${model.provider}/${model.id}.`);
+    const auth = await ctx.modelRegistry.getApiKeyAndHeaders(model);
+    if (!auth.ok) {
+      throw new Error(auth.error);
     }
 
     const { session } = await createAgentSession({
       sessionManager: SessionManager.inMemory(),
       model,
-      modelRegistry: ctx.modelRegistry as AgentSession["modelRegistry"],
       thinkingLevel: "off",
       tools: [],
       resourceLoader: createBtwResourceLoader(ctx, [BTW_SUMMARY_PROMPT]),
@@ -825,11 +814,10 @@ export default function(pi: ExtensionAPI) {
       return;
     }
 
-    const apiKey = await ctx.modelRegistry.getApiKey(model);
-    if (!apiKey) {
-      const message = `No credentials available for ${model.provider}/${model.id}.`;
-      setOverlayStatus(message);
-      notify(ctx, message, "error");
+    const auth = await ctx.modelRegistry.getApiKeyAndHeaders(model);
+    if (!auth.ok) {
+      setOverlayStatus(auth.error);
+      notify(ctx, auth.error, "error");
       return;
     }
 
@@ -946,10 +934,6 @@ export default function(pi: ExtensionAPI) {
   });
 
   pi.on("session_start", async (_event, ctx) => {
-    await restoreThread(ctx);
-  });
-
-  pi.on("session_switch", async (_event, ctx) => {
     await restoreThread(ctx);
   });
 
