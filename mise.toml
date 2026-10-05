@@ -71,34 +71,16 @@ set -euo pipefail
 eval "$(/opt/homebrew/bin/brew shellenv)"
 out="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew/Brewfile.snapshot"
 brew bundle dump --force --file="$out"
-echo "Wrote $out. Run 'mise run homebrew:drift' to see just what's new, then move those entries into the right file by hand -- do not overwrite the tracked files directly."
+echo "Wrote $out. Run 'mise run homebrew:drift' for a typed drift report, or run /brew-adopt in Pi to adopt entries into the split Brewfiles."
 '''
 
 [tasks."homebrew:drift"]
-description = "Diff installed Homebrew state against the tracked Brewfiles"
-run = '''
-set -euo pipefail
+description = "Diff installed Homebrew state against the active split Brewfile"
+run = "./bin/brew-drift-manifest"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-brew_dir="${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/brew"
-
-snapshot="$brew_dir/Brewfile.snapshot"
-brew bundle dump --force --file="$snapshot"
-
-installed=$(mktemp)
-tracked=$(mktemp)
-trap 'rm -f "$installed" "$tracked"' EXIT
-
-brew bundle list --file="$snapshot" --all | sort -u > "$installed"
-brew bundle list --file="$brew_dir/Brewfile" --all | sort -u > "$tracked"
-
-echo "== Installed but not tracked in Brewfile (common + machine overlay) =="
-comm -23 "$installed" "$tracked"
-
-echo
-echo "== Tracked but not currently installed =="
-comm -13 "$installed" "$tracked"
-'''
+[tasks."homebrew:drift:manifest"]
+description = "Emit structured Homebrew drift data for agent-assisted triage"
+run = "./bin/brew-drift-manifest --format json"
 
 [tasks."gmail:test"]
 description = "Test the proposed Gmail filters"

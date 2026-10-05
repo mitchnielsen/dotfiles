@@ -6,6 +6,7 @@ tap "fluxcd/tap", trusted: true
 tap "hashicorp/tap", trusted: true
 tap "homeport/tap", trusted: true
 tap "norwoodj/tap", trusted: true
+tap "terraform-linters/tap"
 # AWS Cloud Development Kit - framework for defining AWS infra as code
 brew "aws-cdk"
 # Official Amazon AWS command-line interface
@@ -54,6 +55,8 @@ brew "skopeo"
 brew "sofka"
 # Tail multiple Kubernetes pods & their containers
 brew "stern"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale"
 # Pluggable Terraform linter
 cask "terraform-linters/tap/tflint"
 # Vulnerability scanner for container images, file systems, and Git repos
@@ -84,6 +87,8 @@ cask "gcloud-cli"
 cask "google-chrome"
 # Speech to text application
 cask "handy"
+# Voice-to-text dictation with AI-powered auto-editing
+cask "wispr-flow"
 # Screen and video recording software
 cask "loom"
 # Shows the next meeting in the menu bar
@@ -102,7 +107,11 @@ cask "smoothcsv"
 cask "swiftbar"
 # Native database client for many database types
 cask "tablepro"
+# Mesh VPN based on WireGuard
+cask "tailscale-app"
 # Multiplayer code editor
 cask "zed"
+# Video communication and virtual meeting platform
+cask "zoom"
 go "github.com/prefecthq/terraform-provider-prefect"
 go "github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs"

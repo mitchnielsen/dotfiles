@@ -1,0 +1,317 @@
+#!/usr/bin/env python3
+"""Report installed Homebrew entries that are missing from split Brewfiles."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+
+ENTRY_RE = re.compile(r'^(tap|brew|cask|mas|vscode|go|npm)\s+"((?:[^"\\]|\\.)*)"(.*)$')
+MAS_ID_RE = re.compile(r"\bid:\s*(\d+)")
+SPLIT_FILES = {
+    "common": "Brewfile.common",
+    "work": "Brewfile.work",
+    "personal": "Brewfile.personal",
+}
+
+
+@dataclass(frozen=True)
+class Entry:
+    kind: str
+    name: str
+    identity: str
+    line: str
+    comments: tuple[str, ...]
+    file: str
+    path: str
+    line_number: int
+
+    @property
+    def key(self) -> str:
+        return f"{self.kind}:{self.identity}"
+
+    def to_manifest(self) -> dict[str, object]:
+        return {
+            "kind": self.kind,
+            "name": self.name,
+            "identity": self.identity,
+            "key": self.key,
+            "line": self.line,
+            "comments": list(self.comments),
+            "source": {
+                "file": self.file,
+                "path": self.path,
+                "line": self.line_number,
+            },
+        }
+
+
+def parse_args() -> argparse.Namespace:
+    project_root = Path(os.environ.get("MISE_PROJECT_ROOT", Path(__file__).resolve().parents[1]))
+
+    parser = argparse.ArgumentParser(
+        description="Report Homebrew entries that are installed but not tracked in the active split Brewfile.",
+    )
+    parser.add_argument(
+        "--brew-dir",
+        type=Path,
+        default=project_root / ".config" / "brew",
+        help="Directory containing Brewfile.common, Brewfile.work, and Brewfile.personal.",
+    )
+    parser.add_argument(
+        "--format",
+        choices=("text", "json"),
+        default="text",
+        help="Output format.",
+    )
+    parser.add_argument(
+        "--no-dump",
+        action="store_true",
+        help="Reuse the existing Brewfile.snapshot instead of refreshing it from Homebrew.",
+    )
+    return parser.parse_args()
+
+
+def find_brew() -> str:
+    candidates = [
+        shutil.which("brew"),
+        "/opt/homebrew/bin/brew",
+        "/usr/local/bin/brew",
+    ]
+    for candidate in candidates:
+        if candidate and Path(candidate).exists():
+            return candidate
+    raise RuntimeError("Could not find Homebrew. Expected `brew` in PATH, /opt/homebrew/bin, or /usr/local/bin.")
+
+
+def dump_snapshot(snapshot: Path) -> None:
+    brew = find_brew()
+    snapshot.parent.mkdir(parents=True, exist_ok=True)
+    result = subprocess.run(
+        [brew, "bundle", "dump", "--force", f"--file={snapshot}"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        if result.stdout:
+            sys.stderr.write(result.stdout)
+        if result.stderr:
+            sys.stderr.write(result.stderr)
+        raise RuntimeError(f"`brew bundle dump` failed with exit code {result.returncode}.")
+
+
+def ruby_unescape(value: str) -> str:
+    return value.replace(r'\"', '"').replace(r"\\", "\\")
+
+
+def entry_identity(kind: str, name: str, tail: str) -> str:
+    if kind == "mas":
+        match = MAS_ID_RE.search(tail)
+        if match:
+            return match.group(1)
+    return name
+
+
+def parse_brewfile(path: Path) -> list[Entry]:
+    entries: list[Entry] = []
+    pending_comments: list[str] = []
+
+    for line_number, raw_line in enumerate(path.read_text().splitlines(), start=1):
+        line = raw_line.strip()
+        if not line:
+            pending_comments = []
+            continue
+        if line.startswith("#"):
+            pending_comments.append(line)
+            continue
+
+        match = ENTRY_RE.match(line)
+        if match:
+            kind, raw_name, tail = match.groups()
+            name = ruby_unescape(raw_name)
+            entries.append(
+                Entry(
+                    kind=kind,
+                    name=name,
+                    identity=entry_identity(kind, name, tail),
+                    line=line,
+                    comments=tuple(pending_comments),
+                    file=path.name,
+                    path=str(path),
+                    line_number=line_number,
+                )
+            )
+
+        pending_comments = []
+
+    return entries
+
+
+def unique_by_key(entries: list[Entry]) -> dict[str, Entry]:
+    by_key: dict[str, Entry] = {}
+    for entry in entries:
+        by_key.setdefault(entry.key, entry)
+    return by_key
+
+
+def tracking_map(files: dict[str, Path]) -> dict[str, list[Entry]]:
+    tracked: dict[str, list[Entry]] = {}
+    for path in files.values():
+        for entry in parse_brewfile(path):
+            tracked.setdefault(entry.key, []).append(entry)
+    return tracked
+
+
+def source_ref(entry: Entry) -> dict[str, object]:
+    return {"file": entry.file, "path": entry.path, "line": entry.line_number}
+
+
+def with_tracking(entry: Entry, tracked: dict[str, list[Entry]]) -> dict[str, object]:
+    data = entry.to_manifest()
+    data["tracked_in"] = [source_ref(source) for source in tracked.get(entry.key, [])]
+    return data
+
+
+def build_manifest(brew_dir: Path, refresh_snapshot: bool) -> dict[str, object]:
+    brew_dir = brew_dir.expanduser().resolve()
+    snapshot = brew_dir / "Brewfile.snapshot"
+    if refresh_snapshot:
+        dump_snapshot(snapshot)
+    if not snapshot.exists():
+        raise RuntimeError(f"Missing snapshot file: {snapshot}")
+
+    split_paths = {name: brew_dir / filename for name, filename in SPLIT_FILES.items()}
+    missing_files = [str(path) for path in split_paths.values() if not path.exists()]
+    if missing_files:
+        raise RuntimeError("Missing split Brewfiles: " + ", ".join(missing_files))
+
+    personal_marker = Path.home() / ".personal_device_marker"
+    active_overlay = "personal" if personal_marker.exists() else "work"
+    active_paths = {
+        "common": split_paths["common"],
+        active_overlay: split_paths[active_overlay],
+    }
+
+    installed_entries = parse_brewfile(snapshot)
+    installed_by_key = unique_by_key(installed_entries)
+    active_entries = [entry for path in active_paths.values() for entry in parse_brewfile(path)]
+    active_by_key = unique_by_key(active_entries)
+    tracked = tracking_map(split_paths)
+
+    installed_not_in_active = [
+        with_tracking(entry, tracked)
+        for entry in installed_entries
+        if entry.key not in active_by_key
+    ]
+    installed_not_in_any_split = [
+        entry for entry in installed_not_in_active if not entry["tracked_in"]
+    ]
+    tracked_elsewhere_only = [
+        entry for entry in installed_not_in_active if entry["tracked_in"]
+    ]
+    tracked_not_installed_active = [
+        entry.to_manifest()
+        for entry in active_by_key.values()
+        if entry.key not in installed_by_key
+    ]
+
+    return {
+        "brew_dir": str(brew_dir),
+        "snapshot": str(snapshot),
+        "snapshot_refreshed": refresh_snapshot,
+        "machine": {
+            "active_overlay": active_overlay,
+            "personal_marker": str(personal_marker),
+            "personal_marker_exists": personal_marker.exists(),
+        },
+        "files": {name: str(path) for name, path in split_paths.items()},
+        "active_files": [path.name for path in active_paths.values()],
+        "counts": {
+            "installed_entries": len(installed_by_key),
+            "active_tracked_entries": len(active_by_key),
+            "installed_not_in_active_bundle": len(installed_not_in_active),
+            "installed_not_in_any_split_file": len(installed_not_in_any_split),
+            "tracked_elsewhere_only": len(tracked_elsewhere_only),
+            "tracked_not_installed_active": len(tracked_not_installed_active),
+        },
+        "installed_not_in_active_bundle": installed_not_in_active,
+        "installed_not_in_any_split_file": installed_not_in_any_split,
+        "tracked_elsewhere_only": tracked_elsewhere_only,
+        "tracked_not_installed_active": tracked_not_installed_active,
+    }
+
+
+def print_entry(entry: dict[str, object], show_tracking: bool = False) -> None:
+    for comment in entry["comments"]:  # type: ignore[index]
+        print(comment)
+    print(entry["line"])
+    tracked_in = entry.get("tracked_in")
+    if show_tracking and tracked_in:
+        locations = ", ".join(
+            f"{location['file']}:{location['line']}" for location in tracked_in  # type: ignore[index]
+        )
+        print(f"  tracked in: {locations}")
+
+
+def print_section(title: str, entries: list[dict[str, object]], show_tracking: bool = False) -> None:
+    print(f"== {title} ==")
+    if not entries:
+        print("(none)")
+    for index, entry in enumerate(entries):
+        if index:
+            print()
+        print_entry(entry, show_tracking=show_tracking)
+    print()
+
+
+def print_text(manifest: dict[str, object]) -> None:
+    machine = manifest["machine"]  # type: ignore[index]
+    print(f"Snapshot: {manifest['snapshot']}")
+    print(f"Active overlay: {machine['active_overlay']}")  # type: ignore[index]
+    print("Active tracked files: " + ", ".join(manifest["active_files"]))  # type: ignore[index]
+    print()
+
+    print_section(
+        "Installed but not tracked in active Brewfile",
+        manifest["installed_not_in_active_bundle"],  # type: ignore[arg-type,index]
+    )
+    print_section(
+        "Installed but not tracked in any split Brewfile",
+        manifest["installed_not_in_any_split_file"],  # type: ignore[arg-type,index]
+    )
+    print_section(
+        "Installed but tracked only outside the active overlay",
+        manifest["tracked_elsewhere_only"],  # type: ignore[arg-type,index]
+        show_tracking=True,
+    )
+    print_section(
+        "Active tracked but not currently installed",
+        manifest["tracked_not_installed_active"],  # type: ignore[arg-type,index]
+    )
+
+
+def main() -> int:
+    args = parse_args()
+    try:
+        manifest = build_manifest(args.brew_dir, refresh_snapshot=not args.no_dump)
+    except RuntimeError as exc:
+        print(f"brew-drift-manifest: {exc}", file=sys.stderr)
+        return 1
+
+    if args.format == "json":
+        print(json.dumps(manifest, indent=2))
+    else:
+        print_text(manifest)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

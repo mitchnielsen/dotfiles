@@ -2,6 +2,7 @@
 # Included by Brewfile -- do not run `brew bundle` against this file directly.
 
 tap "agavra/tap", trusted: true
+tap "crmne/tap", trusted: { casks: ["fastpotify"] }
 tap "epk/epk", trusted: true
 tap "morantron/tmux-fingers", trusted: true
 tap "wtfox/tap", trusted: true
@@ -83,6 +84,8 @@ brew "htop"
 brew "hunk"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@78"
 # Command-line pager for JSON data
 brew "jless"
 # Lightweight and flexible command-line JSON processor
@@ -135,6 +138,8 @@ brew "pre-commit"
 brew "pyright"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Alternative to backtracking PCRE-style regular expression engines
 brew "re2"
 # Reattach process (e.g., tmux) to background
@@ -241,6 +246,7 @@ cask "orion"
 cask "raycast"
 # Native screenshots, recording, annotation, and editing from the menu bar
 cask "snapzy"
+cask "fastpotify"
 # Music streaming service
 cask "spotify"
 # System monitor for the menu bar
