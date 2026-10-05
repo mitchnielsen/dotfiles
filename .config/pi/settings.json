@@ -1,6 +1,6 @@
 {
   "lastChangelogVersion": "1.0.2",
-  "quietStartup": true,
+  "quietStartup": "header",
   "collapseChangelog": true,
   "skills": [
     "~/.config/agents/skills"
