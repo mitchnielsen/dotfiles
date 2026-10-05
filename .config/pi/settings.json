@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.99.1",
+  "lastChangelogVersion": "1.0.2",
   "quietStartup": true,
   "collapseChangelog": true,
   "skills": [
@@ -16,12 +16,12 @@
     "~/.config/pi/themes"
   ],
   "theme": "system",
-  "tuiMode": "fullscreen",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6-sol",
   "defaultThinkingLevel": "xhigh",
   "defaultTools": [
     "+codemode"
   ],
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "deviceId": "d8b37076-ba86-4b5d-a2e2-1c081af69b12"
 }
