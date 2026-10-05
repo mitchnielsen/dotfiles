@@ -1,27 +1,24 @@
 {
-  "lastChangelogVersion": "1.0.2",
-  "quietStartup": "header",
   "collapseChangelog": true,
-  "skills": [
-    "~/.config/agents/skills"
-  ],
-  "prompts": [
-    "~/.config/agents/commands"
-  ],
-  "packages": [
-    "git:git@github.com:prefecthq/internal-skills.git",
-    "npm:pi-subagents"
-  ],
-  "themes": [
-    "~/.config/pi/themes"
-  ],
-  "theme": "system",
-  "defaultProvider": "openai",
   "defaultModel": "gpt-6.1-sol",
+  "defaultProvider": "openai",
   "defaultThinkingLevel": "xhigh",
   "defaultTools": [
     "+codemode"
   ],
+  "deviceId": "d8b37076-ba86-4b5d-a2e2-1c081af69b12",
   "hideThinkingBlock": true,
-  "deviceId": "d8b37076-ba86-4b5d-a2e2-1c081af69b12"
+  "lastChangelogVersion": "1.0.2",
+  "packages": [
+    "git:git@github.com:prefecthq/internal-skills.git",
+    "npm:pi-subagents"
+  ],
+  "prompts": [
+    "~/.config/agents/commands"
+  ],
+  "skills": [
+    "~/.config/agents/skills"
+  ],
+  "theme": "system",
+  "quietStartup": "header"
 }
