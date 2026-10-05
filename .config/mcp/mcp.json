@@ -20,6 +20,19 @@
         "callbackPort": 3118,
         "callbackUrl": "http://localhost:3118/callback"
       }
+    },
+    "prefect-agentic-workflows": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "prefect-mcp==0.0.1b13",
+        "prefect-mcp-server"
+      ],
+      "env": {
+        "PREFECT_PROFILE": "prefect-sandbox-mitch",
+        "PREFECT_MCP_EXPERIMENTAL_EXECUTION_PLANS_ENABLED": "true"
+      }
     }
   }
 }
