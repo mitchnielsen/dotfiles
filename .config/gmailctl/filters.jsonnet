@@ -87,6 +87,15 @@ local archive = {
       },
       actions: archive,
     },
+    {
+      filter: {
+        and: [
+          github,
+          { subject: 'Deployment review in' },
+        ],
+      },
+      actions: archive,
+    },
     // CI results are available on the PR and do not require inbox triage.
     {
       filter: {
@@ -258,6 +267,14 @@ local archive = {
         body: 'alice commented on this pull request.',
       }],
       actions: {},
+    },
+    {
+      name: 'archive GitHub deployment review requests',
+      messages: [{
+        from: 'notifications@github.com',
+        subject: 'Deployment review in PrefectHQ/nebula-ui',
+      }],
+      actions: archive,
     },
     {
       name: 'archive CI activity',
