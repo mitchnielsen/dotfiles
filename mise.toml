@@ -82,6 +82,10 @@ run = "./bin/brew-drift-manifest"
 description = "Emit structured Homebrew drift data for agent-assisted triage"
 run = "./bin/brew-drift-manifest --format json"
 
+[tasks."pi:test"]
+description = "Test local Pi extensions"
+run = "node --test .config/pi/tests/*.test.ts"
+
 [tasks."gmail:test"]
 description = "Test the proposed Gmail filters"
 run = "gmailctl test -f \"${MISE_PROJECT_ROOT:-$HOME/dotfiles}/.config/gmailctl/filters.jsonnet\""
