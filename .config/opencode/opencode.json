@@ -1,18 +1,46 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "permissions": [
-    { "action": "shell", "resource": "terraform *", "effect": "ask" },
-    { "action": "shell", "resource": "rm *", "effect": "ask" },
-    { "action": "shell", "resource": "git *", "effect": "ask" },
-    { "action": "shell", "resource": "*", "effect": "allow" },
+    {
+      "action": "shell",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "terraform *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "rm *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git *",
+      "effect": "ask"
+    },
     {
       "action": "external_directory",
       "resource": "~/code/github.com/**",
       "effect": "allow"
     },
-    { "action": "clickhouse_*", "resource": "*", "effect": "allow" },
-    { "action": "linear_*", "resource": "*", "effect": "allow" },
-    { "action": "incident_io_*", "resource": "*", "effect": "allow" }
+    {
+      "action": "clickhouse_*",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "linear_*",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "incident_io_*",
+      "resource": "*",
+      "effect": "allow"
+    }
   ],
   "plugins": [
     "@pgannotator/opencode@latest"
