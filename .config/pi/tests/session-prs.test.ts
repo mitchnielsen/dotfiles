@@ -11,10 +11,8 @@ import type {
   ExecOptions,
   ExecResult,
   ExtensionAPI,
-  ExtensionCommandContext,
   ExtensionContext,
   ExtensionFactory,
-  RegisteredCommand,
   SessionEntry,
   ToolResultEvent,
 } from "@earendil-works/pi-coding-agent";
@@ -42,11 +40,8 @@ function createHarness(mode: ExtensionContext["mode"] = "tui") {
   const handlers = new Map<string, EventHandler>();
   const statuses = new Map<string, string>();
   const notifications: { message: string; level: string }[] = [];
-  const commands = new Map<string, RegisteredCommand>();
   const executions: { command: string; args: string[]; options?: ExecOptions }[] = [];
-  const selections: { title: string; options: string[] }[] = [];
   const results: ExecResult[] = [];
-  let selected: string | undefined;
   const ctx = {
     cwd: "/workspace/repo",
     mode,
@@ -60,19 +55,13 @@ function createHarness(mode: ExtensionContext["mode"] = "tui") {
       notify(message: string, level: string) {
         notifications.push({ message, level });
       },
-      async select(title: string, options: string[]) {
-        selections.push({ title, options });
-        return selected;
-      },
     },
-  } as unknown as ExtensionCommandContext;
+  } as unknown as ExtensionContext;
   const pi = {
     on(name: string, handler: EventHandler) {
       handlers.set(name, handler);
     },
-    registerCommand(name: string, command: RegisteredCommand) {
-      commands.set(name, command);
-    },
+    registerCommand() {},
     appendEntry(customType: string, data: unknown) {
       entries.push({
         type: "custom", customType, data,
@@ -88,15 +77,11 @@ function createHarness(mode: ExtensionContext["mode"] = "tui") {
   sessionPrExtension(pi);
 
   return {
-    pi, ctx, entries, statuses, notifications, executions, selections, results,
-    select(value: string) { selected = value; },
+    pi, ctx, entries, statuses, notifications, executions, results,
     async emit(name: string, event: unknown = {}) {
       const handler = handlers.get(name);
       assert.ok(handler, `Missing handler: ${name}`);
       return handler(event, ctx);
-    },
-    async command(args = "") {
-      return commands.get("prs")!.handler(args, ctx);
     },
     async bash(command: string, output: string, extra: Partial<ToolResultEvent> = {}) {
       return handlers.get("tool_result")!({
@@ -151,7 +136,7 @@ test("loads through Pi's extension loader", async () => {
   const loaded = await loadExtensions([extensionPath], process.cwd());
   assert.deepEqual(loaded.errors, []);
   assert.equal(loaded.extensions.length, 1);
-  assert.ok(loaded.extensions[0].commands.has("prs"));
+  assert.equal(loaded.extensions[0].commands.size, 0);
   assert.equal(loaded.extensions[0].tools.size, 0);
 });
 
@@ -159,7 +144,7 @@ test("records gh pr create output and adds a clickable footer link", async () =>
   const h = createHarness();
   await h.bash("gh pr create --draft --assignee=@me", "Creating pull request...\nhttps://github.com/Owner/Repo/pull/123/\n");
   assert.deepEqual(h.urls(), ["https://github.com/owner/repo/pull/123"]);
-  assert.equal(h.status(), "PRs: #123 (/prs)");
+  assert.equal(h.status(), "PRs: #123");
   assert.ok(h.statuses.get("session-pr")!.includes(hyperlink("#123", h.urls()[0])));
   assert.equal(h.executions.length, 0);
 });
@@ -176,7 +161,7 @@ EOF`,
     "https://github.com/owner/platform/pull/123\n",
   );
   assert.deepEqual(h.urls(), ["https://github.com/owner/platform/pull/123"]);
-  assert.equal(h.status(), "PRs: #123 (/prs)");
+  assert.equal(h.status(), "PRs: #123");
 });
 
 test("accepts repository checks and git push before heredoc PR creation", async () => {
@@ -265,7 +250,7 @@ test("does not attach viewed or echoed PRs from mixed shell output", async () =>
   await h.bash("gh pr create --fill && gh pr view 99 --json url --jq .url", output);
   await h.bash("gh pr create --fill; printf '%s\\n' 'https://github.com/owner/repo/pull/99'", output);
   assert.deepEqual(h.urls(), []);
-  assert.match(h.notifications.at(-1)!.message, /\/prs add/);
+  assert.match(h.notifications.at(-1)!.message, /No PR links were recorded/);
 });
 
 test("does not infer PR creation from heredoc text or complex shell context", async () => {
@@ -350,56 +335,57 @@ test("reports a failed stack URL lookup without changing the tool result", async
   const result = await h.bash("gh stack submit --auto", "Created PR #123 for api");
   assert.equal(result, undefined);
   assert.deepEqual(h.urls(), []);
-  assert.match(h.notifications[0].message, /\/prs add/);
+  assert.match(h.notifications[0].message, /Could not resolve the URL/);
   assert.equal(h.notifications[0].level, "warning");
 });
 
-test("manual attachment normalizes and deduplicates URLs", async () => {
+test("normalizes and deduplicates created PR URLs", async () => {
   const h = createHarness();
-  await h.command("add https://github.com/Owner/Repo/pull/123/?tab=overview#issuecomment-1");
-  await h.command("add https://github.com/owner/repo/pull/123");
+  await h.bash("gh pr create --fill", "https://github.com/Owner/Repo/pull/123/?tab=overview#issuecomment-1");
+  await h.bash("gh pr create --fill", "https://github.com/owner/repo/pull/123");
   await h.bash("gh pr create --fill", "https://github.com/OWNER/REPO/pull/123");
   assert.deepEqual(h.urls(), ["https://github.com/owner/repo/pull/123"]);
-  assert.match(h.notifications[1].message, /already in/);
 });
 
-test("rejects unsafe URLs and malformed command arguments", async () => {
+test("rejects unsafe and malformed PR URLs in creation output", async () => {
   const h = createHarness();
-  for (const args of [
-    "add javascript:alert(1)", "add http://github.com/owner/repo/pull/123",
-    "add https://github.com.evil.test/owner/repo/pull/123",
-    "add https://user@github.com/owner/repo/pull/123",
-    "add https://github.com:8443/owner/repo/pull/123",
-    "add https://github.com/owner/repo/issues/123",
-    "add https://github.com/owner/repo/pull/0",
-    "add https://github.com/owner/repo/pull/123 extra", "remove 123", "add",
+  for (const url of [
+    "javascript:alert(1)", "http://github.com/owner/repo/pull/123",
+    "https://github.com.evil.test/owner/repo/pull/123",
+    "https://user@github.com/owner/repo/pull/123",
+    "https://github.com:8443/owner/repo/pull/123",
+    "https://github.com/owner/repo/issues/123",
+    "https://github.com/owner/repo/pull/0",
+    "https://github.com/owner/repo/pull/123 extra",
   ]) {
-    await h.command(args);
+    await h.bash("gh pr create --fill", url);
   }
   assert.deepEqual(h.urls(), []);
-  assert.ok(h.notifications.every((notice) => notice.level === "warning"));
+  assert.equal(h.statuses.size, 0);
 });
 
-test("keeps the footer compact and includes the full list in /prs", async () => {
+test("includes a clickable footer link for every recorded PR", async () => {
   const h = createHarness();
   for (const number of [123, 456, 789, 1000, 1001]) {
-    await h.command(`add https://github.com/owner/repo/pull/${number}`);
+    await h.bash("gh pr create --fill", `https://github.com/owner/repo/pull/${number}`);
   }
-  assert.equal(h.status(), "PRs: #123 #456 #789 +2 (/prs)");
-  await h.command();
-  assert.equal(h.selections[0].options.length, 5);
+  assert.equal(h.status(), "PRs: #123 #456 #789 #1000 #1001");
+  for (const url of h.urls()) {
+    const number = url.split("/").at(-1)!;
+    assert.ok(h.statuses.get("session-pr")!.includes(hyperlink(`#${number}`, url)));
+  }
   assert.equal(h.executions.length, 0);
 });
 
 test("restores saved links on resume and reload without GitHub calls", async () => {
   const original = createHarness();
-  await original.command("add https://github.com/owner/repo/pull/123");
+  await original.bash("gh pr create --fill", "https://github.com/owner/repo/pull/123");
   const resumed = createHarness();
   resumed.entries.push(...JSON.parse(JSON.stringify(original.entries)));
   await resumed.emit("session_start", { reason: "resume" });
-  assert.equal(resumed.status(), "PRs: #123 (/prs)");
+  assert.equal(resumed.status(), "PRs: #123");
   await resumed.emit("session_start", { reason: "reload" });
-  assert.equal(resumed.status(), "PRs: #123 (/prs)");
+  assert.equal(resumed.status(), "PRs: #123");
   assert.equal(resumed.executions.length, 0);
   assert.equal(resumed.entries.length, 1);
 });
@@ -418,20 +404,10 @@ test("recovers missed creation results on resume without adding body or viewed P
   appendSavedBash(h, "gh pr create --fill", "https://github.com/owner/platform/pull/999", true);
   await h.emit("session_start", { reason: "resume" });
   assert.deepEqual(h.urls(), ["https://github.com/owner/platform/pull/123", "https://github.com/owner/flows/pull/456"]);
-  assert.equal(h.status(), "PRs: #123 #456 (/prs)");
+  assert.equal(h.status(), "PRs: #123 #456");
   assert.equal(h.executions.length, 0);
   await h.emit("session_start", { reason: "reload" });
-  await h.command();
   assert.equal(h.urls().length, 2);
-});
-
-test("/prs recovers saved creation results when no metadata was recorded", async () => {
-  const h = createHarness();
-  appendSavedBash(h, "gh pr create --fill", "https://github.com/owner/repo/pull/123");
-  await h.command();
-  assert.deepEqual(h.urls(), ["https://github.com/owner/repo/pull/123"]);
-  assert.deepEqual(h.selections[0].options, ["owner/repo#123"]);
-  assert.equal(h.executions.length, 0);
 });
 
 test("recovery correlates parallel tool results with their own commands", async () => {
@@ -444,15 +420,14 @@ test("recovery correlates parallel tool results with their own commands", async 
   assert.deepEqual(h.urls(), ["https://github.com/owner/repo/pull/123"]);
 });
 
-test("saved stack creation results are processed once per session", async () => {
+test("saved stack creation results do not duplicate persisted links on reload", async () => {
   const h = createHarness();
   appendSavedBash(h, "gh stack submit --auto", "Created PR #123 for api");
   h.results.push(success("https://github.com/owner/repo/pull/123"));
   await h.emit("session_start", { reason: "resume" });
-  await h.command();
-  await h.command();
+  h.results.push(success("https://github.com/owner/repo/pull/123"));
+  await h.emit("session_start", { reason: "reload" });
   assert.deepEqual(h.urls(), ["https://github.com/owner/repo/pull/123"]);
-  assert.equal(h.executions.length, 1);
 });
 
 test("recovery uses saved results when the creation preceded compaction or branching", async (t) => {
@@ -478,11 +453,11 @@ test("recovery uses saved results when the creation preceded compaction or branc
   h.ctx.sessionManager = recoveredManager;
   h.pi.appendEntry = (type, data) => { recoveredManager.appendCustomEntry(type, data); };
   await h.emit("session_start", { reason: "resume" });
-  assert.equal(h.status(), "PRs: #123 (/prs)");
+  assert.equal(h.status(), "PRs: #123");
   const restored = createHarness();
   restored.ctx.sessionManager = SessionManager.open(manager.getSessionFile());
   await restored.emit("session_start", { reason: "resume" });
-  assert.equal(restored.status(), "PRs: #123 (/prs)");
+  assert.equal(restored.status(), "PRs: #123");
   assert.equal(restored.executions.length, 0);
 });
 
@@ -499,27 +474,25 @@ test("survives persisted session compaction and conversation branching", async (
   const recent = manager.appendMessage({ role: "user", content: "Continue", timestamp: Date.now() });
   manager.appendCompaction("Earlier work", recent, 10000);
   await h.emit("session_start", { reason: "reload" });
-  assert.equal(h.status(), "PRs: #123 (/prs)");
+  assert.equal(h.status(), "PRs: #123");
   manager.branch(root);
   manager.appendMessage({ role: "user", content: "Another approach", timestamp: Date.now() });
   assert.equal(manager.getBranch().some((entry: SessionEntry) => entry.type === "custom"), false);
   const resumed = createHarness();
   resumed.ctx.sessionManager = SessionManager.open(manager.getSessionFile());
   await resumed.emit("session_start", { reason: "resume" });
-  assert.equal(resumed.status(), "PRs: #123 (/prs)");
+  assert.equal(resumed.status(), "PRs: #123");
   assert.equal(resumed.executions.length, 0);
 });
 
 test("includes PRs from all conversation branches and clears links for a new session", async () => {
   const h = createHarness();
-  await h.command("add https://github.com/owner/repo/pull/123");
+  await h.bash("gh pr create --fill", "https://github.com/owner/repo/pull/123");
   await h.emit("session_start", { reason: "reload" });
-  assert.equal(h.status(), "PRs: #123 (/prs)");
+  assert.equal(h.status(), "PRs: #123");
   h.entries.length = 0;
   await h.emit("session_start", { reason: "new" });
   assert.equal(h.statuses.has("session-pr"), false);
-  await h.command();
-  assert.match(h.notifications.at(-1)!.message, /No PRs recorded/);
 });
 
 test("ignores invalid persisted entries and unrelated extension metadata", async () => {
@@ -532,25 +505,15 @@ test("ignores invalid persisted entries and unrelated extension metadata", async
   assert.equal(h.statuses.has("session-pr"), false);
 });
 
-test("distinguishes identical PR numbers in different repositories", async () => {
+test("links identical PR numbers to their respective repositories", async () => {
   const h = createHarness();
-  await h.command("add https://github.com/owner/one/pull/123");
-  await h.command("add https://github.com/owner/two/pull/123");
-  h.select("owner/two#123");
-  h.results.push(success());
-  await h.command();
-  assert.deepEqual(h.selections[0].options, ["owner/one#123", "owner/two#123"]);
-  assert.deepEqual(h.executions[0].args, ["pr", "view", "https://github.com/owner/two/pull/123", "--web"]);
-});
-
-test("reports browser-opening failures", async () => {
-  const h = createHarness();
-  await h.command("add https://github.com/owner/repo/pull/123");
-  h.select("owner/repo#123");
-  h.results.push({ ...success(), code: 1, stderr: "Browser unavailable\n" });
-  await h.command();
-  assert.equal(h.notifications.at(-1)!.level, "error");
-  assert.match(h.notifications.at(-1)!.message, /Browser unavailable/);
+  await h.bash("gh pr create --fill", "https://github.com/owner/one/pull/123");
+  await h.bash("gh pr create --fill", "https://github.com/owner/two/pull/123");
+  assert.deepEqual(h.urls(), ["https://github.com/owner/one/pull/123", "https://github.com/owner/two/pull/123"]);
+  for (const url of h.urls()) {
+    assert.ok(h.statuses.get("session-pr")!.includes(hyperlink("#123", url)));
+  }
+  assert.equal(h.executions.length, 0);
 });
 
 test("records PRs in non-interactive mode without accessing terminal UI", async () => {
@@ -558,13 +521,13 @@ test("records PRs in non-interactive mode without accessing terminal UI", async 
   await h.bash("gh pr create --fill", "https://github.com/owner/repo/pull/123");
   assert.deepEqual(h.urls(), ["https://github.com/owner/repo/pull/123"]);
   assert.equal(h.statuses.size, 0);
-  await h.command();
-  assert.equal(h.selections.length, 0);
 });
 
 test("the existing footer fits PR hyperlinks at narrow and wide widths", async () => {
   const h = createHarness();
-  await h.command("add https://github.com/owner/repo/pull/123");
+  for (const number of [123, 456, 789, 1000, 1001]) {
+    await h.bash("gh pr create --fill", `https://github.com/owner/repo/pull/${number}`);
+  }
   let footer: { render(width: number): string[] } | undefined;
   h.ctx.ui.setFooter = (factory) => {
     assert.ok(factory);

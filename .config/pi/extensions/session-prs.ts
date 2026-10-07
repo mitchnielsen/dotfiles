@@ -1,3 +1,9 @@
+/**
+ * Tracks PRs created by `gh pr create` and `gh stack submit` in this session.
+ * Saves their URLs in session entries and shows clickable links in the footer.
+ * Restores saved links and recovers missed creation results on resume or reload.
+ */
+
 import { homedir } from "node:os";
 import { basename, resolve } from "node:path";
 import { stripVTControlCharacters } from "node:util";
@@ -8,11 +14,9 @@ import type {
 import { hyperlink } from "@earendil-works/pi-tui";
 
 const PR_ENTRY_TYPE = "session-pr";
-const FOOTER_PR_LIMIT = 3;
 
 interface SessionPr {
   url: string;
-  repo: string;
   number: string;
 }
 
@@ -43,7 +47,7 @@ function parseSessionPr(value: unknown): SessionPr | undefined {
 
   const repo = `${match[1]}/${match[2]}`.toLowerCase();
   const number = match[3];
-  return { url: `https://github.com/${repo}/pull/${number}`, repo, number };
+  return { url: `https://github.com/${repo}/pull/${number}`, number };
 }
 
 function creationContext(command: string, cwd: string) {
@@ -187,22 +191,15 @@ export default function sessionPrExtension(pi: ExtensionAPI) {
       return;
     }
 
-    const links = [...prs.values()]
-      .slice(0, FOOTER_PR_LIMIT)
-      .map((pr) => hyperlink(`#${pr.number}`, pr.url));
-    const remaining = prs.size - links.length;
-    ctx.ui.setStatus(
-      PR_ENTRY_TYPE,
-      `PRs: ${links.join(" ")}${remaining > 0 ? ` +${remaining}` : ""} (/prs)`,
-    );
+    const links = [...prs.values()].map((pr) => hyperlink(`#${pr.number}`, pr.url));
+    ctx.ui.setStatus(PR_ENTRY_TYPE, `PRs: ${links.join(" ")}`);
   }
 
   function addSessionPr(pr: SessionPr, ctx: ExtensionContext) {
-    if (prs.has(pr.url)) return false;
+    if (prs.has(pr.url)) return;
     pi.appendEntry(PR_ENTRY_TYPE, { url: pr.url });
     prs.set(pr.url, pr);
     updatePrStatus(ctx);
-    return true;
   }
 
   async function recordPrCreation(
@@ -225,7 +222,7 @@ export default function sessionPrExtension(pi: ExtensionAPI) {
         for (const pr of candidates.values()) addSessionPr(pr, ctx);
       } else if (ctx.hasUI) {
         ctx.ui.notify(
-          "PR creation output contains extra URLs. Attach the created PR with /prs add <url>.",
+          "PR creation output contains extra URLs. No PR links were recorded.",
           "warning",
         );
       }
@@ -254,7 +251,7 @@ export default function sessionPrExtension(pi: ExtensionAPI) {
         addSessionPr(pr, ctx);
       } else if (ctx.hasUI) {
         ctx.ui.notify(
-          `Could not track PR #${created[1]}. Add its URL with /prs add <url>.`,
+          `Could not resolve the URL for PR #${created[1]}. Its footer link was not recorded.`,
           "warning",
         );
       }
@@ -315,50 +312,5 @@ export default function sessionPrExtension(pi: ExtensionAPI) {
             .join("\n");
     await recordPrCreation(event.input.command, output, event.isError, ctx);
     processedCalls.add(event.toolCallId);
-  });
-
-  pi.registerCommand("prs", {
-    description: "Open this session's PRs, or attach one with /prs add <url>",
-    handler: async (args, ctx) => {
-      const input = args.trim();
-      if (input) {
-        const match = input.match(/^add\s+(\S+)$/);
-        const pr = match && parseSessionPr(match[1]);
-        if (!pr) {
-          ctx.ui.notify(
-            "Usage: /prs or /prs add https://github.com/owner/repo/pull/123",
-            "warning",
-          );
-          return;
-        }
-        const added = addSessionPr(pr, ctx);
-        ctx.ui.notify(
-          `${pr.repo}#${pr.number} ${added ? "added to" : "is already in"} this session.`,
-          "info",
-        );
-        return;
-      }
-
-      await recoverSessionPrs(ctx);
-      if (!ctx.hasUI) return;
-      if (prs.size === 0) {
-        ctx.ui.notify("No PRs recorded. Attach one with /prs add <url>.", "info");
-        return;
-      }
-
-      const choices = new Map(
-        [...prs.values()].map((pr) => [`${pr.repo}#${pr.number}`, pr]),
-      );
-      const selected = await ctx.ui.select("Session PRs", [...choices.keys()]);
-      if (!selected) return;
-      const pr = choices.get(selected)!;
-      const result = await pi.exec("gh", ["pr", "view", pr.url, "--web"], {
-        cwd: ctx.cwd,
-        timeout: 10_000,
-      });
-      if (result.code !== 0) {
-        ctx.ui.notify(`Could not open ${pr.url}: ${result.stderr.trim()}`, "error");
-      }
-    },
   });
 }
