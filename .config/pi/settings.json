@@ -8,7 +8,7 @@
   ],
   "deviceId": "d8b37076-ba86-4b5d-a2e2-1c081af69b12",
   "hideThinkingBlock": true,
-  "lastChangelogVersion": "1.0.2",
+  "lastChangelogVersion": "1.0.4",
   "packages": [
     "git:git@github.com:prefecthq/internal-skills.git",
     "npm:pi-subagents"
