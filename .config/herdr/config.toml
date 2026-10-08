@@ -17,7 +17,7 @@ edit_scrollback = ["cmd+e", "prefix+e", "prefix+ctrl+e"]
 
 # Workspaces
 workspace_picker = ["prefix+s", "cmd+o"]
-goto = "prefix+ctrl+g"
+goto = ["prefix+ctrl+g", "cmd+g"]
 new_workspace = ["prefix+shift+n", "cmd+n"]
 rename_workspace = "prefix+$"
 previous_workspace = "cmd+shift+["
@@ -53,24 +53,24 @@ prompt_new_workspace_name = true
 agent_panel_sort = "spaces"
 sidebar_collapsed_mode = "hidden"
 
-tab_bar_right_separator = " · "
 tab_bar_position = "top"
 tab_bar_right = [
   { type = "zoom" },
-  { type = "datetime", format = "%H:%M" },
 ]
 
 [ui.sidebar.spaces]
 row_gap = 1
 rows = [
   ["workspace"],
+  ["state_icon", "state_text"],
 ]
 
 [ui.sidebar.agents]
 row_gap = 1
 rows = [
-  ["workspace", "tab"],
-  ["state_icon", "state_text", "agent"]
+  [{token = "tab", bold = true}],
+  [{token = "workspace", bold = false}],
+  ["state_icon", "state_text"],
 ]
 
 [ui.sound]
