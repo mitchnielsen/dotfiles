@@ -47,6 +47,11 @@ zoom = "prefix+z"
 resize_mode = "prefix+shift+r"
 toggle_sidebar = "cmd+b"
 
+[[keys.command]]
+key = "prefix+!"
+type = "shell"
+command = "pane=$(env -u HERDR_PANE_ID /opt/homebrew/bin/herdr pane current | /opt/homebrew/bin/jq -r .result.pane.pane_id) && /opt/homebrew/bin/herdr pane move \"$pane\" --new-tab --focus"
+
 [ui]
 prompt_new_tab_name = true
 prompt_new_workspace_name = true
