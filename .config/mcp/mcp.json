@@ -21,6 +21,10 @@
         "callbackUrl": "http://localhost:3118/callback"
       }
     },
+    "superlogical": {
+      "type": "http",
+      "url": "https://www.superlogical.com/rex/community-mcp"
+    },
     "prefect-agentic-workflows": {
       "type": "stdio",
       "command": "uvx",
