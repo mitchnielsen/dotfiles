@@ -130,8 +130,6 @@ brew "nginx"
 brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
-# AI agent toolkit
-brew "pi-coding-agent"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Static type checker for Python
