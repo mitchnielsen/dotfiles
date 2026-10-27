@@ -6,17 +6,9 @@ vim.lsp.config("*", {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
-local servers = { "ruff", "pyright", "marksman", "terraformls", "tflint", "jsonls", "yamlls" }
+local servers = { "ruff", "pyright", "marksman", "terraformls", "tflint", "jsonls", "yamlls", "tsc" }
 
 local custom_servers = {
-  ts_ls = {
-    before_init = function(_, config)
-      local typescript_root = vim.trim(vim.fn.system({ "mise", "where", "npm:typescript" }))
-      config.init_options.tsserver = {
-        fallbackPath = vim.fs.joinpath(typescript_root, "node_modules", "typescript"),
-      }
-    end,
-  },
   lua_ls = {
     settings = {
       Lua = {
