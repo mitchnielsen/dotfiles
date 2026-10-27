@@ -1,11 +1,11 @@
 vim.pack.add({
+  "https://github.com/AlexvZyl/nordic.nvim",
   "https://github.com/EdenEast/nightfox.nvim",
   "https://github.com/Mofiqul/vscode.nvim",
   "https://github.com/aktersnurra/no-clown-fiesta.nvim",
   "https://github.com/navarasu/onedark.nvim",
   "https://github.com/oskarnurm/koda.nvim",
   "https://github.com/rmehri01/onenord.nvim",
-  "https://github.com/AlexvZyl/nordic.nvim",
 }, { confirm = false })
 
 require("nightfox").setup({
