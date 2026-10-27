@@ -36,8 +36,6 @@ brew "docker"
 brew "docker-compose"
 # Text processing system for reStructuredText
 brew "docutils"
-# Debian package management system
-brew "dpkg"
 # More intuitive version of du in rust
 brew "dust"
 # Perl lib for reading and writing EXIF metadata
@@ -60,8 +58,6 @@ brew "gmailctl"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
-# Blazing fast terminal-ui for git written in rust
-brew "gitui"
 # Render markdown on the CLI
 brew "glow"
 # GNU implementation of the famous stream editor
@@ -82,8 +78,6 @@ brew "herdr"
 brew "htop"
 # Review-first terminal diff viewer for agent-authored changesets
 brew "hunk"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@76"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@78"
 # Command-line pager for JSON data
@@ -135,8 +129,6 @@ brew "pre-commit"
 # Static type checker for Python
 brew "pyright"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
 # Alternative to backtracking PCRE-style regular expression engines
 brew "re2"
@@ -158,8 +150,6 @@ brew "stylua"
 brew "telnet"
 # Programmatically correct mistyped console commands
 brew "thefuck"
-# Text interface for Git repositories
-brew "tig"
 # Terminal multiplexer
 brew "tmux"
 # Plugin manager for tmux
@@ -204,8 +194,6 @@ brew "zsh-history-substring-search"
 brew "zsh-syntax-highlighting"
 # Better and friendly vi(vim) mode plugin for ZSH
 brew "zsh-vi-mode"
-# Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
-brew "agavra/tap/tuicr"
 # mouseless terminal interaction
 brew "morantron/tmux-fingers/tmux-fingers"
 # jf prints out dotted paths to the given value for a given json file
