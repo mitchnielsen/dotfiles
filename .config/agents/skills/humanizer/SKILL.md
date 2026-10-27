@@ -14,8 +14,6 @@ allowed-tools:
   - Read
   - Write
   - Edit
-  - Grep
-  - Glob
   - AskUserQuestion
 ---
 

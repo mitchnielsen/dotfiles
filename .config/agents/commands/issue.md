@@ -15,4 +15,4 @@ and let the user decide whether or not one of those addresses the need.
 
 Finally, if there is no existing issue that addresses the need,
 create a Linear issue using the Linear MCP server. Follow the
-`linear-issue` skill for conventions.
+`linear-issue` skill from prefect-internal-skills for conventions.

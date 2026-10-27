@@ -1,6 +1,6 @@
 ---
 name: mermaid
-description: "Must read guide on creating/editing mermaid charts with valiation tools"
+description: Validate Mermaid diagrams with the Mermaid CLI. Use when creating or editing a Mermaid diagram, including before adding one to Markdown.
 ---
 
 # Mermaid Skill

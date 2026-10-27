@@ -9,7 +9,7 @@ Simulate the federal and Minnesota state tax return for Mitchell Nielsen and Bri
 
 ## Step 1: Explore All Documents
 
-Use the Explore agent to read every document in the directory tree and extract:
+Read every document in the directory tree in full and extract:
 - All W-2s: Box 1 (wages), Box 2 (federal withheld), Box 12 codes, Box 14 (MN withheld)
 - All 1099-Rs: Box 1 (gross), **Box 2a (taxable amount — do not use Box 16)**, Box 4 (federal withheld — verify this is not blank before including), Box 14 (state withheld — verify not blank), Box 7 (distribution code), Box 5 (employee contributions/Roth basis)
 - All 1099-INTs: Box 1 (interest), Box 4 (federal withheld)

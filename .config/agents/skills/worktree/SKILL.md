@@ -55,21 +55,12 @@ wt list --full          # include CI status, diffs, summaries
 wt list --format=json   # structured output for scripting
 ```
 
-### Finish and merge a feature
+### Committing and merging
 
-```bash
-wt merge                # squash, rebase, fast-forward to default, cleanup
-```
+Do not use `wt merge` or `wt step commit`/`squash`/`rebase`. Commit
+with the `commit-message` skill. PRs merge on GitHub.
 
-This runs the full pipeline: commit, squash, rebase onto target,
-run pre-merge hooks (tests/lint), fast-forward merge, then remove
-the worktree and branch. Use flags to customize:
-
-- `--no-squash` to preserve individual commits
-- `--no-remove` to keep the worktree after merging
-- `--no-ff` to create a merge commit (semi-linear history)
-
-### Remove a worktree without merging
+### Remove a worktree
 
 ```bash
 wt remove               # remove current worktree
@@ -80,15 +71,6 @@ wt remove -D my-feature # force-delete unmerged branch
 By default, `wt remove` deletes the branch if its changes are
 already integrated into the default branch. Use `--no-delete-branch`
 to keep it.
-
-### Run individual steps manually
-
-```bash
-wt step commit          # stage and commit with LLM-generated message
-wt step squash          # squash commits since branching
-wt step rebase          # rebase onto target
-wt step diff            # show all changes since branching
-```
 
 ## Branch Naming
 

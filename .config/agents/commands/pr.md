@@ -41,6 +41,7 @@ Create a pull request from this branch: `gh pr create --draft --assignee=@me`.
 - If an existing PR is listed above, do not create a duplicate. Update it
   instead only if the current title or description is stale.
 
-Follow the `pr-description` skill for title and description conventions.
+Follow the `open-pr` skill from prefect-internal-skills for title and
+description conventions. Include an ASCII diagram when it helps a reviewer.
 Use the provided git context first. Do not run extra history or diff commands
 unless the PR title or description is still unclear.

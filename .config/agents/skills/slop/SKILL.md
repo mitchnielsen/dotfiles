@@ -4,7 +4,7 @@ description: Sweep the current diff for AI slop - defensive code, unjustified ab
 user-invocable: true
 ---
 
-Walk the full diff against the parent branch (not just the last commit). This is a per-PR hygiene pass, behavior-preserving and minimal-diff - not a restructuring (that's thermo-nuclear-code-quality-review). Use `gh pr diff` to view only the changes from the current pull request.
+Walk the full diff against the parent branch (not just the last commit). This is a per-PR hygiene pass, behavior-preserving and minimal-diff - not a restructuring. Use `gh pr diff` to view only the changes from the current pull request.
 
 ## Kill-list
 
@@ -34,4 +34,4 @@ Trace the changed flow end to end in pseudocode. Every hop must be explainable i
 
 ## Apply
 
-Apply clear-cut kills and renames directly; the diff should shrink. List judgment calls (might be load-bearing, behavior-adjacent) as one-liners for Jake instead of guessing. Run checks locally after. Report what was removed/renamed in a few lines - no inventory.
+Apply clear-cut kills and renames directly; the diff should shrink. List judgment calls (might be load-bearing, behavior-adjacent) as one-liners for me instead of guessing. Run checks locally after. Report what was removed/renamed in a few lines - no inventory.

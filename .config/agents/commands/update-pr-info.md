@@ -14,4 +14,5 @@ so collect the current title and description before deciding what to change.
 This will ensure that any details added or removed since we created
 the pull request are considered.
 
-Follow the `pr-description` skill for title and description conventions.
+Follow the `open-pr` skill from prefect-internal-skills for title and
+description conventions. Include an ASCII diagram when it helps a reviewer.

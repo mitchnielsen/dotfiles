@@ -8,7 +8,8 @@ git branch.
 If the PR already mentions a related Linear issue, do nothing.
 
 If the PR does not mention a related Linear issue, create one via the
-Linear MCP. Follow the `linear-issue` skill for conventions.
+Linear MCP. Follow the conventions and defaults in
+`~/.config/agents/commands/issue.md`.
 
 - Assignee: assign myself.
 - Infer estimate from the pull request details and changes.

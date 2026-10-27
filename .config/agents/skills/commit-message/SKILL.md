@@ -15,12 +15,6 @@ ad-hoc requests, or any other workflow).
 Git is configured with the correct author. Do not run `git config`
 to look it up. `git commit` picks it up automatically.
 
-## Safety Rules
-
-- NEVER amend or squash commits unless explicitly told to.
-- NEVER use `git commit --no-verify`. Fix hook errors instead.
-- Do not push until explicitly told to push.
-
 ## Title Format
 
 Follow the [Conventional Commits](https://www.conventionalcommits.org/) format.
@@ -29,8 +23,7 @@ Follow the [Conventional Commits](https://www.conventionalcommits.org/) format.
 <type>(<scope>): <description>
 ```
 
-Run `git log -n 50 --pretty=format:%s` to see commonly used scopes in
-the current repository. Match existing conventions.
+Match the types and scopes in the repository's recent commit history.
 
 Examples:
 - `docs: correct spelling of CHANGELOG`

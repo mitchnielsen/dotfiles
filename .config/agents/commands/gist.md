@@ -8,9 +8,9 @@ response) and publish it as a GitHub gist using `gh`.
 
 ## Steps
 
-1. **Ask visibility.** Use `AskUserQuestion` with a single question
-   ("Public or secret gist?") and two options: `Public` and
-   `Secret`. Do not assume a default. Wait for the answer before
+1. **Ask visibility.** Ask a single question ("Public or secret
+   gist?") with two options: `Public` and `Secret`. Use the
+   harness's question tool if it has one. Do not assume a default. Wait for the answer before
    continuing.
 
 2. **Auto-generate metadata** from the content of the message:

@@ -19,8 +19,8 @@ just read the code is not obvious to me.
 
 ## The shape of the explanation
 
-Write it in ASD-STE100, per `~/.ai/writing.md`. Simplify the language,
-never the substance.
+Write it in ASD-STE100 (Simplified Technical English). Simplify the
+language, never the substance.
 
 1. Say what the thing is and why it exists, in one or two sentences.
 2. Explain how it works from the outside in: the big picture, then the
