@@ -3,14 +3,11 @@
 -- Sessions
 rex.bind("cmd+n", "session.new")
 rex.bind("cmd+o", "session.switch")
-rex.bind("cmd+shift+[", "session.previous")
-rex.bind("cmd+shift+]", "session.next")
 
 -- Tabs
 rex.bind("cmd+t", "client.tab.new")
-for i = 1, 9 do
-	rex.bind("cmd+" .. i, "client.tab.goto", { index = i })
-end
+rex.bind("cmd+shift+[", "client.tab.previous")
+rex.bind("cmd+shift+]", "client.tab.next")
 
 -- Panes
 rex.bind("cmd+s", "pane.split.right")
@@ -22,7 +19,7 @@ rex.bind("cmd+k", "pane.send_key", { key = "ctrl+l" })
 -- Prefix
 local prefix = "ctrl+b>"
 local function pbind(key, action, args)
-	rex.bind(prefix .. key, action, args)
+  rex.bind(prefix .. key, action, args)
 end
 
 pbind("ctrl+b", "pane.send_key", { key = "ctrl+b" })
@@ -37,7 +34,7 @@ pbind(",", "client.tab.rename")
 pbind("p", "client.tab.previous")
 pbind("n", "client.tab.next")
 for i = 1, 9 do
-	pbind(tostring(i), "client.tab.goto", { index = i })
+  pbind(tostring(i), "client.tab.goto", { index = i })
 end
 
 pbind("h", "pane.focus.left")
