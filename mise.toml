@@ -159,14 +159,15 @@ chmod 700 "$HOME/.ssh"
 "~/.config/wezterm" = ".config/wezterm"
 
 # agents
-"~/.config/agents" = ".config/agents"
+"~/.config/agents" = { source = ".config/agents", mode = "symlink-each", exclude = ["skills/agentic-workflows", "skills/agentic-workflows/**"] }
+"~/.config/agents/skills/agentic-workflows" = { source = "~/code/github.com/prefectlabs/prefect-agentic-workflows-plugin/skills/agentic-workflows", mode = "symlink" }
 "~/.config/mcp/mcp.json" = ".config/mcp/mcp.json"
 "~/.config/claude/CLAUDE.md" = ".config/claude/CLAUDE.md"
 "~/.config/claude/hooks" = ".config/claude/hooks"
 "~/.config/claude/settings.json" = ".config/claude/settings.json"
 "~/.config/claude/mcp.json" = ".config/mcp/mcp.json"
 "~/.config/claude/commands" = ".config/agents/commands"
-"~/.config/claude/skills" = ".config/agents/skills"
+"~/.config/claude/skills" = "~/.config/agents/skills"
 "~/.config/codex/config.toml" = ".config/codex/config.toml"
 "~/.config/cship.toml" = ".config/cship/cship.toml"
 "~/.config/opencode/README.md" = ".config/opencode/README.md"
