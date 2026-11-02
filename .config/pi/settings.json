@@ -8,7 +8,7 @@
   ],
   "deviceId": "d8b37076-ba86-4b5d-a2e2-1c081af69b12",
   "hideThinkingBlock": true,
-  "lastChangelogVersion": "1.4.0",
+  "lastChangelogVersion": "1.5.0",
   "packages": [
     "git:git@github.com:prefecthq/internal-skills.git",
     "npm:pi-subagents"
@@ -20,5 +20,8 @@
     "~/.config/agents/skills"
   ],
   "theme": "system",
-  "quietStartup": "header"
+  "quietStartup": "header",
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.84.0"
+  }
 }
