@@ -55,6 +55,14 @@
     "type": "command",
     "command": "cship"
   },
+  "footerLinksRegexes": [
+    {
+      "type": "regex",
+      "pattern": "https://github\\.com/(?<owner>[\\w.-]+)/(?<repo>[\\w.-]+)/pull/(?<num>\\d+)",
+      "url": "https://github.com/{owner}/{repo}/pull/{num}",
+      "label": "{repo}#{num}"
+    }
+  ],
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
