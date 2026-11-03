@@ -12,12 +12,9 @@
     "allow": [
       "Agent(*)",
       "Bash",
-      "Edit(*)",
-      "Read(*)",
       "Skill(*)",
       "WebFetch",
       "WebSearch",
-      "Write(*)",
       "mcp__clickhouse",
       "mcp__incidentio",
       "mcp__linear",
@@ -25,7 +22,8 @@
     ],
     "deny": [
       "EnterWorktree"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "enableAllProjectMcpServers": true,
   "hooks": {
