@@ -1,10 +1,10 @@
 [tools]
 1password = "2.41.1"
-clickhouse = "latest" # brew cask is deprecated
 node = "lts"
 "npm:typescript" = "7"
 "cargo:cship" = "latest"
 pi = "1.5.0" # updates from brew lag a bit
+"pipx:prefect" = "latest"
 
 [settings]
 trusted_config_paths = ['~/code', '~/dotfiles']
