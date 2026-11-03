@@ -82,6 +82,14 @@ run = "./bin/brew-drift-manifest"
 description = "Emit structured Homebrew drift data for agent-assisted triage"
 run = "./bin/brew-drift-manifest --format json"
 
+[tasks."packages:upgrade"]
+description = "Upgrade packages from brew, mise"
+run = '''
+mise upgrade
+brew update
+brew upgrade
+'''
+
 [tasks."pi:test"]
 description = "Test local Pi extensions"
 run = "node --test .config/pi/tests/*.test.ts"
