@@ -1,5 +1,5 @@
 [tools]
-1password = "2.41.1"
+1password = "2.42.0"
 node = "lts"
 "npm:typescript" = "7"
 "cargo:cship" = "latest"
